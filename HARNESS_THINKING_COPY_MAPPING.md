@@ -1,478 +1,595 @@
-# Harness Thinking Copy: Field-to-Information Mapping
+# Frontend Guide: Harness Thinking States
 
-## Scope
+## Purpose
 
-This document defines copy for the **thinking phase** of the 10 captured
-harness cases. It does not define final-answer headlines, card reasons,
-follow-up prompts, or CTA copy.
+This is the implementation contract for turning the harness event stream into
+consumer-visible thinking states.
 
-The consumer surface uses four handling classes:
+It answers five frontend questions:
 
-| Class | Meaning |
+1. Which log fields are safe to show?
+2. Which copy is verbatim, formatted, inferred, or developer-only?
+3. When does the UI create, merge, update, or omit a state?
+4. How does an entity remain the same card across different tool calls?
+5. What should happen when logged information is missing or inaccessible?
+
+The rules are data-driven. They do not contain Q01-Q10 conditionals and should
+work for future places, products, routes, sources, and enrichment tools that
+follow the same event contracts.
+
+## Non-negotiable rules
+
+| Rule | Frontend behavior |
 | --- | --- |
-| Show as-is | Exact logged action copy that is relevant to the active task |
-| Better logged information | Replace an opaque logged value with a human-readable value already present elsewhere in the log |
-| Deterministic UI logic | Format structured logged fields with a fixed, localizable template |
-| Developer-only | Preserve the untouched diagnostic for D mode; never render it on the consumer surface |
+| Use arrived information only | A fact can render only after its result event reaches the frontend. |
+| Do not fill missing fields | If the log has no value, omit the field, card, or state. Do not invent fallback text. |
+| Distinguish missing from inaccessible | A logged image reference may use a placeholder when its bytes cannot be fetched. The image is known but inaccessible. |
+| Keep raw diagnostics out of consumer UI | Tool names, provider IDs, URLs, payload sizes, batch IDs, and internal reasoning remain developer-only. |
+| Never expose chain of thought | A reasoning or `llm_thinking` event may drive phase/timing, but its reasoning content is never rendered. |
+| Preserve event time | Status and result states use the timestamps at which those events reached the frontend. |
+| Preserve identity | Search and detail results with the same provider ID update the same visual element. |
+| Do not serialize parallel work | One explicit parallel batch becomes one status and one result state, not one state per call. |
 
-There is no “weak agent claim” class in thinking. A thinking state describes
-an action or an arrived value. It does not make a recommendation or factual
-conclusion.
+## Copy provenance: know what the user is reading
 
-## Data flow
+Every consumer sentence belongs to one of these categories. Frontend code and
+reviews should use these names consistently.
 
-```text
-harness stream event
-  -> semantic event with raw diagnostic metadata
-  -> timestamped status/result arrival
-  -> deterministic consumer formatter
-  -> ThinkingPass.narration             (consumer)
-  -> ThinkingPass.developerNarration    (D mode only)
-```
-
-The formatter is implemented in:
-
-- `src/level2/harnessStream/thinkingCopy.ts`
-- `src/level2/harnessStream/sourceNativePasses.ts`
-- `src/level2/harnessStream/streamToSemanticEvents.ts`
-
-## Field-to-information mapping
-
-| Harness field | Meaning | Consumer use | Developer use |
-| --- | --- | --- | --- |
-| Manifest `prompt` | User request that started the turn | Relevance check for `text_interim` | Show as captured query |
-| `text_interim.text` | Freeform agent action narration | Show verbatim only when action-aligned | Preserve verbatim |
-| `insight[subtype=tool_selected].label` | Raw selected-tool label | Never render | `developerNarration` |
-| `insight[subtype=tool_selected].detail` | Raw selected-tool detail | Only used through structured tool input; never shown raw | `developerNarration` |
-| `tool_use.name` | Tool class | Selects a fixed formatter | Show raw tool class |
-| `tool_use.input.query_text` | Product-search query | `Searching products for “{query}”` | Show full input in diagnostics if needed |
-| `tool_use.input.query` | Place/web-search query | Tool-specific search template | Show full input in diagnostics if needed |
-| Any structured tool-input value matching an earlier `externalId` | Provider entity reference (`place_id`, `product_id`, nested `subject.id`, or a future equivalent) | Preserve the matching entity and render its resolved title | Raw ID remains developer-only |
-| `tool_use.input.url` | Fetch target | Join against known source domain; otherwise use hostname | Raw URL remains developer-only |
-| `tool_use.input.origin` | Route origin | Route start copy | Show raw input |
-| `tool_use.input.destination` | Route destination | Route start copy | Show raw input |
-| `tool_use.input.status` | Event temporal scope | Allows `upcoming matches` for `UPCOMING` | Show raw enum |
-| `parallel_batch.count` | Simultaneous call count | One coalesced start state | Preserve every raw call |
-| `tool_result` product/place arrays | Arrived entities | Exact title/rating/price canvas; derive added/updated count | Raw JSON remains developer-only |
-| Enrichment result fields absent from the earlier entity | Newly received consumer information | Add the exact values to the existing tile and name the fields received | Raw result remains developer-only |
-| Enrichment result fields equal to the earlier entity | Repeated information | Do not repeat or animate them | Available in the raw result |
-| Enrichment result fields different from the earlier entity | Changed consumer information | Update the existing tile and use an `updated` completion | Available in the raw result |
-| Web-search titles and URLs | Consulted sources | Exact source labels and cumulative unique source count | Raw URL remains developer-only |
-| Route `distance_text` | Logged route distance | Exact result summary | Raw response remains developer-only |
-| Route `duration_text` | Logged route duration | Exact result summary | Raw response remains developer-only |
-| Result `total` / `count` | Reported result count | Zero/non-zero result copy when no entities exist | Raw count remains available |
-| `insight[subtype=tool_done].label` | Raw completion label | Never render | `developerNarration` |
-| `insight[subtype=tool_done].detail` | Payload size such as `6008 chars` | Never render | `developerNarration` |
-| `tool_selected.ts` | Frontend start-arrival time | `ThinkingPass.loggedAt` for status | Exact timestamp |
-| `tool_done.ts` | Frontend result-arrival time | `ThinkingPass.loggedAt` for result | Exact timestamp |
-| `insight[subtype=llm_thinking].ts` after the final tool result | Direct synthesis lifecycle signal | Change to deterministic synthesis copy while retaining the latest evidence | Exact timestamp and raw label |
-
-## Start-copy templates
-
-| Tool | Required fields | Consumer template |
+| Category | Meaning | Example |
 | --- | --- | --- |
-| `ProductSearch` | `query_text` | `Searching products for “{query}”` |
-| `PlaceSearch` | `query` | `Searching places for “{query}”` |
-| `PlaceDetails` | `place_id` joined to an earlier title | `Checking details for {title}` |
-| Parallel `PlaceDetails` | Each call's `place_id` joined to its title | One `Checking details for {N} places` state with all resolved subjects |
-| `WebSearch` | `query` | `Searching the web for “{query}”` |
-| Parallel `WebSearch` | Unique query count | `Searching the web across {N} queries` |
-| `WebFetch` | URL joined to source label/domain | `Reading {source}` |
-| `GetRoute` | `origin` and `destination` | `Checking the route from {origin} to {destination}` |
-| `CricketEvents` | `status=UPCOMING` | `Checking upcoming cricket matches` |
+| `LOGGED_VERBATIM` | Exact agent text from `text_interim`, after relevance validation | `Pulling up school backpacks for both boys and girls now.` |
+| `LOGGED_FORMATTED` | Fixed template populated only with structured logged values | `Found 10 products` |
+| `UI_PROCESS_COPY` | Frontend-authored process sentence based on deterministic state logic | `Organizing the options around what matters most` |
+| `DEVELOPER_ONLY` | Untouched raw diagnostic, visible only in D mode | `Tool done: PlaceDetails · 6008 chars` |
 
-If a required field is missing, the formatter returns `undefined`. The UI
-keeps the previous real state visible. It does not substitute “Working on it,”
-“Checking details,” “Untitled,” or any other fallback.
+### Important: synthesis copy is not verbatim log text
 
-## Result-copy templates
+The following current sentences are `UI_PROCESS_COPY`:
 
-| Arrived information | Consumer template |
-| --- | --- |
-| First entity set | `Found {N} {products|places}` |
-| New entities after a visible set | `Added {N} more {products|places}` |
-| Existing entities gain fields outside an identity-targeted enrichment | `Updated {N} {products|places}` |
-| Identity-targeted enrichment adds consumer fields | `{field summary} received for {title}` |
-| Identity-targeted enrichment changes a consumer field | `{field summary} updated for {title}` |
-| Parallel identity-targeted enrichment | `{field summary} received across {N} {places|products}` |
-| Identity-targeted enrichment repeats existing fields only | No completion state |
-| First web-source set | `Checked {N} {source|sources}` |
-| New unique web sources | `Added {N} more {source|sources}` |
-| WebFetch completion | `Read {source}` |
-| Route result | `{distance} · {duration}`; omit a missing segment |
-| Zero upcoming cricket events | `No upcoming matches found` |
-| Zero product/place results | `No products found` / `No places found` |
+- `Turning the research into a step-by-step recipe`
+- `Building the plan around these details`
+- `Bringing these place details into a useful shortlist`
+- `Organizing the options around what matters most`
+- `Putting the route details together`
+- `Bringing the useful details together into a clear answer`
 
-Payload sizes, tool names, raw IDs, raw URLs, JSON sizes, and internal batch
-identifiers never appear in consumer narration.
-
-For example, if search already supplied RNR Biryani's rating, review count,
-price, open status, phone number, location and route estimate, and
-`PlaceDetails` later supplies only new hours and one review, the result is:
+The log provides only the lifecycle signal and time, for example:
 
 ```text
-Hours and 1 review received for RNR Biryani - Jayanagar
+insight.subtype = llm_thinking
+insight.label   = LLM thinking…
+insight.ts      = 1787127669796
 ```
 
-The same tile reveals the exact logged values:
+The frontend selects the domain-specific sentence locally. Therefore:
+
+- the phase and timestamp are log-backed;
+- the sentence itself is frontend-authored;
+- the sentence describes process only and must never add a factual claim;
+- if product policy changes to strict verbatim-only copy, remove this sentence
+  and use the lifecycle marker only for visual activity while retaining the
+  previous evidence.
+
+## End-to-end data flow
 
 ```text
-Friday: 11:00 AM – 11:30 PM
-5★ · RNR is my go to for donne biryani, great vegetarian options and lovely ambience.
+HarnessStreamEvent
+  -> streamToSemanticEvents
+  -> SemanticAgentEvent
+  -> sourceNativePasses arrival timeline
+  -> ThinkingPass
+  -> runtime schedule
+  -> renderer selected by valueType
 ```
 
-It does not repeat the already-known `4.3★`, `6,879 reviews`, price, phone,
-open status, distance or travel time.
+The important objects are:
 
-## Exact interim-copy rule
+```ts
+interface SemanticAgentEvent {
+  id: string;
+  type: 'search' | 'retrieve' | 'enrichment' | 'maps' | 'internal' | ...;
+  startTime: number;   // relative trace time
+  endTime: number;     // relative trace time
+  input?: unknown;
+  entities?: ExtractedEntity[];
+  metadata?: {
+    tool?: string;
+    parallelGroup?: number;
+    interimText?: string;
+    loggedStartTimestamp?: number;
+    loggedResultTimestamp?: number;
+    loggedTimestamp?: number;
+    // normalized result metadata, sources, route values, etc.
+  };
+}
 
-`text_interim` is shown verbatim only when both conditions hold:
+interface ThinkingPass {
+  id: string;
+  narration: string;             // consumer copy only
+  developerNarration?: string;   // D mode only
+  valueType?: ThinkingValueType;
+  payload?: ThinkingPayload;
+  sourceEventIds?: string[];
+  traceTiming?: { start: number; end: number };
+  loggedAt?: number;              // absolute frontend-arrival timestamp
+}
+```
+
+## Raw event mapping
+
+| Harness event | Semantic meaning | Consumer use |
+| --- | --- | --- |
+| `text_interim` | Agent action narration | Candidate for `LOGGED_VERBATIM` start copy |
+| `tool_use` + `tool_selected` insight | Operation started | Status state and exact start time |
+| `tool_result` + `tool_done` insight | Information arrived | Result state, payload, and exact result time |
+| `parallel_batch` | Calls were simultaneous | Group membership; never consumer copy |
+| `reasoning` | Internal model reasoning | Timing/diagnostics only; text never shown |
+| `insight[subtype=llm_thinking]` | Model entered a thinking lifecycle phase | May trigger synthesis process state |
+| `text_final` / `text_replace` | Final response | Final-answer pipeline, not thinking narration |
+| `turn_complete`, token usage, skills, guardrails | Internal lifecycle/diagnostics | Developer-only |
+
+## Tool classification
+
+Tool classification happens once in the adapter. Components consume semantic
+events and typed payloads; they must not interpret tool names independently.
+
+| Tool family | Semantic type | Consumer operation |
+| --- | --- | --- |
+| `ProductSearch` | `search` | Product discovery |
+| `PlaceSearch`, `NearbyPlaces` | `search` | Place discovery |
+| `PlaceDetails`, `PlaceReviews` | `enrichment` | Add information to known places |
+| `ProductDetails`, `ProductFetch` | `enrichment` | Add information to known products |
+| `WebSearch` | `retrieve` | Find sources |
+| `WebFetch` | `retrieve` | Read one known source |
+| `GetRoute`, directions, distance tools | `maps` | Route calculation |
+| `CricketEvents` and equivalent event tools | `search` | Event discovery |
+| Unknown tool | `unknown` | Developer diagnostics; no guessed consumer state |
+
+## Start-state copy mapping
+
+The formatter first tries an action-aligned `text_interim`. If it cannot use
+that text safely, it uses the fixed mapping below. If required fields are
+missing, it emits no state.
+
+| Operation | Required logged information | Consumer copy | Provenance |
+| --- | --- | --- | --- |
+| Product search | `input.query_text` | `Searching products for “{query}”` | `LOGGED_FORMATTED` |
+| Place search | `input.query` | `Searching places for “{query}”` | `LOGGED_FORMATTED` |
+| Web search | `input.query` | `Searching the web for “{query}”` | `LOGGED_FORMATTED` |
+| Parallel search | Explicit batch + unique queries | `Searching {domain} across {N} queries` | `LOGGED_FORMATTED` |
+| Single entity enrichment | Input ID joined to prior entity title | `Checking details for {title}` | `LOGGED_FORMATTED` |
+| Parallel place enrichment | Batch + resolved IDs | `Checking details for {N} places` | `LOGGED_FORMATTED` |
+| Parallel product enrichment | Batch + resolved IDs | `Checking details for {N} products` | `LOGGED_FORMATTED` |
+| Web fetch | URL joined to a prior source/domain | `Reading {source}` | `LOGGED_FORMATTED` |
+| Route | `origin` + `destination` | `Checking the route from {origin} to {destination}` | `LOGGED_FORMATTED` |
+| Upcoming events | `status=UPCOMING` | `Checking upcoming cricket matches` | `LOGGED_FORMATTED` |
+
+### Verbatim interim acceptance rule
+
+`text_interim.text` is used as-is only when both are true:
 
 1. It contains an action verb such as search, check, fetch, read, verify,
    refine, find, pull, or build.
-2. It shares at least one meaningful task term with the user prompt, active
-   tool inputs, or tool-specific context.
+2. It shares a meaningful task term with the prompt, current tool input, or
+   tool domain.
 
-Generic work words—such as *details*, *candidates*, *results*, *search*, and
-*information*—do not count as task terms.
+Generic words such as `details`, `results`, `candidates`, and `information`
+do not prove relevance.
+
+Example of a suppressed copied interim:
+
+```text
+Prompt:  Find arancini restaurants near me that are open late.
+Interim: Fetching reviews about spice levels and family ambiance.
+```
+
+The text is action-shaped but not aligned with `arancini` or `open late`. The
+frontend drops it and formats the actual four-place details batch instead.
+
+## Result-state copy mapping
+
+| Arrived information | Consumer copy | Provenance |
+| --- | --- | --- |
+| First concrete entity set | `Found {N} {products|places}` | `LOGGED_FORMATTED` |
+| Parallel search entity set | `Found {N} {products|places} across {S} searches` | `LOGGED_FORMATTED` |
+| Additional concrete entities | `Added {N} more {products|places}` | `LOGGED_FORMATTED` |
+| Explicit refinement result | `The refined {search|searches} found {N} …` | `LOGGED_FORMATTED`; refinement word must come from aligned interim |
+| Known entities changed | `Updated {N} {products|places}` | `LOGGED_FORMATTED` |
+| Single enrichment result | `{field summary} received for {title}` | `LOGGED_FORMATTED` |
+| Parallel enrichment result | `{field summary} received across {N} {places|products}` | `LOGGED_FORMATTED` |
+| First source set | `Checked {N} sources` | `LOGGED_FORMATTED` |
+| Additional source set | `Found {N} additional sources` | `LOGGED_FORMATTED` |
+| Duplicate source set | `Rechecked {N} sources` | `LOGGED_FORMATTED` |
+| Web fetch completed | `Read {source}` | `LOGGED_FORMATTED` |
+| Route result | `{distance} · {duration}` | `LOGGED_FORMATTED` |
+| Explicit zero place/product result | `No places found` / `No products found` | `LOGGED_FORMATTED` |
+| Explicit zero upcoming events | `No upcoming matches found` | `LOGGED_FORMATTED` |
+| Duplicate result with no new visible value | No new state | — |
+
+Counts use concrete arrays delivered to the frontend, not a larger provider
+`total` when the corresponding objects are absent. Ten reported matches with
+four delivered `places[]` objects produces four cards, never ten placeholders.
+
+## Entity identity and card persistence
+
+### Provider identity is the contract
+
+Search results become normalized entities with a stable provider ID:
+
+```text
+PlaceSearch.places[].place_id
+  -> NormalizedEntity.externalId
+  -> PlaceDetails.input.place_id
+  -> same NormalizedEntity
+  -> same rendered card
+```
+
+The adapter does not maintain a hard-coded list of possible ID field names.
+It walks structured enrichment input and treats a string as an entity reference
+only when it exactly matches an `externalId` previously received in a result.
+
+This supports current and future shapes such as:
+
+```text
+place_id
+product_id
+restaurant_id
+{ subject: { id: "provider-id" } }
+```
+
+It prevents unrelated `request_id` or `user_id` values from creating identity.
+
+### Render key
+
+```text
+externalId exists -> external:{externalId}
+otherwise         -> local:{normalizedEntity.id}
+```
+
+Never use array position or a newly parsed tool-local ID as the React key.
+The stable key preserves the existing image, DOM element, and layout history
+while details arrive.
+
+### Failed identity join
+
+If the enrichment input ID cannot be joined to a known entity:
+
+- do not guess by title similarity or rank;
+- do not show an `Untitled` card;
+- omit the entity-specific consumer state;
+- retain the raw ID in developer diagnostics.
+
+## Parallel batching
+
+An explicit `parallelGroup` is one agent action.
+
+```text
+status time = earliest tool_selected timestamp in the group
+result time = latest tool_done timestamp in the group
+```
+
+The combined pass retains every member in `sourceEventIds`.
+
+For parallel enrichment:
+
+- resolve every input ID against known entities;
+- render only those selected entities;
+- keep one `inspectionIds` entry per selected card;
+- merge all results at the final group arrival;
+- keep new field values keyed by entity ID.
+
+This avoids impossible 0-4 ms sequences and false ordering such as:
+
+```text
+Chowman -> Garden Asia -> Shang Palace -> China Pearl
+```
+
+when the log says all four calls ran simultaneously.
+
+## Cumulative result behavior
+
+### Entities
+
+Entity sets merge by stable identity. A later result updates the known entity
+instead of replacing its card.
+
+### Sources
+
+Sources merge by normalized domain or label. Duplicate domains are rechecked,
+not counted as newly discovered sources.
+
+### Routes
+
+Each route keeps its exact origin, destination, distance, and duration. The
+newest route may own the active map, while `payload.alternates` retains all
+logged route summaries in a compact `Routes checked` ledger.
+
+### Search refinement
+
+A later search replaces the visible search attempt only when an aligned
+interim explicitly says `refine`, `refined`, or `refining`. Result quality is
+not inferred from titles. The canonical identity pool still retains earlier
+entities for future exact-ID joins.
+
+## Enrichment field-delta mapping
+
+The detail panel shows only consumer-safe values that are new or changed
+relative to the earlier version of the same entity.
+
+| Logged/normalized field | Display value | Summary label |
+| --- | --- | --- |
+| `availability` / `opening_hours` | Exact logged hours | `Hours` |
+| New `reviews[]` entry | `{rating}★ · {exact review text}` | `{N} review(s)` |
+| `attributes.editorialSummary` | Exact summary | `description` |
+| `rating` | `{rating}★` | `rating` |
+| `reviewCount` | Localized count + `reviews` | `review count` |
+| `price` | Exact normalized price | `price` |
+| `location` | Exact location | `location` |
+| `distance` | Exact distance | `distance` |
+| `travelTime` | Exact duration | `travel time` |
+| `attributes.openNow` | `Open now` / `Currently closed` | `open status` |
+| `attributes.phone` | Exact phone | `phone number` |
+| `attributes.website` / `ctaUrl` | Exact URL | `website` |
+| Product `brand` | Exact brand | `brand` |
+| Product `inStock` | `In stock` / `Out of stock` | `stock status` |
+| Product `originalPrice` + currency | Deterministically formatted amount | `original price` |
+| Product `categories` | Exact values joined with separators | `categories` |
+| Product `gender` | Exact value | `gender` |
+| Product `vtonEnabled` | Availability sentence | `virtual try-on status` |
+
+Explicitly excluded fields include provider IDs, coordinates, raw tool
+metadata, similarity scores, payload sizes, and unclassified future fields.
+A future field must be reviewed and added to this allow-list before it can
+reach consumer UI.
+
+Delta rules:
+
+```text
+arriving value absent                  -> ignore
+arriving value equals previous value   -> ignore
+previous absent, arriving present      -> change = added
+previous present, arriving different   -> change = changed
+```
+
+The detail panel renders to the right of the original tile. It must not repeat
+rating, price, location, or other values that were already visible before the
+detail call.
+
+## Discovery-card fact selection
+
+Found cards show at most three logged facts.
+
+Priority:
+
+1. Fields explicitly requested in the user prompt.
+2. Entity-appropriate defaults.
+3. Fewer facts when values are absent; never placeholder facts.
+
+Formatting rules:
+
+- rating and review count combine as `4.5★ (6,521)`;
+- travel time and distance combine as `12 min · 5.0 km`;
+- place defaults include rating, route, price, availability, locality, and
+  provider category;
+- product defaults include price, brand, category, gender, and stock status;
+- provider categories are context, not proof that a place serves a requested
+  dish or that a product satisfies an unlogged property.
+
+## Image handling
+
+Image behavior is intentionally different from missing text behavior.
+
+```text
+logged ordinary image URL
+  -> try exact URL
+
+logged places/{PLACE_ID}/photos/{PHOTO_REF}
+  -> /api/glance-media?name={encoded ref}&maxWidth={width}
+  -> server adds Authorization and X-Account-ID
+
+bytes unavailable / auth absent / stale ref
+  -> placeholder image is allowed
+```
+
+Rules:
+
+- never put a JWT or account ID in browser code or a query parameter;
+- never commit credentials;
+- use `GLANCE_MEDIA_JWT` and `GLANCE_ACCOUNT_ID` server-side only;
+- an inaccessible logged image does not mean the entity lacks an image;
+- placeholder images must not be described as the actual venue/product photo.
+
+## Timing and lifecycle
+
+### Timestamp fields
+
+| State | Absolute `loggedAt` | Relative `traceTiming.start` |
+| --- | --- | --- |
+| Tool status | `tool_selected.ts` | selected timestamp minus first trace timestamp |
+| Tool result | `tool_done.ts` | completed timestamp minus first trace timestamp |
+| Parallel status | Earliest selected timestamp | Earliest grouped relative start |
+| Parallel result | Latest completed timestamp | Latest grouped relative end |
+| Synthesis lifecycle | Post-tool `llm_thinking.ts` unless merged within one frame | Relative lifecycle time |
+
+The scheduler keeps the current state visible until the next state starts. It
+does not invent intermediate consumer states to fill a quiet period.
+
+### Same-frame result and synthesis
+
+The final result and `llm_thinking` marker often arrive 5-14 ms apart. A 60 Hz
+display cannot render both states. If they are no more than 17 ms apart:
+
+- create one combined state;
+- keep the exact result-arrival timestamp;
+- retain both result and lifecycle event IDs;
+- keep the result evidence payload;
+- combine result copy and `UI_PROCESS_COPY` in one line.
 
 Example:
 
 ```text
-Prompt: Find arancini restaurants near me that are open late.
-Interim: Now I need to fetch detailed reviews and specifics on spice levels
-         and family ambiance for the top candidates.
+Found 10 products. Organizing the options around what matters most
 ```
 
-The interim contains an action verb but shares no meaningful task term with
-*arancini* or *open late*. It is suppressed. The parallel PlaceDetails batch
-then deterministically renders:
+The first sentence is `LOGGED_FORMATTED`; the second is `UI_PROCESS_COPY`.
+
+### Synthesis mapping precedence
+
+Current selection order:
 
 ```text
-Checking details for 4 places
+explicit requirements.entityType
+  -> provider-typed entity evidence (place or product)
+  -> prompt keyword
+  -> current valueType
+  -> generic
 ```
 
-This is relevance validation, not factual-claim evaluation.
+Provider-typed evidence outranks loose prompt keywords. For example, Q10 asks
+for a tofu dish but the tool results are restaurants, so the UI uses place
+shortlist process copy, not recipe process copy.
 
-## Identifier resolution
+## Missing and inaccessible information matrix
 
-The adapter maintains the cumulative entities that have reached the frontend.
-Provider identifiers are resolved with:
-
-```text
-tool_use.input.place_id
-  -> prior entity.externalId
-  -> prior entity.title
-```
-
-If the join succeeds:
-
-```text
-Tool → PlaceDetails · ChIJEfXy3cIVrjsRFKH0ilntLN4
-  -> Checking details for Chianti, Koramangala
-```
-
-If a single-call join fails, no title-specific consumer status is emitted. A
-parallel batch may still show its exact request count, but no unresolved card
-is fabricated. The raw ID remains available in D mode.
-
-### PlaceDetails selection and transition
-
-A `PlaceDetails` call is also an exact selection signal. The frontend takes
-that call's `tool_use.input.place_id` and joins it to the `externalId` values
-already received from `PlaceSearch`. Calls in one explicit `parallel_batch`
-become one consumer state because the log says they ran simultaneously; every
-resolved subject remains individually identified inside that state.
-
-```text
-PlaceSearch places[].place_id
-  -> normalized entity.externalId
-  -> PlaceDetails tool_use.input.place_id
-  -> selected thinking tiles
-```
-
-Only the resolved tiles named by the active call or batch remain on the
-consumer canvas. Unselected search results are not shown as though they were
-also being inspected. Each selected tile keeps the same stable entity key, so
-it moves into the inspection layout without remounting or refetching its image.
-It also replays the neutral inspection sweep; it is not promoted.
-
-Some captures report a larger `total_results` than the number of actual
-`places[]` objects included in the result. The total can be narrated, but only
-the concrete place objects can become cards. For example, Q06, Q07, and Q10
-report 10 results but expose four place objects, and all four are subsequently
-sent to one parallel `PlaceDetails` batch. Those cases transition from the four
-logged result cards to a four-card inspection state; they never fabricate the
-six absent cards or serialize simultaneous calls into a false order.
-
-This means only "selected for detail inspection." It does not mean
-"shortlisted," "preferred," "best," or "recommended." If a requested id
-cannot be joined to an arrived entity, the frontend does not guess from its
-title or position and does not render that unresolved tile.
-
-### Cross-tool element continuity
-
-Tool-local parsed ids are not UI identity. Before rendering adjacent entity
-passes, the frontend computes the key as:
-
-```text
-externalId present -> `external:${externalId}`
-otherwise          -> `local:${parsedEntityId}`
-```
-
-The frontend does not maintain a list of accepted id field names. It walks the
-structured enrichment input (including nested objects and arrays) and treats a
-value as an entity reference only when it exactly matches an `externalId`
-previously observed in a tool result. Thus `place_id`, `product_id`, a future
-`restaurant_id`, or `{ subject: { id } }` all work without component changes,
-while unrelated `request_id` or `user_id` values cannot create continuity.
-
-When the current enrichment call carries a matching external id, the renderer
-reuses the existing React key. The tile, its loaded image, and its position
-history remain mounted while new logged fields update. This supports
-`PlaceSearch -> PlaceDetails`, `ProductSearch -> ProductFetch/ProductDetails`,
-and equivalent future entity flows without tool-specific component code.
-
-When several identity-targeted calls run in parallel, their starts coalesce at
-the first batch timestamp and their results coalesce at the final batch result
-timestamp. All returned data is merged into the canonical entity set, and
-`fieldArrivals` stays keyed by each entity's stable local id. Thus one result
-state can show the exact new fields beside all four matching cards without a
-millisecond sequence such as `Chowman -> Garden Asia -> Shang Palace`.
-
-If neither side exposes the same stable id, continuity is not inferred from
-title similarity at the rendering boundary. The new element renders normally.
-
-## Scalable frontend inference boundary
-
-The frontend can scalably describe **observable next actions** with one
-central adapter over tool name, structured input, batch identity, and earlier
-arrived entities. Individual components should consume the normalized action;
-they should not each interpret raw tool names.
-
-| Observable operation | Deterministic frontend state | Required fields |
-| --- | --- | --- |
-| `PlaceDetails` | `Checking details for {resolved name}` | that call's `place_id` plus earlier entity join |
-| `WebFetch` | `Reading {source}` | `url` plus earlier source/domain join |
-| `GetRoute` | `Checking the route from {origin} to {destination}` | `origin`, `destination` |
-| Parallel searches | `Searching … across {N} queries` | batch id plus unique queries |
-| A later search | `Searching … for “{query}”` | the exact new query |
-| Tool result arrival | `Found/Added/Updated {N} …` | returned entities and stable ids |
-
-The frontend must not infer intent or judgment from those operations. For
-example, `PlaceDetails` proves inspection but not preference; a second search
-proves another search but not why the first result was inadequate. Copy such
-as "refining because results were irrelevant," "these are the best," or "I
-have enough information" requires either action-aligned logged narration or a
-new structured assessment event from the agent/backend.
-
-## Delta and duplicate handling
-
-Entity results are merged by provider identity and the existing candidate
-resolution rules.
-
-```text
-added   = entities not present in the previous visible set
-updated = existing entities whose logged fields changed
-```
-
-- `added > 0` produces `Found…` or `Added…`.
-- `added = 0, updated > 0` produces `Updated…`.
-- `added = 0, updated = 0` produces no result state.
-
-### Enrichment field delta
-
-For an identity-targeted call, the adapter first joins the result to the
-earlier entity by exact external id. It then compares the arriving value with
-the previously arrived value. This comparison is independent of tool names,
-so it applies equally to `PlaceDetails`, `ProductFetch`, `ProductDetails`, and
-future enrichment operations that use the same identity contract.
-
-```text
-exact external-id join
-  -> previous normalized entity vs arriving normalized entity
-  -> allow-listed consumer field delta
-  -> same card + newly arrived facts
-```
-
-| Normalized/logged field | Tile value | Completion label |
-| --- | --- | --- |
-| `availability` / `opening_hours` | Exact logged hours text | `Hours` |
-| New `reviews[]` item | `{rating}★ · {exact review text}` | `{N} review(s)` |
-| `attributes.editorialSummary` | Exact logged summary | `description` |
-| `rating` | `{rating}★` | `rating` |
-| `reviewCount` | Localized numeral + `reviews` | `review count` |
-| `price` | Exact normalized logged price | `price` |
-| `location` | Exact normalized logged location | `location` |
-| `distance` | Exact logged distance | `distance` |
-| `travelTime` | Exact logged duration | `travel time` |
-| `attributes.openNow` | `Open now` / `Currently closed` | `open status` |
-| `attributes.phone` | Exact logged phone | `phone number` |
-| `attributes.website` / product `ctaUrl` | Exact logged URL | `website` |
-| Product `brand` | Exact logged brand | `brand` |
-| Product `inStock` | `In stock` / `Out of stock` | `stock status` |
-| Product `originalPrice` + currency | Deterministically formatted amount | `original price` |
-| Product `categories` | Exact values joined with separators | `categories` |
-| Product `gender` | Exact logged value | `gender` |
-| Product `vtonEnabled` | Deterministic availability copy | `virtual try-on status` |
-
-Raw ids, coordinates, image transport state, tool metadata, similarity score,
-and unknown future fields are deliberately excluded. Images are handled by
-the image resolver and may use placeholders when bytes are unavailable; that
-is not treated as missing logged information. Unknown fields are not exposed
-automatically: they must first be classified and added to this consumer-safe
-allow-list.
-
-Long values such as hours, reviews and descriptions use a two-line clamped
-detail treatment. On an enrichment-result state, the original entity tile
-remains mounted on the left and one `New details` panel enters on its right.
-The panel contains only before/after field arrivals; fields already present in
-search stay on the original card and are not repeated as discoveries. Changed
-values use the heading `Updated details`. The normalized payload retains each
-arrival independently; the renderer does not paraphrase review text or
-generate a claim about it.
-
-Sources use domain-or-label identity and accumulate uniquely across searches.
-This prevents repeated searches from replacing earlier consulted sources or
-claiming that duplicate sources are new.
-
-## Parallel-batch handling
-
-Parallel calls normally share one status at the earliest `tool_selected.ts`
-and one atomic result at the latest `tool_done.ts`. Result events separated by
-only a few milliseconds are not individually readable browser states; every
-raw event remains referenced by the combined pass for diagnostics.
-
-This rule includes `PlaceDetails` and other identity-targeted enrichment. The
-different ids remain separate inside the batch payload; they do not require a
-false visual sequence.
-
-Examples:
-
-```text
-4 PlaceDetails starts  -> `Checking details for 4 places`
-4 PlaceDetails results -> one per-entity cumulative details state
-2 WebSearch starts     -> `Searching the web across 2 queries`
-2 WebSearch results    -> `Checked {N concrete sources} across 2 searches`
-4 PlaceSearch results  -> `Found {N concrete places} across 4 searches`
-```
-
-For a parallel batch with an action-aligned `text_interim`, the exact interim
-wins over the deterministic batch template.
-
-## Cumulative rapid results
-
-Later results update stable evidence rather than erasing earlier values:
-
-- Entity and source results already merge cumulatively by stable identity.
-- Parallel enrichment results retain a `fieldArrivals` entry for every
-  resolved entity in the batch.
-- Route results accumulate as logged route summaries. The newest route can
-  own the active map while the earlier distance/duration rows remain visible.
-
-This uses explicit batch identity and result type, not case-specific timing
-or titles. A 409 ms route result therefore remains available after the next
-route arrives without delaying or fabricating either timestamp.
-
-## Final synthesis lifecycle
-
-After the last tool result, a consumer synthesis state is created only when
-the harness emits a direct post-tool `llm_thinking` or reasoning lifecycle
-marker and at least three seconds remain before trace completion. Raw
-reasoning text is never read.
-
-The copy is deterministic and domain-aware—for example, organizing product
-options, building a stay plan, or bringing place details into a shortlist.
-The payload is the exact last evidence payload already received by the
-frontend, so cards, details, routes, and sources stay visible.
-
-When the result and lifecycle marker land within one 60 Hz browser frame
-(17 ms), they become one state at the result-arrival timestamp:
-
-```text
-Hours, 4 reviews and description received across 4 places.
-Bringing these place details into a useful shortlist
-```
-
-Both source event ids remain attached for developer provenance. This avoids
-an unreadable result flash without inventing a delay or revealing final-answer
-content early.
-
-### Search attempts and refinements
-
-Parallel searches within one batch contribute to one result set. A later
-batch normally expands the visible set. It replaces the visible search
-attempt only when the agent's own action-aligned interim explicitly uses
-`refine`, `refined`, or `refining`; disappointing-looking titles alone never
-trigger a reset.
-
-The canonical identity pool still retains earlier entities for exact-id joins.
-Only the consumer-visible search attempt resets. This lets a future detail
-call resolve an earlier provider id without presenting a rejected batch as
-though it remained among the refined options.
-
-Q04 therefore renders:
-
-```text
-Found 7 products across 2 searches
-The initial search returned mostly clothing and shoes ... Let me refine ...
-The refined searches found 8 products
-```
-
-The first two API responses each report `total: 10`, but expose only four and
-three concrete `products[]` objects. The canvas and its narration use the seven
-objects the frontend actually received. Reported totals never create absent
-cards or a count that contradicts the visible list.
-
-## Expected Q01–Q10 consumer sequences
-
-These are the significant states; entity-detail result lines repeat once per
-actual result arrival.
-
-| Case | Consumer thinking sequence |
+| Situation | Consumer behavior |
 | --- | --- |
-| Q01 | Exact backpack interim -> `Found 10 products` + synthesis |
-| Q02 | `Searching the web across 2 queries` -> `Checked 4 sources across 2 searches` -> `Reading…` / `Read…` -> final web search + recipe synthesis |
-| Q03 | Exact Rawla Narlai interim -> `Found 1 place` -> resolved details -> Jodhpur route facts -> cumulative Jodhpur/Udaipur route facts + stay-plan synthesis |
-| Q04 | Exact initial interim -> `Found 7 products across 2 searches` -> exact refinement interim -> `The refined searches found 8 products` + synthesis |
-| Q05 | Exact Matcha interim -> `Found 6 places` + synthesis |
-| Q06 | Exact arancini interim -> `Found 4 places` -> one four-place inspection -> cumulative details + synthesis; copied spice/family interim is suppressed |
-| Q07 | Exact Lucknowi interim -> `Found 4 places` -> one four-place inspection -> cumulative details + synthesis; copied spice/family interim is suppressed |
-| Q08 | Exact Hoi An interim -> `Found 8 places across 4 searches` + synthesis |
-| Q09 | Exact cricket interim -> `No upcoming matches found` + synthesis |
-| Q10 | Exact tofu interim -> `Found 4 places` -> exact tofu-verification batch -> cumulative details + place-shortlist synthesis |
+| Field absent from logs | Drop the field |
+| Entity array absent | Do not create cards |
+| Reported total exceeds concrete objects | Show only concrete cards |
+| Required copy input absent | Omit that state and retain the previous one |
+| Entity ID cannot be resolved | Omit entity-specific status/card |
+| Duplicate result adds no value | No new state |
+| Unknown tool or field | Developer-only until mapped |
+| Raw reasoning exists | Never show its content |
+| Logged image exists but cannot be fetched | Use a placeholder image |
+| Explicit zero result exists | Show the deterministic zero-result state |
 
-## Rendering boundary
+Avoid fallback consumer copy such as `Working on it`, `Checking details`,
+`Untitled`, or fabricated descriptions. A neutral animation can communicate
+activity without claiming unavailable information.
 
-The consumer experience renders only `ThinkingPass.narration`.
+## Rendering contract
 
-### Discovery-card facts
+| `valueType` | Expected rendering behavior |
+| --- | --- |
+| `trace_entities` | Stable entity tiles, exact selected IDs, optional per-entity detail arrivals |
+| `sources` | Cumulative unique source chips/count |
+| `route` | Latest map/summary plus accumulated route ledger |
+| `count` | Exact compact count, never a fabricated card set |
+| No payload | Narration and neutral activity treatment only |
 
-`Found {N}` cards show up to three logged facts; rating is no longer the one
-field that hides every other value. Selection is deterministic and shared
-across cases:
-
-1. Fields explicitly requested by the user come first.
-2. Remaining slots use entity-appropriate logged facts.
-3. Rating and review count are one fact (`4.5★ (6,521)`).
-4. Travel time and distance are one fact (`12 min · 5.0 km`).
-5. Missing values leave fewer facts; no placeholder copy fills the card.
-
-Place defaults are rating, route, price, current availability, locality and
-provider category. Product defaults are price, brand, category, gender and
-stock status. Exact request phrases such as `open late`, `late-night`,
-`tonight`, `male`, `female`, `boys`, `girls` and `unisex` raise their matching
-logged fields in priority.
-
-Provider categories remain fallback context rather than proof of request fit:
-`chinese_restaurant` cannot verify a Jiangsu-style tofu dish, and `cafe`
-cannot verify a particular drink. Phone numbers, coordinates, raw provider
-ids and similarity scores remain off the lightweight thinking card.
-
-The D panel may additionally render:
+Consumer components may read:
 
 ```text
-raw: {ThinkingPass.developerNarration}
+ThinkingPass.narration
+ThinkingPass.valueType
+ThinkingPass.payload
 ```
 
-No consumer component should read `developerNarration`.
+Consumer components must not read:
+
+```text
+ThinkingPass.developerNarration
+raw tool input/output
+internal reasoning text
+provider diagnostics
+```
+
+## Worked examples
+
+### Parallel place details
+
+```text
+PlaceSearch result: 4 concrete places
+  -> Found 4 places
+
+parallel_batch: 4 PlaceDetails calls
+  -> Checking details for 4 places
+  -> render the same four cards by externalId
+
+final grouped result
+  -> Hours, 4 reviews and description received across 4 places
+  -> attach each exact field arrival to its matching card
+```
+
+### Two rapid routes
+
+```text
+Jodhpur result -> 130 km · 2 hours 26 mins
+Udaipur result -> 122 km · 2 hours 26 mins
+
+final route payload.alternates:
+  Jodhpur -> Rawla Narlai   130 km · 2 hours 26 mins
+  Udaipur -> Rawla Narlai   122 km · 2 hours 26 mins
+```
+
+The second result updates one stable route canvas; it does not erase the first
+summary.
+
+### Search-to-detail continuity
+
+```text
+search entity.externalId = ChIJ...
+detail input.place_id     = ChIJ...
+
+same externalId
+  -> same React key
+  -> same image instance
+  -> existing card moves into inspection layout
+  -> newly arrived hours/reviews render beside it
+```
+
+## Implementation ownership
+
+| Concern | File |
+| --- | --- |
+| Raw harness event parsing and timestamps | `src/level2/harnessStream/streamToSemanticEvents.ts` |
+| Consumer and developer copy formatting | `src/level2/harnessStream/thinkingCopy.ts` |
+| Arrival grouping, identity merge, deltas, cumulative payloads | `src/level2/harnessStream/sourceNativePasses.ts` |
+| Scenario assembly and same-frame synthesis merge | `src/level2/harnessStream/buildScenarioFromHarnessStream.ts` |
+| Synthesis lifecycle and `UI_PROCESS_COPY` | `src/level2/harnessStream/synthesisBeat.ts` |
+| Stable entity keys | `src/level2/normalization/entityBridge.ts` |
+| Discovery-card fact selection | `src/level2/renderers/entityFacts.ts` |
+| Thinking renderer selection | `src/level2/renderers/registry.ts` |
+| Entity detail panel | `src/components/AgentThinkingTrace/level2/EntityDetailArrivalPanel.tsx` |
+| Entity and source rendering | `src/components/AgentThinkingTrace/level2/ThinkingValueRenderers.tsx` |
+| Cumulative route rendering | `src/components/AgentThinkingTrace/level2/MapThinkingStage.tsx` |
+| Real timestamp scheduling | `src/level2/runtime/schedule.ts` |
+| Playback lifecycle | `src/level2/runtime/useLevel2Runtime.ts` |
+| Authenticated image proxy client | `src/api/glanceMediaClient.ts` and `vite.config.ts` |
+| Generated ten-case scenario data | `src/level2/scenarios/harnessStreamScenarios.ts` |
+
+## Adding a new tool or field
+
+Before consumer UI can use it:
+
+1. Classify the tool into a semantic event type.
+2. Extract only structured values actually present in the result.
+3. Decide whether each value is consumer-safe or developer-only.
+4. Add deterministic copy only when its required inputs are explicit.
+5. Define stable identity if the result updates an existing entity.
+6. Define parallel grouping behavior.
+7. Define duplicate and cumulative merge behavior.
+8. Add the field to the enrichment allow-list if applicable.
+9. Add adapter, copy, timing, and renderer tests.
+10. Regenerate the harness scenarios and verify no sub-animation states return.
+
+Do not add a component-local interpretation of raw tool data. Extend the
+central adapter and typed payload contract instead.
+
+## Verification
+
+```bash
+./node_modules/.bin/vitest run
+npm run build
+git diff --check
+```
+
+Current baseline at the time of this document update:
+
+- 21 test files and 286 tests passing;
+- production TypeScript/Vite build passing;
+- 38 states across the ten captures;
+- no state-to-state transition shorter than the 160 ms entrance duration;
+- shortest remaining transition: 409 ms;
+- median transition: 1.62 seconds.
