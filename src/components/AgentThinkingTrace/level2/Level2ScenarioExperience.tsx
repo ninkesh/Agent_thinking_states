@@ -133,7 +133,7 @@ export default function Level2ScenarioExperience({
           <div
             className={`att-l2v-pass att-l2v-pass--${runtime.passPhase ?? 'hold'}`}
             key={
-              currentPass.valueType === 'entity_preview' || currentPass.valueType === 'sources' || currentPass.valueType === 'route'
+              currentPass.valueType === 'entity_preview' || currentPass.valueType === 'trace_entities' || currentPass.valueType === 'sources' || currentPass.valueType === 'route'
                 ? `${currentPass.valueType}-canvas`
                 : currentPass.id
             }

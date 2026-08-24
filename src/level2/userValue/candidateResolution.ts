@@ -89,10 +89,19 @@ export function isValidCandidate(e: NormalizedEntity): boolean {
 
 function titleKey(title: string | undefined): string | undefined {
   const k = title
+    ?.normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
     ?.toLowerCase()
     .replace(/[^\p{L}\p{N}]+/gu, ' ')
     .trim();
   return k || undefined;
+}
+
+/** Names in final cards often append a locality after a comma while search
+ *  results use the provider's bare name. Compare those exact name portions
+ *  as another identity signal; no fields or claims are derived from it. */
+function coreTitleKey(title: string | undefined): string | undefined {
+  return titleKey(title?.split(/\s*[,|]\s*|\s+[–—-]\s+/)[0]);
 }
 
 /** Same real-world thing? place_id when both sides carry one; otherwise
@@ -106,16 +115,32 @@ export function isSameCandidate(a: NormalizedEntity, b: NormalizedEntity): boole
   const kb = titleKey(b.title);
   if (!ka || !kb) return false;
   if (ka === kb) return true;
+  const ca = coreTitleKey(a.title);
+  const cb = coreTitleKey(b.title);
+  if (ca && cb && ca === cb && ca.length >= 5) return true;
   const [short, long] = ka.length <= kb.length ? [ka, kb] : [kb, ka];
-  return short.length >= 8 && long.includes(short);
+  if (short.length >= 8 && long.includes(short)) return true;
+  const aTokens = new Set(ka.split(' ').filter((token) => token.length > 1));
+  const bTokens = new Set(kb.split(' ').filter((token) => token.length > 1));
+  const aOrdered = [...aTokens];
+  const bOrdered = [...bTokens];
+  const sharesThreeTokenRun = aOrdered.some((_, index) => {
+    const phrase = aOrdered.slice(index, index + 3);
+    if (phrase.length < 3 || phrase.join('').length < 9) return false;
+    return bOrdered.some((__, otherIndex) => phrase.every((token, offset) => bOrdered[otherIndex + offset] === token));
+  });
+  if (sharesThreeTokenRun) return true;
+  const overlap = [...aTokens].filter((token) => bTokens.has(token)).length;
+  return Math.max(aTokens.size, bTokens.size) >= 4 && overlap / Math.max(aTokens.size, bTokens.size) >= 0.8;
 }
 
 export function dedupeCandidates(entities: NormalizedEntity[]): NormalizedEntity[] {
   const out: NormalizedEntity[] = [];
   for (const e of entities) {
     if (!isValidCandidate(e)) continue;
-    if (out.some((seen) => isSameCandidate(seen, e))) continue;
-    out.push(e);
+    const index = out.findIndex((seen) => isSameCandidate(seen, e));
+    if (index >= 0) out[index] = mergeCandidate(out[index], e);
+    else out.push(e);
   }
   return out;
 }
@@ -127,6 +152,7 @@ export function mergeCandidate(base: NormalizedEntity, extra: NormalizedEntity |
   if (!extra) return base;
   return {
     ...base,
+    type: base.type === 'generic' ? extra.type : base.type,
     subtitle: base.subtitle ?? extra.subtitle,
     location: base.location ?? extra.location,
     image: base.image ?? extra.image,
@@ -134,8 +160,13 @@ export function mergeCandidate(base: NormalizedEntity, extra: NormalizedEntity |
     reviewCount: base.reviewCount ?? extra.reviewCount,
     price: base.price ?? extra.price,
     availability: base.availability ?? extra.availability,
+    travelTime: base.travelTime ?? extra.travelTime,
+    distance: base.distance ?? extra.distance,
     externalId: base.externalId ?? extra.externalId,
     evidence: base.evidence ?? extra.evidence,
+    attributes: base.attributes || extra.attributes
+      ? { ...(extra.attributes ?? {}), ...(base.attributes ?? {}) }
+      : undefined,
   };
 }
 

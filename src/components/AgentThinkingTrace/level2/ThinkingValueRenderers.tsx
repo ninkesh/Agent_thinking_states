@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef } from 'react';
 import type {
   AvailabilityPayload,
   ClusterPayload,
@@ -14,8 +15,11 @@ import type {
   TimelinePayload,
 } from '../../../level2/types/pass';
 import type { ThinkingRendererProps } from '../../../level2/types/renderer';
+import { stableEntityRenderKey } from '../../../level2/normalization/entityBridge';
+import { selectEntityFacts } from '../../../level2/renderers/entityFacts';
 import SourceIcon from './SourceIcon';
-import ThinkingEntityTile, { tileFact } from './ThinkingEntityTile';
+import EntityDetailArrivalPanel from './EntityDetailArrivalPanel';
+import ThinkingEntityTile from './ThinkingEntityTile';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    LEVEL 2 — Thinking value renderers.
@@ -120,12 +124,13 @@ export function SynthesisStructureValue({ payload, pass, runtime }: ThinkingRend
  *  one key fact each. The candidate-ranking archetype overrides this with its
  *  continuous evolving canvas (see the registry), which renders the SAME
  *  tile; the evidence language never forks. */
-export function EntityPreviewValue({ payload }: ThinkingRendererProps<EntityPreviewPayload>) {
+export function EntityPreviewValue({ payload, scenario }: ThinkingRendererProps<EntityPreviewPayload>) {
   const emphasis = new Set(payload.emphasisIds ?? []);
   return (
-    <div className="att-l2v-entities">
-      {payload.entities.slice(0, 6).map((entity, i) => (
-        <ThinkingEntityTile
+    <div className={`att-l2v-entities${payload.entities.length > 6 ? ' att-l2v-entities--dense' : ''}`}>
+      {payload.entities.map((entity, i) => {
+        const [fact, ...secondaryFacts] = selectEntityFacts(entity, scenario.requirements);
+        return <ThinkingEntityTile
           key={entity.id}
           index={i}
           state={emphasis.has(entity.id) ? 'strong' : 'neutral'}
@@ -133,10 +138,87 @@ export function EntityPreviewValue({ payload }: ThinkingRendererProps<EntityPrev
             id: entity.id,
             title: entity.title ?? 'Untitled',
             image: entity.image,
-            fact: tileFact(entity),
+            fact,
+            secondaryFacts: secondaryFacts.map((text) => ({ text })),
           }}
-        />
-      ))}
+        />;
+      })}
+    </div>
+  );
+}
+
+/** Harness result canvas. An identity-targeted details/fetch call can replace
+ * a broad search set with the exact entity it references. Provider-keyed
+ * tiles keep their identity and FLIP into their new positions, preserving the
+ * prototype transition without treating inspection as a ranking. */
+export function TraceEntityPreviewValue({ payload, pass, scenario }: ThinkingRendererProps<EntityPreviewPayload>) {
+  const emphasis = new Set(payload.emphasisIds ?? []);
+  const inspecting = new Set(payload.inspectionIds ?? []);
+  const wrapRefs = useRef(new Map<string, HTMLDivElement>());
+  const previousRects = useRef(new Map<string, DOMRect>());
+  const layoutKey = payload.entities.map(stableEntityRenderKey).join('|');
+  const previousLayoutKey = useRef(layoutKey);
+
+  useLayoutEffect(() => {
+    const layoutChanged = previousLayoutKey.current !== layoutKey;
+    previousLayoutKey.current = layoutKey;
+    const moves: Array<{ element: HTMLDivElement; dx: number; dy: number }> = [];
+
+    for (const [id, element] of wrapRefs.current) {
+      const next = element.getBoundingClientRect();
+      const previous = previousRects.current.get(id);
+      if (layoutChanged && previous) {
+        const dx = previous.left - next.left;
+        const dy = previous.top - next.top;
+        if (Math.abs(dx) > 1 || Math.abs(dy) > 1) moves.push({ element, dx, dy });
+      }
+      previousRects.current.set(id, next);
+    }
+
+    if (!moves.length) return;
+    for (const { element, dx, dy } of moves) {
+      element.style.transition = 'none';
+      element.style.transform = `translate(${dx}px, ${dy}px)`;
+    }
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      for (const { element } of moves) {
+        element.style.transition = 'transform 640ms cubic-bezier(0.22, 1, 0.36, 1)';
+        element.style.transform = '';
+      }
+    }));
+  }, [layoutKey]);
+
+  return (
+    <div className={`att-l2v-entities${payload.entities.length > 6 ? ' att-l2v-entities--dense' : ''}`}>
+      {payload.entities.map((entity, i) => {
+        const renderKey = stableEntityRenderKey(entity);
+        const isPlace = ['place', 'restaurant', 'hotel', 'destination'].includes(entity.type);
+        const [fact, ...secondaryFacts] = selectEntityFacts(entity, scenario.requirements);
+        const detailArrivals = payload.fieldArrivals?.[entity.id] ?? [];
+        return <div
+          key={renderKey}
+          className={`att-l2v-entity-slot${detailArrivals.length ? ' att-l2v-entity-slot--with-details' : ''}`}
+          ref={(element) => {
+            if (element) wrapRefs.current.set(renderKey, element);
+            else wrapRefs.current.delete(renderKey);
+          }}
+        >
+          <ThinkingEntityTile
+            index={i}
+            state={emphasis.has(entity.id) ? 'strong' : 'neutral'}
+            scanKey={inspecting.has(entity.id) ? pass.id : undefined}
+            tile={{
+              id: renderKey,
+              title: entity.title ?? 'Untitled',
+              image: entity.image,
+              placeId: isPlace ? entity.externalId : undefined,
+              fact,
+              secondaryFacts: secondaryFacts.map((text) => ({ text })),
+            }}
+          />
+          <EntityDetailArrivalPanel arrivals={detailArrivals} />
+        </div>
+      })}
     </div>
   );
 }

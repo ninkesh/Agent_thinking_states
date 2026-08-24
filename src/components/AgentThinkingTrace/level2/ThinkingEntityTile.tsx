@@ -53,6 +53,9 @@ export interface ThinkingTileFact {
   /** Facts that arrived at the enrichment pass animate in; the fact the tile
    *  was born with does not, so arrival and learning read differently. */
   isNew?: boolean;
+  /** Hours, descriptions and review text need a compact two-line treatment;
+   *  short numeric facts remain on the normal single-line row. */
+  multiline?: boolean;
 }
 
 export interface ThinkingTileModel {
@@ -68,6 +71,10 @@ export interface ThinkingTileModel {
   placeId?: string;
   /** The fact the tile carries from discovery — at most one. */
   fact?: string;
+  /** Additional discovery-time facts. They are present when the tile arrives,
+   *  so unlike enrichment facts they do not replay a "new information"
+   *  animation. */
+  secondaryFacts?: ThinkingTileFact[];
   /** Facts learned during enrichment. Rendered as a compact meta row. */
   enriched?: ThinkingTileFact[];
 }
@@ -171,13 +178,18 @@ export default function ThinkingEntityTile({
           <div className="att-l2t-face att-l2t-face--identity" aria-hidden={comparing}>
             {/* Boolean-coerced: `tile.enriched?.length` alone is 0 when the
                 array is empty, and React renders that 0 as literal text. */}
-            {!!(tile.fact || tile.enriched?.length) && (
+            {!!(tile.fact || tile.secondaryFacts?.length || tile.enriched?.length) && (
               <div className="att-l2t-meta">
                 {tile.fact && <span className="att-l2t-fact">{tile.fact}</span>}
+                {tile.secondaryFacts?.map((f, i) => (
+                  <span key={`base-${i}`} className="att-l2t-fact">{f.text}</span>
+                ))}
                 {tile.enriched?.map((f, i) => (
                   <span
                     key={i}
-                    className={`att-l2t-fact${f.isNew ? ' att-l2t-fact--new' : ''}`}
+                    className={`att-l2t-fact${f.isNew ? ' att-l2t-fact--new' : ''}${
+                      f.multiline ? ' att-l2t-fact--multiline' : ''
+                    }`}
                     style={{ '--fi': i } as React.CSSProperties}
                   >
                     {f.text}

@@ -1,3 +1,5 @@
+import { glanceMediaUrl } from './glanceMediaClient';
+
 /* Client for Google Places API (New), routed through the Vite dev-server
  * proxy (/api/places -> https://places.googleapis.com, see vite.config.ts)
  * which injects the real API key server-side. The browser never sees the
@@ -74,11 +76,10 @@ export function fetchPlaceDetails(placeId: string): Promise<GooglePlaceDetails |
   return entry;
 }
 
-/** Proxied Place Photo (New) media URL — the browser can use this directly
- *  as an <img src>; Google 302-redirects it to the actual (public, unsigned
- *  beyond that point) image URL, which the <img> tag follows natively. */
+/** Same-origin Glance media URL. Vite injects the JWT + account headers
+ * server-side because browser <img> requests cannot supply them. */
 export function placePhotoUrl(photoName: string, maxWidthPx = 480): string {
-  return `${API_ROOT}/${photoName}/media?maxWidthPx=${maxWidthPx}`;
+  return glanceMediaUrl(photoName, maxWidthPx) ?? '';
 }
 
 export function priceLevelLabel(priceLevel: string | undefined): string | undefined {

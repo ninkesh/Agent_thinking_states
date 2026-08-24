@@ -70,6 +70,31 @@ function connectorPath(a: { x: number; y: number }, b: { x: number; y: number })
   return `M ${a.x} ${a.y} Q ${midX + (-dy / length) * bow} ${midY + (dx / length) * bow} ${b.x} ${b.y}`;
 }
 
+/** Later route results update the same canvas. This compact ledger keeps the
+ * earlier logged route summaries visible instead of replacing them with the
+ * most recent map. `alternates` is populated by the source adapter only from
+ * actual route responses. */
+function RouteHistory({ payload, overlay = false }: { payload: RoutePayload; overlay?: boolean }) {
+  const routes = payload.alternates ?? [];
+  if (routes.length < 2) return null;
+  const currentLabel = [payload.origin, payload.destination].filter(Boolean).join(' → ');
+
+  return (
+    <div className={`att-l2m-history${overlay ? ' att-l2m-history--overlay' : ''}`} aria-label="Routes checked">
+      <div className="att-l2m-history-label">Routes checked</div>
+      {routes.map((route) => (
+        <div
+          key={`${route.label}-${route.eta ?? ''}-${route.distance ?? ''}`}
+          className={`att-l2m-history-row${route.label === currentLabel ? ' att-l2m-history-row--current' : ''}`}
+        >
+          <span className="att-l2m-history-route">{route.label}</span>
+          <span className="att-l2m-history-value">{[route.distance, route.eta].filter(Boolean).join(' · ')}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function MapThinkingStage({ pass }: ThinkingRendererProps<RoutePayload>) {
   const payload = pass.payload as RoutePayload | undefined;
   const geo = payload?.geo;
@@ -108,6 +133,7 @@ export default function MapThinkingStage({ pass }: ThinkingRendererProps<RoutePa
             {payload?.origin ?? 'Here'} <span aria-hidden>→</span> {payload?.destination ?? 'there'}
           </div>
         )}
+        {payload && <RouteHistory payload={payload} />}
       </div>
     );
   }
@@ -238,6 +264,7 @@ export default function MapThinkingStage({ pass }: ThinkingRendererProps<RoutePa
           <span className="att-l2m-scale-label">{bar.label}</span>
         </div>
         <div className="att-l2m-attrib" aria-hidden>{TILE_ATTRIBUTION}</div>
+        <RouteHistory payload={payload} overlay />
       </div>
     </div>
   );

@@ -153,15 +153,13 @@ export function useLevel2Runtime(
   );
 
   const traceDurationMs = scenario?.metadata?.traceDurationMs as number | undefined;
-  // Real timing exists for real Phoenix traces (live or cached) and for
-  // Harness Stream captures — never for fixtures, never fabricated. Demo
-  // stays the default for every source, including Harness Stream; Real
-  // Timing is a dev-mode choice the user makes explicitly, and it persists
-  // (via TIMING_MODE_KEY) across scenario switches and R replays exactly
-  // like it always has for Phoenix.
+  // Harness Stream is itself a captured frontend event stream, so its replay
+  // always follows the logged timestamps. Phoenix retains the developer's
+  // Demo/Real choice; fixtures have no real clock.
   const timingAvailable =
     !!scenario && scenario.source !== 'fixture' && actualTimingAvailable(scenario.thinkingPasses, traceDurationMs);
-  const effectiveTimingMode: TimingMode = timingMode === 'actual' && timingAvailable ? 'actual' : 'demo';
+  const effectiveTimingMode: TimingMode =
+    timingAvailable && (scenario?.source === 'harness_stream' || timingMode === 'actual') ? 'actual' : 'demo';
 
   const { scheduled, total } = useMemo(
     () => schedulePassesForMode(scenario?.thinkingPasses ?? [], effectiveTimingMode, traceDurationMs, maxIdleGapMs),
@@ -228,6 +226,10 @@ export function useLevel2Runtime(
   const [settlePhase, setSettlePhase] = useState<'none' | 'consolidating' | 'resolving' | 'final'>('none');
 
   useEffect(() => {
+    if (scenario?.source === 'harness_stream') {
+      setSettlePhase('none');
+      return;
+    }
     if (!passesComplete) {
       setSettlePhase('none');
       return;
@@ -241,12 +243,14 @@ export function useLevel2Runtime(
     };
     // `speed` intentionally scales the settle beats too, so 2x speeds up the
     // whole journey rather than just the thinking half.
-  }, [passesComplete, speed, scenarioId]);
+  }, [passesComplete, speed, scenarioId, scenario?.source]);
 
   const phase: Level2RuntimePhase = isLoading || !scenario
     ? 'loading'
     : forcedFinal
       ? 'final'
+      : scenario.source === 'harness_stream' && passesComplete
+        ? 'final'
       : settlePhase === 'none'
         ? 'thinking'
         : settlePhase;
@@ -255,6 +259,10 @@ export function useLevel2Runtime(
   const currentScheduled = useMemo(() => {
     if (!scheduled.length) return undefined;
     if (phase !== 'thinking') return scheduled[scheduled.length - 1];
+    // Before the first logged frontend timestamp there is no visible harness
+    // state yet. Do not leak the first tool narration early merely because it
+    // is the first item in the schedule.
+    if (elapsed < scheduled[0].start) return undefined;
     // Latest pass that has started. Equivalent to the old window lookup on
     // the contiguous demo schedule, and on the actual-trace schedule it keeps
     // the current pass on screen through real idle gaps (and picks the

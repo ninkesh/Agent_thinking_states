@@ -295,6 +295,11 @@ export default function Level2Diagnostics({
                   {` · ${pass.enterDuration}/${pass.holdDuration}/${pass.exitDuration}ms`}
                   {pass.confidence ? ` · ${pass.confidence}` : ''}
                 </div>
+                {pass.developerNarration && (
+                  <div style={{ opacity: 0.5, fontSize: 10, lineHeight: 1.45 }}>
+                    raw: {pass.developerNarration}
+                  </div>
+                )}
                 {!!pass.sourceSpanIds?.length && (
                   <div style={{ opacity: 0.45, fontSize: 10 }}>spans: {pass.sourceSpanIds.slice(0, 4).join(', ')}</div>
                 )}

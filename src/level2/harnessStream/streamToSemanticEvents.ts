@@ -26,22 +26,17 @@ import type {
                              the consumer, same ALWAYS_INVISIBLE rule Phoenix's
                              llm.call spans already get
      insight/system        -> 'internal' — timing/diagnostic signal only;
-                             tool_selected/tool_done specifically are consumed
-                             for REAL TIMING (see computeTimeline below), never
-                             surfaced as their own narration
+                             tool_selected/tool_done specifically provide the
+                             exact visible status text and clock boundaries
      turn_started/[DONE]/
      stream_request_start -> discarded before event construction; not even
                              worth an 'internal' event
 
-   TIMING: real per-event timestamps exist only on `insight` events (and
-   nowhere on tool_use/tool_result/reasoning/text_interim themselves) — a
-   tool_selected/tool_done PAIR brackets each tool call with real epoch ms.
-   Events with no timestamp of their own get one by linear interpolation
-   between the nearest bounding timestamped events, by array position — the
-   same tolerance for partial/interpolated timing runtime/schedule.ts already
-   accepts for Phoenix's "un-anchored" passes, applied one step earlier.
-   Never invented outright: every interpolation is bounded by two REAL
-   timestamps from this exact turn.
+   TIMING: real per-event timestamps exist only on `insight` events. Visible
+   tool states use the exact `tool_selected.ts` and `tool_done.ts` pair that
+   brackets the call. No interpolated timestamp is used to reveal frontend
+   information. Untimed structural/internal events may still receive a local
+   diagnostic position, but those events never become consumer passes.
    ───────────────────────────────────────────────────────────────────────────── */
 
 export interface StreamExtractionDiagnostics {
@@ -81,23 +76,14 @@ function classifyToolName(name: string): SemanticEventType {
   return 'unknown';
 }
 
-function narrationFor(type: SemanticEventType, name: string, textInterim: string | undefined): string {
-  // text_interim IS the real narration — always preferred when present.
+function exactToolNarration(
+  name: string,
+  textInterim: string | undefined,
+  selected: { label?: string; detail?: string } | undefined
+): string {
   if (textInterim) return textInterim;
-  switch (type) {
-    case 'search':
-      return 'Searching for options';
-    case 'retrieve':
-      return 'Reading up on it';
-    case 'enrichment':
-      return 'Looking at ratings, reviews and details';
-    case 'maps':
-      return 'Checking travel times';
-    case 'availability':
-      return 'Checking conditions';
-    default:
-      return `Running ${name}`;
-  }
+  if (selected?.label && selected.detail) return `${selected.label} · ${selected.detail}`;
+  return selected?.label ?? selected?.detail ?? name;
 }
 
 /* ── Timing ──────────────────────────────────────────────────────────────── */
@@ -160,9 +146,23 @@ interface RawPlace {
   user_rating_count?: number;
   price_display?: string;
   photo_url?: string;
+  photo_urls?: string[];
+  photos?: Array<{ name?: string }>;
   travel_time_text?: string;
   travel_distance_text?: string;
   opening_hours?: string[];
+  open_now?: boolean;
+  phone?: string;
+  latitude?: number;
+  longitude?: number;
+  types?: string[];
+  editorial_summary?: string;
+  reviews?: Array<{ rating?: number; text?: string }>;
+  website?: string;
+}
+
+function rawPlaceImage(place: RawPlace): string | undefined {
+  return place.photo_url ?? place.photo_urls?.[0] ?? place.photos?.[0]?.name;
 }
 
 let seq = 0;
@@ -183,12 +183,19 @@ function extractPlaceEntities(text: string): ExtractedEntity[] {
       externalId: p.place_id,
       title: p.name,
       subtitle: normalizeString(p.formatted_address),
-      image: p.photo_url,
+      image: rawPlaceImage(p),
       rating: normalizeNumber(p.rating),
       reviewCount: normalizeNumber(p.user_rating_count),
       price: normalizeString(p.price_display),
       travelTime: normalizeString(p.travel_time_text),
       distance: normalizeString(p.travel_distance_text),
+      attributes: {
+        ...(typeof p.open_now === 'boolean' ? { openNow: p.open_now } : {}),
+        ...(normalizeString(p.phone) ? { phone: normalizeString(p.phone) } : {}),
+        ...(typeof p.latitude === 'number' ? { latitude: p.latitude } : {}),
+        ...(typeof p.longitude === 'number' ? { longitude: p.longitude } : {}),
+        ...(Array.isArray(p.types) ? { types: p.types } : {}),
+      },
       raw: p,
     }));
 }
@@ -201,13 +208,22 @@ function extractPlaceDetailsEntity(text: string): ExtractedEntity | undefined {
     type: 'place',
     externalId: parsed.place_id,
     title: parsed.name,
-    image: parsed.photo_url,
+    subtitle: normalizeString(parsed.formatted_address),
+    image: rawPlaceImage(parsed),
     rating: normalizeNumber(parsed.rating),
     reviewCount: normalizeNumber(parsed.user_rating_count),
     price: normalizeString(parsed.price_display),
     availability: Array.isArray(parsed.opening_hours) && parsed.opening_hours.length
-      ? parsed.opening_hours.slice(0, 2).join(' · ')
+      ? parsed.opening_hours.join(' · ')
       : undefined,
+    attributes: {
+      ...(typeof parsed.open_now === 'boolean' ? { openNow: parsed.open_now } : {}),
+      ...(normalizeString(parsed.phone) ? { phone: normalizeString(parsed.phone) } : {}),
+      ...(normalizeString(parsed.editorial_summary) ? { editorialSummary: normalizeString(parsed.editorial_summary) } : {}),
+      ...(Array.isArray(parsed.reviews) ? { reviews: parsed.reviews } : {}),
+      ...(normalizeString(parsed.website) ? { website: normalizeString(parsed.website) } : {}),
+      ...(Array.isArray(parsed.opening_hours) ? { openingHours: parsed.opening_hours } : {}),
+    },
     raw: parsed,
   };
 }
@@ -220,6 +236,12 @@ interface RawProduct {
   currency?: string;
   image_url?: string;
   in_stock?: boolean;
+  original_price?: number;
+  deeplink_url?: string;
+  category?: string[];
+  gender?: string;
+  vton_enabled?: boolean;
+  similarity_score?: number;
 }
 
 function extractProductEntities(text: string): ExtractedEntity[] {
@@ -228,16 +250,42 @@ function extractProductEntities(text: string): ExtractedEntity[] {
   if (!Array.isArray(products)) return [];
   return products
     .filter((p) => p?.title)
-    .map((p) => ({
-      id: nextId('product'),
-      type: 'product' as const,
-      externalId: p.product_id,
-      title: p.title,
-      subtitle: normalizeString(p.brand),
-      image: p.image_url,
-      price: p.price != null ? `${p.currency === 'USD' ? '$' : '₹'}${p.price}` : undefined,
-      raw: p,
-    }));
+    .map(productEntity);
+}
+
+function productEntity(p: RawProduct): ExtractedEntity {
+  return {
+    id: nextId('product'),
+    type: 'product',
+    externalId: p.product_id,
+    title: p.title,
+    subtitle: normalizeString(p.brand),
+    image: p.image_url,
+    price: p.price != null ? `${p.currency === 'USD' ? '$' : '₹'}${p.price}` : undefined,
+    attributes: {
+      ...(normalizeString(p.brand) ? { brand: normalizeString(p.brand) } : {}),
+      ...(p.original_price != null ? { originalPrice: p.original_price } : {}),
+      ...(normalizeString(p.currency) ? { currency: normalizeString(p.currency) } : {}),
+      ...(normalizeString(p.deeplink_url) ? { ctaUrl: normalizeString(p.deeplink_url) } : {}),
+      ...(typeof p.in_stock === 'boolean' ? { inStock: p.in_stock } : {}),
+      ...(Array.isArray(p.category) ? { categories: p.category } : {}),
+      ...(normalizeString(p.gender) ? { gender: normalizeString(p.gender) } : {}),
+      ...(typeof p.vton_enabled === 'boolean' ? { vtonEnabled: p.vton_enabled } : {}),
+      ...(typeof p.similarity_score === 'number' ? { similarityScore: p.similarity_score } : {}),
+    },
+    raw: p,
+  };
+}
+
+function extractProductDetailEntities(text: string): ExtractedEntity[] {
+  const parsed = safeParseJson<RawProduct & { product?: RawProduct; products?: RawProduct[] }>(text);
+  if (!parsed) return [];
+  const products = Array.isArray(parsed.products)
+    ? parsed.products
+    : parsed.product
+      ? [parsed.product]
+      : [parsed];
+  return products.filter((product) => !!product?.title).map(productEntity);
 }
 
 interface RawRoute {
@@ -299,9 +347,14 @@ function extractEntitiesAndMetadata(
   const n = toolName.toLowerCase();
   if (type === 'search') {
     const entities = n.includes('product') ? extractProductEntities(resultText) : extractPlaceEntities(resultText);
-    return { entities, metadata: { tool: toolName, resultCount: entities.length || undefined } };
+    const root = safeParseJson<Record<string, unknown>>(resultText);
+    const reportedTotal = normalizeNumber(root?.total) ?? normalizeNumber(root?.total_results) ?? normalizeNumber(root?.count);
+    return { entities, metadata: { tool: toolName, ...(reportedTotal != null ? { reportedTotal } : {}) } };
   }
   if (type === 'enrichment') {
+    if (n.includes('product')) {
+      return { entities: extractProductDetailEntities(resultText), metadata: { tool: toolName } };
+    }
     const entity = extractPlaceDetailsEntity(resultText);
     return { entities: entity ? [entity] : [], metadata: { tool: toolName } };
   }
@@ -390,7 +443,14 @@ export function streamToSemanticEvents(events: HarnessStreamEvent[]): StreamExtr
         startTime: timeline[i],
         endTime: timeline[i],
         narration: (event as { label?: string }).label ?? event.type,
-        metadata: { subtype: (event as { subtype?: string }).subtype },
+        metadata: {
+          subtype: (event as { subtype?: string }).subtype,
+          // Kept for developer provenance and deterministic lifecycle beats;
+          // consumer copy never reads or displays this raw epoch value.
+          ...(event.type === 'insight' && typeof (event as { ts?: unknown }).ts === 'number'
+            ? { loggedTimestamp: (event as { ts: number }).ts }
+            : {}),
+        },
       });
       continue;
     }
@@ -438,15 +498,28 @@ export function streamToSemanticEvents(events: HarnessStreamEvent[]): StreamExtr
       // Real narration source: the text_interim immediately preceding this
       // tool call, if the stream carried one — otherwise a generic fallback.
       const precedingInterim = findPrecedingTextInterim(events, startIdx);
+      const selected = findPrecedingInsight(events, startIdx, 'tool_selected');
+      const completed = findPrecedingInsight(events, i, 'tool_done');
+      const selectedRelativeTs = selected?.ts != null ? selected.ts - firstRealTimestamp(events) : timeline[startIdx];
+      const completedRelativeTs = completed?.ts != null ? completed.ts - firstRealTimestamp(events) : timeline[i];
+      Object.assign(metadata, {
+        ...(precedingInterim ? { interimText: precedingInterim } : {}),
+        ...(selected?.label ? { selectedLabel: selected.label } : {}),
+        ...(selected?.detail ? { selectedDetail: selected.detail } : {}),
+        ...(completed?.label ? { completedLabel: completed.label } : {}),
+        ...(completed?.detail ? { completedDetail: completed.detail } : {}),
+        ...(selected?.ts != null ? { loggedStartTimestamp: selected.ts } : {}),
+        ...(completed?.ts != null ? { loggedResultTimestamp: completed.ts } : {}),
+      });
 
       semSeq += 1;
       out.push({
         id: `hs-${semSeq}`,
         type,
         sourceSpanIds: [e.tool_use_id],
-        startTime: timeline[startIdx],
-        endTime: timeline[i],
-        narration: narrationFor(type, toolName, precedingInterim),
+        startTime: selectedRelativeTs,
+        endTime: Math.max(selectedRelativeTs, completedRelativeTs),
+        narration: exactToolNarration(toolName, precedingInterim, selected),
         input: pending?.event.input,
         output: e.text,
         entities,
@@ -505,6 +578,23 @@ function findPrecedingTextInterim(events: HarnessStreamEvent[], beforeIdx: numbe
     const e = events[j];
     if (e.type === 'text_interim') return (e as HarnessTextInterimEvent).text;
     if (e.type === 'tool_use' || e.type === 'tool_result') return undefined;
+  }
+  return undefined;
+}
+
+function firstRealTimestamp(events: HarnessStreamEvent[]): number {
+  return events.map(eventTs).find((ts): ts is number => ts != null) ?? 0;
+}
+
+function findPrecedingInsight(
+  events: HarnessStreamEvent[],
+  beforeIdx: number,
+  subtype: string
+): { label?: string; detail?: string; ts?: number } | undefined {
+  for (let j = beforeIdx - 1; j >= 0; j--) {
+    const event = events[j] as { type?: string; subtype?: string; label?: string; detail?: string; ts?: number };
+    if (event.type === 'insight' && event.subtype === subtype) return event;
+    if (event.type === 'tool_result') return undefined;
   }
   return undefined;
 }

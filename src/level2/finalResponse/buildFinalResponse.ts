@@ -22,14 +22,13 @@ import type {
    Two rules it never breaks:
 
      1. No winner is invented. `winnerId` is set only when the trace itself
-        distinguished one — an explicit badge, or a strictly-highest rating
-        under an explicit ranking request. A `list` response has no winner
-        field at all, by type.
+        used an explicit winner badge. Ratings are preserved as facts but are
+        never promoted into a verdict by this adapter.
      2. Attributes and supporting blocks never become candidates. They are
         carried in `supporting`, which is real content, shown as context.
    ───────────────────────────────────────────────────────────────────────────── */
 
-const WINNER_BADGE_RE = /\b(top\s*pick|best|#\s*1|winner|favou?rite|editor'?s?\s*(choice|pick)|our\s*pick|recommended)\b/i;
+const WINNER_BADGE_RE = /\b(top\s*pick|#\s*1|winner|editor'?s?\s*(choice|pick)|our\s*pick|recommended)\b/i;
 
 /** The headline is a LEAD, not the whole answer. Prefer the envelope's own
  *  `<summary>`; otherwise take the first sentence of the opening paragraph so
@@ -68,11 +67,10 @@ function bodyFrom(envelope: ParsedEnvelope, headline: string): string[] {
 function actionsFor(entity: NormalizedEntity): ActionRef[] {
   const out: ActionRef[] = [];
   const ctaUrl = entity.attributes?.ctaUrl;
-  if (typeof ctaUrl === 'string') {
-    out.push({ label: /maps/i.test(ctaUrl) ? 'Directions' : 'Book', url: ctaUrl, intent: /maps/i.test(ctaUrl) ? 'directions' : 'book' });
+  const ctaLabel = entity.attributes?.ctaLabel;
+  if (typeof ctaUrl === 'string' && typeof ctaLabel === 'string') {
+    out.push({ label: ctaLabel, url: ctaUrl });
   }
-  const phone = entity.attributes?.phone;
-  if (typeof phone === 'string' && phone.trim()) out.push({ label: 'Call', intent: 'call' });
   return out;
 }
 
@@ -99,18 +97,11 @@ function factsFor(entity: NormalizedEntity, requirements: QueryRequirements): Fa
 /** The winner, only when the trace genuinely distinguishes one. */
 export function deriveWinner(
   entities: NormalizedEntity[],
-  requirements: QueryRequirements
-): { winner?: NormalizedEntity; rationale?: string; via?: 'badge' | 'rating' } {
+  _requirements: QueryRequirements
+): { winner?: NormalizedEntity; rationale?: string; via?: 'badge' } {
   const badged = entities.find((e) => e.judgment && WINNER_BADGE_RE.test(e.judgment));
   if (badged) return { winner: badged, rationale: badged.reasoning, via: 'badge' };
-
-  if (!requirements.rankingIntent || entities.length < 2) return {};
-  const rated = entities.filter((e) => e.rating != null);
-  if (rated.length !== entities.length) return {};
-  const top = Math.max(...rated.map((e) => e.rating!));
-  const leaders = rated.filter((e) => e.rating === top);
-  if (leaders.length !== 1) return {};
-  return { winner: leaders[0], rationale: leaders[0].reasoning, via: 'rating' };
+  return {};
 }
 
 function dimensionsFromBlocks(blocks: NonEntityBlock[], subjects: Array<{ id: string; label: string }>): ComparisonDimension[] {
@@ -175,6 +166,9 @@ export interface FinalResponseInput {
    *  from the envelope otherwise. */
   entities?: NormalizedEntity[];
   supporting?: NonEntityBlock[];
+  /** Harness-stream mode: use only text present in the captured response,
+   *  including for nested hybrid sections. */
+  sourceTextOnly?: boolean;
 }
 
 export function buildFinalResponse(input: FinalResponseInput): FinalResponseModel {
@@ -205,10 +199,13 @@ export function buildFinalResponse(input: FinalResponseInput): FinalResponseMode
 
     case 'candidate_ranking': {
       const { winner, rationale } = deriveWinner(entities, requirements);
+      const headline = headlineFrom(envelope, winner?.title ? `${winner.title} looks like your best fit` : 'Here are the strongest options');
+      const trailing = bodyFrom(envelope, headline);
       return {
         ...base,
         kind: 'entity_rail',
-        headline: headlineFrom(envelope, winner?.title ? `${winner.title} looks like your best fit` : 'Here are the strongest options'),
+        headline,
+        summary: trailing.length ? trailing.join('\n\n') : undefined,
         entities,
         winnerId: winner?.id,
         winnerRationale: rationale,
@@ -216,13 +213,17 @@ export function buildFinalResponse(input: FinalResponseInput): FinalResponseMode
       };
     }
 
-    case 'list':
+    case 'list': {
+      const headline = headlineFrom(envelope, `${entities.length} options worth a look`);
+      const trailing = bodyFrom(envelope, headline);
       return {
         ...base,
         kind: 'list',
-        headline: headlineFrom(envelope, `${entities.length} options worth a look`),
+        headline,
+        summary: trailing.length ? trailing.join('\n\n') : undefined,
         items: entities,
       };
+    }
 
     case 'single_entity': {
       const entity = entities[0];
@@ -272,24 +273,27 @@ export function buildFinalResponse(input: FinalResponseInput): FinalResponseMode
 
     case 'structured_no_image': {
       const { columns, rows } = structuredTable(entities, supporting);
+      const headline = headlineFrom(envelope, 'Here is the breakdown');
       return {
         ...base,
         kind: 'structured',
-        headline: headlineFrom(envelope, 'Here is the breakdown'),
+        headline,
         columns,
         rows,
+        notes: bodyFrom(envelope, headline),
       };
     }
 
     case 'hybrid': {
+      const exactHeadline = headlineFrom(envelope, '');
       const sections: Array<{ title?: string; response: FinalResponseModel }> = [];
       if (entities.length) {
         const { winner, rationale } = deriveWinner(entities, requirements);
         sections.push({
-          title: 'Options',
+          title: input.sourceTextOnly ? undefined : 'Options',
           response: {
             kind: 'entity_rail',
-            headline: winner?.title ? `${winner.title} leads` : 'The options',
+            headline: input.sourceTextOnly ? exactHeadline : winner?.title ? `${winner.title} leads` : 'The options',
             entities,
             winnerId: winner?.id,
             winnerRationale: rationale,
@@ -298,12 +302,17 @@ export function buildFinalResponse(input: FinalResponseInput): FinalResponseMode
       }
       if (supporting.length) {
         const { columns, rows } = structuredTable([], supporting);
-        sections.push({ title: 'Details', response: { kind: 'structured', headline: 'Details', columns, rows } });
+        sections.push({
+          title: input.sourceTextOnly ? undefined : 'Details',
+          response: { kind: 'structured', headline: input.sourceTextOnly ? exactHeadline : 'Details', columns, rows },
+        });
       }
       return {
         ...base,
+        supporting: input.sourceTextOnly ? undefined : base.supporting,
         kind: 'hybrid',
-        headline: headlineFrom(envelope, 'Here is the full picture'),
+        headline: headlineFrom(envelope, input.sourceTextOnly ? '' : 'Here is the full picture'),
+        summary: bodyFrom(envelope, exactHeadline).join('\n\n') || undefined,
         sections,
       };
     }

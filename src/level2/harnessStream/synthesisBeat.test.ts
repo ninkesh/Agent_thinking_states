@@ -1,16 +1,9 @@
-import { describe, it, expect } from 'vitest';
-import { buildSynthesisBeat } from './synthesisBeat';
+import { describe, expect, it } from 'vitest';
 import type { SemanticAgentEvent } from '../../types/semanticEvent';
-import type { QueryRequirements } from '../types/query';
 import type { ScenarioClassification } from '../types/archetype';
 import type { FinalResponseModel } from '../types/finalResponse';
-
-/* The SYNTHESIS beat represents the real gap between the last useful tool
-   result and the model finishing the answer — see the header of
-   synthesisBeat.ts. These tests pin down: it never fires for a small real
-   gap (nothing to narrate), its payload never leaks final content early
-   (labels only), and its narration is genuinely contextual, not one fixed
-   "putting it together" line for every domain. */
+import type { QueryRequirements } from '../types/query';
+import { buildSynthesisBeat } from './synthesisBeat';
 
 const baseRequirements: QueryRequirements = {
   requestedAttributes: [],
@@ -31,129 +24,82 @@ const classification: ScenarioClassification = {
   hasStructuredData: true,
 };
 
-function events(lastMeaningfulEnd: number, traceEnd: number): SemanticAgentEvent[] {
+const finalResponse: FinalResponseModel = { kind: 'text', headline: 'Done', body: ['Some prose.'] };
+
+function events(lastToolEnd: number, thinkingAt: number, traceEnd: number): SemanticAgentEvent[] {
   return [
-    { id: 'e1', type: 'retrieve', sourceSpanIds: [], startTime: 0, endTime: lastMeaningfulEnd, narration: 'Reading up on it', metadata: {} },
-    { id: 'e2', type: 'internal', sourceSpanIds: [], startTime: lastMeaningfulEnd, endTime: traceEnd, narration: 'system', metadata: {} },
+    {
+      id: 'tool-result',
+      type: 'retrieve',
+      sourceSpanIds: ['tool'],
+      startTime: 0,
+      endTime: lastToolEnd,
+      narration: 'Read source',
+      metadata: {},
+    },
+    {
+      id: 'thinking-signal',
+      type: 'internal',
+      sourceSpanIds: [],
+      startTime: thinkingAt,
+      endTime: thinkingAt,
+      narration: 'LLM thinking',
+      metadata: { subtype: 'llm_thinking', loggedTimestamp: 1787000000000 },
+    },
+    {
+      id: 'trace-end',
+      type: 'internal',
+      sourceSpanIds: [],
+      startTime: traceEnd,
+      endTime: traceEnd,
+      narration: 'Token usage',
+      metadata: { subtype: 'token_usage' },
+    },
   ];
 }
 
-const textFinal: FinalResponseModel = { kind: 'text', headline: 'Done', body: ['Some prose.'] };
+function build(overrides: Partial<Parameters<typeof buildSynthesisBeat>[0]> = {}) {
+  return buildSynthesisBeat({
+    events: events(20_000, 20_010, 33_000),
+    requirements: baseRequirements,
+    classification,
+    finalResponse,
+    ...overrides,
+  });
+}
 
-describe('buildSynthesisBeat — gap threshold', () => {
-  it('adds nothing when the real gap is small (nothing genuinely worth narrating)', () => {
-    const beats = buildSynthesisBeat({
-      events: events(20000, 21500),
-      requirements: baseRequirements,
-      classification,
-      finalResponse: textFinal,
+describe('buildSynthesisBeat', () => {
+  it('requires an explicit post-tool thinking lifecycle marker', () => {
+    const withoutSignal = events(20_000, 20_010, 33_000).filter((event) => event.id !== 'thinking-signal');
+    expect(build({ events: withoutSignal })).toHaveLength(0);
+  });
+
+  it('does not add a state for a short final gap', () => {
+    expect(build({ events: events(20_000, 20_010, 21_500) })).toHaveLength(0);
+  });
+
+  it('anchors the state to the logged lifecycle timestamp and trace end', () => {
+    const [beat] = build();
+    expect(beat.sourceEventIds).toEqual(['thinking-signal']);
+    expect(beat.traceTiming).toEqual({ start: 20_010, end: 33_000 });
+    expect(beat.loggedAt).toBe(1787000000000);
+  });
+
+  it('retains the exact previous evidence payload instead of revealing final content', () => {
+    const payload = { sources: [{ label: 'Logged source', kind: 'web' as const }], sourceCount: 1, searchCount: 1 };
+    const [beat] = build({
+      lastEvidence: { visibility: 'canvas_value', valueType: 'sources', payload },
     });
-    expect(beats).toHaveLength(0);
+    expect(beat.visibility).toBe('canvas_value');
+    expect(beat.valueType).toBe('sources');
+    expect(beat.payload).toBe(payload);
+    expect(beat.valueType).not.toBe('synthesis_structure');
   });
 
-  it('adds one beat when the real gap is meaningfully long', () => {
-    const beats = buildSynthesisBeat({
-      events: events(20000, 33000),
-      requirements: baseRequirements,
-      classification,
-      finalResponse: textFinal,
-    });
-    expect(beats).toHaveLength(1);
-    // No sourceEventIds — deliberately unanchored so schedule.ts's existing
-    // "unanchored passes fill the tail window" places it in the real gap.
-    expect(beats[0].sourceEventIds).toBeUndefined();
-  });
-});
-
-describe('buildSynthesisBeat — contextual narration', () => {
-  const longGapEvents = events(20000, 33000);
-
-  it('uses recipe-shaped language for a recipe entityType', () => {
-    const beats = buildSynthesisBeat({
-      events: longGapEvents,
-      requirements: { ...baseRequirements, entityType: 'recipe' },
-      classification,
-      finalResponse: textFinal,
-    });
-    expect(beats[0].narration.toLowerCase()).toMatch(/recipe/);
-  });
-
-  it('falls back to scanning the real prompt when entityType extraction found nothing', () => {
-    const beats = buildSynthesisBeat({
-      events: longGapEvents,
-      requirements: baseRequirements,
-      classification,
-      finalResponse: textFinal,
-      prompt: 'How do I make Thavala Dosai? Give me the full recipe.',
-    });
-    expect(beats[0].narration.toLowerCase()).toMatch(/recipe/);
-  });
-
-  it('uses stay-plan language for a travel entityType', () => {
-    const beats = buildSynthesisBeat({
-      events: longGapEvents,
-      requirements: { ...baseRequirements, entityType: 'stay' },
-      classification,
-      finalResponse: textFinal,
-    });
-    expect(beats[0].narration.toLowerCase()).toMatch(/plan/);
-  });
-
-  it('falls back to a generic-but-still-contextual line when nothing matches', () => {
-    const beats = buildSynthesisBeat({
-      events: longGapEvents,
-      requirements: baseRequirements,
-      classification,
-      finalResponse: textFinal,
-    });
-    expect(beats[0].narration.length).toBeGreaterThan(0);
-    expect(beats[0].visibility).toBe('status'); // text final response has no label-like structure to preview
-  });
-});
-
-describe('buildSynthesisBeat — payload never reveals final content early', () => {
-  const longGapEvents = events(20000, 33000);
-
-  it('shows real SECTION LABELS for a structured response, never row content', () => {
-    const structured: FinalResponseModel = {
-      kind: 'structured',
-      headline: 'Recipe',
-      columns: ['Group', 'Item', 'Detail'],
-      rows: [
-        ['Base Batter', 'Rice', '1 cup'],
-        ['Base Batter', 'Urad dal', '1/4 cup'],
-        ['Preparation Steps', 'Soak', '3-4 hours'],
-      ],
-    };
-    const beats = buildSynthesisBeat({ events: longGapEvents, requirements: baseRequirements, classification, finalResponse: structured });
-    expect(beats[0].visibility).toBe('canvas_value');
-    const lines = (beats[0].payload as { sections: string[] }).sections;
-    expect(lines).toEqual(['Base Batter', 'Preparation Steps']);
-    // Never the row content (ingredient quantities) — labels only.
-    expect(lines.join(' ')).not.toMatch(/1 cup|Rice|3-4 hours/);
-  });
-
-  it('shows real comparison dimension labels, never the values', () => {
-    const comparison: FinalResponseModel = {
-      kind: 'comparison',
-      headline: 'Comparing',
-      comparison: {
-        subjects: [{ id: 'a', label: 'A' }],
-        dimensions: [
-          { key: 'price', label: 'Price', values: { a: '₹500' } },
-          { key: 'rating', label: 'Rating', values: { a: '4.5' } },
-        ],
-      },
-    };
-    const beats = buildSynthesisBeat({ events: longGapEvents, requirements: baseRequirements, classification, finalResponse: comparison });
-    const lines = (beats[0].payload as { sections: string[] }).sections;
-    expect(lines).toEqual(['Price', 'Rating']);
-    expect(lines.join(' ')).not.toMatch(/₹500|4\.5/);
-  });
-
-  it('stays narration-only (status) when the archetype has nothing label-like to preview', () => {
-    const beats = buildSynthesisBeat({ events: longGapEvents, requirements: baseRequirements, classification, finalResponse: textFinal });
-    expect(beats[0].payload).toBeUndefined();
-    expect(beats[0].valueType).toBeUndefined();
+  it('uses deterministic, domain-aware process copy', () => {
+    expect(build({ requirements: { ...baseRequirements, entityType: 'recipe' } })[0].narration).toMatch(/recipe/i);
+    expect(build({ requirements: { ...baseRequirements, entityType: 'stay' } })[0].narration).toMatch(/plan/i);
+    expect(build({ prompt: 'How do I cook this dish?' })[0].narration).toMatch(/recipe/i);
+    expect(build()[0].narration).toBe('Bringing the useful details together into a clear answer');
   });
 });

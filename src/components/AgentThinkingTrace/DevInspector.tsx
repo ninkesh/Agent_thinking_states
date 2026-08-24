@@ -11,7 +11,7 @@ import { resolveLevel1VisualMode } from '../../adapters/level1VisualMode';
 import type { RequestedAttribute } from '../../adapters/cardImportance';
 import type { Level2TraceSourceState } from '../../hooks/useLevel2TraceSource';
 
-const IMAGE_TIER_LABEL = ['Google Places real photo', 'Harness photo_url', 'Pexels stock photo', 'Local static fallback'];
+const IMAGE_TIER_LABEL = ['Logged image', 'Google Places photo via authenticated Glance media', 'Local placeholder'];
 
 type Tab = 'session' | 'raw-spans' | 'mapped-steps' | 'evidence' | 'images' | 'mutations' | 'gaps';
 
@@ -64,7 +64,7 @@ interface Level2DevState {
   /** Attribute types the user's own query named explicitly (see
    *  extractRequestedFields) — empty when the query didn't name any. */
   requestedFields: RequestedAttribute[];
-  /** Which of the 4 image-fallback tiers rendered for the card DevInspector
+  /** Which trace-backed image tier rendered for the card DevInspector
    *  is currently following (the promoted/resolved card, or the emerging
    *  pick pre-resolve) — undefined until that card has an image resolved. */
   imageTier?: number;

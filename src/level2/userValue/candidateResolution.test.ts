@@ -4,6 +4,7 @@ import { checkDiscoveryInvariants } from './discoveryInvariants';
 import { extractCandidateObjects } from '../../utils/safeJson';
 import type { NormalizedEntity } from '../types/entity';
 import type { ThinkingPass } from '../types/pass';
+import { stableEntityRenderKey } from '../normalization/entityBridge';
 
 /* Real-trace shapes throughout — the ids in comments are live Phoenix traces
    the discovery-sync failures were reproduced against. */
@@ -29,6 +30,12 @@ describe('candidate identity', () => {
     expect(isSameCandidate(e('a', 'Same Name', { externalId: 'X' }), e('b', 'Same Name', { externalId: 'Y' }))).toBe(false);
   });
 
+  it('uses the provider id as the persistent UI key across tool-local ids', () => {
+    expect(stableEntityRenderKey(e('search-local', 'A', { externalId: 'provider-1' })))
+      .toBe(stableEntityRenderKey(e('details-local', 'A', { externalId: 'provider-1' })));
+    expect(stableEntityRenderKey(e('local-only', 'A'))).toBe('local:local-only');
+  });
+
   it('matches title containment for long keys — the real PlaceDetails vs final-card pair', () => {
     // trace 793f9a2f…: enrichment "Himalayan Tiger Adventure Rishikesh" vs
     // final card "Himalayan Tiger Adventure".
@@ -36,9 +43,26 @@ describe('candidate identity', () => {
     expect(isSameCandidate(e('a', 'Goa'), e('b', 'Goa Beach Shack Crawl'))).toBe(false);
   });
 
+  it('reconciles the real q08 provider/final spelling variant without inventing an identity', () => {
+    expect(isSameCandidate(
+      e('search', 'Cửi Lũ Art Space - Coco Casa Art Gallery'),
+      e('final', 'Cửi Lụa Art Space - Coco Casa')
+    )).toBe(true);
+  });
+
   it('dedupes on identity, not object equality', () => {
     const out = dedupeCandidates([e('a', 'Kanha Tiger Reserve', { externalId: 'P1' }), e('b', 'Kanha Tiger Reserve', { externalId: 'P1' })]);
     expect(out).toHaveLength(1);
+  });
+
+  it('keeps exact later fields when duplicate search/detail arrivals merge', () => {
+    const out = dedupeCandidates([
+      e('search', 'Exact Place', { externalId: 'P1', attributes: { openNow: true } }),
+      e('details', 'Exact Place', { externalId: 'P1', availability: 'Monday: 9–5', attributes: { phone: '1234' } }),
+    ]);
+    expect(out).toHaveLength(1);
+    expect(out[0].availability).toBe('Monday: 9–5');
+    expect(out[0].attributes).toEqual({ openNow: true, phone: '1234' });
   });
 });
 

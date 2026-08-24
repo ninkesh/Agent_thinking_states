@@ -9,6 +9,11 @@ export default defineConfig(({ mode }) => {
   // JS. It only ever exists here, server-side, and is injected into the
   // proxied request header below. The browser never sees it.
   const googlePlacesKey = env.GOOGLE_PLACES_API_KEY;
+  // Header-only auth for assistant.glance.com media bytes. These values stay
+  // in the Vite server process and are never exposed through import.meta.env.
+  // GLANCE_ACCOUNT_ID may be omitted when the JWT carries a usable `sub`.
+  const glanceMediaJwt = env.GLANCE_MEDIA_JWT;
+  const configuredGlanceAccountId = env.GLANCE_ACCOUNT_ID;
   // Same "never bundled into client JS" principle as googlePlacesKey above.
   // Used only as a relevant-stock-photo fallback (see
   // src/api/pexelsClient.ts) when neither Google Places nor the harness's
@@ -17,6 +22,23 @@ export default defineConfig(({ mode }) => {
   const pexelsKey = env.PEXELS_API_KEY;
 
   const proxy: Record<string, import('vite').ProxyOptions> = {};
+
+  const jwtSubject = (() => {
+    if (!glanceMediaJwt) return undefined;
+    try {
+      const payload = glanceMediaJwt.split('.')[1];
+      if (!payload) return undefined;
+      const parsed = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8')) as { sub?: unknown };
+      return typeof parsed.sub === 'string' && parsed.sub.trim() ? parsed.sub : undefined;
+    } catch {
+      return undefined;
+    }
+  })();
+  const glanceAccountId = configuredGlanceAccountId || jwtSubject;
+
+  if (configuredGlanceAccountId && jwtSubject && configuredGlanceAccountId !== jwtSubject) {
+    throw new Error('GLANCE_ACCOUNT_ID must match the GLANCE_MEDIA_JWT sub claim.');
+  }
 
   if (phoenixBase) {
     proxy['/api/phoenix'] = {
@@ -43,6 +65,28 @@ export default defineConfig(({ mode }) => {
         proxyReq.removeHeader('X-Goog-Api-Key');
         if (googlePlacesKey) {
           proxyReq.setHeader('X-Goog-Api-Key', googlePlacesKey);
+        }
+      });
+    },
+  };
+
+  // Browser <img> requests cannot attach the two headers required by the
+  // Glance media endpoint. Keep the URL same-origin and inject both headers
+  // here, server-side, while preserving `name` and `maxWidth` query params.
+  // Always register the route so missing credentials produce a clear
+  // upstream auth response rather than looking like a local 404.
+  proxy['/api/glance-media'] = {
+    target: 'https://assistant.glance.com',
+    changeOrigin: true,
+    secure: true,
+    rewrite: (path) => path.replace(/^\/api\/glance-media/, '/v1/media/image'),
+    configure: (proxyServer) => {
+      proxyServer.on('proxyReq', (proxyReq) => {
+        proxyReq.removeHeader('Authorization');
+        proxyReq.removeHeader('X-Account-ID');
+        if (glanceMediaJwt && glanceAccountId) {
+          proxyReq.setHeader('Authorization', `Bearer ${glanceMediaJwt}`);
+          proxyReq.setHeader('X-Account-ID', glanceAccountId);
         }
       });
     },

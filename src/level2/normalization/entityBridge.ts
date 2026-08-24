@@ -49,6 +49,14 @@ export function toNormalizedEntity(entity: ExtractedEntity): NormalizedEntity {
   };
 }
 
+/** React/render identity for a trace entity. Tool-local ids are regenerated
+ * as each result is parsed; provider ids are the cross-tool identity contract.
+ * Using the provider id here keeps the same card and image component mounted
+ * across Search -> Details/Fetch -> enriched result passes. */
+export function stableEntityRenderKey(entity: Pick<NormalizedEntity, 'id' | 'externalId'>): string {
+  return entity.externalId ? `external:${entity.externalId}` : `local:${entity.id}`;
+}
+
 /** NormalizedEntity -> the candidate-canvas item shape. Only used by
  *  archetypes whose passes carry canvas mutations. `state` is supplied by the
  *  caller because it is a timeline decision, not a property of the entity. */

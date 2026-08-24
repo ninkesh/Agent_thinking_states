@@ -125,7 +125,10 @@ export function ScenarioTypeSelector({
               onClick={() => onSelectHarnessCapture?.(capture.id)}
             >
               <span className="att-l2-scenario-option-index">{i + 1}</span>
-              <span className="att-l2-scenario-option-label">
+              <span
+                className="att-l2-scenario-option-label"
+                title={`${capture.id.toUpperCase()} — ${capture.label}`}
+              >
                 {capture.id.toUpperCase()} — {capture.label}
               </span>
               <span className="att-l2-scenario-option-count" title={`Classified as ${capture.archetype}`}>
@@ -148,7 +151,9 @@ export function ScenarioTypeSelector({
                 onClick={() => onSelect(kind)}
               >
                 <span className="att-l2-scenario-option-index">{i + 1}</span>
-                <span className="att-l2-scenario-option-label">{DEV_SCENARIO_LABEL[kind]}</span>
+                <span className="att-l2-scenario-option-label" title={DEV_SCENARIO_LABEL[kind]}>
+                  {DEV_SCENARIO_LABEL[kind]}
+                </span>
                 <span
                   className="att-l2-scenario-option-count"
                   title={isMemory ? `${MEMORY_RETRIEVAL_SCENARIOS.length} curated fixture(s) — never a real trace, see dev notes` : `${realCount} real trace(s) in the corpus`}

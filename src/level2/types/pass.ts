@@ -36,6 +36,7 @@ export type ThinkingValueType =
   | 'sources'
   | 'text'
   | 'entity_preview'
+  | 'trace_entities'
   | 'comparison_signal'
   | 'route'
   | 'availability'
@@ -131,6 +132,15 @@ export interface EntityPreviewPayload {
    *  set. May carry fewer fields than the same entity has in the final
    *  response. */
   entities: NormalizedEntity[];
+  /** Exact entity ids named by the active detail calls. This is inspection,
+   * not ranking: renderers may replay a work/scan transition but must not
+   * promote these entities or label them as preferred. */
+  inspectionIds?: string[];
+  /** Consumer-safe fields that arrived for an already-visible entity during
+   *  this pass. Keyed by the entity's stable, pre-existing local id so the
+   *  renderer can add the facts to the same tile. Values are formatted from
+   *  logged data by the adapter; renderers do not interpret raw tool output. */
+  fieldArrivals?: Record<string, EntityFieldArrival[]>;
   /** Ids to emphasise at this moment (e.g. the two that are pulling ahead). */
   emphasisIds?: string[];
   /** When present, the canvas is in COMPARISON MODE for this pass: the same
@@ -149,6 +159,37 @@ export interface EntityPreviewPayload {
    *  (see src/types/progressiveValue.ts), and the renderer decides entirely
    *  what each transition looks like. */
   canvas?: AgentMutation[];
+}
+
+export type EntityFieldArrivalKey =
+  | 'hours'
+  | 'review'
+  | 'description'
+  | 'rating'
+  | 'review_count'
+  | 'price'
+  | 'location'
+  | 'distance'
+  | 'travel_time'
+  | 'open_status'
+  | 'phone'
+  | 'website'
+  | 'brand'
+  | 'stock_status'
+  | 'original_price'
+  | 'categories'
+  | 'gender'
+  | 'virtual_try_on';
+
+export interface EntityFieldArrival {
+  field: EntityFieldArrivalKey;
+  /** Exact logged value, with only deterministic labels/number formatting. */
+  value: string;
+  /** Added means the previous entity had no value. Changed means the tool
+   *  returned a different value from the one already visible. */
+  change: 'added' | 'changed';
+  /** Long values may wrap/clamp inside the fact plane rather than overflow. */
+  multiline?: boolean;
 }
 
 export interface ComparisonDimension {
@@ -300,6 +341,7 @@ export interface ThinkingPayloadMap {
   sources: SourcesPayload;
   text: TextPayload;
   entity_preview: EntityPreviewPayload;
+  trace_entities: EntityPreviewPayload;
   comparison_signal: ComparisonSignalPayload;
   route: RoutePayload;
   availability: AvailabilityPayload;
@@ -342,6 +384,11 @@ export interface ThinkingPass {
    *  name; never Phoenix terminology. */
   narration: string;
 
+  /** Untouched harness diagnostic copy for the developer panel only. The
+   *  consumer surface must never render this field: it may contain raw tool
+   *  class names, provider identifiers, URLs, or payload sizes. */
+  developerNarration?: string;
+
   valueType?: ThinkingValueType;
   payload?: ThinkingPayload;
 
@@ -368,6 +415,11 @@ export interface ThinkingPass {
    *  Demo playback ignores it entirely — it exists for the dev-mode
    *  "Actual Trace Timing" scheduler (see runtime/schedule.ts). */
   traceTiming?: { start: number; end: number };
+
+  /** Absolute epoch-ms copied from the harness `insight.ts` that caused this
+   *  state to reach the frontend. Harness source-native passes always carry
+   *  this; it is never interpolated. */
+  loggedAt?: number;
 }
 
 export function passDuration(pass: ThinkingPass): number {

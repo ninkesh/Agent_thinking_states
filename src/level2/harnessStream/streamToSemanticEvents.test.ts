@@ -61,8 +61,64 @@ describe('streamToSemanticEvents — real captured turns', () => {
       expect(result.scenario.source).toBe('harness_stream');
       expect(result.scenario.thinkingPasses.length).toBeGreaterThan(0);
       for (const p of result.scenario.thinkingPasses) {
-        if (p.traceTiming) expect(p.traceTiming.start).toBeLessThanOrEqual(p.traceTiming.end);
+        expect(p.traceTiming?.start).toBeLessThanOrEqual(p.traceTiming!.end);
+        expect(typeof p.loggedAt).toBe('number');
+        expect(p.id).toMatch(/^(?:hs-\d+-(?:status|result)|pass-synthesis-hs-\d+)$/);
+      }
+      const synthesis = result.scenario.thinkingPasses.find((p) => p.id.startsWith('pass-synthesis-'));
+      expect(synthesis?.sourceEventIds?.length).toBeGreaterThan(1);
+      expect(result.scenario.thinkingPasses.some((p) => p.valueType === 'intent' || p.valueType === 'synthesis_structure')).toBe(false);
+    }
+  });
+
+  it.each(turns.map((t) => [t.turnId, t] as const))('%s tags visible states with exact insight timestamps', (_id, turn) => {
+    const extraction = streamToSemanticEvents(turn.events);
+    const result = buildScenarioFromHarnessStream(turn);
+    expect(result.scenario).toBeDefined();
+
+    const visibleEvents = extraction.events.filter((event) => event.type !== 'internal' && event.type !== 'unknown');
+    for (const event of visibleEvents) {
+      const selectedAt = event.metadata?.loggedStartTimestamp;
+      const resultAt = event.metadata?.loggedResultTimestamp;
+      if (typeof selectedAt !== 'number' || typeof resultAt !== 'number') continue;
+      // Parallel calls share one consumer status at the first logged arrival
+      // and one atomic result at the final member's arrival. Every raw event
+      // remains referenced by both passes; millisecond-separated members are
+      // not fabricated into individually readable UI states.
+      const status = result.scenario!.thinkingPasses.find(
+        (pass) => pass.id.endsWith('-status') && pass.sourceEventIds?.includes(event.id)
+      );
+      expect(status).toBeDefined();
+      const groupedIds = new Set(status!.sourceEventIds);
+      const expectedStatusAt = Math.min(
+        ...visibleEvents
+          .filter((candidate) => groupedIds.has(candidate.id))
+          .map((candidate) => candidate.metadata?.loggedStartTimestamp)
+          .filter((timestamp): timestamp is number => typeof timestamp === 'number')
+      );
+      expect(status?.loggedAt).toBe(expectedStatusAt);
+      const value = result.scenario!.thinkingPasses.find(
+        (pass) => pass.id.endsWith('-result') && pass.sourceEventIds?.includes(event.id)
+      );
+      if (value) {
+        const valueIds = new Set(value.sourceEventIds);
+        const expectedResultAt = Math.max(
+          ...visibleEvents
+            .filter((candidate) => valueIds.has(candidate.id))
+            .map((candidate) => candidate.metadata?.loggedResultTimestamp)
+            .filter((timestamp): timestamp is number => typeof timestamp === 'number')
+        );
+        expect(value.loggedAt).toBe(expectedResultAt);
       }
     }
+  });
+
+  it('q08 keeps Local Favorite as a badge, not an inferred winner, and does not invent its two absent links', () => {
+    const result = buildScenarioFromHarnessStream(turns.find((turn) => turn.turnId === 'q08')!);
+    expect(result.scenario?.finalResponse.kind).toBe('entity_rail');
+    if (result.scenario?.finalResponse.kind !== 'entity_rail') return;
+    expect(result.scenario.finalResponse.winnerId).toBeUndefined();
+    expect(result.scenario.finalResponse.entities).toHaveLength(8);
+    expect(result.scenario.finalResponse.entities.filter((entity) => entity.attributes?.ctaUrl)).toHaveLength(6);
   });
 });

@@ -27,6 +27,10 @@ export interface TravelItem {
   agentNote: string;
   mapsUrl: string;
   photo: string;
+  /** Real Google place id when this item came from a trace. */
+  placeId?: string;
+  facts?: Array<{ label: string; value: string }>;
+  ratingText?: string;
   // primary CTA copy — varies by section (Book Now / Explore / Check out / …)
   ctaLabel: string;
   ctaModalTitle: string;

@@ -57,6 +57,10 @@ const MIN_INTERPOLATED_MS = 300;
  *  actually register. Never applied to narration-only beats, which already
  *  have MIN_INTERPOLATED_MS. */
 function canvasRevealFloorMs(pass: ThinkingPass): number {
+  // Source-native harness states are pegged to the exact logged arrival
+  // instant. Extending one past the next timestamp would make subsequent
+  // information (and the final response) appear later than it did.
+  if (pass.loggedAt != null) return 0;
   if (pass.visibility !== 'canvas_value') return MIN_INTERPOLATED_MS;
   return Math.max(MIN_INTERPOLATED_MS, pass.enterDuration + pass.holdDuration + pass.exitDuration);
 }

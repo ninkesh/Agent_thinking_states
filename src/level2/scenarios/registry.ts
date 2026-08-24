@@ -75,9 +75,8 @@ export interface HarnessStreamCapture {
   archetype: ScenarioArchetype;
 }
 
-/** The 10 named captures, in file order — what Dev Mode's Harness Stream
- *  sub-selector lists (Q01 School Backpacks … Q10 Wensi Tofu), never a
- *  generic archetype picker. */
+/** The 10 captures, in file order. Labels are their exact manifest prompts,
+ *  not hand-authored summaries. */
 export const HARNESS_STREAM_CAPTURES: HarnessStreamCapture[] = HARNESS_STREAM_SCENARIOS.map((s) => ({
   id: String(s.metadata?.captureId ?? s.id),
   label: String(s.metadata?.captureLabel ?? s.id),

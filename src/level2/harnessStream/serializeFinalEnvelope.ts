@@ -57,7 +57,16 @@ interface SyntheticCard {
   visualQuery?: string;
   imageUrl?: string;
   ctaUrl?: string;
+  ctaLabel?: string;
   phone?: string;
+  phoneTel?: string;
+  brand?: string;
+  originalPrice?: number;
+  currency?: string;
+  inStock?: boolean;
+  categories?: string[];
+  gender?: string;
+  vtonEnabled?: boolean;
   bullets?: string[];
 }
 
@@ -72,8 +81,15 @@ function cardXml(c: SyntheticCard): string {
   if (c.visualQuery || c.placeId || c.imageUrl) {
     parts.push(`<visual query="${esc(c.visualQuery)}" title="${esc(c.title)}"${c.placeId ? ` place_id="${esc(c.placeId)}"` : ''}${c.imageUrl ? ` url="${esc(c.imageUrl)}"` : ''}/>`);
   }
-  if (c.ctaUrl) parts.push(`<cta>${esc(c.ctaUrl)}</cta>`);
-  if (c.phone) parts.push(`<phone>${esc(c.phone)}</phone>`);
+  if (c.ctaUrl) parts.push(`<cta${c.ctaLabel ? ` label="${esc(c.ctaLabel)}"` : ''}>${esc(c.ctaUrl)}</cta>`);
+  if (c.phone) parts.push(`<phone${c.phoneTel ? ` tel="${esc(c.phoneTel)}"` : ''}>${esc(c.phone)}</phone>`);
+  if (c.brand) parts.push(`<brand>${esc(c.brand)}</brand>`);
+  if (c.originalPrice != null) parts.push(`<original_price>${c.originalPrice}</original_price>`);
+  if (c.currency) parts.push(`<currency>${esc(c.currency)}</currency>`);
+  if (c.inStock != null) parts.push(`<in_stock>${String(c.inStock)}</in_stock>`);
+  if (c.categories?.length) parts.push(`<categories>${c.categories.map((category) => `<category>${esc(category)}</category>`).join('')}</categories>`);
+  if (c.gender) parts.push(`<gender>${esc(c.gender)}</gender>`);
+  if (c.vtonEnabled != null) parts.push(`<vton_enabled>${String(c.vtonEnabled)}</vton_enabled>`);
   parts.push('</card>');
   return parts.join('');
 }
@@ -89,9 +105,10 @@ function ratingText(rating: unknown, reviewCount: unknown): string | undefined {
   return `${r}★${rc != null ? ` · ${rc} reviews` : ''}`;
 }
 
-function placeCardBlockToCards(block: HarnessTextFinalBlock): { sections: Array<{ title?: string; cards: SyntheticCard[] }>; conclusion?: string } {
+function placeCardBlockToCards(block: HarnessTextFinalBlock): { sections: Array<{ title?: string; cards: SyntheticCard[] }>; summary?: string; conclusion?: string } {
   const sections = Array.isArray(block.sections) ? (block.sections as Array<Record<string, unknown>>) : [];
   return {
+    summary: str(block.summary),
     conclusion: str(block.conclusion),
     sections: sections.map((section) => ({
       title: str(section.title),
@@ -111,7 +128,9 @@ function placeCardBlockToCards(block: HarnessTextFinalBlock): { sections: Array<
           visualQuery: str(visual.query) ?? str(visual.title),
           imageUrl: str(asset?.url),
           ctaUrl: str(cta.url),
+          ctaLabel: str(cta.label),
           phone: str(phone.num),
+          phoneTel: str(phone.tel),
         };
       }),
     })),
@@ -132,15 +151,23 @@ function productPicksBlockToCards(block: HarnessTextFinalBlock): { sections: Arr
           visualQuery: str(p.title),
           imageUrl: str(p.image_url),
           ctaUrl: str(p.deeplink_url),
+          brand: str(p.brand),
+          originalPrice: num(p.original_price),
+          currency: str(p.currency),
+          inStock: typeof p.in_stock === 'boolean' ? p.in_stock : undefined,
+          categories: Array.isArray(p.category) ? p.category.map(String) : undefined,
+          gender: str(p.gender),
+          vtonEnabled: typeof p.vton_enabled === 'boolean' ? p.vton_enabled : undefined,
         })),
       },
     ],
   };
 }
 
-function cardTemplateBlockToCards(block: HarnessTextFinalBlock): { sections: Array<{ title?: string; cards: SyntheticCard[] }>; conclusion?: string } {
+function cardTemplateBlockToCards(block: HarnessTextFinalBlock): { sections: Array<{ title?: string; cards: SyntheticCard[] }>; summary?: string; conclusion?: string } {
   const sections = Array.isArray(block.sections) ? (block.sections as Array<Record<string, unknown>>) : [];
   return {
+    summary: str(block.summary),
     conclusion: str(block.conclusion),
     sections: sections.map((section) => ({
       title: str(section.title),
@@ -173,6 +200,7 @@ export function serializeFinalEnvelope(blocks: HarnessTextFinalBlock[]): string 
   const prose: string[] = [];
   let wrapper: 'place_card' | 'card_template' | undefined;
   let panelXml = '';
+  let structuredSummary: string | undefined;
   let conclusion: string | undefined;
   let chips: string[] = [];
 
@@ -186,8 +214,9 @@ export function serializeFinalEnvelope(blocks: HarnessTextFinalBlock[]): string 
       continue;
     }
     if (block.type === 'place_card') {
-      const { sections, conclusion: c } = placeCardBlockToCards(block);
+      const { sections, summary, conclusion: c } = placeCardBlockToCards(block);
       wrapper = 'place_card';
+      structuredSummary = structuredSummary ?? summary;
       conclusion = c;
       panelXml += sections.map((s) => `<section${s.title ? ` title="${esc(s.title)}"` : ''}>${s.cards.map(cardXml).join('')}</section>`).join('');
       continue;
@@ -199,8 +228,9 @@ export function serializeFinalEnvelope(blocks: HarnessTextFinalBlock[]): string 
       continue;
     }
     if (block.type === 'card_template') {
-      const { sections, conclusion: c } = cardTemplateBlockToCards(block);
+      const { sections, summary, conclusion: c } = cardTemplateBlockToCards(block);
       wrapper = wrapper ?? 'card_template';
+      structuredSummary = structuredSummary ?? summary;
       conclusion = conclusion ?? c;
       panelXml += sections.map((s) => `<section${s.title ? ` title="${esc(s.title)}"` : ''}>${s.cards.map(cardXml).join('')}</section>`).join('');
       continue;
@@ -210,8 +240,8 @@ export function serializeFinalEnvelope(blocks: HarnessTextFinalBlock[]): string 
     // skipped via the returned unrecognisedBlockTypes.
   }
 
-  const summarySentence = prose[0];
-  const bodyProse = prose.slice(wrapper ? 1 : 0).join('\n\n');
+  const summarySentence = structuredSummary ?? prose[0];
+  const bodyProse = prose.slice(wrapper && !structuredSummary ? 1 : 0).join('\n\n');
 
   if (wrapper) {
     const inner = `${summarySentence ? `<summary>${esc(summarySentence)}</summary>` : ''}<panel>${panelXml}</panel>`;

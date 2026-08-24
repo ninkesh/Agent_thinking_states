@@ -20,7 +20,6 @@ import type {
   L1TextOnlyData,
 } from '../../components/L1/L1Scenarios';
 import type { TravelItem } from '../../components/L1/TravelL1';
-import { pickLocalFallbackImage } from '../../adapters/localImageFallback';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    LEVEL 2 — Final response -> existing L1 template.
@@ -55,11 +54,10 @@ export type AdaptedL1Response =
 
 /* ── entity -> card ─────────────────────────────────────────────────────── */
 
-function mapsUrlFor(entity: NormalizedEntity): string {
+function loggedCtaUrlFor(entity: NormalizedEntity): string {
   const ctaUrl = entity.attributes?.ctaUrl;
   if (typeof ctaUrl === 'string' && /^https?:/i.test(ctaUrl)) return ctaUrl;
-  const query = [entity.title, entity.location ?? entity.subtitle].filter(Boolean).join(' ');
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query || 'nearby')}`;
+  return '';
 }
 
 /** One key supporting line for the expanded card. The agent's own words when
@@ -67,25 +65,32 @@ function mapsUrlFor(entity: NormalizedEntity): string {
 function noteFor(entity: NormalizedEntity): string {
   if (entity.reasoning) return entity.reasoning;
   if (entity.evidence?.length) return entity.evidence.slice(0, 2).join(' · ');
-  return entity.subtitle ?? '';
+  return '';
 }
 
 function entityToCard(entity: NormalizedEntity): L1CardItem {
   const title = entity.title ?? 'Untitled';
+  const isPlace = entity.type === 'place' || entity.type === 'restaurant' || entity.type === 'hotel' || entity.type === 'destination' || entity.type === 'experience';
+  const facts: Array<{ label: string; value: string }> = [];
+  if (typeof entity.availability === 'string' && entity.availability) facts.push({ label: 'Hours', value: entity.availability });
+  if (typeof entity.attributes?.phone === 'string' && entity.attributes.phone) facts.push({ label: 'Phone', value: entity.attributes.phone });
   return {
     id: entity.id,
     name: title,
     area: entity.location ?? entity.subtitle ?? '',
     rating: entity.rating,
     ratingCount: entity.reviewCount != null ? String(entity.reviewCount) : undefined,
+    ratingText: typeof entity.attributes?.ratingText === 'string' ? entity.attributes.ratingText : undefined,
     price: entity.price,
-    agentLabel: entity.judgment ?? entity.subtitle ?? entity.location ?? '',
+    agentLabel: entity.judgment ?? '',
     agentNote: noteFor(entity),
-    mapsUrl: mapsUrlFor(entity),
-    // The card template is image-led; a real image is used when the trace
-    // carried one, a keyword-matched local stock image otherwise (same
-    // fallback contract the Level 2 candidate cards already used).
-    photo: entity.image ?? pickLocalFallbackImage(title, entity.id),
+    mapsUrl: loggedCtaUrlFor(entity),
+    ctaLabel: typeof entity.attributes?.ctaLabel === 'string' ? entity.attributes.ctaLabel : undefined,
+    // Empty is intentional: the renderer can resolve a linked real place
+    // photo via placeId, but must not substitute stock/local imagery.
+    photo: entity.image ?? '',
+    placeId: isPlace ? entity.externalId : undefined,
+    facts: facts.length ? facts : undefined,
   };
 }
 
@@ -94,9 +99,9 @@ function entityToTravelItem(entity: NormalizedEntity, note?: string): TravelItem
   return {
     ...card,
     agentNote: note ?? card.agentNote,
-    ctaLabel: 'View on Maps',
-    ctaModalTitle: 'Scan to Open Maps',
-    ctaModalSubtitle: 'You will be redirected to the location page',
+    ctaLabel: card.ctaLabel ?? '',
+    ctaModalTitle: card.ctaLabel ?? '',
+    ctaModalSubtitle: '',
   };
 }
 
@@ -145,7 +150,8 @@ function structuredBlocks(response: FinalStructuredResponse): L1TextBlock[] {
     ...(response.summary ? [{ kind: 'p', text: response.summary } as L1TextBlock] : []),
     ...rows,
     ...slots,
-    ...supportingToBlocks(response.supporting),
+    ...(response.notes ?? []).map((note): L1TextBlock => ({ kind: 'p', text: note })),
+    ...(response.columns[0] === 'Name' ? supportingToBlocks(response.supporting) : []),
   ];
 }
 
@@ -255,11 +261,11 @@ function hybridRailSection(response: FinalHybridResponse): FinalEntityRailRespon
 export function resolveL1Family(response: FinalResponseModel): L1Family {
   switch (response.kind) {
     case 'entity_rail':
-      return response.entities.length ? 'cards' : 'text-only';
+      return response.entities.length ? (response.summary ? 'text-carousel' : 'cards') : 'text-only';
     case 'entity':
       return 'cards';
     case 'list':
-      return response.items.length >= 2 ? 'cards' : 'text-only';
+      return response.items.length >= 2 ? (response.summary ? 'text-carousel' : 'cards') : 'text-only';
     case 'comparison': {
       // The tabbed rail is image-led; only comparisons whose subjects carry
       // real entities WITH imagery earn it. Everything else reads as text.
@@ -352,14 +358,21 @@ export function adaptFinalResponseToL1(response: FinalResponseModel): AdaptedL1R
       // hybrid with one rail section plus prose: the prose composes as the
       // reading surface, the rail rides inline exactly like /l1-scenarios'
       // Text + Carousel.
+      if (response.kind === 'entity_rail' || response.kind === 'list') {
+        const entities = response.kind === 'entity_rail' ? railEntities(response) : response.items;
+        const blocks: L1TextCarouselBlock[] = [
+          { kind: 'carousel' },
+          ...(response.summary ? [{ kind: 'p', text: response.summary } as L1TextCarouselBlock] : []),
+          ...supportingToBlocks(response.supporting),
+        ];
+        return { family, data: { heading: agentLine, blocks, places: entities.map(entityToCard), prompts } };
+      }
       if (response.kind !== 'hybrid') {
         return { family: 'text-only', data: { heading: agentLine, blocks: blocksFor(response), prompts } };
       }
       const rail = hybridRailSection(response);
       const entities = rail ? (rail.kind === 'entity_rail' ? railEntities(rail) : rail.items) : [];
-      const blocks: L1TextCarouselBlock[] = [
-        ...(response.summary ? [{ kind: 'p', text: response.summary } as L1TextCarouselBlock] : []),
-      ];
+      const blocks: L1TextCarouselBlock[] = [];
       for (const section of response.sections) {
         if (section.response === rail) {
           blocks.push({ kind: 'carousel' });
@@ -369,6 +382,7 @@ export function adaptFinalResponseToL1(response: FinalResponseModel): AdaptedL1R
         blocks.push(...blocksFor(section.response));
       }
       blocks.push(...supportingToBlocks(response.supporting));
+      if (response.summary) blocks.push({ kind: 'p', text: response.summary });
       if (!blocks.some((b) => b.kind === 'carousel')) blocks.push({ kind: 'carousel' });
       return {
         family,

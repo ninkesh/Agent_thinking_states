@@ -5,11 +5,9 @@ import { buildScenarioFromHarnessStream } from './buildScenarioFromHarnessStream
 import { scheduleActualPasses } from '../runtime/schedule';
 import type { HarnessStreamEvent, HarnessTurnEventSource } from './types';
 
-/* Real-data regression coverage for the "never a 30-second static hold"
-   fix (see passBuilder.ts's sub-beat splitting + synthesisBeat.ts). Uses the
-   real q02 capture (Thavala Dosai recipe) — a genuinely long (33.5s),
-   originally single-pass generic-archetype trace — never synthetic data,
-   matching this repo's own convention for harness-stream tests. */
+/* Real-data regression coverage for source-native timestamp replay. Uses the
+   real q02 capture (Thavala Dosai recipe) — a genuinely long (33.5s) turn —
+   and proves that no authored acknowledgement/synthesis beat is inserted. */
 
 const FIXTURE_DIR = join(__dirname, '../../../scripts/fixtures/harness-stream');
 
@@ -30,14 +28,11 @@ describe('q02 (33.5s real recipe research) — long pass no longer a static hold
     expect(narrations.size).toBe(scenario!.thinkingPasses.length);
   });
 
-  it('ends on a real SYNTHESIS beat that previews real section labels, not final content', () => {
-    const last = scenario!.thinkingPasses[scenario!.thinkingPasses.length - 1];
-    expect(last.id).toBe('pass-synthesis');
-    expect(last.narration.toLowerCase()).toMatch(/recipe/);
-    const lines = (last.payload as { sections: string[] } | undefined)?.sections ?? [];
-    expect(lines.length).toBeGreaterThan(0);
-    // Real section titles from the actual parsed recipe, never invented.
-    expect(lines).toContain('Base Batter');
+  it('contains only timestamped source passes and no authored synthesis/intent beat', () => {
+    const passes = scenario!.thinkingPasses;
+    expect(passes.every((pass) => typeof pass.loggedAt === 'number')).toBe(true);
+    expect(passes.some((pass) => pass.id === 'pass-synthesis' || pass.valueType === 'intent')).toBe(false);
+    expect(passes.map((pass) => pass.loggedAt)).toEqual([...passes.map((pass) => pass.loggedAt)].sort((a, b) => a! - b!));
   });
 
   it('no single scheduled window covers more than ~40% of the real trace duration', () => {
@@ -51,20 +46,21 @@ describe('q02 (33.5s real recipe research) — long pass no longer a static hold
   });
 });
 
-describe('q03 (hybrid, real GetRoute calls) — synthesis beat appended without disturbing the existing route arc', () => {
+describe('q03 (hybrid, real GetRoute calls) — route data appears at its logged arrival', () => {
   const { scenario } = buildScenarioFromHarnessStream(loadTurn('q03'));
 
-  it('keeps the existing route beats untouched and adds a contextual synthesis beat at the end', () => {
+  it('formats route facts for consumers and preserves the raw diagnostic for D mode', () => {
     const passes = scenario!.thinkingPasses;
-    expect(passes.some((p) => p.valueType === 'route')).toBe(true);
-    const last = passes[passes.length - 1];
-    expect(last.id).toBe('pass-synthesis');
-    // "stay" is the real domain for this capture (Rawla Narlai stay plan).
-    expect(last.narration.toLowerCase()).toMatch(/plan/);
+    const route = passes.find((p) => p.valueType === 'route');
+    expect(route).toBeDefined();
+    expect(route!.narration).toBe('130 km · 2 hours 26 mins');
+    expect(route!.developerNarration).toBe('Tool done: GetRoute · 625 chars');
+    expect(typeof route!.loggedAt).toBe('number');
+    expect(passes.some((p) => p.id === 'pass-synthesis')).toBe(false);
   });
 });
 
-describe('candidate_ranking / list are untouched by the synthesis beat', () => {
+describe('all harness archetypes omit authored synthesis beats', () => {
   it('q05 (candidate_ranking) never gets a pass-synthesis appended', () => {
     const { scenario } = buildScenarioFromHarnessStream(loadTurn('q05'));
     expect(scenario!.thinkingPasses.some((p) => p.id === 'pass-synthesis')).toBe(false);

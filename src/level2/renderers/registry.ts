@@ -17,6 +17,7 @@ import {
   SynthesisStructureValue,
   TextValue,
   TimelineValue,
+  TraceEntityPreviewValue,
 } from '../../components/AgentThinkingTrace/level2/ThinkingValueRenderers';
 import { CandidateCanvasThinking } from '../../components/AgentThinkingTrace/level2/CandidateCanvasThinking';
 import { ListCanvasThinking } from '../../components/AgentThinkingTrace/level2/ListCanvasThinking';
@@ -50,6 +51,9 @@ const THINKING_BY_VALUE_TYPE: Record<ThinkingValueType, AnyThinkingRenderer> = {
   sources: SourcesValue as AnyThinkingRenderer,
   text: TextValue as AnyThinkingRenderer,
   entity_preview: EntityPreviewValue as AnyThinkingRenderer,
+  // Harness-stream source-native entities bypass archetype overrides: they
+  // are the exact result set that arrived, not a derived shortlist canvas.
+  trace_entities: TraceEntityPreviewValue as AnyThinkingRenderer,
   comparison_signal: ComparisonSignalValue as AnyThinkingRenderer,
   // Spatial reasoning gets the contained map stage for EVERY archetype, not
   // just route_map — a hybrid trip plan that calls GetRoute is doing exactly

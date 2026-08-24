@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import { pickLocalFallbackImage } from '../../../adapters/localImageFallback';
+import { useEffect, useState, type CSSProperties } from 'react';
+import { resolveLoggedImageUrl } from '../../../api/glanceMediaClient';
 import { fetchPlaceDetails, placePhotoUrl } from '../../../api/googlePlacesClient';
+import { pickLocalFallbackImage } from '../../../adapters/localImageFallback';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    LEVEL 2 — The shared image resolver.
@@ -10,22 +11,17 @@ import { fetchPlaceDetails, placePhotoUrl } from '../../../api/googlePlacesClien
 
    Three tiers, in order:
 
-     1. The trace's own photo_url, when the trace actually carries one (real,
-        already-resolved — no fetch needed).
-     2. A LIVE Google Places photo, when the entity carries a real place_id
-        and the trace itself carried no image — the same already-configured
-        googlePlacesClient.ts the Progressive L1 prototype uses (proxied
-        server-side, see vite.config.ts; the API key never reaches the
-        browser). Fetched once per place_id (client-side cache in
-        googlePlacesClient.ts), and only ever swapped in — the local
-        fallback below renders immediately while this resolves in the
-        background, so there is never a blank frame waiting on it.
-     3. A local static image, keyword-matched against the item's real title —
-        so a broken, relative, missing, absent, or still-resolving URL never
-        leaves an empty frame or a broken glyph.
+     1. The trace's own image value. A Google photo resource name is routed
+        through the authenticated same-origin Glance proxy; an ordinary URL
+        is attempted exactly as logged.
+     2. A Google Places photo resource resolved from the entity's real
+        place_id, then fetched through the same Glance proxy.
+     3. A clearly tracked local placeholder, used only when an image reference
+        exists but its bytes are inaccessible in this environment, or when
+        the non-prod/UAT image integration has not supplied them yet.
 
-   Tier 3 is never presented as the real venue's photo; it's relevant
-   imagery, which is why the category keyword comes from the real title.
+   Tier 3 is the one approved exception to the log-only content rule. Missing
+   non-image fields are omitted; they never receive analogous fallback text.
    ───────────────────────────────────────────────────────────────────────────── */
 
 export default function EnrichedImage({
@@ -34,61 +30,67 @@ export default function EnrichedImage({
   fallbackSrc,
   placeId,
   className,
+  style,
   onTierResolved,
 }: {
   itemId: string;
   itemTitle: string;
   fallbackSrc?: string;
   /** Real Google place_id, when the entity resolved to one — enables tier 2
-   *  (see file header). Omit or pass undefined to keep this at the original
-   *  two-tier, zero-network behavior. */
+   *  (see file header). Omit it to use only the image recorded in the trace. */
   placeId?: string;
   className?: string;
+  style?: CSSProperties;
   onTierResolved?: (tier: number) => void;
 }) {
-  const [tier, setTier] = useState(0);
+  const [attempt, setAttempt] = useState(0);
   const [livePhotoSrc, setLivePhotoSrc] = useState<string | undefined>(undefined);
-  const localFallback = pickLocalFallbackImage(itemTitle, itemId);
+  const loggedPhotoSrc = resolveLoggedImageUrl(fallbackSrc, 600);
+  const placeholderSrc = pickLocalFallbackImage(itemTitle, itemId);
 
-  // Only worth fetching when the trace itself carried nothing — a real
-  // photo_url from the trace always wins, never overridden by a live fetch.
+  // Resolve the place-backed photo in parallel even when a logged URL exists:
+  // legacy harness CDN URLs are exact trace data but may now be stale. The
+  // live result remains second priority and is only displayed after failure.
   useEffect(() => {
-    if (fallbackSrc || !placeId) return;
+    if (!placeId) {
+      setLivePhotoSrc(undefined);
+      return;
+    }
     let cancelled = false;
     fetchPlaceDetails(placeId).then((details) => {
       if (cancelled) return;
       const photo = details?.photos[0];
-      if (photo) setLivePhotoSrc(placePhotoUrl(photo.name, 480));
+      setLivePhotoSrc(photo ? placePhotoUrl(photo.name, 600) || undefined : undefined);
     });
     return () => {
       cancelled = true;
     };
-  }, [fallbackSrc, placeId]);
+  }, [placeId]);
 
-  const candidates = [fallbackSrc, livePhotoSrc, localFallback];
+  useEffect(() => setAttempt(0), [fallbackSrc, placeId]);
 
-  let renderedIndex = candidates.length - 1;
-  let src: string = localFallback;
-  for (let i = tier; i < candidates.length; i++) {
-    const candidate = candidates[i];
-    if (candidate) {
-      src = candidate;
-      renderedIndex = i;
-      break;
-    }
-  }
+  const candidates = [
+    loggedPhotoSrc ? { src: loggedPhotoSrc, sourceTier: 0 } : undefined,
+    livePhotoSrc ? { src: livePhotoSrc, sourceTier: 1 } : undefined,
+    { src: placeholderSrc, sourceTier: 2 },
+  ].filter((candidate): candidate is { src: string; sourceTier: number } => !!candidate);
+  const candidate = candidates[attempt];
 
   useEffect(() => {
-    onTierResolved?.(renderedIndex);
+    if (candidate) onTierResolved?.(candidate.sourceTier);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [renderedIndex]);
+  }, [candidate?.sourceTier]);
+
+  if (!candidate) return null;
 
   return (
     <img
       className={className}
-      src={src}
+      style={style}
+      src={candidate.src}
       alt=""
-      onError={() => setTier(Math.min(renderedIndex + 1, candidates.length - 1))}
+      data-image-item={`${itemId}:${itemTitle}`}
+      onError={() => setAttempt((current) => current + 1)}
     />
   );
 }

@@ -40,7 +40,16 @@ export interface EnvelopeCard {
    *  fires on a Phoenix-derived envelope. */
   imageUrl?: string;
   ctaUrl?: string;
+  ctaLabel?: string;
   phone?: string;
+  phoneTel?: string;
+  brand?: string;
+  originalPrice?: number;
+  currency?: string;
+  inStock?: boolean;
+  categories?: string[];
+  gender?: string;
+  vtonEnabled?: boolean;
   /** `<bullets><point>` lines. Observed only on NON-entity cards in the real
    *  corpus — dimension breakdowns ('Bir Billing: 2,400m takeoff, 30–60 min
    *  flights') that compare several already-named things rather than
@@ -84,7 +93,7 @@ const EMPTY_ENVELOPE: ParsedEnvelope = {
 };
 
 function tagContent(block: string, tag: string): string | undefined {
-  const m = block.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`, 'i'));
+  const m = block.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)</${tag}>`, 'i'));
   return m ? normalizeString(m[1]) : undefined;
 }
 
@@ -94,6 +103,7 @@ function tagAttr(block: string, attrName: string): string | undefined {
 }
 
 function parseCard(raw: string): EnvelopeCard {
+  const originalPrice = Number(tagContent(raw, 'original_price'));
   return {
     title: tagAttr(raw, 'title'),
     badge: tagContent(raw, 'badge'),
@@ -109,7 +119,18 @@ function parseCard(raw: string): EnvelopeCard {
     visualQuery: tagAttr(raw, 'query'),
     imageUrl: tagAttr(raw, 'url'),
     ctaUrl: extractUrl(tagContent(raw, 'cta')),
+    ctaLabel: raw.match(/<cta\b[^>]*>/i)?.[0] ? tagAttr(raw.match(/<cta\b[^>]*>/i)![0], 'label') : undefined,
     phone: tagContent(raw, 'phone'),
+    phoneTel: raw.match(/<phone\b[^>]*>/i)?.[0] ? tagAttr(raw.match(/<phone\b[^>]*>/i)![0], 'tel') : undefined,
+    brand: tagContent(raw, 'brand'),
+    originalPrice: Number.isFinite(originalPrice) ? originalPrice : undefined,
+    currency: tagContent(raw, 'currency'),
+    inStock: tagContent(raw, 'in_stock') === 'true' ? true : tagContent(raw, 'in_stock') === 'false' ? false : undefined,
+    categories: (raw.match(/<category>([\s\S]*?)<\/category>/gi) ?? [])
+      .map((category) => stripMarkup(category.replace(/<\/?category>/gi, '')))
+      .filter((category): category is string => !!category),
+    gender: tagContent(raw, 'gender'),
+    vtonEnabled: tagContent(raw, 'vton_enabled') === 'true' ? true : tagContent(raw, 'vton_enabled') === 'false' ? false : undefined,
     bullets: (raw.match(/<point>([\s\S]*?)<\/point>/gi) ?? [])
       .map((p) => stripMarkup(p.replace(/<\/?point>/gi, '')))
       .filter((p): p is string => !!p),

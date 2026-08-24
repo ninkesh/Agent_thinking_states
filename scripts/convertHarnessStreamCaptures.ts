@@ -17,33 +17,18 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 
 import { buildScenarioFromHarnessStream } from '../src/level2/harnessStream/buildScenarioFromHarnessStream';
 import { describeHollowResponse } from '../src/level2/finalResponse/integrity';
 import type { HarnessStreamEvent, HarnessTurnEventSource } from '../src/level2/harnessStream/types';
 import type { Level2Scenario } from '../src/level2/types/scenario';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const FIXTURE_DIR = join(__dirname, 'fixtures/harness-stream');
-const OUT_FILE = join(__dirname, '../src/level2/scenarios/harnessStreamScenarios.ts');
-
-/** Short, named labels for Dev Mode's capture list — the query itself,
- *  trimmed, not a generic "Example N". Keyed by capture id so the manifest's
- *  full prompt can stay verbatim while the selector shows something scannable. */
-const CAPTURE_LABEL: Record<string, string> = {
-  q01: 'School Backpacks',
-  q02: 'Thavala Dosai Recipe',
-  q03: 'Rawla Narlai Stay Plan',
-  q04: 'Board & Card Games',
-  q05: 'Matcha Cheese Cloud Cafés',
-  q06: 'Late-Night Arancini',
-  q07: 'Lucknowi Biryani',
-  q08: 'Hidden Hoi An',
-  q09: 'Start Something New',
-  q10: 'Wensi Tofu',
-};
+// Resolve from the repository root so the converter behaves identically when
+// run directly through tsx or as a temporary Vite SSR bundle.
+const REPO_ROOT = process.cwd();
+const FIXTURE_DIR = join(REPO_ROOT, 'scripts/fixtures/harness-stream');
+const OUT_FILE = join(REPO_ROOT, 'src/level2/scenarios/harnessStreamScenarios.ts');
 
 function main() {
   const manifest: Record<string, string> = JSON.parse(readFileSync(join(FIXTURE_DIR, 'manifest.json'), 'utf-8'));
@@ -76,16 +61,12 @@ function main() {
       continue;
     }
 
-    const label = CAPTURE_LABEL[id];
-    if (!label) {
-      failures.push(`${id}: no CAPTURE_LABEL entry`);
-      continue;
-    }
-
     scenarios.push({
       ...result.scenario,
       id: `harness-${id}`,
-      metadata: { ...result.scenario.metadata, captureId: id, captureLabel: label },
+      // The selector uses the captured request itself. No hand-authored case
+      // label is introduced alongside real harness data.
+      metadata: { ...result.scenario.metadata, captureId: id, captureLabel: prompt },
     });
   }
 

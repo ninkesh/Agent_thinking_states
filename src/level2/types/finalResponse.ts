@@ -90,6 +90,8 @@ export interface FinalStructuredResponse extends FinalResponseBase {
   /** Optional grouped form for schedules/slot data where a flat table is a
    *  poor fit. */
   availability?: AvailabilityPayload;
+  /** Exact trailing prose from the response, such as a recipe conclusion. */
+  notes?: string[];
 }
 
 export interface FinalListResponse extends FinalResponseBase {

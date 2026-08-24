@@ -19,9 +19,10 @@
  * by the Warm User Profile experience — just with a slightly faster resolve
  * time. No new typing animation was built.
  */
-import { Fragment, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
+import { Fragment, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import GlanceTextReveal from '../Shared/GlanceTextReveal';
+import EnrichedImage from '../AgentThinkingTrace/level2/EnrichedImage';
 // Cards + Tabs reuses TravelL1's own data and interaction model verbatim —
 // same tabs, same 15 items, same CTA-mirroring/flyout/QR-modal navigation —
 // so the demo is a faithful replay of the real /travel-l1 experience, not a
@@ -121,6 +122,11 @@ export type L1CardItem = Omit<Place, 'rating' | 'ratingCount' | 'price'> & {
   rating?: number;
   ratingCount?: string;
   price?: string;
+  placeId?: string;
+  /** Exact CTA label from the response. Absent means no primary link action. */
+  ctaLabel?: string;
+  facts?: Array<{ label: string; value: string }>;
+  ratingText?: string;
 };
 
 export interface L1CardsData {
@@ -151,6 +157,51 @@ export interface L1TextCarouselData {
   blocks: L1TextCarouselBlock[];
   places: L1CardItem[];
   prompts: string[];
+}
+
+function TraceBackedImage({
+  item,
+  style,
+}: {
+  item: { id: string; name: string; photo: string; placeId?: string };
+  style: CSSProperties;
+}) {
+  return (
+    <EnrichedImage
+      itemId={item.id}
+      itemTitle={item.name}
+      fallbackSrc={item.photo}
+      placeId={item.placeId}
+      style={style}
+    />
+  );
+}
+
+function LoggedRating({
+  item,
+  fontSize = 20,
+  starSize = 24,
+  showCount = true,
+}: {
+  item: { rating?: number; ratingCount?: string; ratingText?: string };
+  fontSize?: number;
+  starSize?: number;
+  showCount?: boolean;
+}) {
+  if (!item.ratingText && item.rating == null) return null;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+      <span style={{ color: '#ffba71', fontSize, lineHeight: `${Math.max(20, fontSize + 4)}px`, fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>
+        {item.ratingText ?? item.rating}
+      </span>
+      {!item.ratingText && <img src="/images/l1/star.svg" alt="" style={{ width: starSize, height: starSize }} />}
+      {!item.ratingText && showCount && item.ratingCount && (
+        <span style={{ color: '#ffba71', fontSize, lineHeight: `${Math.max(20, fontSize + 4)}px`, fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>
+          ({item.ratingCount} reviews)
+        </span>
+      )}
+    </div>
+  );
 }
 
 /* The approved demo content, expressed through the same block sequence the
@@ -421,7 +472,7 @@ export function CardsScenario({ data }: { data?: L1CardsData } = {}) {
         if (k === 'Enter') {
           e.preventDefault();
           const focusedCta = FoodCtaOrder[navDir][ctaIdx];
-          if (focusedCta === 'checkout') { setQrOpen(true); setZone('qrModal'); }
+          if (focusedCta === 'checkout' && place.mapsUrl) { setQrOpen(true); setZone('qrModal'); }
           if (focusedCta === 'wishlist') {
             setWishlisted(s => { const n = new Set(s); n.has(place.id) ? n.delete(place.id) : n.add(place.id); return n; });
             showToast(wishlisted.has(place.id) ? 'Removed from wishlist' : 'Added to wishlist ♥');
@@ -476,7 +527,7 @@ export function CardsScenario({ data }: { data?: L1CardsData } = {}) {
                   <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 20px rgba(255,255,255,0.3)', borderRadius: 28, pointerEvents: 'none', zIndex: 2 }} />
 
                   <div style={{ position: 'absolute', top: 16, left: 15, width: 370, height: 463, borderRadius: 20, border: '1px solid rgba(255,255,255,0.2)', overflow: 'hidden', background: '#111' }}>
-                    <img src={p.photo} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                    <TraceBackedImage item={p} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   </div>
 
                   <div style={{
@@ -486,25 +537,23 @@ export function CardsScenario({ data }: { data?: L1CardsData } = {}) {
                     animation: 'l1s-fadeUp 0.4s ease both',
                   }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
-                        <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
-                      </div>
-                      <p style={{ fontSize: 24, lineHeight: '36px', fontWeight: 500, color: 'rgba(255,255,255,0.8)', margin: 0, fontFamily: 'Inter,sans-serif' }}>{p.agentNote}</p>
+                      {p.agentLabel && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
+                          <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
+                        </div>
+                      )}
+                      {p.agentNote && <p style={{ fontSize: 24, lineHeight: '36px', fontWeight: 500, color: 'rgba(255,255,255,0.8)', margin: 0, fontFamily: 'Inter,sans-serif' }}>{p.agentNote}</p>}
+                      {p.facts?.map((fact) => <p key={fact.label} style={{ fontSize: 18, lineHeight: '26px', fontWeight: 500, color: 'rgba(255,255,255,0.68)', margin: 0 }}>{fact.label}: {fact.value}</p>)}
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                        {p.rating != null && (
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                            <span style={{ color: '#ffba71', fontSize: 20, lineHeight: '24px', fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>{p.rating}</span>
-                            <img src="/images/l1/star.svg" alt="" style={{ width: 24, height: 24 }} />
-                            {p.ratingCount && <span style={{ color: '#ffba71', fontSize: 20, lineHeight: '24px', fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>({p.ratingCount} reviews)</span>}
-                          </div>
-                        )}
+                        <LoggedRating item={p} />
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                           <p style={{ fontSize: 32, fontWeight: 600, lineHeight: '44px', margin: 0, overflow: 'hidden' }}>{p.name}</p>
-                          <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0 }}>{p.price ?? p.area}</p>
+                          {p.price && <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0 }}>{p.price}</p>}
+                          {p.area && <p style={{ fontSize: 21, fontWeight: 500, lineHeight: '28px', margin: 0, opacity: 0.7 }}>{p.area}</p>}
                         </div>
                       </div>
 
@@ -564,6 +613,7 @@ export function CardsScenario({ data }: { data?: L1CardsData } = {}) {
                             </div>
                           );
 
+                          if (!p.mapsUrl) return null;
                           return (
                             <div key="checkout" onClick={() => { setQrOpen(true); setZone('qrModal'); }}
                               style={{
@@ -578,7 +628,7 @@ export function CardsScenario({ data }: { data?: L1CardsData } = {}) {
                                   : '0 8px 40px rgba(0,0,0,0.12)',
                                 transition: 'all 0.15s ease', cursor: 'pointer',
                               }}>
-                              Check out
+                              {p.ctaLabel ?? 'Check out'}
                             </div>
                           );
                         })}
@@ -596,25 +646,23 @@ export function CardsScenario({ data }: { data?: L1CardsData } = {}) {
                 transition: 'all 0.25s cubic-bezier(0.4,0,0.2,1)', cursor: introDone ? 'pointer' : 'default',
                 animation: 'l1s-fadeUp 0.4s ease both', animationDelay: `${i * 90}ms`,
               }}>
-                <img src={p.photo} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                <TraceBackedImage item={p} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.1)', pointerEvents: 'none' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.2)', pointerEvents: 'none' }} />
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 104, background: 'linear-gradient(to bottom, rgba(20,20,20,0.5), transparent)', pointerEvents: 'none' }} />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 242, background: 'linear-gradient(to bottom, rgba(20,20,20,0), #141414)', pointerEvents: 'none' }} />
-                <div style={{ position: 'absolute', top: 20, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
-                  <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
-                </div>
+                {p.agentLabel && (
+                  <div style={{ position: 'absolute', top: 20, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
+                    <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
+                  </div>
+                )}
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 22, display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  {p.rating != null && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <span style={{ color: '#ffba71', fontSize: 22, lineHeight: '24px', fontWeight: 600, fontFamily: 'Inter,sans-serif' }}>{p.rating}</span>
-                      <img src="/images/l1/star.svg" alt="" style={{ width: 24, height: 24 }} />
-                    </div>
-                  )}
+                  <LoggedRating item={p} fontSize={22} showCount={false} />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                     <p style={{ fontSize: 32, fontWeight: 500, lineHeight: '44px', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</p>
-                    <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0, opacity: 0.7 }}>{p.price ?? p.area}</p>
+                    {p.price && <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0 }}>{p.price}</p>}
+                    {p.area && <p style={{ fontSize: 21, fontWeight: 500, lineHeight: '28px', margin: 0, opacity: 0.7 }}>{p.area}</p>}
                   </div>
                 </div>
                 <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 20px rgba(255,255,255,0.3)', borderRadius: 30, pointerEvents: 'none' }} />
@@ -627,7 +675,7 @@ export function CardsScenario({ data }: { data?: L1CardsData } = {}) {
 
       <PromptRow prompts={prompts} visible={phase >= PHASE.PROMPTS} activeIdx={introDone && zone === 'inputs' ? promptIdx : null} />
 
-      {qrOpen && (
+      {qrOpen && place.mapsUrl && (
         <>
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(20px)', zIndex: 60, animation: 'l1s-fadeIn 0.3s ease both' }} />
           <div style={{ position: 'absolute', inset: 0, zIndex: 61, animation: 'l1s-slideInRight 0.45s cubic-bezier(0.22,1,0.36,1) both', pointerEvents: 'none' }}>
@@ -657,17 +705,10 @@ export function CardsScenario({ data }: { data?: L1CardsData } = {}) {
             </div>
             <div style={{ position: 'absolute', left: 1211, top: 834, width: 390, zIndex: 62, display: 'flex', alignItems: 'center', gap: 16 }}>
               <div style={{ width: 120, height: 140, borderRadius: 16, flexShrink: 0, overflow: 'hidden', border: '1.4px solid rgba(255,255,255,0.2)', boxSizing: 'border-box' }}>
-                <img src={place.photo} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <TraceBackedImage item={place} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
-                {place.rating != null && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <img src="/images/l1/star.svg" alt="" style={{ width: 20, height: 20 }} />
-                    <span style={{ color: '#ffba71', fontSize: 18, lineHeight: '20px', fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>
-                      {place.rating}{place.ratingCount ? ` (${place.ratingCount} reviews)` : ''}
-                    </span>
-                  </div>
-                )}
+                <LoggedRating item={place} fontSize={18} starSize={20} />
                 <p style={{ fontSize: 22, fontWeight: 500, color: 'rgba(255,255,255,0.9)', letterSpacing: '-0.22px', margin: 0, fontFamily: "'Manrope','Plus Jakarta Sans',sans-serif" }}>{place.name}</p>
               </div>
             </div>
@@ -812,7 +853,7 @@ export function CardsTabsScenario({ data }: { data?: L1CardsTabsData } = {}) {
         if (k === 'Enter') {
           e.preventDefault();
           const focusedCta = TravelCtaOrder[navDir][ctaIdx];
-          if (focusedCta === 'maps')     { setQrOpen(true); setZone('qrModal'); }
+          if (focusedCta === 'maps' && place.mapsUrl) { setQrOpen(true); setZone('qrModal'); }
           if (focusedCta === 'wishlist') {
             setWishlisted(s => { const n = new Set(s); n.has(place.id) ? n.delete(place.id) : n.add(place.id); return n; });
             showToast(wishlisted.has(place.id) ? 'Removed from trip plan' : 'Saved to trip plan ♥');
@@ -842,28 +883,26 @@ export function CardsTabsScenario({ data }: { data?: L1CardsTabsData } = {}) {
     return (
       <>
         <div style={{ position: 'absolute', top: 16, left: 15, width: 370, height: EXP_H - 40, borderRadius: 20, border: '1px solid rgba(255,255,255,0.2)', overflow: 'hidden', background: '#111' }}>
-          <img src={p.photo} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          <TraceBackedImage item={p} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
         </div>
         <div style={{ position: 'absolute', top: 0, bottom: 0, left: 384, width: 492, boxSizing: 'border-box', padding: '32px 24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
-              <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
-            </div>
-            <p style={{ fontSize: 24, lineHeight: '36px', fontWeight: 500, color: 'rgba(255,255,255,0.8)', margin: 0, fontFamily: 'Inter,sans-serif' }}>{p.agentNote}</p>
+            {p.agentLabel && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
+                <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
+              </div>
+            )}
+            {p.agentNote && <p style={{ fontSize: 24, lineHeight: '36px', fontWeight: 500, color: 'rgba(255,255,255,0.8)', margin: 0, fontFamily: 'Inter,sans-serif' }}>{p.agentNote}</p>}
+            {(p as L1CardItem).facts?.map((fact) => <p key={fact.label} style={{ fontSize: 18, lineHeight: '26px', fontWeight: 500, color: 'rgba(255,255,255,0.68)', margin: 0 }}>{fact.label}: {fact.value}</p>)}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              {p.rating != null && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span style={{ color: '#ffba71', fontSize: 20, lineHeight: '24px', fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>{p.rating}</span>
-                  <img src="/images/l1/star.svg" alt="" style={{ width: 24, height: 24 }} />
-                  {p.ratingCount && <span style={{ color: '#ffba71', fontSize: 20, lineHeight: '24px', fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>({p.ratingCount} reviews)</span>}
-                </div>
-              )}
+              <LoggedRating item={p} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <p style={{ fontSize: 32, fontWeight: 600, lineHeight: '44px', margin: 0, overflow: 'hidden' }}>{p.name}</p>
-                <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0, opacity: p.price ? 1 : 0.7 }}>{p.price ?? p.area}</p>
+                {p.price && <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0 }}>{p.price}</p>}
+                {p.area && <p style={{ fontSize: 21, fontWeight: 500, lineHeight: '28px', margin: 0, opacity: 0.7 }}>{p.area}</p>}
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 11, height: 64, pointerEvents: interactive ? 'auto' : 'none' }}>
@@ -925,6 +964,7 @@ export function CardsTabsScenario({ data }: { data?: L1CardsTabsData } = {}) {
                   </div>
                 );
 
+                if (!p.mapsUrl) return null;
                 return (
                   <div key="maps" onClick={interactive ? () => { setQrOpen(true); setZone('qrModal'); } : undefined}
                     style={{
@@ -957,25 +997,23 @@ export function CardsTabsScenario({ data }: { data?: L1CardsTabsData } = {}) {
       opacity: opts.dim ? 0.5 : 1, transition: 'all 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.45s ease',
       cursor: opts.onClick ? 'pointer' : 'default',
     }} onClick={opts.onClick}>
-      <img src={p.photo} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+      <TraceBackedImage item={p} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.1)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.2)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 104, background: 'linear-gradient(to bottom, rgba(20,20,20,0.5), transparent)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 242, background: 'linear-gradient(to bottom, rgba(20,20,20,0), #141414)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: 20, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
-        <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
-        <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
-      </div>
+      {p.agentLabel && (
+        <div style={{ position: 'absolute', top: 20, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
+          <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
+        </div>
+      )}
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 22, display: 'flex', flexDirection: 'column', gap: 16 }}>
-        {p.rating != null && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ color: '#ffba71', fontSize: 22, lineHeight: '24px', fontWeight: 600, fontFamily: 'Inter,sans-serif' }}>{p.rating}</span>
-            <img src="/images/l1/star.svg" alt="" style={{ width: 24, height: 24 }} />
-          </div>
-        )}
+        <LoggedRating item={p} fontSize={22} showCount={false} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <p style={{ fontSize: 32, fontWeight: 500, lineHeight: '44px', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</p>
-          <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0, opacity: 0.7 }}>{p.price ?? p.area}</p>
+          {p.price && <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0 }}>{p.price}</p>}
+          {p.area && <p style={{ fontSize: 21, fontWeight: 500, lineHeight: '28px', margin: 0, opacity: 0.7 }}>{p.area}</p>}
         </div>
       </div>
       <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 20px rgba(255,255,255,0.3)', borderRadius: 30, pointerEvents: 'none' }} />
@@ -1063,7 +1101,7 @@ export function CardsTabsScenario({ data }: { data?: L1CardsTabsData } = {}) {
 
       <PromptRow prompts={prompts} visible={phase >= PHASE.PROMPTS} activeIdx={introDone && zone === 'inputs' ? promptIdx : null} />
 
-      {qrOpen && (
+      {qrOpen && place.mapsUrl && (
         <>
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(20px)', zIndex: 60, animation: 'l1s-fadeIn 0.3s ease both' }} />
           <div style={{ position: 'absolute', inset: 0, zIndex: 61, animation: 'l1s-slideInRight 0.45s cubic-bezier(0.22,1,0.36,1) both', pointerEvents: 'none' }}>
@@ -1081,7 +1119,7 @@ export function CardsTabsScenario({ data }: { data?: L1CardsTabsData } = {}) {
             </div>
             <div style={{ position: 'absolute', left: 1095, top: 130, width: 623, zIndex: 62, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
               <p style={{ fontSize: 48, lineHeight: '64px', fontWeight: 600, color: '#fff', margin: 0 }}>{place.ctaModalTitle}</p>
-              <p style={{ fontSize: 24, fontWeight: 500, color: 'rgba(255,255,255,0.8)', letterSpacing: '-0.24px', margin: 0, fontFamily: 'Inter,sans-serif' }}>{place.ctaModalSubtitle}</p>
+              {place.ctaModalSubtitle && <p style={{ fontSize: 24, fontWeight: 500, color: 'rgba(255,255,255,0.8)', letterSpacing: '-0.24px', margin: 0, fontFamily: 'Inter,sans-serif' }}>{place.ctaModalSubtitle}</p>}
             </div>
             <div style={{ position: 'absolute', left: 1176, top: '50%', transform: 'translateY(-50%)', width: 460, height: 460, zIndex: 62 }}>
               <img src="/images/l1/qr-blob.svg" alt="" style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)', width: 557, height: 557, maxWidth: 'none' }} />
@@ -1091,17 +1129,10 @@ export function CardsTabsScenario({ data }: { data?: L1CardsTabsData } = {}) {
             </div>
             <div style={{ position: 'absolute', left: 1211, top: 834, width: 390, zIndex: 62, display: 'flex', alignItems: 'center', gap: 16 }}>
               <div style={{ width: 120, height: 140, borderRadius: 16, flexShrink: 0, overflow: 'hidden', border: '1.4px solid rgba(255,255,255,0.2)', boxSizing: 'border-box' }}>
-                <img src={place.photo} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <TraceBackedImage item={place} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
-                {place.rating != null && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <img src="/images/l1/star.svg" alt="" style={{ width: 20, height: 20 }} />
-                    <span style={{ color: '#ffba71', fontSize: 18, lineHeight: '20px', fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>
-                      {place.rating}{place.ratingCount ? ` (${place.ratingCount} reviews)` : ''}
-                    </span>
-                  </div>
-                )}
+                <LoggedRating item={place} fontSize={18} starSize={20} />
                 <p style={{ fontSize: 22, fontWeight: 500, color: 'rgba(255,255,255,0.9)', letterSpacing: '-0.22px', margin: 0, fontFamily: "'Manrope','Plus Jakarta Sans',sans-serif" }}>{place.name}</p>
               </div>
             </div>
@@ -1616,7 +1647,7 @@ export function TextCarouselScenario({ data }: { data?: L1TextCarouselData } = {
           if (e.key === 'Enter') {
             e.preventDefault();
             const focusedCta = FoodCtaOrder[navDir][ctaIdx];
-            if (focusedCta === 'checkout') setQrOpen(true);
+            if (focusedCta === 'checkout' && place.mapsUrl) setQrOpen(true);
             if (focusedCta === 'wishlist') {
               setWishlisted(s => { const n = new Set(s); n.has(place.id) ? n.delete(place.id) : n.add(place.id); return n; });
               showToast(wishlisted.has(place.id) ? 'Removed from wishlist' : 'Added to wishlist ♥');
@@ -1758,7 +1789,7 @@ export function TextCarouselScenario({ data }: { data?: L1TextCarouselData } = {
                           <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 20px rgba(255,255,255,0.3)', borderRadius: 28, pointerEvents: 'none', zIndex: 2 }} />
 
                           <div style={{ position: 'absolute', top: 16, left: 15, width: 370, height: 463, borderRadius: 20, border: '1px solid rgba(255,255,255,0.2)', overflow: 'hidden', background: '#111' }}>
-                            <img src={p.photo} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                            <TraceBackedImage item={p} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                           </div>
 
                           <div style={{
@@ -1768,25 +1799,23 @@ export function TextCarouselScenario({ data }: { data?: L1TextCarouselData } = {
                             animation: 'l1s-fadeUp 0.4s ease both',
                           }}>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
-                                <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
-                              </div>
-                              <p style={{ fontSize: 24, lineHeight: '36px', fontWeight: 500, color: 'rgba(255,255,255,0.8)', margin: 0, fontFamily: 'Inter,sans-serif' }}>{p.agentNote}</p>
+                              {p.agentLabel && (
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                  <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
+                                  <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
+                                </div>
+                              )}
+                              {p.agentNote && <p style={{ fontSize: 24, lineHeight: '36px', fontWeight: 500, color: 'rgba(255,255,255,0.8)', margin: 0, fontFamily: 'Inter,sans-serif' }}>{p.agentNote}</p>}
+                              {p.facts?.map((fact) => <p key={fact.label} style={{ fontSize: 18, lineHeight: '26px', fontWeight: 500, color: 'rgba(255,255,255,0.68)', margin: 0 }}>{fact.label}: {fact.value}</p>)}
                             </div>
 
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
                               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                                {p.rating != null && (
-                                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                                    <span style={{ color: '#ffba71', fontSize: 20, lineHeight: '24px', fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>{p.rating}</span>
-                                    <img src="/images/l1/star.svg" alt="" style={{ width: 24, height: 24 }} />
-                                    {p.ratingCount && <span style={{ color: '#ffba71', fontSize: 20, lineHeight: '24px', fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>({p.ratingCount} reviews)</span>}
-                                  </div>
-                                )}
+                                <LoggedRating item={p} />
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                                   <p style={{ fontSize: 32, fontWeight: 600, lineHeight: '44px', margin: 0, overflow: 'hidden' }}>{p.name}</p>
-                                  <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0 }}>{p.price ?? p.area}</p>
+                                  {p.price && <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0 }}>{p.price}</p>}
+                                  {p.area && <p style={{ fontSize: 21, fontWeight: 500, lineHeight: '28px', margin: 0, opacity: 0.7 }}>{p.area}</p>}
                                 </div>
                               </div>
 
@@ -1842,6 +1871,7 @@ export function TextCarouselScenario({ data }: { data?: L1TextCarouselData } = {
                                     </div>
                                   );
 
+                                  if (!p.mapsUrl) return null;
                                   return (
                                     <div key="checkout" style={{
                                       flex: 1, height: 64, borderRadius: 32,
@@ -1855,7 +1885,7 @@ export function TextCarouselScenario({ data }: { data?: L1TextCarouselData } = {
                                         : '0 8px 40px rgba(0,0,0,0.12)',
                                       transition: 'all 0.15s ease',
                                     }}>
-                                      Check out
+                                      {p.ctaLabel ?? 'Check out'}
                                     </div>
                                   );
                                 })}
@@ -1872,25 +1902,23 @@ export function TextCarouselScenario({ data }: { data?: L1TextCarouselData } = {
                         position: 'relative', background: '#141414', boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
                         transition: 'all 0.25s cubic-bezier(0.4,0,0.2,1)', cursor: 'pointer',
                       }}>
-                        <img src={p.photo} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <TraceBackedImage item={p} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                         <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.1)', pointerEvents: 'none' }} />
                         <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.2)', pointerEvents: 'none' }} />
                         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 104, background: 'linear-gradient(to bottom, rgba(20,20,20,0.5), transparent)', pointerEvents: 'none' }} />
                         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 242, background: 'linear-gradient(to bottom, rgba(20,20,20,0), #141414)', pointerEvents: 'none' }} />
-                        <div style={{ position: 'absolute', top: 20, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
-                          <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
-                          <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
-                        </div>
+                        {p.agentLabel && (
+                          <div style={{ position: 'absolute', top: 20, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <img src="/images/l1/pin.svg" alt="" style={{ width: 32, height: 32 }} />
+                            <span style={{ fontSize: 22, lineHeight: '28px', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>{p.agentLabel}</span>
+                          </div>
+                        )}
                         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 22, display: 'flex', flexDirection: 'column', gap: 16 }}>
-                          {p.rating != null && (
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                              <span style={{ color: '#ffba71', fontSize: 22, lineHeight: '24px', fontWeight: 600, fontFamily: 'Inter,sans-serif' }}>{p.rating}</span>
-                              <img src="/images/l1/star.svg" alt="" style={{ width: 24, height: 24 }} />
-                            </div>
-                          )}
+                          <LoggedRating item={p} fontSize={22} showCount={false} />
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                             <p style={{ fontSize: 32, fontWeight: 500, lineHeight: '44px', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.name}</p>
-                            <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0, opacity: 0.7 }}>{p.price ?? p.area}</p>
+                            {p.price && <p style={{ fontSize: 24, fontWeight: 600, lineHeight: '32px', margin: 0 }}>{p.price}</p>}
+                            {p.area && <p style={{ fontSize: 21, fontWeight: 500, lineHeight: '28px', margin: 0, opacity: 0.7 }}>{p.area}</p>}
                           </div>
                         </div>
                         <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 20px rgba(255,255,255,0.3)', borderRadius: 30, pointerEvents: 'none' }} />
@@ -1906,7 +1934,7 @@ export function TextCarouselScenario({ data }: { data?: L1TextCarouselData } = {
 
       <PromptRow prompts={prompts} visible={fullyComposed} activeIdx={interactionEnabled && zone === 'inputs' ? promptIdx : null} />
 
-      {qrOpen && (
+      {qrOpen && place.mapsUrl && (
         <>
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(20px)', zIndex: 60, animation: 'l1s-fadeIn 0.3s ease both' }} />
           <div style={{ position: 'absolute', inset: 0, zIndex: 61, animation: 'l1s-slideInRight 0.45s cubic-bezier(0.22,1,0.36,1) both', pointerEvents: 'none' }}>
@@ -1936,17 +1964,10 @@ export function TextCarouselScenario({ data }: { data?: L1TextCarouselData } = {
             </div>
             <div style={{ position: 'absolute', left: 1211, top: 834, width: 390, zIndex: 62, display: 'flex', alignItems: 'center', gap: 16 }}>
               <div style={{ width: 120, height: 140, borderRadius: 16, flexShrink: 0, overflow: 'hidden', border: '1.4px solid rgba(255,255,255,0.2)', boxSizing: 'border-box' }}>
-                <img src={place.photo} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <TraceBackedImage item={place} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
-                {place.rating != null && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <img src="/images/l1/star.svg" alt="" style={{ width: 20, height: 20 }} />
-                    <span style={{ color: '#ffba71', fontSize: 18, lineHeight: '20px', fontWeight: 600, fontFamily: 'Inter,sans-serif', textTransform: 'uppercase' }}>
-                      {place.rating}{place.ratingCount ? ` (${place.ratingCount} reviews)` : ''}
-                    </span>
-                  </div>
-                )}
+                <LoggedRating item={place} fontSize={18} starSize={20} />
                 <p style={{ fontSize: 22, fontWeight: 500, color: 'rgba(255,255,255,0.9)', letterSpacing: '-0.22px', margin: 0, fontFamily: "'Manrope','Plus Jakarta Sans',sans-serif" }}>{place.name}</p>
               </div>
             </div>
