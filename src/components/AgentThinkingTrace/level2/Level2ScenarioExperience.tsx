@@ -2,6 +2,7 @@ import AgentMascot from '../../Shared/AgentMascot';
 import QueryContext from '../QueryContext';
 import { ScenarioTypeSelector } from './ScenarioTypeSelector';
 import { resolveThinkingRenderer } from '../../../level2/renderers/registry';
+import { thinkingCanvasRenderKey } from '../../../level2/renderers/renderKey';
 import Level2FinalResponse from './Level2FinalResponse';
 import type { Level2ScenarioState } from '../../../level2/runtime/useLevel2Scenario';
 import type { Level2RuntimeState } from '../../../level2/types/runtime';
@@ -132,11 +133,7 @@ export default function Level2ScenarioExperience({
         {isThinking && scenario && currentPass && (
           <div
             className={`att-l2v-pass att-l2v-pass--${runtime.passPhase ?? 'hold'}`}
-            key={
-              currentPass.valueType === 'entity_preview' || currentPass.valueType === 'trace_entities' || currentPass.valueType === 'sources' || currentPass.valueType === 'route'
-                ? `${currentPass.valueType}-canvas`
-                : currentPass.id
-            }
+            key={thinkingCanvasRenderKey(currentPass.valueType, currentPass.id)}
             // Active hold: while a real gap holds the current pass on screen
             // (Real Timing only — see schedule.ts's "gaps are the point"),
             // this keeps the current visual state SUBTLY alive rather than a

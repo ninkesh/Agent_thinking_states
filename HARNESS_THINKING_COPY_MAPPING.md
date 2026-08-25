@@ -534,10 +534,16 @@ detail input.place_id     = ChIJ...
 
 same externalId
   -> same React key
+  -> same valueType-scoped canvas key
   -> same image instance
   -> existing card moves into inspection layout
   -> newly arrived hours/reviews render beside it
 ```
+
+The shared `thinkingCanvasRenderKey` rule applies to both thinking experiences.
+`entity_preview`, `trace_entities`, `sources`, and `route` keep a stable canvas
+key across passes; transient count/text/status renderers remain keyed by pass.
+Do not recreate this rule inside a route component.
 
 ## Implementation ownership
 
@@ -549,6 +555,7 @@ same externalId
 | Scenario assembly and same-frame synthesis merge | `src/level2/harnessStream/buildScenarioFromHarnessStream.ts` |
 | Synthesis lifecycle and `UI_PROCESS_COPY` | `src/level2/harnessStream/synthesisBeat.ts` |
 | Stable entity keys | `src/level2/normalization/entityBridge.ts` |
+| Persistent canvas render keys | `src/level2/renderers/renderKey.ts` |
 | Discovery-card fact selection | `src/level2/renderers/entityFacts.ts` |
 | Thinking renderer selection | `src/level2/renderers/registry.ts` |
 | Entity detail panel | `src/components/AgentThinkingTrace/level2/EntityDetailArrivalPanel.tsx` |

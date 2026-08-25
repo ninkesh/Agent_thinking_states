@@ -4,6 +4,7 @@ import Level2FinalResponse, { resolveAdaptedResponse } from '../AgentThinkingTra
 import { ScenarioTypeSelector } from '../AgentThinkingTrace/level2/ScenarioTypeSelector';
 import { CandidateCanvasThinking } from '../AgentThinkingTrace/level2/CandidateCanvasThinking';
 import { resolveThinkingRenderer } from '../../level2/renderers/registry';
+import { thinkingCanvasRenderKey } from '../../level2/renderers/renderKey';
 import { useLevel2Scenario } from '../../level2/runtime/useLevel2Scenario';
 import { useLevel2Runtime } from '../../level2/runtime/useLevel2Runtime';
 import type { ScenarioArchetype } from '../../level2/types/archetype';
@@ -277,14 +278,10 @@ export default function AgentThinkingV2Experience() {
               ThinkingRenderer &&
               currentPass && (
                 <div
-                  // Same stable-key contract as Level2ScenarioExperience.tsx —
-                  // sources/route persist and update in place instead of
-                  // remounting on every sub-beat/map stage.
-                  key={
-                    currentPass.valueType === 'sources' || currentPass.valueType === 'route'
-                      ? `${currentPass.valueType}-canvas`
-                      : currentPass.id
-                  }
+                  // Shared with Level2ScenarioExperience: entity cards,
+                  // sources and routes persist while their logged fields
+                  // update instead of remounting between passes.
+                  key={thinkingCanvasRenderKey(currentPass.valueType, currentPass.id)}
                   className="atv2-pass"
                   data-active-hold={
                     runtime.timingMode === 'actual' && runtime.passPhase === 'hold' && currentPass.payload
