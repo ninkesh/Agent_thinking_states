@@ -40,7 +40,7 @@ import type { ScenarioArchetype } from '../../level2/types/archetype';
    useLevel2Runtime exactly as the /agent_thinking_trace Level 2 shell does.
    The runtime's phases map 1:1 onto the experience phases:
 
-     loading        → intro        agent acknowledges the task, centered
+     loading        → intro        visual loading state, with no invented copy
      thinking       → thinking     centered narration + lightweight evidence
      consolidating  → compressing  evidence gathers itself, closing statement
      resolving      → handoff      agent travels center → top-left
@@ -56,11 +56,6 @@ const SOURCE_LABEL: Record<string, string> = {
   fixture: 'Presentation fixture — not Phoenix output',
 };
 
-/** The agent acknowledging the task — the first centered beat, before any
- *  real pass narration arrives. Consumer language only. */
-const INTRO_LINE = 'Got it — looking for the best options for you.';
-const INTRO_HOLD_MS = 1800;
-
 /** The last centered thinking statement, spoken while the evidence
  *  compresses. Phrased per answer shape, never per internal mechanism. */
 const CLOSING_LINE: Partial<Record<ScenarioArchetype, string>> = {
@@ -75,31 +70,11 @@ const CLOSING_LINE_DEFAULT = 'I’ve got what you need.';
 export default function AgentThinkingV2Experience() {
   const source = useLevel2Scenario();
 
-  /* Hold the intro beat briefly even after the scenario is ready, so the
-     acknowledgement is actually readable before pass 1 speaks. */
-  const [introHold, setIntroHold] = useState(true);
-  const scenarioId = source.scenario?.id;
-  useEffect(() => {
-    if (source.status !== 'ready') return;
-    setIntroHold(true);
-    const t = setTimeout(() => setIntroHold(false), INTRO_HOLD_MS);
-    return () => clearTimeout(t);
-  }, [source.status, scenarioId]);
-
   const runtime = useLevel2Runtime(
     source.scenario,
     source.selectedArchetype,
-    source.status === 'loading' || introHold
+    source.status === 'loading'
   );
-
-  /* The runtime's clock ticks from mount — restart it the moment the intro
-     beat ends so pass 1 plays from zero instead of having burned under the
-     acknowledgement line. */
-  const replayRef = useRef(runtime.replay);
-  replayRef.current = runtime.replay;
-  useEffect(() => {
-    if (!introHold) replayRef.current();
-  }, [introHold]);
 
   const { scenario, phase: runtimePhase, currentPass } = runtime;
 
@@ -115,7 +90,7 @@ export default function AgentThinkingV2Experience() {
             : 'final';
 
   /* ── Narration — one agent, one message ─────────────────────────────────
-     intro        acknowledgement
+     intro        no sentence unless the log supplies one (it has not yet)
      thinking     the current pass's consumer line (contract: never a raw
                   tool/span name — pass.ts forbids it upstream)
      compressing  the closing statement (kept through handoff so it fades
@@ -123,7 +98,7 @@ export default function AgentThinkingV2Experience() {
      final        nothing — the final statement belongs to the L1 template */
   const narration =
     phase === 'intro'
-      ? INTRO_LINE
+      ? ''
       : phase === 'thinking'
         ? currentPass?.narration ?? ''
         : phase === 'compressing' || phase === 'handoff'

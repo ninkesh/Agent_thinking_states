@@ -53,6 +53,7 @@ At this update, 16 Tests captures are playable and four are explicit gaps:
 | Preserve event time | Status and result states use the timestamps at which those events reached the frontend. |
 | Preserve identity | Search and detail results with the same provider ID update the same visual element. |
 | Do not serialize parallel work | One explicit parallel batch becomes one status and one result state, not one state per call. |
+| Do not prepend a generic acknowledgement | Begin with the first mapped logged state. During pre-log loading, show no invented sentence. |
 
 ## Copy provenance: know what the user is reading
 
