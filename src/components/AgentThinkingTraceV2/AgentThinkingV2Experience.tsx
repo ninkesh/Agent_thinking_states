@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import AgentMascot from '../Shared/AgentMascot';
-import Level2FinalResponse, { resolveAdaptedResponse } from '../AgentThinkingTrace/level2/Level2FinalResponse';
+import Level2FinalResponse from '../AgentThinkingTrace/level2/Level2FinalResponse';
 import { ScenarioTypeSelector } from '../AgentThinkingTrace/level2/ScenarioTypeSelector';
 import { CandidateCanvasThinking } from '../AgentThinkingTrace/level2/CandidateCanvasThinking';
 import { resolveThinkingRenderer } from '../../level2/renderers/registry';
@@ -182,11 +182,6 @@ export default function AgentThinkingV2Experience() {
     return () => window.removeEventListener('keydown', onKey);
   }, [runtime, source]);
 
-  const finalFamily = useMemo(
-    () => (runtime.finalResponse ? resolveAdaptedResponse(runtime.finalResponse).family : '—'),
-    [runtime.finalResponse]
-  );
-
   /* Mascot animates via CSS on .atv2-agent; keep a ref only to scope reflow
      reads if ever needed — the travel itself is a pure class transition. */
   const agentRef = useRef<HTMLDivElement | null>(null);
@@ -312,98 +307,7 @@ export default function AgentThinkingV2Experience() {
 
         {/* Dev chrome — D only. Kept entirely outside the consumer canvas. */}
         {devOpen && (
-          <>
-            <div className="atv2-dev-panel">
-              <div className="atv2-dev-title">Level 2 · Dev</div>
-              <div className="atv2-dev-row"><span>Archetype</span><b>{scenario?.archetype ?? '—'}</b></div>
-              <div className="atv2-dev-row"><span>Source</span><b>{scenario?.source ?? '—'}</b></div>
-              <div className="atv2-dev-row">
-                <span>Current pass</span>
-                <b>{runtime.currentPassIndex + 1} / {runtime.passCount}</b>
-              </div>
-              <div className="atv2-dev-row"><span>Phase</span><b>{phase}</b></div>
-              <div className="atv2-dev-row"><span>Final renderer</span><b>{finalFamily}</b></div>
-              {/* Timing mode — WHEN passes appear, never what they show.
-                  Demo = curated cadence; Actual = the same passes on the real
-                  Phoenix clock (see level2/runtime/schedule.ts). Disabled for
-                  fixtures — real timing is never fabricated. */}
-              <div className="atv2-dev-row" style={{ alignItems: 'center' }}>
-                <span>Timing</span>
-                <b>
-                  <button
-                    onClick={() => runtime.setTimingMode('demo')}
-                    style={{
-                      background: runtime.requestedTimingMode === 'demo' ? 'rgba(120,220,170,0.25)' : 'transparent',
-                      color: 'inherit',
-                      border: '1px solid rgba(255,255,255,0.25)',
-                      borderRadius: 4,
-                      padding: '2px 8px',
-                      marginRight: 6,
-                      cursor: 'pointer',
-                      font: 'inherit',
-                    }}
-                  >
-                    Demo
-                  </button>
-                  <button
-                    onClick={() => runtime.setTimingMode('actual')}
-                    disabled={!runtime.actualTimingAvailable}
-                    title={runtime.actualTimingAvailable ? 'Replay on the real Phoenix clock' : 'Actual timing unavailable for fixture'}
-                    style={{
-                      background: runtime.requestedTimingMode === 'actual' ? 'rgba(120,220,170,0.25)' : 'transparent',
-                      color: 'inherit',
-                      border: '1px solid rgba(255,255,255,0.25)',
-                      borderRadius: 4,
-                      padding: '2px 8px',
-                      cursor: runtime.actualTimingAvailable ? 'pointer' : 'not-allowed',
-                      opacity: runtime.actualTimingAvailable ? 1 : 0.4,
-                      font: 'inherit',
-                    }}
-                  >
-                    Actual
-                  </button>
-                </b>
-              </div>
-              {runtime.timingMode === 'actual' && (
-                <>
-                  <div className="atv2-dev-row">
-                    <span>Max idle gap</span>
-                    <b>
-                      {[0, 5000, 10000, 20000].map((ms) => (
-                        <button
-                          key={ms}
-                          onClick={() => runtime.setMaxIdleGapMs(ms)}
-                          style={{
-                            background: runtime.maxIdleGapMs === ms ? 'rgba(120,220,170,0.25)' : 'transparent',
-                            color: 'inherit',
-                            border: '1px solid rgba(255,255,255,0.25)',
-                            borderRadius: 4,
-                            padding: '2px 6px',
-                            marginLeft: 4,
-                            cursor: 'pointer',
-                            font: 'inherit',
-                          }}
-                        >
-                          {ms ? `${ms / 1000}s` : 'Off'}
-                        </button>
-                      ))}
-                    </b>
-                  </div>
-                  <div className="atv2-dev-row">
-                    <span>Trace / elapsed</span>
-                    <b>
-                      {runtime.traceDurationMs != null ? `${(runtime.traceDurationMs / 1000).toFixed(1)}s` : '—'} ·{' '}
-                      {(runtime.elapsed / 1000).toFixed(1)}s
-                    </b>
-                  </div>
-                </>
-              )}
-              {!runtime.actualTimingAvailable && (
-                <div className="atv2-dev-keys">Actual timing unavailable{scenario?.source === 'fixture' ? ' for fixture' : ''}</div>
-              )}
-              <div className="atv2-dev-keys">Space play/pause · R refresh · F jump to final</div>
-            </div>
-            <ScenarioTypeSelector
+          <ScenarioTypeSelector
               selected={source.selectedArchetype}
               onSelect={source.selectArchetype}
               onRefresh={source.refresh}
@@ -418,8 +322,7 @@ export default function AgentThinkingV2Experience() {
               elapsedMs={scenario ? runtime.elapsed : undefined}
               totalMs={runtime.totalDuration}
               timingModeLabel={runtime.timingMode === 'actual' ? 'Real' : 'Demo'}
-            />
-          </>
+          />
         )}
 
         {source.status === 'error' && (

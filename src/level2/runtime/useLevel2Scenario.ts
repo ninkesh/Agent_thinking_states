@@ -32,7 +32,7 @@ import type { Level2Scenario } from '../types/scenario';
 
    `sourceMode` is a SEPARATE axis, not a third DevScenarioKind: 'existing'
    is everything above; 'harness_stream' bypasses archetype selection
-   entirely and picks ONE of the 10 named real captures directly via
+   entirely and picks ONE named real capture directly via
    `selectHarnessStreamExample(id)` — this is a data-SOURCE choice, not an
    answer-shape choice, matching the harness_stream ScenarioSource being
    orthogonal to ScenarioArchetype everywhere else in Level 2. Switching
@@ -158,7 +158,12 @@ export function useLevel2Scenario(): Level2ScenarioState {
       const selection = level2Registry.selectHarnessStreamExample(id);
       if (!selection) {
         setStatus('error');
-        setError(`No harness-stream capture found for "${id}".`);
+        const capture = HARNESS_STREAM_CAPTURES.find((candidate) => candidate.id === id);
+        setError(
+          capture?.unavailableReason
+            ? `${id.toUpperCase()} exposes a mapping gap: ${capture.unavailableReason}`
+            : `No harness-stream capture found for "${id}".`
+        );
         return;
       }
       setScenario(selection.scenario);

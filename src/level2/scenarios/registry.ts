@@ -4,7 +4,7 @@ import { cacheGet, cacheKeys, cacheSet, purgeStaleCacheVersions } from '../cache
 import { CORPUS_INDEX } from './corpusIndex';
 import { FIXTURE_SCENARIOS } from './fixtures';
 import { MEMORY_RETRIEVAL_SCENARIOS } from './memoryRetrievalScenarios';
-import { HARNESS_STREAM_SCENARIOS } from './harnessStreamScenarios';
+import { HARNESS_STREAM_CAPTURE_INDEX, HARNESS_STREAM_SCENARIOS } from './harnessStreamScenarios';
 import { buildScenarioFromTrace } from './fromTrace';
 import { SCENARIO_ARCHETYPES, type ScenarioArchetype } from '../types/archetype';
 import { MEMORY_RETRIEVAL_KIND, type DevScenarioKind } from '../types/devScenario';
@@ -72,16 +72,16 @@ function harnessStreamPools(): ScenarioPools {
 export interface HarnessStreamCapture {
   id: string;
   label: string;
-  archetype: ScenarioArchetype;
+  collection: 'reviewed' | 'tests';
+  archetype?: ScenarioArchetype;
+  /** Present when the capture is intentionally listed for coverage but the
+   *  current mapping contract cannot build a consumer-safe scenario. */
+  unavailableReason?: string;
 }
 
-/** The 10 captures, in file order. Labels are their exact manifest prompts,
- *  not hand-authored summaries. */
-export const HARNESS_STREAM_CAPTURES: HarnessStreamCapture[] = HARNESS_STREAM_SCENARIOS.map((s) => ({
-  id: String(s.metadata?.captureId ?? s.id),
-  label: String(s.metadata?.captureLabel ?? s.id),
-  archetype: s.archetype,
-}));
+/** Every checked-in capture, including explicit mapping gaps. Labels are exact
+ *  manifest prompts, never hand-authored summaries. */
+export const HARNESS_STREAM_CAPTURES: HarnessStreamCapture[] = HARNESS_STREAM_CAPTURE_INDEX;
 
 export class Level2ScenarioRegistry {
   private readonly fixtures = fixturePools();
@@ -247,7 +247,7 @@ export class Level2ScenarioRegistry {
 
   /** Dev Mode's Harness Stream source: a direct pick by capture id (e.g.
    *  "q07"), not "give me *a* candidate_ranking example" — this is what lets
-   *  the named 10-item list (see HARNESS_STREAM_CAPTURES) reach an exact
+   *  the named capture list (see HARNESS_STREAM_CAPTURES) reach an exact
    *  real capture, mirroring selectMemoryRetrieval()'s dedicated-pool
    *  precedent rather than routing through the archetype-keyed select(). */
   selectHarnessStreamExample(id: string): ScenarioSelection | undefined {

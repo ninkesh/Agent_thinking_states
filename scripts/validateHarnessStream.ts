@@ -15,34 +15,40 @@ import type { HarnessStreamEvent, HarnessTurnEventSource } from '../src/level2/h
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const FIXTURE_DIR = join(__dirname, 'fixtures/harness-stream');
+const CAPTURE_COLLECTIONS = [
+  { directory: FIXTURE_DIR, idPrefix: '' },
+  { directory: join(FIXTURE_DIR, 'tests'), idPrefix: 'test-' },
+];
 
-function loadManifest(): Record<string, string> {
-  return JSON.parse(readFileSync(join(FIXTURE_DIR, 'manifest.json'), 'utf-8'));
-}
-
-function loadTurn(id: string, prompt: string): HarnessTurnEventSource {
-  const events: HarnessStreamEvent[] = JSON.parse(readFileSync(join(FIXTURE_DIR, `${id}_events.json`), 'utf-8'));
-  return { turnId: id, prompt, events };
+function loadTurn(directory: string, id: string, prompt: string, idPrefix: string): HarnessTurnEventSource {
+  const events: HarnessStreamEvent[] = JSON.parse(readFileSync(join(directory, `${id}_events.json`), 'utf-8'));
+  const turnId = `${idPrefix}${id}`;
+  return { turnId, prompt, events };
 }
 
 function main() {
-  const manifest = loadManifest();
-  const files = readdirSync(FIXTURE_DIR).filter((f) => f.endsWith('_events.json'));
-  const ids = files.map((f) => f.replace('_events.json', '')).sort();
+  const turns = CAPTURE_COLLECTIONS.flatMap(({ directory, idPrefix }) => {
+    const manifest: Record<string, string> = JSON.parse(readFileSync(join(directory, 'manifest.json'), 'utf-8'));
+    const ids = readdirSync(directory)
+      .filter((f) => f.endsWith('_events.json'))
+      .map((f) => f.replace('_events.json', ''))
+      .sort();
+    return ids.map((id) => loadTurn(directory, id, manifest[id], idPrefix));
+  });
 
-  console.log(`\nFound ${ids.length} captured turns: ${ids.join(', ')}\n`);
+  console.log(`\nFound ${turns.length} captured turns: ${turns.map((turn) => turn.turnId).join(', ')}\n`);
   console.log('='.repeat(100));
 
   let ok = 0;
   let rejected = 0;
 
-  for (const id of ids) {
-    const prompt = manifest[id];
+  for (const turn of turns) {
+    const id = turn.turnId;
+    const prompt = turn.prompt;
     if (!prompt) {
       console.log(`\n[${id}] SKIPPED — no manifest entry for prompt`);
       continue;
     }
-    const turn = loadTurn(id, prompt);
     console.log(`\n[${id}] "${prompt.slice(0, 90)}${prompt.length > 90 ? '…' : ''}"`);
     console.log(`  raw events: ${turn.events.length}`);
 
@@ -91,7 +97,7 @@ function main() {
   }
 
   console.log('\n' + '='.repeat(100));
-  console.log(`\n${ok} usable, ${rejected} rejected, out of ${ids.length} captured turns.\n`);
+  console.log(`\n${ok} usable, ${rejected} rejected, out of ${turns.length} captured turns.\n`);
 }
 
 main();

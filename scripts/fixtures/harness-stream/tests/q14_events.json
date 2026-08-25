@@ -1,0 +1,248 @@
+[
+  {
+    "type": "turn_started"
+  },
+  {
+    "type": "insight",
+    "subtype": "guardrail_passed",
+    "label": "Guardrail passed",
+    "ts": 1787565315980,
+    "detail": "nsfw check ✓"
+  },
+  {
+    "type": "insight",
+    "subtype": "query_enriched",
+    "label": "Enrichment skipped — no prior history",
+    "ts": 1787565315981
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_selected",
+    "label": "Skills selected (1)",
+    "ts": 1787565315981,
+    "detail": "food (0.82)"
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_loaded",
+    "label": "Skills loaded (2)",
+    "ts": 1787565315984,
+    "detail": "default, food"
+  },
+  {
+    "type": "insight",
+    "subtype": "context_built",
+    "label": "Context built",
+    "ts": 1787565315984,
+    "detail": "stm=no · 0 msgs"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_start",
+    "label": "LLM started",
+    "ts": 1787565315986
+  },
+  {
+    "type": "insight",
+    "subtype": "tools_loaded",
+    "label": "Tools loaded (12)",
+    "detail": "GetRoute, GetWeather, MemoryRead, MemoryWrite, NearbyPlaces, PlaceDetails, PlaceReviews, PlaceSearch, Task, TodoWrite, WebFetch, WebSearch",
+    "ts": 1787565315988
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "user_query"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "0 / 100,000 tokens (threshold)",
+    "token_count": 0,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565316475
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Let me check your saved location so I can search the right city.",
+    "step_id": 1,
+    "names": [
+      "MemoryRead"
+    ],
+    "tools": [
+      {
+        "tool_name": "MemoryRead",
+        "user_facing_tool_label": "MemoryRead",
+        "icon": null
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → MemoryRead",
+    "ts": 1787565318258,
+    "detail": "user's city, location, where they live, home city"
+  },
+  {
+    "type": "tool_use",
+    "name": "MemoryRead",
+    "input": {
+      "query": "user's city, location, where they live, home city"
+    },
+    "tool_use_id": "97fc1d75-82c3-478e-bd7a-3e3aeacc5763"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 25,015 · out: 446",
+    "ts": 1787565318262,
+    "detail": "step 1"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 25015,
+    "output_tokens": 446,
+    "reasoning_tokens": 0,
+    "reasoning_estimated": false,
+    "cache_read_tokens": 0,
+    "text": "Tokens — in: 25,015 · out: 446"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: MemoryRead",
+    "ts": 1787565318769,
+    "detail": "77 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "MemoryRead",
+    "text": "No stored memories match 'user's city, location, where they live, home city'.",
+    "tool_use_id": "4545d8eb-0a63-45df-a83f-b2de697de738",
+    "is_error": false,
+    "llm_text": "No stored memories match 'user's city, location, where they live, home city'.",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 2",
+    "ts": 1787565318772,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "25,015 / 100,000 tokens (threshold)",
+    "token_count": 25015,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565318775
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 25,108 · out: 358 · cached: 24,800 · reasoning: 245",
+    "ts": 1787565327365,
+    "detail": "step 2"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 25108,
+    "output_tokens": 358,
+    "reasoning_tokens": 245,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24800,
+    "text": "Tokens — in: 25,108 (cache: 24,800) · out: 358 (reasoning: ~245)"
+  },
+  {
+    "type": "text_final",
+    "blocks": [
+      {
+        "type": "text",
+        "text": "I'd love to build that shortlist, but I don't have your city on file yet, and \"near me\" really depends on where you are. Which city are you in?\n\nIf you tell me the city (and a neighbourhood if you have one), I'll pull the top-rated vegetarian bibimbap spots with fresh-served bowls, ratings, localities, and price ranges."
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "I'm in Bangalore",
+          "I'm in Mumbai",
+          "I'm in Delhi NCR",
+          "I'm in Hyderabad"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "text_replace",
+    "blocks": [
+      {
+        "type": "text",
+        "text": "I'd love to build that shortlist, but I don't have your city on file yet, and \"near me\" really depends on where you are. Which city are you in?\n\nIf you tell me the city (and a neighbourhood if you have one), I'll pull the top-rated vegetarian bibimbap spots with fresh-served bowls, ratings, localities, and price ranges."
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "I'm in Bangalore",
+          "I'm in Mumbai",
+          "I'm in Delhi NCR",
+          "I'm in Hyderabad"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "completion"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_skills_used",
+    "label": "LLM used skills (1)",
+    "ts": 1787565327482,
+    "detail": "default"
+  },
+  {
+    "type": "turn_complete",
+    "turn_id": "262bcfee-247a-44de-809d-e50052e0002d",
+    "input_tokens": 50123,
+    "output_tokens": 804,
+    "reasoning_tokens": 245,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24800,
+    "latency_ms": 15815,
+    "agent_steps": 2,
+    "tool_call_count": 1,
+    "skills_loaded": [
+      "default",
+      "food"
+    ]
+  },
+  {
+    "type": "[DONE]"
+  }
+]

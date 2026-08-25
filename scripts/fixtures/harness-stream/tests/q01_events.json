@@ -1,0 +1,922 @@
+[
+  {
+    "type": "turn_started"
+  },
+  {
+    "type": "insight",
+    "subtype": "guardrail_passed",
+    "label": "Guardrail passed",
+    "ts": 1787564986689,
+    "detail": "nsfw check ✓"
+  },
+  {
+    "type": "insight",
+    "subtype": "query_enriched",
+    "label": "Enrichment skipped — no prior history",
+    "ts": 1787564986692
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_selected",
+    "label": "Skills selected (1)",
+    "ts": 1787564986692,
+    "detail": "food (0.84)"
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_loaded",
+    "label": "Skills loaded (2)",
+    "ts": 1787564986697,
+    "detail": "default, food"
+  },
+  {
+    "type": "insight",
+    "subtype": "context_built",
+    "label": "Context built",
+    "ts": 1787564986698,
+    "detail": "stm=no · 0 msgs"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_start",
+    "label": "LLM started",
+    "ts": 1787564986699
+  },
+  {
+    "type": "insight",
+    "subtype": "tools_loaded",
+    "label": "Tools loaded (12)",
+    "detail": "GetRoute, GetWeather, MemoryRead, MemoryWrite, NearbyPlaces, PlaceDetails, PlaceReviews, PlaceSearch, Task, TodoWrite, WebFetch, WebSearch",
+    "ts": 1787564986702
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "user_query"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "0 / 100,000 tokens (threshold)",
+    "token_count": 0,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787564987971
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Searching Bengaluru for Japanese restaurants known for yudofu and tofu hot pot dishes.",
+    "step_id": 1,
+    "names": [
+      "PlaceSearch"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceSearch",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787564990012,
+    "detail": "yudofu tofu hot pot Japanese restaurant Bangalore"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "yudofu tofu hot pot Japanese restaurant Bangalore",
+      "latitude": 12.9352,
+      "longitude": 77.6245,
+      "bias_radius_meters": 20000,
+      "max_results": 10
+    },
+    "tool_use_id": "e96ecb5f-f596-4c5c-9b99-58e7327ceea9"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787564990015,
+    "detail": "best Japanese restaurants Bangalore"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "best Japanese restaurants Bangalore",
+      "latitude": 12.9352,
+      "longitude": 77.6245,
+      "bias_radius_meters": 20000,
+      "min_rating": 4,
+      "max_results": 15
+    },
+    "tool_use_id": "d55ca506-c2a3-4b33-9f1d-68db1fbbe6b2"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 25,033 · out: 445",
+    "ts": 1787564990019,
+    "detail": "step 1"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 25033,
+    "output_tokens": 445,
+    "reasoning_tokens": 0,
+    "reasoning_estimated": false,
+    "cache_read_tokens": 0,
+    "text": "Tokens — in: 25,033 · out: 445"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 2 tools in parallel",
+    "ts": 1787564990020,
+    "detail": "PlaceSearch, PlaceSearch"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 2,
+    "names": [
+      "PlaceSearch",
+      "PlaceSearch"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787564990629,
+    "detail": "1916 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"yudofu tofu hot pot Japanese restaurant Bangalore\", \"total_results\": 2, \"places\": [{\"place_id\": \"ChIJ915uEXE9rjsRMMBNWIzL3vo\", \"name\": \"HOT POT\", \"formatted_address\": \"Pipeline Rd, Bahubali Nagar, Jalahalli Village, Jalahalli, Bengaluru, Karnataka 560013, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.4, \"user_rating_count\": 21, \"price_display\": \"\\u20b91\\u2013400 per person\", \"open_now\": true, \"phone\": \"\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=18077109757949100080&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 13.045264, \"longitude\": 77.5523, \"photo_url\": \"/api/photo?name=places%2FChIJ915uEXE9rjsRMMBNWIzL3vo%2Fphotos%2FAVoNoXTKN59ndau-A7dLPPTXTNnXqUd_kHmJ3Vg4n9roZuJiM1aV29otGYUxUueJKydQQ4YI_r4dXX-ZhHOjcd8Ere6GvMYIwWSd8TlGn3WlYRv_9PnSBdSUKGYMUvcqR7PZyY89sih-peZYQ7l-aotj50UkIslnGJeGIDjCY_wZCoTjrFwiUas6-q5Ljt3tku2pn9TfNpF78HfK1FGDECYN21ugEZOqrwpfpEx1DNgbRZgjhCaJLEIcpzb8L_wJ-ZoQiYSpup9cktbo7SBhgoF1bxfKyFJvNF3wfbd3vwTYNm7I82ZXDUSrtHi1Jx_XEUllMmy7FR5snxPgf1PGsf60ODWycyaVvlr4r6Fn0MBKpgCdlrpePdToSMnjD05RY0DpOCxLbwaWVExq5C52esHRHXqavGZO19yK8hkjPJymRAU&maxWidth=400\"}, {\"place_id\": \"ChIJ9SRLCwBtrjsRnywcBO22TfI\", \"name\": \"HOT POT SOUPS\", \"formatted_address\": \"1, Infosys Drive, near 7days Restaurant, Konappana Agrahara, Electronic City, Konappana Agrahara, Karnataka 560100, India\", \"types\": [\"food\", \"point_of_interest\", \"service\", \"establishment\"], \"rating\": null, \"user_rating_count\": null, \"price_display\": \"\", \"open_now\": null, \"phone\": \"\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=17459812459477740703&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.852287299999999, \"longitude\": 77.66393599999999, \"photo_url\": \"\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "6ca9c998-5c91-4d47-88e8-b5bb38932073",
+    "is_error": false,
+    "llm_text": "{\"query\": \"yudofu tofu hot pot Japanese restaurant Bangalore\", \"total_results\": 2, \"places\": [{\"place_id\": \"ChIJ915uEXE9rjsRMMBNWIzL3vo\", \"name\": \"HOT POT\", \"formatted_address\": \"Pipeline Rd, Bahubali Nagar, Jalahalli Village, Jalahalli, Bengaluru, Karnataka 560013, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.4, \"user_rating_count\": 21, \"price_display\": \"\\u20b91\\u2013400 per person\", \"open_now\": true, \"phone\": \"\", \"latitude\": 13.045264, \"longitude\": 77.5523}, {\"place_id\": \"ChIJ9SRLCwBtrjsRnywcBO22TfI\", \"name\": \"HOT POT SOUPS\", \"formatted_address\": \"1, Infosys Drive, near 7days Restaurant, Konappana Agrahara, Electronic City, Konappana Agrahara, Karnataka 560100, India\", \"types\": [\"food\", \"point_of_interest\", \"service\", \"establishment\"], \"rating\": null, \"user_rating_count\": null, \"price_display\": \"\", \"open_now\": null, \"phone\": \"\", \"latitude\": 12.852287299999999, \"longitude\": 77.66393599999999}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787564990633,
+    "detail": "12077 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"best Japanese restaurants Bangalore\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJlc4a42AXrjsRmxOvhd194fA\", \"name\": \"Kuuraku\", \"formatted_address\": \"1st Floor, Forum Rex Walk, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"japanese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 2283, \"price_display\": \"\", \"open_now\": true, \"phone\": \"095997 80020\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=17357292829246690203&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.972673499999999, \"longitude\": 77.60688209999999, \"photo_url\": \"/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXT_a4imYuWG0gHrgeKLhT-GfZE-ha_3wl8weQ3Px3g1X5y7q8_G3hwCuKnw4XMYxrPEoKdG-eFGf7TeNXkxSflwG0P3H7xG2oJ6XB71RwvTQB2UPAFaNVfQa5lVWsUeAhJkiJhioB4qVGbXDPi4c2Eo5TZ5vTBe5maZyFGbStY6-IKQZtm5AHJV-CPoJxzmonijeUfWIfGb7VC9LjdaQFVKetnCL927NCF1VcUZc9jKBl4o_CXHrEXwVYuHFyVlKgJzAY3fcchki5IHgQtak1wFnV-velaBSIVQOvFEQ4hu3rpr5S6v9B3WPZeas0pHTsEVkT-dUsqXroPiaafyv6s50Cw_QfeVxwkvKRVfn7tlcQaehhjsBF7U1G87r6eP29VZANMkdKGS-WE7FTkSWvzXcJitkWTgnnDrHc7pZ0qYIA&maxWidth=400\"}, {\"place_id\": \"ChIJF6p5B-kVrjsRJ4mSNiEGqaY\", \"name\": \"Daily Sushi - Koramangala\", \"formatted_address\": \"1st floor, 1st A Cross, 17th Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"japanese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.8, \"user_rating_count\": 2120, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"096320 54662\", \"website\": \"http://www.dailysushi.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=12009136621079398695&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.933432100000001, \"longitude\": 77.6223357, \"photo_url\": \"/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXSakU3Pm5WtDUnJkhFXY7PTy3XYJEla4mCBiw98umKvlkzuP7jfh4rR_WYEWYD6IhADM72ydrbrp-kOE0r0rComYnxuQvYuithHTaAVndPJBv_SbO_ldEyZLssRd_HLE7pbk1MM-LQ92R_v9U2pKxGfmpicpWDiv1lks34CU2rA_rvba8v41AEJG_1Ka-YDq1JRze62D61rD0Abn20dBhKvuZ96K-KfM3-ALVZd6MbBOY0V2sVuMARJDmZoou4GzlNxBJRhL5nhXF02wcH6erpJ8o-TVjxdk4aSB_u21URLsXDDYrjvsdWrMQWzMMa9Jzq6fJZXoHwS-p8_6p0MhfIdTxU5VrkhYteh5BSILtP0tTip7vH7CbfXj634gedujg66c1L4cvdfeJ8-ymONQY7o6Rn3BGL8MdQXsKJSjgKwJg&maxWidth=400\"}, {\"place_id\": \"ChIJ897J43kWrjsRwLzr4oSg67c\", \"name\": \"Shiro Bengaluru\", \"formatted_address\": \"3rd Floor, 222, Vittal Mallya Rd, KG Halli, D' Souza Layout, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"thai_restaurant\", \"sushi_restaurant\", \"asian_restaurant\", \"dim_sum_restaurant\"], \"rating\": 4.5, \"user_rating_count\": 6623, \"price_display\": \"\\u20b92000+ per person\", \"open_now\": true, \"phone\": \"080 4173 8861\", \"website\": \"https://www.instagram.com/experienceshiro/\", \"google_maps_uri\": \"https://maps.google.com/?cid=13252862821071043776&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.97185, \"longitude\": 77.5966162, \"photo_url\": \"/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXRxy-ghoUzgvbx5TcbEKlyo6ClOk4ik3l1SpK7vaxlO1wOmfamWcXx8-QR_4cwjt9TWoCMV8FU3ggjSNqSNVIBP_dkWdu850LKIZlcHB5siFe-BcmjVy1GUxX3Arw4rtgtaBhMExTeanCaTR6G8onrPUHPU4_ZVYUrz_fkJMpOM-8b8sZ50ALZz3N1RPg2-PBTF6A9_hkHI1UaT23h_lrnlYYG_OBtMomGgOO97Bu0y-r9-4cwNVep-QZxlrXVhkdsu5k4CQ0GKaAB7KErx7R7Ga_53tYVL7FQ2g8yCKIfZP62Z4jcZFGEOqeggnakQay4aoZHUCTXutR3lUO44E0W6r_65wk4CvKqHWaKMh8IrphQ9pgFZqBlZFruLEC1vv2B-ie6YOmnleuVWl0n0JHAw7Vaj_pUmTIxoX97V1hv7WSPR&maxWidth=400\"}, {\"place_id\": \"ChIJ4QY9Z4AWrjsRf6mf78tXvfM\", \"name\": \"Azuki Japan Travel Bistro and Sake\", \"formatted_address\": \"11/1, Alfred St, behind Baldwin Boys High school back gate, Richmond Town, Bengaluru, Karnataka 560025, India\", \"types\": [\"candy_store\", \"confectionery\", \"food_store\", \"japanese_restaurant\"], \"rating\": 4.5, \"user_rating_count\": 1952, \"price_display\": \"\", \"open_now\": false, \"phone\": \"080 4121 4342\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=17563290655224998271&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9612912, \"longitude\": 77.6047712, \"photo_url\": \"/api/photo?name=places%2FChIJ4QY9Z4AWrjsRf6mf78tXvfM%2Fphotos%2FAVoNoXQdo1kIp5VpdMjBgvtzp5yUhbJ7AV8otZgf2YWM_zGAtZrRxAwLVI7fy4z0cgCRMink_ncAO7-UndLmILqt59MG7XDlFkfosGpmkn7X4DzMVY-xAPXDJf4VouWRS3lsbaUVrMaXxYZVrz_E0wW2Fww_-RY485J051o_QE4bXzuBd7CmdWVwHY1i1yZJV4nHRhgRoQTAYsic8Oi2CfPj6My5nPz_fZkDiP2k2YItfqNzTr3pW1DYUM-_oqiy7hfP3QtsVkqd1eytYpngdnL0Ex-JFTqvqEl-Jsr7TIXcz7ckGeHNMZVrM_BtEeHQTxl8-f-_OldYaoYyaoceCA54q4jANtMwmhdoJtu0piXmGTJ9j4O98KJD9eyQQArQGt_D3r36lLW5LRRSGQ_mtM8TECho7o2Exz9YaG1ljSm7S5iKJofT&maxWidth=400\"}, {\"place_id\": \"ChIJU8jftUkXrjsR7iMxgLW5Wuc\", \"name\": \"EBISU Fine Japanese Cuisine\", \"formatted_address\": \"EBISU, No. 171-172, Unit No. 203, Second Floor, FORUM REX WALK, Brigade Road, Shanthalanagar, Bengaluru - 560001, Shanthinagara, B.B, M.P East, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"japanese_restaurant\", \"ramen_restaurant\", \"sushi_restaurant\", \"deli\"], \"rating\": 4.7, \"user_rating_count\": 392, \"price_display\": \"\\u20b92000+ per person\", \"open_now\": false, \"phone\": \"\", \"website\": \"https://www.ebisurestaurant.in/reservations\", \"google_maps_uri\": \"https://maps.google.com/?cid=16670841159856235502&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.972697799999999, \"longitude\": 77.6067369, \"photo_url\": \"/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXSIusLs2stiC1k5NJuRhw47wknFrx-R6Pa9T4ToVZ6s3mtdaSTOjf2qr05vIblVfvDqREADpO2h85eZaU-zcT8BxsdfNVlmUAOs1OyWpvlyIqE5BcdptS0ro8Rcyzrh9w3sHYNmdR7xkdn0yA8LSuCk5l6-S20ti9i-WGh4ggmQfo1C3jf--v-gsGy82Xm9u-CEacz0LysiM8yq4_D1oFTPzGbkFR2SsBhB6IRINg9Nc1KUQQYwZyZRDAW-_5tlTyIMlRVUMPrHC2uv0SWGDaTNYf0Zg-4ON4ReAFNFPm6Mv9e3147fSBik53WAxevkVqOf7QmRHP__r-ZMpLoKlinb0jIVuk6Qa47Qor4xwiIubbbIBCk55FeCBEiWjCw5PreNqbvyjm9x2a3II9KM1Ykqnm7cKDut7PlztW-WyFQZ7bhWLml263-Co1qQGOVu&maxWidth=400\"}, {\"place_id\": \"ChIJ-_FswFcVrjsRXts7ANneoIA\", \"name\": \"Yuki - Brewhouse and Kitchen | Koramangala\", \"formatted_address\": \"A/4, 3rd Floor, 100 Feet Rd, KHB Block Koramangala, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"asian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 2364, \"price_display\": \"\\u20b9800\\u20132000 per person\", \"open_now\": true, \"phone\": \"089517 65556\", \"website\": \"https://yukipanasian.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=9268653056721673054&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9342273, \"longitude\": 77.6232947, \"photo_url\": \"/api/photo?name=places%2FChIJ-_FswFcVrjsRXts7ANneoIA%2Fphotos%2FAVoNoXSiDwjlg0hUAM0daPsrQ-VeEaRvRD7WvAD8B9aGKB6KQPmRbNsp541F2uLXIIfratc-nMlw9xdkrq9LAwSOh2CNcPPe281MHPA-j33fQnsLVYFqWVXWFzu4uEmDPbE_upXj9GHFUYwi_rCF-CHMlaQNxy9DwNTOKms-YygWusP_qOr378R8-lFguQl_txwys6IjvzCivsDgCjhVxvyI7YaRrgZTQR7ujDiHrqAB6W16snRwl3vp39tRuad2PkqeIu1460cuSI_BUMhB5ehU28X3RrOxnjV4HEhrCjzJ5Ic-1sojK3M0wnZWU4x75Dd3AceD3JaVeyxoQuQjVnhlJvxkWOW4jD3zPsQqdBi76a5ZbMBPCEyH8T6ep7tl0iYbfAad7Qu9Jlb7Yu698_0dC9K2_cF2BhRuYdwpG8pECjDBKQeY&maxWidth=400\"}, {\"place_id\": \"ChIJwV40o14VrjsRJC12LzrC0Rs\", \"name\": \"Shokudo - Jayanagar\", \"formatted_address\": \"Shokudo Restaurant, 670, 1st Floor, 11th, Aurobindo Marg, 4th Block, Jayanagar, Bengaluru, Karnataka 560041, India\", \"types\": [\"thai_restaurant\", \"japanese_restaurant\", \"korean_restaurant\", \"restaurant\"], \"rating\": 4.6, \"user_rating_count\": 6856, \"price_display\": \"\", \"open_now\": true, \"phone\": \"070190 13088\", \"website\": \"https://shokudo.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=2004596864316747044&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.924548099999999, \"longitude\": 77.5858387, \"photo_url\": \"/api/photo?name=places%2FChIJwV40o14VrjsRJC12LzrC0Rs%2Fphotos%2FAVoNoXTxx2m9jnfPtMVyiaFxQ0uRK_J1sMTKEMrN7J8vM0xJysRcncWYdDGJ88Ql7-eXlgPU5T0Tka9kUdzh7KN1tvioR99bcsnOv4ZOyfa9Sd0_3Yh1kV5l2ilML9hF7K6kuN40Q9a2gQqGZO1LsUXoR9D1kto5vJJwF2KNwWfIESGK_fi-V3rnJHTln20arI7G2Bu73mc-2RG-Y86qMgGP-gKyHqGN4UbMtNZ-Sjn4WyMZq1r-AQ_MQJuEpZE55T6LiJpFY07Ixwg44mX5k37IhuFBQ3LcuLRZbFix5_db5Qe_qwBOOWIz06_Vy4VpXdPMCfEK1OQiTqK-LgLMkdkIUzQpjub7U7X8qBzTmAKI7mU6ioQgECjlEGLRYzJHCWdsH11YTc81Av9Y6u87KXf-WIddBJUEBNTEk-EH9jvm45EX9axxfoL33DSDSN_XnNMd&maxWidth=400\"}, {\"place_id\": \"ChIJFwEGnXgWrjsRLXLUNIizrOU\", \"name\": \"Harima Japanese Restaurant\", \"formatted_address\": \"4th Floor, Devatha Plaza, 131, Residency Rd, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560025, India\", \"types\": [\"japanese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.3, \"user_rating_count\": 2328, \"price_display\": \"\", \"open_now\": true, \"phone\": \"080 4132 5757\", \"website\": \"http://harima.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=16549800128262992429&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9674947, \"longitude\": 77.5999755, \"photo_url\": \"/api/photo?name=places%2FChIJFwEGnXgWrjsRLXLUNIizrOU%2Fphotos%2FAVoNoXSKnxAH5sYP1oIAzkXebl7PGQK28ePizw_TcxK0tBzaFdRuCMNsPxbwMxoftHzzifDUoDdJ_eO5pDch_nhYT8O9vA0UzK70xOasfytBsgL0zdZ0HxwRfR9ZpL4bqQpSyGOh-TKOANL7DOdZyugaa_JEaN3SQoBlVBA6-_KuvApfHq6it_Fhf4qzTEsEevHAu_YXLJ6t2pkTrBhd8KvhcSEcXDP8cocscCMAO-C6tKknGLNHinP_CuXq8JRd4v5yemg8-mHQSiQ_LVJ0g1tBUIVt13oJvObI6sGo8iSydFNgddT0KSpL93agFgM9eMzsueXu-hoHRcRcn3rFu5tL6kFiT-r5YVxJwe5phHlwn0Hw2KgJIGrrU1WI7DeRphQsYVkxhJdPEo48SOK1rle3xvonVOITG_6Qs2GVtVoQyVn1_e4&maxWidth=400\"}, {\"place_id\": \"ChIJCX6MvmwVrjsRYJRBPVVJeyk\", \"name\": \"Yuki - Pan Asian Kitchen and Bar | JP Nagar\", \"formatted_address\": \"No. 3, First Floor, 15th Cross Road, Outer Ring Rd, 5th Phase, J P Nagar Phase 5, J. P. Nagar, Bengaluru, Karnataka 560078, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.5, \"user_rating_count\": 2944, \"price_display\": \"\", \"open_now\": true, \"phone\": \"090357 90168\", \"website\": \"https://www.zomato.com/bangalore/yuki-whitefield-bangalore\", \"google_maps_uri\": \"https://maps.google.com/?cid=2989063408139211872&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9061272, \"longitude\": 77.5897619, \"photo_url\": \"/api/photo?name=places%2FChIJCX6MvmwVrjsRYJRBPVVJeyk%2Fphotos%2FAVoNoXQMntnu8s4sb9kmb1LMDidZNoXJ-InlXRARtSFBXdpgtkp99xVZMvUL2aOHOnRbUNtXW7swgM7xuwwxSOhpvot4NF7cSlhxj0-zcj1hV6bCoO5M0AfFjqWhaL_OXdWNFi5HYFGPtW3YF0KKrBmwQElePcWrtE7ywqGcfq42xMaqgVFXinmkuZv3QKPjNr2hpUV56Eb1iqj1512WTqkXcKRntOMbsmuQOW-7e2jECLDFuBujumKqLFTgn1Ygcn3TRRGtkGwgjeRXGGl6fJcycnF3ICFV7-Vx0L1TgtrnpOCfurMNVJQXnF3bCgyH4ipkMwvRxE8X8NiDeYSaIa1a-SFCaeFq95Qph3qKjR_-fodI42DTCIH8Hc2iIev_2pSCE88oehT8J6RBYHg54LhJqr9EaO75J70nhwEAhcJfNbRFJA&maxWidth=400\"}, {\"place_id\": \"ChIJB5X5zngXrjsRrsj2foOpWzg\", \"name\": \"Lucky Chan\", \"formatted_address\": \"594, 12th Main Rd, 2nd Stage, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560008, India\", \"types\": [\"japanese_restaurant\", \"sushi_restaurant\", \"dim_sum_restaurant\", \"cantonese_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 4028, \"price_display\": \"\", \"open_now\": true, \"phone\": \"082960 31044\", \"website\": \"https://luckychan.dotpe.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=4061025871240546478&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.970405699999999, \"longitude\": 77.642764, \"photo_url\": \"/api/photo?name=places%2FChIJB5X5zngXrjsRrsj2foOpWzg%2Fphotos%2FAVoNoXRkfwNAV24Gz56RAfIm1qSYRwVxKkFlrsQWOQHb8pyz_HKuHAh1SW3j5ExA48NoLhCQJTe7klOsdMxCvw54gNzTyRqdhI5AFclB8tns5KrxlcGVmYpTnCJMm5wzNhf_3sHiWZLmKdgG7Atmsr8BRrD4X6IIk9u9mlY2FdEwTpmSOTu5Cr0BSGiquOrp4VtwABj3ifiTy5SeIvrTyI0kCTXd5zwitPFR1B5YpKWQ3M7Oq0zneCMeoMig_beL71tRH5oJkK6AxbzEob3Hapl-Kk87_duwHkW_ImcKU0F0moijtmo66wl587YabAxpk2vy3rB-CdkFX27ACKwoXvclamwHCw9UlFI0-u3OHVIf9jAoOj8h3Dn8XBTXXWUha4q8VvvYrFQqqTwZg19F8C9IKa7aB4BVNPCwmD8-KQzKfkh8etIRxsFpe8C4PM4_Xg&maxWidth=400\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "10886ada-b5e1-4442-93ab-897f32d708eb",
+    "is_error": false,
+    "llm_text": "{\"query\": \"best Japanese restaurants Bangalore\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJlc4a42AXrjsRmxOvhd194fA\", \"name\": \"Kuuraku\", \"formatted_address\": \"1st Floor, Forum Rex Walk, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"japanese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 2283, \"price_display\": \"\", \"open_now\": true, \"phone\": \"095997 80020\", \"latitude\": 12.972673499999999, \"longitude\": 77.60688209999999}, {\"place_id\": \"ChIJF6p5B-kVrjsRJ4mSNiEGqaY\", \"name\": \"Daily Sushi - Koramangala\", \"formatted_address\": \"1st floor, 1st A Cross, 17th Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"japanese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.8, \"user_rating_count\": 2120, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"096320 54662\", \"latitude\": 12.933432100000001, \"longitude\": 77.6223357}, {\"place_id\": \"ChIJ897J43kWrjsRwLzr4oSg67c\", \"name\": \"Shiro Bengaluru\", \"formatted_address\": \"3rd Floor, 222, Vittal Mallya Rd, KG Halli, D' Souza Layout, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"thai_restaurant\", \"sushi_restaurant\", \"asian_restaurant\", \"dim_sum_restaurant\"], \"rating\": 4.5, \"user_rating_count\": 6623, \"price_display\": \"\\u20b92000+ per person\", \"open_now\": true, \"phone\": \"080 4173 8861\", \"latitude\": 12.97185, \"longitude\": 77.5966162}, {\"place_id\": \"ChIJ4QY9Z4AWrjsRf6mf78tXvfM\", \"name\": \"Azuki Japan Travel Bistro and Sake\", \"formatted_address\": \"11/1, Alfred St, behind Baldwin Boys High school back gate, Richmond Town, Bengaluru, Karnataka 560025, India\", \"types\": [\"candy_store\", \"confectionery\", \"food_store\", \"japanese_restaurant\"], \"rating\": 4.5, \"user_rating_count\": 1952, \"price_display\": \"\", \"open_now\": false, \"phone\": \"080 4121 4342\", \"latitude\": 12.9612912, \"longitude\": 77.6047712}, {\"place_id\": \"ChIJU8jftUkXrjsR7iMxgLW5Wuc\", \"name\": \"EBISU Fine Japanese Cuisine\", \"formatted_address\": \"EBISU, No. 171-172, Unit No. 203, Second Floor, FORUM REX WALK, Brigade Road, Shanthalanagar, Bengaluru - 560001, Shanthinagara, B.B, M.P East, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"japanese_restaurant\", \"ramen_restaurant\", \"sushi_restaurant\", \"deli\"], \"rating\": 4.7, \"user_rating_count\": 392, \"price_display\": \"\\u20b92000+ per person\", \"open_now\": false, \"phone\": \"\", \"latitude\": 12.972697799999999, \"longitude\": 77.6067369}, {\"place_id\": \"ChIJ-_FswFcVrjsRXts7ANneoIA\", \"name\": \"Yuki - Brewhouse and Kitchen | Koramangala\", \"formatted_address\": \"A/4, 3rd Floor, 100 Feet Rd, KHB Block Koramangala, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"asian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 2364, \"price_display\": \"\\u20b9800\\u20132000 per person\", \"open_now\": true, \"phone\": \"089517 65556\", \"latitude\": 12.9342273, \"longitude\": 77.6232947}, {\"place_id\": \"ChIJwV40o14VrjsRJC12LzrC0Rs\", \"name\": \"Shokudo - Jayanagar\", \"formatted_address\": \"Shokudo Restaurant, 670, 1st Floor, 11th, Aurobindo Marg, 4th Block, Jayanagar, Bengaluru, Karnataka 560041, India\", \"types\": [\"thai_restaurant\", \"japanese_restaurant\", \"korean_restaurant\", \"restaurant\"], \"rating\": 4.6, \"user_rating_count\": 6856, \"price_display\": \"\", \"open_now\": true, \"phone\": \"070190 13088\", \"latitude\": 12.924548099999999, \"longitude\": 77.5858387}, {\"place_id\": \"ChIJFwEGnXgWrjsRLXLUNIizrOU\", \"name\": \"Harima Japanese Restaurant\", \"formatted_address\": \"4th Floor, Devatha Plaza, 131, Residency Rd, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560025, India\", \"types\": [\"japanese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.3, \"user_rating_count\": 2328, \"price_display\": \"\", \"open_now\": true, \"phone\": \"080 4132 5757\", \"latitude\": 12.9674947, \"longitude\": 77.5999755}, {\"place_id\": \"ChIJCX6MvmwVrjsRYJRBPVVJeyk\", \"name\": \"Yuki - Pan Asian Kitchen and Bar | JP Nagar\", \"formatted_address\": \"No. 3, First Floor, 15th Cross Road, Outer Ring Rd, 5th Phase, J P Nagar Phase 5, J. P. Nagar, Bengaluru, Karnataka 560078, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.5, \"user_rating_count\": 2944, \"price_display\": \"\", \"open_now\": true, \"phone\": \"090357 90168\", \"latitude\": 12.9061272, \"longitude\": 77.5897619}, {\"place_id\": \"ChIJB5X5zngXrjsRrsj2foOpWzg\", \"name\": \"Lucky Chan\", \"formatted_address\": \"594, 12th Main Rd, 2nd Stage, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560008, India\", \"types\": [\"japanese_restaurant\", \"sushi_restaurant\", \"dim_sum_restaurant\", \"cantonese_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 4028, \"price_display\": \"\", \"open_now\": true, \"phone\": \"082960 31044\", \"latitude\": 12.970405699999999, \"longitude\": 77.642764}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 2",
+    "ts": 1787564990637,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "25,033 / 100,000 tokens (threshold)",
+    "token_count": 25033,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787564990641
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Pulling details on the top-rated Japanese spots to check hours and tofu dishes.",
+    "step_id": 2,
+    "names": [
+      "PlaceDetails"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceDetails",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787564999585,
+    "detail": "ChIJU8jftUkXrjsR7iMxgLW5Wuc"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJU8jftUkXrjsR7iMxgLW5Wuc"
+    },
+    "tool_use_id": "297c7fc1-033b-43bf-ac25-2346c4251710"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787564999587,
+    "detail": "ChIJlc4a42AXrjsRmxOvhd194fA"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJlc4a42AXrjsRmxOvhd194fA"
+    },
+    "tool_use_id": "3698e197-382a-4516-8ea9-efd371b03502"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787564999588,
+    "detail": "ChIJF6p5B-kVrjsRJ4mSNiEGqaY"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJF6p5B-kVrjsRJ4mSNiEGqaY"
+    },
+    "tool_use_id": "de4c61a4-529f-43dd-8eec-4b063a257c70"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787564999590,
+    "detail": "ChIJ897J43kWrjsRwLzr4oSg67c"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJ897J43kWrjsRwLzr4oSg67c"
+    },
+    "tool_use_id": "da11792b-f7eb-43bf-b9c5-c21b5b776257"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 27,697 · out: 378 · cached: 24,800 · reasoning: 169",
+    "ts": 1787564999592,
+    "detail": "step 2"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 27697,
+    "output_tokens": 378,
+    "reasoning_tokens": 169,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24800,
+    "text": "Tokens — in: 27,697 (cache: 24,800) · out: 378 (reasoning: ~169)"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 4 tools in parallel",
+    "ts": 1787564999593,
+    "detail": "PlaceDetails, PlaceDetails, PlaceDetails, PlaceDetails"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 4,
+    "names": [
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565000101,
+    "detail": "5066 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJU8jftUkXrjsR7iMxgLW5Wuc\", \"name\": \"EBISU Fine Japanese Cuisine\", \"formatted_address\": \"EBISU, No. 171-172, Unit No. 203, Second Floor, FORUM REX WALK, Brigade Road, Shanthalanagar, Bengaluru - 560001, Shanthinagara, B.B, M.P East, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"japanese_restaurant\", \"japanese_curry_restaurant\", \"deli\", \"ramen_restaurant\", \"sushi_restaurant\", \"food_store\"], \"rating\": 4.7, \"user_rating_count\": 392, \"price_display\": \"\\u20b92000+ per person\", \"phone\": \"\", \"website\": \"https://www.ebisurestaurant.in/reservations\", \"google_maps_uri\": \"https://maps.google.com/?cid=16670841159856235502&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u20093:00\\u202fPM, 6:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u20093:00\\u202fPM, 6:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u20093:00\\u202fPM, 6:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u20093:00\\u202fPM, 6:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u20093:00\\u202fPM, 6:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"open_now\": false, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Nikhat Khurasani\", \"rating\": 5, \"text\": \"Loved the experience, the food was phenomenal and staff were very sweet. Do visit this restaurant it\\u2019s worth it. Also huge shout out to CP he helped us a lot and recommended us really good food \\ud83e\\udd7a\\ud83e\\ude77\", \"published\": \"2 months ago\"}, {\"author\": \"Ramya Giddaluru\", \"rating\": 5, \"text\": \"Had a wonderful dining experience! The food was excellent - especially the sushi rolls and the curry udon, both absolutely delicious. A special thanks to Poornima for her warm hospitality and attentive service throughout. Highly recommend!\", \"published\": \"3 months ago\"}, {\"author\": \"Keertana Chandolu\", \"rating\": 5, \"text\": \"Great atmosphere. Food was decent.\\nCP and staff were friendly. Thanks for the complimentary desert.\", \"published\": \"a month ago\"}, {\"author\": \"Shaambhavi Bharadwaj\", \"rating\": 5, \"text\": \"It was an amazing culinary experience! The food was brilliant but the service and atmosphere was even better. All the staff\\u2019s energy, especially CP\\u2019s really topped it all off! Will definitely be back!\", \"published\": \"3 months ago\"}, {\"author\": \"Balaji Ramachandran\", \"rating\": 5, \"text\": \"Fantastic Japanese food.\\n\\nWe had the asparagus tempura sushi rolls, Agadashi tofu, shio ramen and sesame ramen. They were all excellent. The wasabi definitely tastes real. And the food is full of flavor.\\n\\nThe ambience is nice. The tatami mats have space to dangle your legs and the music playing is old timey saxophone.\\n\\nWould definitely recommend visiting\", \"published\": \"a month ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXQtbzYRMSm7SeYn0sAIyOT-ZLef4NocbDGpaXQffyOQTFb17QlOtAWk09aXJbsthqIgwJbYYl8L157McgJHOHWQmWT7rnpyOtWhitdnmX522MkVIKHQ5EZbMx7zWOOGcI1kFaI2GJj5-RP8xIWwiZxjVEZlNbB98aC_PVN-9dAeyJSnD6oX-xMJ0zCUHhLmULH_4qeOJFkNuZEwjIdjKPKUvlx1QlgAcXfyNoaA34YadL85f7R-SC-RyoH17jAqN-alBREQtJZ54MXO9LnD8rkPNJ_Wlf4i0XKWLMxwcuJyTeO8g2eWIeyLnoAjlitV-Vk1p0kxbhnyd72h6Agy-alg__VBP2HkMVGcLcko845dye6LWREOc9QbMuFl__obNS0kw3ESj9-r6E_IeiJmV3dXMfFi_-2xs6B2KQODxuGRRD7DFeAr0RgSTgPy_k3k&maxWidth=600\", \"/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXTwqkeVrrDBp5g4041KfFJU0_3GsPTZ4-1SVYqH9UJjHh7-Km6S4avEqgNki3ePLrGINx8Ld1j5HfSpfutHlqxIErf1QhIfgYekQBfJp0t4l6QmZq3IdYDLvvIop7ko3ijHP8DSss51QYDyM59-LWJo3JIezy92pS9mcqmYppaq7KJEfeif34Kjir6zdtAj3Ja3q8wrPogDW80qT9dotJGHSuguPUU9YBLzcvZMjeSgBxUWFBAm2mIvCln87kGQseZiwHiYkjLxkMFx5PT2Wn25d0uHC09XTWKAuiX-s4BsnFgRpLqodzi4SXcR16UR4TUsyYyIFjNGIcdlxz7HuP9pZKgOAII-PmNnqa2hYVoWnM_Oo-IXMT-GRIk0f6Sl3SABMn_RgUfRc28WLXXfXuJKGCZn0X1zqTQJLW6EPuvr4HDbRNwkzD8U_vcxoA&maxWidth=600\", \"/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXRbFvQKjh6LNz7K67cSJfrfwu9c5XIzwgkJEk1w6LyKdo6UY9MQ5n9TNePfPrQ_L8Gb-CBAGpQHnEra2GuGtLxb3HEWuUiAEQRtSlFMv3SjyEvBdlwPXwjRotLGeI6NiUTk9XkaYym9kLe1rr8WCWGtfoRZuaUXrZYpGqvKOe4w_Nh3fzcz3VRbbbuoPDF_G19kYjQ9DMhmgUnyCsRtMs9o9pYKFM9-xQgX64LRquztrgL69zQXkEnQHkW6WuVdzHCcUroZZLe4fDDN4vKfwxLAQDvnjSsLycLEtcboySuqXbSWoffSgsSexiBaKnjANRADKR3KYCc8yoFs_iHXoP1psD1m023bNMuMwbtGXpsMDtPnl5IPDauTM2vAKTALDYUfNWh34pzHAxdO2YUNp_WfNP-qsHLr5sBY61gIH-OH28JgysnELcwZbwA9nF0c&maxWidth=600\", \"/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXR3m1QToCChQ89QvySXuBoeaLKf-WVwKGo7554rr9kT4jHPmRfs5iZZDwVFc0yEICMEdgl45y8tahm46R0LsAYWM4DGsTVLPzxbkRtT67PtFwcNzLP7A2qT5hwzsBJ_8-EKtlnevAMmeJLhmzGZD6fCE6IIVNQVoJu5Wzn1SlBBVdMumNkl7BVEQw9luc2kLs5njvLDad9cXuy4ZI74ya1MHin3l_Pjo5LcP1w8ek0q7vtUFYpROrOgidi5quejVxiONxT8jSxOuzRLDr_QMNKQT0AxX_M_yaFaHFhBdS3Ltl-kf10RpTATc9Lt1F6zE8RzWSz5nxvvT5jlNzf4nv9KmxxrP5GIeM4Y9zplL-pUNxUjv8R9zl8mv9IW-YZU7JfcSjwpuTxF0Qw3W3zjlPVXsN-xn7A-Lr-FdzpgXP3DTzbqDlp5Fp49vhmaJaXQ&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "d435d22c-ad4d-4587-af51-b556e74b24ee",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJU8jftUkXrjsR7iMxgLW5Wuc\", \"name\": \"EBISU Fine Japanese Cuisine\", \"formatted_address\": \"EBISU, No. 171-172, Unit No. 203, Second Floor, FORUM REX WALK, Brigade Road, Shanthalanagar, Bengaluru - 560001, Shanthinagara, B.B, M.P East, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"japanese_restaurant\", \"japanese_curry_restaurant\", \"deli\", \"ramen_restaurant\", \"sushi_restaurant\", \"food_store\"], \"rating\": 4.7, \"website\": \"https://www.ebisurestaurant.in/reservations\", \"open_now\": false, \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u20093:00\\u202fPM, 6:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u20093:00\\u202fPM, 6:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u20093:00\\u202fPM, 6:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u20093:00\\u202fPM, 6:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u20093:00\\u202fPM, 6:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"Loved the experience, the food was phenomenal and staff were very sweet. Do visit this restaurant it\\u2019s worth it. Also huge shout out to CP he helped us a lot and recommended us really good food \\ud83e\\udd7a\\ud83e\\ude77\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"Had a wonderful dining experience! The food was excellent - especially the sushi rolls and the curry udon, both absolutely delicious. A special thanks to Poornima for her warm hospitality and attentive service throughout. Highly recommend!\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Great atmosphere. Food was decent.\\nCP and staff were friendly. Thanks for the complimentary desert.\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"It was an amazing culinary experience! The food was brilliant but the service and atmosphere was even better. All the staff\\u2019s energy, especially CP\\u2019s really topped it all off! Will definitely be back!\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Fantastic Japanese food.\\n\\nWe had the asparagus tempura sushi rolls, Agadashi tofu, shio ramen and sesame ramen. They were all excellent. The wasabi definitely tastes real. And the food is full of flavor.\\n\\nThe ambience is nice. The tatami mats have space to dangle your legs and the music playing is old timey saxophone.\\n\\nWould definitely recommend visiting\", \"published\": \"a month ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565000107,
+    "detail": "10213 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJlc4a42AXrjsRmxOvhd194fA\", \"name\": \"Kuuraku\", \"formatted_address\": \"1st Floor, Forum Rex Walk, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"japanese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"user_rating_count\": 2283, \"price_display\": \"\", \"phone\": \"095997 80020\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=17357292829246690203&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Charan Shetty\", \"rating\": 4, \"text\": \"I visited Kuuraku on a Friday afternoon to try their ramen, and getting a table was surprisingly easy. I had made a reservation, but it looked like there was plenty of space for walk ins as well. This was also my first time trying ramen in India after having it across several Southeast Asian countries, so I was quite curious to see how it compared.\\n\\nI ordered the Signature Chicken Ramen (\\u20b9800+) and the Prawn Sushi (\\u20b9800+). The sushi was easily the highlight of the meal, fresh, well balanced, and something I would happily order again. The ramen, however, was a mixed experience. The broth initially reminded me more of a local chicken curry than the rich, comforting flavour I usually associate with ramen. Interestingly, the taste did grow on me as I continued eating, but it still fell short of my expectations overall. A nice little touch I appreciated was that each plate comes with a motivational quote printed on it, adding a bit of personality to the dining experience.\\n\\nThe restaurant is located on the first floor of Rex Walk. There is some construction happening near the lift exit, and I was surprised there weren\\u2019t any direction signs to guide customers to the restaurant. The staff\\u2019s enthusiastic Japanese greetings can also feel a bit overwhelming at first, almost as loud and energetic as a busy Shivajinagar market. Once you get past that, though, the restaurant has a pleasant atmosphere.\\n\\nThey also offer a vegetarian ramen option, and the restaurant is wheelchair friendly, which is always good to see. While the ramen wasn\\u2019t quite what I had hoped for, the sushi, comfortable setting, and thoughtful little details made it a worthwhile visit. If you\\u2019re planning to stop by, I\\u2019d recommend going in with an open mind and definitely giving the sushi a try.\", \"published\": \"a month ago\"}, {\"author\": \"Mary Jude\", \"rating\": 5, \"text\": \"Had an amazing evening at Kuuraku inside Forum Rex Walk. The ambience perfectly blends authentic Japanese izakaya vibes with the modern energy of Bangalore nightlife. Warm lantern lighting, wooden interiors, the live kitchen setup, and the aroma of grilled yakitori instantly transport you to a cozy street-side ramen bar in Tokyo.\\n\\nThe atmosphere feels lively yet intimate \\u2014 perfect for date nights, casual hangouts, or even solo ramen cravings. Watching the chefs prepare fresh ramen and skewers right in front of you adds a unique charm to the experience. The mango beer was refreshing, fruity, and paired beautifully with the rich, flavorful ramen.\\n\\nWhat makes the place special is the attention to detail \\u2014 from Japanese d\\u00e9cor and welcoming staff to the buzzing crowd and comforting food. If you love authentic Japanese food with a vibrant city ambience, this spot is definitely worth visiting. \\ud83c\\udf5c\\ud83c\\udf7a\\u2728\", \"published\": \"3 months ago\"}, {\"author\": \"Nigunkumar M.K\", \"rating\": 5, \"text\": \"I recently dined at Kuuraku and honestly, it turned out to be one of the most satisfying Japanese meals I\\u2019ve had in a while.\\n\\nWe tried quite a few dishes, and every single one was impressive. The Kuuraku Signature Ramen was rich, flavorful, and perfectly comforting \\u2014 easily the highlight of the meal. The Age Gyoza had a great crispy texture with a juicy filling, and the Chicken Nanban was absolutely delicious with its balance of tangy and creamy flavors.\\n\\nWe also ordered the Garlic Mayo Yaki and Teriyaki Mayo, and both were packed with flavor \\u2014 especially if you enjoy that indulgent mayo-based Japanese twist. Nothing felt average; each dish had its own standout taste and was well-executed.\\n\\nThe ambience was warm and inviting, with a nice Japanese izakaya-style vibe. Service was prompt and friendly, and the staff were attentive without being overbearing.\\n\\nOverall, everything we tried was genuinely \\u201cdamn good.\\u201d Definitely a place I\\u2019d come back to, especially for the ramen and gyoza. Highly recommend for anyone craving authentic, flavorful Japanese food.\", \"published\": \"4 months ago\"}, {\"author\": \"Bhuvanya Sridhar\", \"rating\": 4, \"text\": \"Kuuraku is one of the better places for Japanese cuisine in Bangalore, especially if you enjoy a wide variety of starters. They have an extensive starter menu, and that\\u2019s definitely their strongest point.\\n\\nI personally loved the Chicken Spring Roll Sushi (5/5) and Kuuraku Yaki (chicken starter) (5/5) \\u2014 both were really flavourful and well done. The Spicy Chicken Roll Sushi (5/5) was another highlight.\\n\\nFor the mains, I tried the Miso Butter Ramen, which I\\u2019d rate around 3.5/5. It was decent, but having tried ramen at other places, I feel this could be improved. Overall, the ramen options didn\\u2019t stand out as much as the starters.\\n\\nHere\\u2019s a quick rating of everything I tried:\\n\\u2022\\tKuuraku Yaki \\u2013 4/5\\n\\u2022\\tKuuraku Signature Ramen (Pork) \\u2013 2/5\\n\\u2022\\tButabara \\u2013 3/5\\n\\u2022\\tMushroom Cheese \\u2013 3.5/5\\n\\u2022\\tSpicy Chicken Roll Sushi \\u2013 5/5\\n\\u2022\\tTeppan Gyoza \\u2013 2/5\\n\\u2022\\tTori no Karaage \\u2013 3/5\\n\\u2022\\tMiso Butter Ramen \\u2013 2/5\\n\\u2022\\tDorayaki (Dessert) \\u2013 2/5\\n\\u2022\\tStamina Don \\u2013 3/5\\n\\u2022\\tYuzu Passion Spritz \\u2013 3/5\\n\\u2022\\tSweet Line Beer \\u2013 3/5\\n\\nOverall, I\\u2019d recommend this place if you\\u2019re looking for a good Japanese dining experience, especially for their starters.\", \"published\": \"5 months ago\"}, {\"author\": \"Abhijit Moon\", \"rating\": 5, \"text\": \"Kuuraku was a really enjoyable experience, especially if you\\u2019re looking to try authentic Japanese flavours in a lively setting.\\n\\nWe tried quite a variety of dishes including Tori-no-karaage, teppan gyoza, crunchy ebi roll, and Kuuraku ramen (chicken). The starters were definitely the highlight, the karaage was crispy and flavourful, and the gyoza was nicely done with a good balance of filling and texture. The crunchy ebi roll was fresh and had a great mix of crunch and flavour. This matches what many people say about the place, that the starters and sushi-style items are where they really shine.\\n\\nThe ramen was good and comforting, though not the standout compared to the starters, which seems to be a common sentiment as well.\\n\\nFor drinks, we went with virgin mojito, passion orange, and even tried coke beer, which honestly felt like a slightly unusual combination, but still fun to experiment with. Some reviews also mention that drinks can be a bit hit or miss depending on what you choose, so it\\u2019s worth exploring.\\n\\nThe ambience is cozy and energetic, but the place does get quite busy, so expect some waiting or slightly slower service during peak hours.\\n\\nOverall, a great place for Japanese food with strong starters, a fun vibe, and a menu that encourages you to try different things. Definitely worth visiting if you\\u2019re around Brigade Road.\", \"published\": \"3 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXRpXA5qV2Y0nLFUftR3kQWqDsDxNcvBQPqxRA6QVl-d8ObIbhaQlW031DKp1ArFododkk624qHpEkBZAmB7Zu4Wum9vQgtcjGLuBgxD7Dy5JHFklgQTlLtVXH3QqpgH9p81jKfDClUZWKMZX_TTtO33TLCL614LQxg86yf0lmaIpFvnNP4yTR4pi72Z_SejU6sMUFctxOrWT0UNlqtCmFSqJuFMoxs5um3PcCYTaeCkz_Ta25Ev4u8SP6_B0lTH8ZcN9MAgWSP5QPv4GCrGMLw-hkkztNlBi4acl4P5MkxY6QgPYt3tiusrjF4ypLPlVOSKX1Z_0Ph_6Vai9QX05GW9GbT19XalJF8uJsNWmUZwhP4QeI2jpv3LeTxW0JACsLAwEqwzpuSeO3Jiboi_GJT55y6Rvo2zb1gb2DyYv4kFpg&maxWidth=600\", \"/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXRj6mlk1rQ6YPuB6BP_u1uDC846KdrwQ0K8Ur5Y6o3mVwd05VqkrIxtftZSM0D0IBlqkjFYHYYUuqBXX3xAwqWujMYDdEsn04OH5kyqhbOOvxkRHk-3nZi7GPK8vXG2fFoQ1vvYgOjWvZTuuzDou7gZvoo1_SdlpQRrhxQ1pY17-sd9MDLkjKX99qtrlEtq8oKyPxO2r5SwGF4z6-iloJ-sXzJniC_H-wgAlFIAH9TXO4YPvO-cNoN-MywZSiUOOfHJPA1PHcLPk2qHF9xj-d0xyWdNhia-en2WfzsEsxA8aJZBlF4Qlt47jEdwbykgIOvRWi5ABj1vyfnPwjWh6T2VAKdsqWMf1a9kRRM8FWe9h5SIE6cGC7mkwI7WSAk-n24L-7chZMn-7rGZQ9JMkSQ4TTTk7_G5Ood-5g&maxWidth=600\", \"/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXT3hMp706QhwEfK7FrOE7GZODtRbpsL99I0kziemVgJ25Bcy08sqa3ltZho808pAK9FSFrI_NX5T1HJX4bBrd_PrO-m8hhK33Y3DjqmO-lJGYVEDievN2DQGuyFOJK9GlKibS8y4Mnqr34xh1lNBCP1_g8mleVMYL2sAtVXupSdVdncVsRP0Epw1JzzzfWnyjujA30ElIUQtlgR7c_MRCNW7tpj_zlJgFK7eM110M_8c4MhEyBvTa80uoWvIs7vzZc02BRTa_vbbYA-zMeuE93FGrH7nzTx9Yz1KwbtLZtw8agdVDmPIncN3J-nWAW7Pr37k4f8L9NoSMEbcUc3Y25bAUcwer1Kz37KvE3MxZWdqMOoHRmbQ5XVTmD7cqwSWceotXL4I-DlbJF7v6bFK66wg9YDYglZvMa8SgbjihCIMplzqeFZ3yVEHz2W7g&maxWidth=600\", \"/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXQmxweap-aTSZKMTYhXxHMaocizNuVvPZ0U7jveYHkG9P21y7mZzZGuIGdEtYe8rZswxzcFTv7z3CFxdPsjHQFB6OLmgPXu7xqQ51PFLtEKx0G673FMTeuVLHZADhZIgRSqECNq2t0uiuNRwW_WVI3BFLmssoHgNgder9QkMftmewZazVlmFExCpN3JPnW3Aw3nd4EVfwgvtPZ1W6BZzgYEn-oTuU6dhhN-N2uC3FXP4isjrPhPrwpQXTn9pFImp81bj-l6DOiL02D7OichQyKEkfTqCRRLG6pcTTGvjRuyaFF-l6mKMD2IrY-fQo_q4cNRyNWEPcMA_sV8xeMCWdkIIPe3_an18S7SshBDkRLcjcQLLLcC63W3rwkUm9m1rWxhJs4S6L4kYZxhx9vzj8m9y-_pgJpcL8IV8Y-t0wOiBzo_rUzcaU-ihA1lNe7z&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "a21209d2-643d-4e5b-b843-703d029e6977",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJlc4a42AXrjsRmxOvhd194fA\", \"name\": \"Kuuraku\", \"formatted_address\": \"1st Floor, Forum Rex Walk, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"japanese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"website\": \"\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"I visited Kuuraku on a Friday afternoon to try their ramen, and getting a table was surprisingly easy. I had made a reservation, but it looked like there was plenty of space for walk ins as well. This was also my first time trying ramen in India after having it across several Southeast Asian countries, so I was quite curious to see how it compared.\\n\\nI ordered the Signature Chicken Ramen (\\u20b9800+) and the Prawn Sushi (\\u20b9800+). The sushi was easily the highlight of the meal, fresh, well balanced, and something I would happily order again. The ramen, however, was a mixed experience. The broth initially reminded me more of a local chicken curry than the rich, comforting flavour I usually associate with ramen. Interestingly, the taste did grow on me as I continued eating, but it still fell short of my expectations overall. A nice little touch I appreciated was that each plate comes with a motivational quote printed on it, adding a bit of personality to the dining experience.\\n\\nThe restaurant is located on the first floor of Rex Walk. There is some construction happening near the lift exit, and I was surprised there weren\\u2019t any direction signs to guide customers to the restaurant. The staff\\u2019s enthusiastic Japanese greetings can also feel a bit overwhelming at first, almost as loud and energetic as a busy Shivajinagar market. Once you get past that, though, the restaurant has a pleasant atmosphere.\\n\\nThey also offer a vegetarian ramen option, and the restaurant is wheelchair friendly, which is always good to see. While the ramen wasn\\u2019t quite what I had hoped for, the sushi, comfortable setting, and thoughtful little details made it a worthwhile visit. If you\\u2019re planning to stop by, I\\u2019d recommend going in with an open mind and definitely giving the sushi a try.\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"Had an amazing evening at Kuuraku inside Forum Rex Walk. The ambience perfectly blends authentic Japanese izakaya vibes with the modern energy of Bangalore nightlife. Warm lantern lighting, wooden interiors, the live kitchen setup, and the aroma of grilled yakitori instantly transport you to a cozy street-side ramen bar in Tokyo.\\n\\nThe atmosphere feels lively yet intimate \\u2014 perfect for date nights, casual hangouts, or even solo ramen cravings. Watching the chefs prepare fresh ramen and skewers right in front of you adds a unique charm to the experience. The mango beer was refreshing, fruity, and paired beautifully with the rich, flavorful ramen.\\n\\nWhat makes the place special is the attention to detail \\u2014 from Japanese d\\u00e9cor and welcoming staff to the buzzing crowd and comforting food. If you love authentic Japanese food with a vibrant city ambience, this spot is definitely worth visiting. \\ud83c\\udf5c\\ud83c\\udf7a\\u2728\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"I recently dined at Kuuraku and honestly, it turned out to be one of the most satisfying Japanese meals I\\u2019ve had in a while.\\n\\nWe tried quite a few dishes, and every single one was impressive. The Kuuraku Signature Ramen was rich, flavorful, and perfectly comforting \\u2014 easily the highlight of the meal. The Age Gyoza had a great crispy texture with a juicy filling, and the Chicken Nanban was absolutely delicious with its balance of tangy and creamy flavors.\\n\\nWe also ordered the Garlic Mayo Yaki and Teriyaki Mayo, and both were packed with flavor \\u2014 especially if you enjoy that indulgent mayo-based Japanese twist. Nothing felt average; each dish had its own standout taste and was well-executed.\\n\\nThe ambience was warm and inviting, with a nice Japanese izakaya-style vibe. Service was prompt and friendly, and the staff were attentive without being overbearing.\\n\\nOverall, everything we tried was genuinely \\u201cdamn good.\\u201d Definitely a place I\\u2019d come back to, especially for the ramen and gyoza. Highly recommend for anyone craving authentic, flavorful Japanese food.\", \"published\": \"4 months ago\"}, {\"rating\": 4, \"text\": \"Kuuraku is one of the better places for Japanese cuisine in Bangalore, especially if you enjoy a wide variety of starters. They have an extensive starter menu, and that\\u2019s definitely their strongest point.\\n\\nI personally loved the Chicken Spring Roll Sushi (5/5) and Kuuraku Yaki (chicken starter) (5/5) \\u2014 both were really flavourful and well done. The Spicy Chicken Roll Sushi (5/5) was another highlight.\\n\\nFor the mains, I tried the Miso Butter Ramen, which I\\u2019d rate around 3.5/5. It was decent, but having tried ramen at other places, I feel this could be improved. Overall, the ramen options didn\\u2019t stand out as much as the starters.\\n\\nHere\\u2019s a quick rating of everything I tried:\\n\\u2022\\tKuuraku Yaki \\u2013 4/5\\n\\u2022\\tKuuraku Signature Ramen (Pork) \\u2013 2/5\\n\\u2022\\tButabara \\u2013 3/5\\n\\u2022\\tMushroom Cheese \\u2013 3.5/5\\n\\u2022\\tSpicy Chicken Roll Sushi \\u2013 5/5\\n\\u2022\\tTeppan Gyoza \\u2013 2/5\\n\\u2022\\tTori no Karaage \\u2013 3/5\\n\\u2022\\tMiso Butter Ramen \\u2013 2/5\\n\\u2022\\tDorayaki (Dessert) \\u2013 2/5\\n\\u2022\\tStamina Don \\u2013 3/5\\n\\u2022\\tYuzu Passion Spritz \\u2013 3/5\\n\\u2022\\tSweet Line Beer \\u2013 3/5\\n\\nOverall, I\\u2019d recommend this place if you\\u2019re looking for a good Japanese dining experience, especially for their starters.\", \"published\": \"5 months ago\"}, {\"rating\": 5, \"text\": \"Kuuraku was a really enjoyable experience, especially if you\\u2019re looking to try authentic Japanese flavours in a lively setting.\\n\\nWe tried quite a variety of dishes including Tori-no-karaage, teppan gyoza, crunchy ebi roll, and Kuuraku ramen (chicken). The starters were definitely the highlight, the karaage was crispy and flavourful, and the gyoza was nicely done with a good balance of filling and texture. The crunchy ebi roll was fresh and had a great mix of crunch and flavour. This matches what many people say about the place, that the starters and sushi-style items are where they really shine.\\n\\nThe ramen was good and comforting, though not the standout compared to the starters, which seems to be a common sentiment as well.\\n\\nFor drinks, we went with virgin mojito, passion orange, and even tried coke beer, which honestly felt like a slightly unusual combination, but still fun to experiment with. Some reviews also mention that drinks can be a bit hit or miss depending on what you choose, so it\\u2019s worth exploring.\\n\\nThe ambience is cozy and energetic, but the place does get quite busy, so expect some waiting or slightly slower service during peak hours.\\n\\nOverall, a great place for Japanese food with strong starters, a fun vibe, and a menu that encourages you to try different things. Definitely worth visiting if you\\u2019re around Brigade Road.\", \"published\": \"3 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565000109,
+    "detail": "4803 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJF6p5B-kVrjsRJ4mSNiEGqaY\", \"name\": \"Daily Sushi - Koramangala\", \"formatted_address\": \"1st floor, 1st A Cross, 17th Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"japanese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.8, \"user_rating_count\": 2120, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"phone\": \"096320 54662\", \"website\": \"http://www.dailysushi.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=12009136621079398695&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Tuesday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Wednesday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Thursday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Friday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Saturday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Sunday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Shobhit Gupta\", \"rating\": 4, \"text\": \"Went for last minute lazy dinner on Sunday. We had been to a bigger outlet in Indirangar. Liked their bibimpap quite a lot. Obviously being vegetarian restricts our choices quite a lot but still they have many options.\", \"published\": \"5 months ago\"}, {\"author\": \"Serena Dominic\", \"rating\": 5, \"text\": \"We went in for just a plate of sushi and ended up eating a full 4 course meal because food was just so yummy! Each and every staff was polite and helpful. Especially our amazing hostess Watila who foresaw our needs even before we requested.\", \"published\": \"6 months ago\"}, {\"author\": \"Aakanksha Patro\", \"rating\": 5, \"text\": \"The food was really good. The ambience is really peaceful, there's an indoor and outdoor space, outdoor space allows smoking. Watila served us with a warm presence and helped us out with selecting good food from the menu, the service was definitely worth the wait with her serving us.\", \"published\": \"5 months ago\"}, {\"author\": \"Sugavaneswar Periasamy\", \"rating\": 5, \"text\": \"Amazing food. Felt very authentic (I'm new to Japanese cuisine). All the dishes were made very well. Diksha was very friendly and knowledgeable, helped with guiding us through the menu and the nuances. Absolutely enjoyed the food. Must try.\", \"published\": \"7 months ago\"}, {\"author\": \"P G GOKUL DEV\", \"rating\": 5, \"text\": \"Food ambience and service is pretty good\\nGood for a date night.\\nSanjib was good in helping us explore food and to find the best food from there wide menu\", \"published\": \"4 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXSMft569mZJvKTPoNn_WFO9MDSmjqbncQde-_RHtqVZ-_ZobDujyJRevSiGkgCgv_2QK9YAEqCtLqE6emBDGUfEHxF4kpsFQ8Fva_xt_p372zz8cp0y6Vb-8Te_LdlPVcrf3lnaqOqN_9vEVPGAw4IkjLpzZ0FWGHde211CN9n3CTmgNFScGzF4A6FokP5RxGiWgxjautMJ1HTK_rttnfrtI7zWqm7wzqzu1gYubX99ZIJNffqcqVi7qMSQ8onI0zRhGnJKib0ydvXPz4tpxY4u7u9xmNj0FqUFxU22M2G8YseWPzCUIf5oyGlreuWbq9LczFHUsrMLzUNJN2CkHWVNo6jz-pqUJE0k-rRGH1yrNIvMKdWmEVSlho2kBnroDEN9_3o3lVxCCjdpnanmSIydlm0bTTocv1XioEMaUsduNw&maxWidth=600\", \"/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXQIAowfPqtOFRDwB_kJiADuNb5699uBy6LJE8WwKyzUs7phKkMuHxQhmxeg_S3CEUtZwWuodLsl1PUP6MnbPZbhR2fHbxhTwh-u02mWimLPGdOxExmdlD2yF6XgM6vSXlwiOdqCfCzPzzwKh52I8isIN5xEit_PUbAei48UoNIksGf1c3h66rD54_Uor2vD4RbuWIl3wFCUZ3BQc8NR3e7lGNoQ9Mx5uFlFA1XPjKNt5AXD1zh-awOcWQ_YTfKfUmab6l1jXjZJ6UrpcSw1V33IJNDUc_Abpo8WOTfIp5JP7YcO4S3JXeEWZTawndeVAa4QAfh7Li5t28BQk81BQiicWOYqVcDorA610ccp-pfSNKVHZlanvpQEq9Bb1bia_W7YWIbmpHBCI-90PNiCE6VLE370U6HBVranUQ7xqvPyo2q5hL4GX8RibN7cuw&maxWidth=600\", \"/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXQqg04SjCqxRKp2j1jzDcGOiIccf1gr9n8tXFk0pxrKMWHJUjhNngk84x7xRyipeoY35jkQKz_nJG4a4ETfSwdGOgozJMDlY0u3QcMcMCObtkUJ8Jru9k4-8XV-tAokPnYxZmB-Jzr7tiaGQt4Iuxt3jqQ3u_LVeMJfC4o7z_kCHGhIfPWob1jbXbWLLbZllLja9-eB0b5lq1M4-AkXRVOZp-frWkFTOEdXSVBqaMUATbJ39IkIzqur2HgKVK3KBLg9O6JlskbHPjySqxev-YvT2ShNMmoJeZc2FLlGqOooYYRc6D8_11rhmrUvGK4CgTVLWhag0VkrPWw1N1geWhU9r6pu_s4odxvYN-zUrebQoCPrSvfPfUwQO8SP9ryFrO90YPNf2OtYQKgkvYaS8NpLa4_oWX9TdBhG7V0rQH0pITC_EafzJrOHGTL2Xg&maxWidth=600\", \"/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXQtKPHJZ677L30wOrKS4jY0d1ZmaG0T8Z51g60qFBerHyRKzJINno_Z1dDVLx_gcBUvxs70m1EnePSai82-xChC_LFrmejjYtQA8AE1EI8iU_nimtqkbR2gU3DlRA5LW1xwmMzZqoflfMu-IS4vZYmnsBrqCgVVIIiYS4WfSK1zttn3_C3EDNw2FVFoG5jByaZq2D6FzbuoKWvq5KrzLh_pzeb2jTEYo7uYJlaqm4YP359qNUeDdbYPE0SbdKpgvt2PYuCNH0fcs6S-4njvs5DwFpH9YGm8p9Egss1bNuzy_c3bOc5a_WXEasogTUAC6_ptrAATgFMUg4cc33SjAL1gW1DZuIWYvVkbpL2NKmXKtEZx1K_b_qd3WQvUiF2yG0lBM0NRwGu02N02nxdM5CngmA2mXcRRTqoguu6vWa4aZfPvJi3sXgv0lZ_YPVXl&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "f4723de3-afaa-4c4e-9b6c-2e003788481d",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJF6p5B-kVrjsRJ4mSNiEGqaY\", \"name\": \"Daily Sushi - Koramangala\", \"formatted_address\": \"1st floor, 1st A Cross, 17th Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"japanese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.8, \"website\": \"http://www.dailysushi.in/\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Tuesday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Wednesday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Thursday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Friday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Saturday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\", \"Sunday: 12:00\\u202fPM\\u2009\\u2013\\u200912:00\\u202fAM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"Went for last minute lazy dinner on Sunday. We had been to a bigger outlet in Indirangar. Liked their bibimpap quite a lot. Obviously being vegetarian restricts our choices quite a lot but still they have many options.\", \"published\": \"5 months ago\"}, {\"rating\": 5, \"text\": \"We went in for just a plate of sushi and ended up eating a full 4 course meal because food was just so yummy! Each and every staff was polite and helpful. Especially our amazing hostess Watila who foresaw our needs even before we requested.\", \"published\": \"6 months ago\"}, {\"rating\": 5, \"text\": \"The food was really good. The ambience is really peaceful, there's an indoor and outdoor space, outdoor space allows smoking. Watila served us with a warm presence and helped us out with selecting good food from the menu, the service was definitely worth the wait with her serving us.\", \"published\": \"5 months ago\"}, {\"rating\": 5, \"text\": \"Amazing food. Felt very authentic (I'm new to Japanese cuisine). All the dishes were made very well. Diksha was very friendly and knowledgeable, helped with guiding us through the menu and the nuances. Absolutely enjoyed the food. Must try.\", \"published\": \"7 months ago\"}, {\"rating\": 5, \"text\": \"Food ambience and service is pretty good\\nGood for a date night.\\nSanjib was good in helping us explore food and to find the best food from there wide menu\", \"published\": \"4 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565000112,
+    "detail": "7515 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJ897J43kWrjsRwLzr4oSg67c\", \"name\": \"Shiro Bengaluru\", \"formatted_address\": \"3rd Floor, 222, Vittal Mallya Rd, KG Halli, D' Souza Layout, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"dim_sum_restaurant\", \"thai_restaurant\", \"sushi_restaurant\", \"cantonese_restaurant\", \"chinese_restaurant\", \"asian_restaurant\"], \"rating\": 4.5, \"user_rating_count\": 6623, \"price_display\": \"\\u20b92000+ per person\", \"phone\": \"080 4173 8861\", \"website\": \"https://www.instagram.com/experienceshiro/\", \"google_maps_uri\": \"https://maps.google.com/?cid=13252862821071043776&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Tuesday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Wednesday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Thursday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Friday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Saturday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Sunday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\"], \"open_now\": true, \"editorial_summary\": \"Japanese, Balinese & Chinese restaurant with lavish, Buddha-inspired decor & relief carvings.\", \"reviews\": [{\"author\": \"Vijayaprathan Murugavel\", \"rating\": 4, \"text\": \"We had gone to try out the unlimited sushi offer and I am glad to say I was not disappointed. The dimsums and the Sushi had good quality and variety but I would've liked a few more non veg options than just different types of chicken sushi.\\n\\nThe service was commendable with the staff being extremely patient and helpful while we were placing the order. They had suggestions for us and would explain the dish to us before we got it so we knew what exactly we would get.\\n\\nThe atmosphere was something new. The ambience was pleasant and relaxed really following into the whole zen aesthetic. The high ceilings, pop of subtle color in certain areas and the statues really gave us a feeling of dining at a whole different country.\\n\\nOverall, the offer was worth it, the food was well done and the service was well above satisfactory.\", \"published\": \"2 months ago\"}, {\"author\": \"Akhila Kurpad\", \"rating\": 5, \"text\": \"If you want luxury dining on a budget, Shiro\\u2019s \\u20b91500 lunch deal on weekdays at UB City is an absolute steal! The vibe is stunning with its massive Buddha statues, making it perfect for an upscale yet affordable afternoon.The food is incredibly fresh. You get unlimited, high-quality sushi and piping-hot dim sums. The Crispy Spicy Avocado Maki and the juicy Chicken Dumplings are total game-changers. Plus, the service is super quick and friendly, so your plate is never empty.It is honestly the best way to experience premium Pan-Asian food without breaking the bank. You have to try it! The waiststaff Naobi and Devika were just awesome!\", \"published\": \"a month ago\"}, {\"author\": \"Sahil Khan\", \"rating\": 5, \"text\": \"Some dining experiences don't just feed you \\u2014 they transport you. Shiro is one of those rare places.\\n\\nNestled on the 3rd floor of UB City, Shiro's towering interior \\u2014 the dramatic Buddha sculpture presiding over the dim, warm-lit space, the organic textures of stone, bamboo, and slate \\u2014 sets the tone before a single dish arrives. It's theatrical without being noisy, and intimate despite its scale.\\n\\nWe trusted our chef's recommendations, and it paid off beautifully. The salmon sashimi \\u2014 served over crushed ice with signature spicing \\u2014 was a revelation in simplicity: silky, pristine, and elevated just enough without overpowering the freshness of the fish. The spiny lobster (what I thought was crab!) was the real showstopper \\u2014 the meat tossed in what tasted like a Southeast Asian stir-fry reduction with aromatic herbs and a subtle heat that built slowly. Plated dramatically on its shell, it was as visually striking as it was indulgent.\\n\\nFor discerning diners: skip the safe choices and let the chef guide you. Shiro's kitchen clearly takes pride in its sourcing and technique. Pair your meal with one of their cocktails \\u2014 the bar is just as carefully considered.\\n\\nOne of Bangalore's few genuinely world-class dining experiences. Worth every rupee.\", \"published\": \"4 months ago\"}, {\"author\": \"aaina aggarwal\", \"rating\": 4, \"text\": \"Recently visited Shiro and the place definitely has amazing vibes with a beautiful open-space ambience. The experience was a mix of hits and misses for me though.\\n\\nThe sangria honestly wasn\\u2019t that great, but the food definitely made up for it. The California sushi, crystal dumplings, and Thai spring rolls were all really good and worth trying.\\n\\nComing to desserts \\u2014 the chocolate tiramisu was absolutely amazing and easily the highlight of the meal. Definitely a must-try! The blueberry cheesecake, however, tasted a little too sour for my liking, maybe because of the cream or blueberries, so that one didn\\u2019t really work for me.\\n\\nOverall, a lovely place for the ambience, good food, and desserts that mostly hit the mark.\", \"published\": \"3 months ago\"}, {\"author\": \"Fork & Footprints\", \"rating\": 5, \"text\": \"The food and ambience is very exotic. We had sushi platter and variety of mocktail and cocktails and spicy fish which was extremely tasty.\\nThe ambience is suitable for a fine dine and date. Worth the hype!\", \"published\": \"a month ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXSMARsNae24GiTpGByHo3bh5CaaFfRW8uNPD8NqYiQqryaAmc0_JOaWrvxOWD7N0IKzRpPY1PaSRQBrSiYvCpk3DL8RyyQsvvfzXSIhUpt6NgeX3o1NMvs4HhaoiFakkEqOKm3tf2QaGzPIpTl8ZIrEluFiV29NbHzuhVnOOtkugfaI90MoYVDsigL4WLOQGOBmCcHmSpITWOgGjzayC0sQLgGZ6eBEsDzgIFn534O0vwFcGQW98xLxLXD94dG_H90CAzXgURvWYisWhVswCTeJqrv5fAwY7b3eHxlkk3Bo5xMqFqZHL1Mj0vIlQ-7-tUac3m3Wce36dhQEbvSbn_STBD9Cs9xe7-REdr4fqBWF7Fuz9sD5CHcWHUigtSmjc94q34s8gbQWFdDUbMQ1DcKEVg_M2-OzBKisPTX7Ku-TQu5W&maxWidth=600\", \"/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXRzUncVYZvBbx_zH6g2SKxY7jEEjfT-y60br9Ekx1rPIytFFgZxpQHQRs9pafdjAZB10x3_JRl4840friQ2OPDocdRwx-qDBi-EdG2Hrcy5fFj-bLNDgaSRAdLWcMKhuQ4Sm5j5qoviBjKG8-kznzZ72nYEPS-qxiehDITUsRTv6mebF1xCmsVds80Zq6mEFW3JKacS84-90y7P7FypacAOF8E-2nGQIFOzzWjPl-kYesDphKo3Ci37bDy4UPI8LI4TvH8hE210vgm8LYJawU0j4JSYr_NsZViIYXeR6ibw2GV_w4DaaaGWFTHhj-awmo0UUWW9_ZXjXud7epxdDHK5FShumtqqWK8n2r5DTJVozQNSnBR6RDlYMahMZHx5fuXY3lN9XxOS8lfPzrCP4r70e2v7gDdm3gtn7fBjytbzdDdUsRnvdE8coLG7lDQy&maxWidth=600\", \"/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXQPFBul5UuKBioKRFNnZjQCxJ6Z52zfoYx-lhIb19gfWSYddTv9hg0IU2xFzM5mshphOKGS2sEg2dL65Uaf9pRjmOmugDSVRx1XTBDVsk6xZoYTJEChdvTu75YHuJjahd8DMzmMS2wc4xCuOgEjpZjIsk06W5QkMa6m5LF5wOhScd7nf8aiJ1ZozQw8Y-zs-DcdrHn_FoVzujGFXt1XvG5wIgdrsDhBd2UioOsTHzsDEIr3gvmRrAP4VKqN3gTbLvvJ4_W91bZeGIyR9WVTwbRp2UaQ9d93XtmMzu27Aq2Fu7RHVRrnZhJcmGMbhGRVU5v8jova7xuRh8I_l9QK9RTS71_iU4HVUETIMhXq9q7Z4x5CNsMDSQkZKa_5sJUtxss2bF1r-KRJma1PB0VPT729PBRQqEvsANnPXB8r8CYhyw&maxWidth=600\", \"/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXTROn4OK4hSCQHjY-CxJKTSFzcjsqCSnFlmtDWVQWJLcRVSy0WneQGebZpBkhwvQ6cjrdxzBChXrp24843YARVkoUYDOutQ7KX6Sm18uvsU4jAceFe_ILB629yFquaYAoH2vChkuPkQvt8cW2NtDi23gidC9Gr1s_eAmsNq2kGxUL85CiUZxiGyu6OlHSR7__Oot-4nIfxZYgXXPy1Dn-qnUeoKwXoACtTXjD4xnFADjWBGseMZDwnI0ustr2DP01rn6Z7opUqrD5J3FfiRC32qztVmMM5BBy6v46ITpBnRmBcw3zVkoeU8KktB-TxWDDwTju0hIqhsxGZiL3MLqRAw-vREQVCc-TDz2B6dZnBOe2LLPkFALKUvmRs3k5IfeigjIr_HXSctXz9kacKxIdamdKTCZjL1iZQw-keTxrMmnYfpLmtFdkV3GH2sLQ&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "0acd905c-a8f9-416e-ad9b-636c993f3ceb",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJ897J43kWrjsRwLzr4oSg67c\", \"name\": \"Shiro Bengaluru\", \"formatted_address\": \"3rd Floor, 222, Vittal Mallya Rd, KG Halli, D' Souza Layout, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"dim_sum_restaurant\", \"thai_restaurant\", \"sushi_restaurant\", \"cantonese_restaurant\", \"chinese_restaurant\", \"asian_restaurant\"], \"rating\": 4.5, \"website\": \"https://www.instagram.com/experienceshiro/\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Tuesday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Wednesday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Thursday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Friday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Saturday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Sunday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\"], \"editorial_summary\": \"Japanese, Balinese & Chinese restaurant with lavish, Buddha-inspired decor & relief carvings.\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"We had gone to try out the unlimited sushi offer and I am glad to say I was not disappointed. The dimsums and the Sushi had good quality and variety but I would've liked a few more non veg options than just different types of chicken sushi.\\n\\nThe service was commendable with the staff being extremely patient and helpful while we were placing the order. They had suggestions for us and would explain the dish to us before we got it so we knew what exactly we would get.\\n\\nThe atmosphere was something new. The ambience was pleasant and relaxed really following into the whole zen aesthetic. The high ceilings, pop of subtle color in certain areas and the statues really gave us a feeling of dining at a whole different country.\\n\\nOverall, the offer was worth it, the food was well done and the service was well above satisfactory.\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"If you want luxury dining on a budget, Shiro\\u2019s \\u20b91500 lunch deal on weekdays at UB City is an absolute steal! The vibe is stunning with its massive Buddha statues, making it perfect for an upscale yet affordable afternoon.The food is incredibly fresh. You get unlimited, high-quality sushi and piping-hot dim sums. The Crispy Spicy Avocado Maki and the juicy Chicken Dumplings are total game-changers. Plus, the service is super quick and friendly, so your plate is never empty.It is honestly the best way to experience premium Pan-Asian food without breaking the bank. You have to try it! The waiststaff Naobi and Devika were just awesome!\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"Some dining experiences don't just feed you \\u2014 they transport you. Shiro is one of those rare places.\\n\\nNestled on the 3rd floor of UB City, Shiro's towering interior \\u2014 the dramatic Buddha sculpture presiding over the dim, warm-lit space, the organic textures of stone, bamboo, and slate \\u2014 sets the tone before a single dish arrives. It's theatrical without being noisy, and intimate despite its scale.\\n\\nWe trusted our chef's recommendations, and it paid off beautifully. The salmon sashimi \\u2014 served over crushed ice with signature spicing \\u2014 was a revelation in simplicity: silky, pristine, and elevated just enough without overpowering the freshness of the fish. The spiny lobster (what I thought was crab!) was the real showstopper \\u2014 the meat tossed in what tasted like a Southeast Asian stir-fry reduction with aromatic herbs and a subtle heat that built slowly. Plated dramatically on its shell, it was as visually striking as it was indulgent.\\n\\nFor discerning diners: skip the safe choices and let the chef guide you. Shiro's kitchen clearly takes pride in its sourcing and technique. Pair your meal with one of their cocktails \\u2014 the bar is just as carefully considered.\\n\\nOne of Bangalore's few genuinely world-class dining experiences. Worth every rupee.\", \"published\": \"4 months ago\"}, {\"rating\": 4, \"text\": \"Recently visited Shiro and the place definitely has amazing vibes with a beautiful open-space ambience. The experience was a mix of hits and misses for me though.\\n\\nThe sangria honestly wasn\\u2019t that great, but the food definitely made up for it. The California sushi, crystal dumplings, and Thai spring rolls were all really good and worth trying.\\n\\nComing to desserts \\u2014 the chocolate tiramisu was absolutely amazing and easily the highlight of the meal. Definitely a must-try! The blueberry cheesecake, however, tasted a little too sour for my liking, maybe because of the cream or blueberries, so that one didn\\u2019t really work for me.\\n\\nOverall, a lovely place for the ambience, good food, and desserts that mostly hit the mark.\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"The food and ambience is very exotic. We had sushi platter and variety of mocktail and cocktails and spicy fish which was extremely tasty.\\nThe ambience is suitable for a fine dine and date. Worth the hype!\", \"published\": \"a month ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 3",
+    "ts": 1787565000115,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "52,730 / 100,000 tokens (threshold)",
+    "token_count": 52730,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565000119
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 33,829 · out: 1,977 · cached: 26,400 · reasoning: 734",
+    "ts": 1787565029443,
+    "detail": "step 3"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 33829,
+    "output_tokens": 1977,
+    "reasoning_tokens": 734,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 26400,
+    "text": "Tokens — in: 33,829 (cache: 26,400) · out: 1,977 (reasoning: ~734)"
+  },
+  {
+    "type": "text_final",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "True Yudofu is a Kyoto temple specialty, so it's rare in Bengaluru — but EBISU is the standout here with a confirmed tofu dish (agadashi tofu, hot broth poured over silken tofu), the closest you'll get to that Zen ritual. The others are top-rated Japanese spots worth asking about tofu preparations.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "EBISU Fine Japanese Cuisine, Brigade Road",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "EBISU Fine Japanese Cuisine",
+                  "query": "agadashi tofu hot broth",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXSIusLs2stiC1k5NJuRhw47wknFrx-R6Pa9T4ToVZ6s3mtdaSTOjf2qr05vIblVfvDqREADpO2h85eZaU-zcT8BxsdfNVlmUAOs1OyWpvlyIqE5BcdptS0ro8Rcyzrh9w3sHYNmdR7xkdn0yA8LSuCk5l6-S20ti9i-WGh4ggmQfo1C3jf--v-gsGy82Xm9u-CEacz0LysiM8yq4_D1oFTPzGbkFR2SsBhB6IRINg9Nc1KUQQYwZyZRDAW-_5tlTyIMlRVUMPrHC2uv0SWGDaTNYf0Zg-4ON4ReAFNFPm6Mv9e3147fSBik53WAxevkVqOf7QmRHP__r-ZMpLoKlinb0jIVuk6Qa47Qor4xwiIubbbIBCk55FeCBEiWjCw5PreNqbvyjm9x2a3II9KM1Ykqnm7cKDut7PlztW-WyFQZ7bhWLml263-Co1qQGOVu&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "EBISU Fine Japanese Cuisine",
+                      "alt": "EBISU Fine Japanese Cuisine",
+                      "place_id": "ChIJU8jftUkXrjsR7iMxgLW5Wuc"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXQtbzYRMSm7SeYn0sAIyOT-ZLef4NocbDGpaXQffyOQTFb17QlOtAWk09aXJbsthqIgwJbYYl8L157McgJHOHWQmWT7rnpyOtWhitdnmX522MkVIKHQ5EZbMx7zWOOGcI1kFaI2GJj5-RP8xIWwiZxjVEZlNbB98aC_PVN-9dAeyJSnD6oX-xMJ0zCUHhLmULH_4qeOJFkNuZEwjIdjKPKUvlx1QlgAcXfyNoaA34YadL85f7R-SC-RyoH17jAqN-alBREQtJZ54MXO9LnD8rkPNJ_Wlf4i0XKWLMxwcuJyTeO8g2eWIeyLnoAjlitV-Vk1p0kxbhnyd72h6Agy-alg__VBP2HkMVGcLcko845dye6LWREOc9QbMuFl__obNS0kw3ESj9-r6E_IeiJmV3dXMfFi_-2xs6B2KQODxuGRRD7DFeAr0RgSTgPy_k3k&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "EBISU Fine Japanese Cuisine",
+                      "alt": "EBISU Fine Japanese Cuisine",
+                      "place_id": "ChIJU8jftUkXrjsR7iMxgLW5Wuc"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXTwqkeVrrDBp5g4041KfFJU0_3GsPTZ4-1SVYqH9UJjHh7-Km6S4avEqgNki3ePLrGINx8Ld1j5HfSpfutHlqxIErf1QhIfgYekQBfJp0t4l6QmZq3IdYDLvvIop7ko3ijHP8DSss51QYDyM59-LWJo3JIezy92pS9mcqmYppaq7KJEfeif34Kjir6zdtAj3Ja3q8wrPogDW80qT9dotJGHSuguPUU9YBLzcvZMjeSgBxUWFBAm2mIvCln87kGQseZiwHiYkjLxkMFx5PT2Wn25d0uHC09XTWKAuiX-s4BsnFgRpLqodzi4SXcR16UR4TUsyYyIFjNGIcdlxz7HuP9pZKgOAII-PmNnqa2hYVoWnM_Oo-IXMT-GRIk0f6Sl3SABMn_RgUfRc28WLXXfXuJKGCZn0X1zqTQJLW6EPuvr4HDbRNwkzD8U_vcxoA&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "EBISU Fine Japanese Cuisine",
+                      "alt": "EBISU Fine Japanese Cuisine",
+                      "place_id": "ChIJU8jftUkXrjsR7iMxgLW5Wuc"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.7★ · 392 reviews",
+                "price": "₹2000+ per person",
+                "why": "Only spot here with a confirmed tofu dish — agadashi tofu, hot broth over silken tofu, closest to Yudofu's ritual.",
+                "hours": "12–3 PM, 6–11 PM (closed now)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=16670841159856235502&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": null
+              },
+              {
+                "title": "Daily Sushi, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Daily Sushi",
+                  "query": "Daily Sushi Koramangala Japanese food",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXSakU3Pm5WtDUnJkhFXY7PTy3XYJEla4mCBiw98umKvlkzuP7jfh4rR_WYEWYD6IhADM72ydrbrp-kOE0r0rComYnxuQvYuithHTaAVndPJBv_SbO_ldEyZLssRd_HLE7pbk1MM-LQ92R_v9U2pKxGfmpicpWDiv1lks34CU2rA_rvba8v41AEJG_1Ka-YDq1JRze62D61rD0Abn20dBhKvuZ96K-KfM3-ALVZd6MbBOY0V2sVuMARJDmZoou4GzlNxBJRhL5nhXF02wcH6erpJ8o-TVjxdk4aSB_u21URLsXDDYrjvsdWrMQWzMMa9Jzq6fJZXoHwS-p8_6p0MhfIdTxU5VrkhYteh5BSILtP0tTip7vH7CbfXj634gedujg66c1L4cvdfeJ8-ymONQY7o6Rn3BGL8MdQXsKJSjgKwJg&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Daily Sushi - Koramangala",
+                      "alt": "Daily Sushi - Koramangala",
+                      "place_id": "ChIJF6p5B-kVrjsRJ4mSNiEGqaY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXSMft569mZJvKTPoNn_WFO9MDSmjqbncQde-_RHtqVZ-_ZobDujyJRevSiGkgCgv_2QK9YAEqCtLqE6emBDGUfEHxF4kpsFQ8Fva_xt_p372zz8cp0y6Vb-8Te_LdlPVcrf3lnaqOqN_9vEVPGAw4IkjLpzZ0FWGHde211CN9n3CTmgNFScGzF4A6FokP5RxGiWgxjautMJ1HTK_rttnfrtI7zWqm7wzqzu1gYubX99ZIJNffqcqVi7qMSQ8onI0zRhGnJKib0ydvXPz4tpxY4u7u9xmNj0FqUFxU22M2G8YseWPzCUIf5oyGlreuWbq9LczFHUsrMLzUNJN2CkHWVNo6jz-pqUJE0k-rRGH1yrNIvMKdWmEVSlho2kBnroDEN9_3o3lVxCCjdpnanmSIydlm0bTTocv1XioEMaUsduNw&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Daily Sushi - Koramangala",
+                      "alt": "Daily Sushi - Koramangala",
+                      "place_id": "ChIJF6p5B-kVrjsRJ4mSNiEGqaY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXQIAowfPqtOFRDwB_kJiADuNb5699uBy6LJE8WwKyzUs7phKkMuHxQhmxeg_S3CEUtZwWuodLsl1PUP6MnbPZbhR2fHbxhTwh-u02mWimLPGdOxExmdlD2yF6XgM6vSXlwiOdqCfCzPzzwKh52I8isIN5xEit_PUbAei48UoNIksGf1c3h66rD54_Uor2vD4RbuWIl3wFCUZ3BQc8NR3e7lGNoQ9Mx5uFlFA1XPjKNt5AXD1zh-awOcWQ_YTfKfUmab6l1jXjZJ6UrpcSw1V33IJNDUc_Abpo8WOTfIp5JP7YcO4S3JXeEWZTawndeVAa4QAfh7Li5t28BQk81BQiicWOYqVcDorA610ccp-pfSNKVHZlanvpQEq9Bb1bia_W7YWIbmpHBCI-90PNiCE6VLE370U6HBVranUQ7xqvPyo2q5hL4GX8RibN7cuw&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Daily Sushi - Koramangala",
+                      "alt": "Daily Sushi - Koramangala",
+                      "place_id": "ChIJF6p5B-kVrjsRJ4mSNiEGqaY"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Highest Rated",
+                "rating": "4.8★ · 2120 reviews",
+                "price": "₹600–1800 per person",
+                "why": "City's top-rated Japanese kitchen with an authentic menu; staff are great at guiding tofu and veg options.",
+                "hours": "Open till 12:00 AM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=12009136621079398695&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "096320 54662",
+                  "tel": "tel:09632054662"
+                }
+              },
+              {
+                "title": "Kuuraku, Forum Rex Walk",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Kuuraku",
+                  "query": "Kuuraku izakaya ramen",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXT_a4imYuWG0gHrgeKLhT-GfZE-ha_3wl8weQ3Px3g1X5y7q8_G3hwCuKnw4XMYxrPEoKdG-eFGf7TeNXkxSflwG0P3H7xG2oJ6XB71RwvTQB2UPAFaNVfQa5lVWsUeAhJkiJhioB4qVGbXDPi4c2Eo5TZ5vTBe5maZyFGbStY6-IKQZtm5AHJV-CPoJxzmonijeUfWIfGb7VC9LjdaQFVKetnCL927NCF1VcUZc9jKBl4o_CXHrEXwVYuHFyVlKgJzAY3fcchki5IHgQtak1wFnV-velaBSIVQOvFEQ4hu3rpr5S6v9B3WPZeas0pHTsEVkT-dUsqXroPiaafyv6s50Cw_QfeVxwkvKRVfn7tlcQaehhjsBF7U1G87r6eP29VZANMkdKGS-WE7FTkSWvzXcJitkWTgnnDrHc7pZ0qYIA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Kuuraku",
+                      "alt": "Kuuraku",
+                      "place_id": "ChIJlc4a42AXrjsRmxOvhd194fA"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXRpXA5qV2Y0nLFUftR3kQWqDsDxNcvBQPqxRA6QVl-d8ObIbhaQlW031DKp1ArFododkk624qHpEkBZAmB7Zu4Wum9vQgtcjGLuBgxD7Dy5JHFklgQTlLtVXH3QqpgH9p81jKfDClUZWKMZX_TTtO33TLCL614LQxg86yf0lmaIpFvnNP4yTR4pi72Z_SejU6sMUFctxOrWT0UNlqtCmFSqJuFMoxs5um3PcCYTaeCkz_Ta25Ev4u8SP6_B0lTH8ZcN9MAgWSP5QPv4GCrGMLw-hkkztNlBi4acl4P5MkxY6QgPYt3tiusrjF4ypLPlVOSKX1Z_0Ph_6Vai9QX05GW9GbT19XalJF8uJsNWmUZwhP4QeI2jpv3LeTxW0JACsLAwEqwzpuSeO3Jiboi_GJT55y6Rvo2zb1gb2DyYv4kFpg&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Kuuraku",
+                      "alt": "Kuuraku",
+                      "place_id": "ChIJlc4a42AXrjsRmxOvhd194fA"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXRj6mlk1rQ6YPuB6BP_u1uDC846KdrwQ0K8Ur5Y6o3mVwd05VqkrIxtftZSM0D0IBlqkjFYHYYUuqBXX3xAwqWujMYDdEsn04OH5kyqhbOOvxkRHk-3nZi7GPK8vXG2fFoQ1vvYgOjWvZTuuzDou7gZvoo1_SdlpQRrhxQ1pY17-sd9MDLkjKX99qtrlEtq8oKyPxO2r5SwGF4z6-iloJ-sXzJniC_H-wgAlFIAH9TXO4YPvO-cNoN-MywZSiUOOfHJPA1PHcLPk2qHF9xj-d0xyWdNhia-en2WfzsEsxA8aJZBlF4Qlt47jEdwbykgIOvRWi5ABj1vyfnPwjWh6T2VAKdsqWMf1a9kRRM8FWe9h5SIE6cGC7mkwI7WSAk-n24L-7chZMn-7rGZQ9JMkSQ4TTTk7_G5Ood-5g&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Kuuraku",
+                      "alt": "Kuuraku",
+                      "place_id": "ChIJlc4a42AXrjsRmxOvhd194fA"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Izakaya Vibe",
+                "rating": "4.6★ · 2283 reviews",
+                "price": null,
+                "why": "Lively Tokyo-style izakaya with a wide Japanese menu; ask the staff for tofu dishes when you visit.",
+                "hours": "12–3:30 PM, 6–10:30 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=17357292829246690203&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "095997 80020",
+                  "tel": "tel:09599780020"
+                }
+              },
+              {
+                "title": "Shiro, UB City",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Shiro",
+                  "query": "Shiro UB City zen restaurant",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXRxy-ghoUzgvbx5TcbEKlyo6ClOk4ik3l1SpK7vaxlO1wOmfamWcXx8-QR_4cwjt9TWoCMV8FU3ggjSNqSNVIBP_dkWdu850LKIZlcHB5siFe-BcmjVy1GUxX3Arw4rtgtaBhMExTeanCaTR6G8onrPUHPU4_ZVYUrz_fkJMpOM-8b8sZ50ALZz3N1RPg2-PBTF6A9_hkHI1UaT23h_lrnlYYG_OBtMomGgOO97Bu0y-r9-4cwNVep-QZxlrXVhkdsu5k4CQ0GKaAB7KErx7R7Ga_53tYVL7FQ2g8yCKIfZP62Z4jcZFGEOqeggnakQay4aoZHUCTXutR3lUO44E0W6r_65wk4CvKqHWaKMh8IrphQ9pgFZqBlZFruLEC1vv2B-ie6YOmnleuVWl0n0JHAw7Vaj_pUmTIxoX97V1hv7WSPR&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Shiro Bengaluru",
+                      "alt": "Shiro Bengaluru",
+                      "place_id": "ChIJ897J43kWrjsRwLzr4oSg67c"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXSMARsNae24GiTpGByHo3bh5CaaFfRW8uNPD8NqYiQqryaAmc0_JOaWrvxOWD7N0IKzRpPY1PaSRQBrSiYvCpk3DL8RyyQsvvfzXSIhUpt6NgeX3o1NMvs4HhaoiFakkEqOKm3tf2QaGzPIpTl8ZIrEluFiV29NbHzuhVnOOtkugfaI90MoYVDsigL4WLOQGOBmCcHmSpITWOgGjzayC0sQLgGZ6eBEsDzgIFn534O0vwFcGQW98xLxLXD94dG_H90CAzXgURvWYisWhVswCTeJqrv5fAwY7b3eHxlkk3Bo5xMqFqZHL1Mj0vIlQ-7-tUac3m3Wce36dhQEbvSbn_STBD9Cs9xe7-REdr4fqBWF7Fuz9sD5CHcWHUigtSmjc94q34s8gbQWFdDUbMQ1DcKEVg_M2-OzBKisPTX7Ku-TQu5W&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Shiro Bengaluru",
+                      "alt": "Shiro Bengaluru",
+                      "place_id": "ChIJ897J43kWrjsRwLzr4oSg67c"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXRzUncVYZvBbx_zH6g2SKxY7jEEjfT-y60br9Ekx1rPIytFFgZxpQHQRs9pafdjAZB10x3_JRl4840friQ2OPDocdRwx-qDBi-EdG2Hrcy5fFj-bLNDgaSRAdLWcMKhuQ4Sm5j5qoviBjKG8-kznzZ72nYEPS-qxiehDITUsRTv6mebF1xCmsVds80Zq6mEFW3JKacS84-90y7P7FypacAOF8E-2nGQIFOzzWjPl-kYesDphKo3Ci37bDy4UPI8LI4TvH8hE210vgm8LYJawU0j4JSYr_NsZViIYXeR6ibw2GV_w4DaaaGWFTHhj-awmo0UUWW9_ZXjXud7epxdDHK5FShumtqqWK8n2r5DTJVozQNSnBR6RDlYMahMZHx5fuXY3lN9XxOS8lfPzrCP4r70e2v7gDdm3gtn7fBjytbzdDdUsRnvdE8coLG7lDQy&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Shiro Bengaluru",
+                      "alt": "Shiro Bengaluru",
+                      "place_id": "ChIJ897J43kWrjsRwLzr4oSg67c"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Zen Ambience",
+                "rating": "4.5★ · 6623 reviews",
+                "price": "₹2000+ per person",
+                "why": "Buddha-inspired zen interiors that match the Yudofu mood; premium pan-Asian with a chef-guided menu.",
+                "hours": "Open till 1:00 AM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=13252862821071043776&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "080 4173 8861",
+                  "tel": "tel:08041738861"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Reviews for EBISU's tofu dishes",
+          "How to make yudofu at home",
+          "Vegetarian Japanese options in Bangalore",
+          "Book a table at EBISU"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "text_replace",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "True Yudofu is a Kyoto temple specialty, so it's rare in Bengaluru — but EBISU is the standout here with a confirmed tofu dish (agadashi tofu, hot broth poured over silken tofu), the closest you'll get to that Zen ritual. The others are top-rated Japanese spots worth asking about tofu preparations.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "EBISU Fine Japanese Cuisine, Brigade Road",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "EBISU Fine Japanese Cuisine",
+                  "query": "agadashi tofu hot broth",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXSIusLs2stiC1k5NJuRhw47wknFrx-R6Pa9T4ToVZ6s3mtdaSTOjf2qr05vIblVfvDqREADpO2h85eZaU-zcT8BxsdfNVlmUAOs1OyWpvlyIqE5BcdptS0ro8Rcyzrh9w3sHYNmdR7xkdn0yA8LSuCk5l6-S20ti9i-WGh4ggmQfo1C3jf--v-gsGy82Xm9u-CEacz0LysiM8yq4_D1oFTPzGbkFR2SsBhB6IRINg9Nc1KUQQYwZyZRDAW-_5tlTyIMlRVUMPrHC2uv0SWGDaTNYf0Zg-4ON4ReAFNFPm6Mv9e3147fSBik53WAxevkVqOf7QmRHP__r-ZMpLoKlinb0jIVuk6Qa47Qor4xwiIubbbIBCk55FeCBEiWjCw5PreNqbvyjm9x2a3II9KM1Ykqnm7cKDut7PlztW-WyFQZ7bhWLml263-Co1qQGOVu&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "EBISU Fine Japanese Cuisine",
+                      "alt": "EBISU Fine Japanese Cuisine",
+                      "place_id": "ChIJU8jftUkXrjsR7iMxgLW5Wuc"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXQtbzYRMSm7SeYn0sAIyOT-ZLef4NocbDGpaXQffyOQTFb17QlOtAWk09aXJbsthqIgwJbYYl8L157McgJHOHWQmWT7rnpyOtWhitdnmX522MkVIKHQ5EZbMx7zWOOGcI1kFaI2GJj5-RP8xIWwiZxjVEZlNbB98aC_PVN-9dAeyJSnD6oX-xMJ0zCUHhLmULH_4qeOJFkNuZEwjIdjKPKUvlx1QlgAcXfyNoaA34YadL85f7R-SC-RyoH17jAqN-alBREQtJZ54MXO9LnD8rkPNJ_Wlf4i0XKWLMxwcuJyTeO8g2eWIeyLnoAjlitV-Vk1p0kxbhnyd72h6Agy-alg__VBP2HkMVGcLcko845dye6LWREOc9QbMuFl__obNS0kw3ESj9-r6E_IeiJmV3dXMfFi_-2xs6B2KQODxuGRRD7DFeAr0RgSTgPy_k3k&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "EBISU Fine Japanese Cuisine",
+                      "alt": "EBISU Fine Japanese Cuisine",
+                      "place_id": "ChIJU8jftUkXrjsR7iMxgLW5Wuc"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJU8jftUkXrjsR7iMxgLW5Wuc%2Fphotos%2FAVoNoXTwqkeVrrDBp5g4041KfFJU0_3GsPTZ4-1SVYqH9UJjHh7-Km6S4avEqgNki3ePLrGINx8Ld1j5HfSpfutHlqxIErf1QhIfgYekQBfJp0t4l6QmZq3IdYDLvvIop7ko3ijHP8DSss51QYDyM59-LWJo3JIezy92pS9mcqmYppaq7KJEfeif34Kjir6zdtAj3Ja3q8wrPogDW80qT9dotJGHSuguPUU9YBLzcvZMjeSgBxUWFBAm2mIvCln87kGQseZiwHiYkjLxkMFx5PT2Wn25d0uHC09XTWKAuiX-s4BsnFgRpLqodzi4SXcR16UR4TUsyYyIFjNGIcdlxz7HuP9pZKgOAII-PmNnqa2hYVoWnM_Oo-IXMT-GRIk0f6Sl3SABMn_RgUfRc28WLXXfXuJKGCZn0X1zqTQJLW6EPuvr4HDbRNwkzD8U_vcxoA&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "EBISU Fine Japanese Cuisine",
+                      "alt": "EBISU Fine Japanese Cuisine",
+                      "place_id": "ChIJU8jftUkXrjsR7iMxgLW5Wuc"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.7★ · 392 reviews",
+                "price": "₹2000+ per person",
+                "why": "Only spot here with a confirmed tofu dish — agadashi tofu, hot broth over silken tofu, closest to Yudofu's ritual.",
+                "hours": "12–3 PM, 6–11 PM (closed now)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=16670841159856235502&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": null
+              },
+              {
+                "title": "Daily Sushi, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Daily Sushi",
+                  "query": "Daily Sushi Koramangala Japanese food",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXSakU3Pm5WtDUnJkhFXY7PTy3XYJEla4mCBiw98umKvlkzuP7jfh4rR_WYEWYD6IhADM72ydrbrp-kOE0r0rComYnxuQvYuithHTaAVndPJBv_SbO_ldEyZLssRd_HLE7pbk1MM-LQ92R_v9U2pKxGfmpicpWDiv1lks34CU2rA_rvba8v41AEJG_1Ka-YDq1JRze62D61rD0Abn20dBhKvuZ96K-KfM3-ALVZd6MbBOY0V2sVuMARJDmZoou4GzlNxBJRhL5nhXF02wcH6erpJ8o-TVjxdk4aSB_u21URLsXDDYrjvsdWrMQWzMMa9Jzq6fJZXoHwS-p8_6p0MhfIdTxU5VrkhYteh5BSILtP0tTip7vH7CbfXj634gedujg66c1L4cvdfeJ8-ymONQY7o6Rn3BGL8MdQXsKJSjgKwJg&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Daily Sushi - Koramangala",
+                      "alt": "Daily Sushi - Koramangala",
+                      "place_id": "ChIJF6p5B-kVrjsRJ4mSNiEGqaY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXSMft569mZJvKTPoNn_WFO9MDSmjqbncQde-_RHtqVZ-_ZobDujyJRevSiGkgCgv_2QK9YAEqCtLqE6emBDGUfEHxF4kpsFQ8Fva_xt_p372zz8cp0y6Vb-8Te_LdlPVcrf3lnaqOqN_9vEVPGAw4IkjLpzZ0FWGHde211CN9n3CTmgNFScGzF4A6FokP5RxGiWgxjautMJ1HTK_rttnfrtI7zWqm7wzqzu1gYubX99ZIJNffqcqVi7qMSQ8onI0zRhGnJKib0ydvXPz4tpxY4u7u9xmNj0FqUFxU22M2G8YseWPzCUIf5oyGlreuWbq9LczFHUsrMLzUNJN2CkHWVNo6jz-pqUJE0k-rRGH1yrNIvMKdWmEVSlho2kBnroDEN9_3o3lVxCCjdpnanmSIydlm0bTTocv1XioEMaUsduNw&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Daily Sushi - Koramangala",
+                      "alt": "Daily Sushi - Koramangala",
+                      "place_id": "ChIJF6p5B-kVrjsRJ4mSNiEGqaY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJF6p5B-kVrjsRJ4mSNiEGqaY%2Fphotos%2FAVoNoXQIAowfPqtOFRDwB_kJiADuNb5699uBy6LJE8WwKyzUs7phKkMuHxQhmxeg_S3CEUtZwWuodLsl1PUP6MnbPZbhR2fHbxhTwh-u02mWimLPGdOxExmdlD2yF6XgM6vSXlwiOdqCfCzPzzwKh52I8isIN5xEit_PUbAei48UoNIksGf1c3h66rD54_Uor2vD4RbuWIl3wFCUZ3BQc8NR3e7lGNoQ9Mx5uFlFA1XPjKNt5AXD1zh-awOcWQ_YTfKfUmab6l1jXjZJ6UrpcSw1V33IJNDUc_Abpo8WOTfIp5JP7YcO4S3JXeEWZTawndeVAa4QAfh7Li5t28BQk81BQiicWOYqVcDorA610ccp-pfSNKVHZlanvpQEq9Bb1bia_W7YWIbmpHBCI-90PNiCE6VLE370U6HBVranUQ7xqvPyo2q5hL4GX8RibN7cuw&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Daily Sushi - Koramangala",
+                      "alt": "Daily Sushi - Koramangala",
+                      "place_id": "ChIJF6p5B-kVrjsRJ4mSNiEGqaY"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Highest Rated",
+                "rating": "4.8★ · 2120 reviews",
+                "price": "₹600–1800 per person",
+                "why": "City's top-rated Japanese kitchen with an authentic menu; staff are great at guiding tofu and veg options.",
+                "hours": "Open till 12:00 AM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=12009136621079398695&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "096320 54662",
+                  "tel": "tel:09632054662"
+                }
+              },
+              {
+                "title": "Kuuraku, Forum Rex Walk",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Kuuraku",
+                  "query": "Kuuraku izakaya ramen",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXT_a4imYuWG0gHrgeKLhT-GfZE-ha_3wl8weQ3Px3g1X5y7q8_G3hwCuKnw4XMYxrPEoKdG-eFGf7TeNXkxSflwG0P3H7xG2oJ6XB71RwvTQB2UPAFaNVfQa5lVWsUeAhJkiJhioB4qVGbXDPi4c2Eo5TZ5vTBe5maZyFGbStY6-IKQZtm5AHJV-CPoJxzmonijeUfWIfGb7VC9LjdaQFVKetnCL927NCF1VcUZc9jKBl4o_CXHrEXwVYuHFyVlKgJzAY3fcchki5IHgQtak1wFnV-velaBSIVQOvFEQ4hu3rpr5S6v9B3WPZeas0pHTsEVkT-dUsqXroPiaafyv6s50Cw_QfeVxwkvKRVfn7tlcQaehhjsBF7U1G87r6eP29VZANMkdKGS-WE7FTkSWvzXcJitkWTgnnDrHc7pZ0qYIA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Kuuraku",
+                      "alt": "Kuuraku",
+                      "place_id": "ChIJlc4a42AXrjsRmxOvhd194fA"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXRpXA5qV2Y0nLFUftR3kQWqDsDxNcvBQPqxRA6QVl-d8ObIbhaQlW031DKp1ArFododkk624qHpEkBZAmB7Zu4Wum9vQgtcjGLuBgxD7Dy5JHFklgQTlLtVXH3QqpgH9p81jKfDClUZWKMZX_TTtO33TLCL614LQxg86yf0lmaIpFvnNP4yTR4pi72Z_SejU6sMUFctxOrWT0UNlqtCmFSqJuFMoxs5um3PcCYTaeCkz_Ta25Ev4u8SP6_B0lTH8ZcN9MAgWSP5QPv4GCrGMLw-hkkztNlBi4acl4P5MkxY6QgPYt3tiusrjF4ypLPlVOSKX1Z_0Ph_6Vai9QX05GW9GbT19XalJF8uJsNWmUZwhP4QeI2jpv3LeTxW0JACsLAwEqwzpuSeO3Jiboi_GJT55y6Rvo2zb1gb2DyYv4kFpg&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Kuuraku",
+                      "alt": "Kuuraku",
+                      "place_id": "ChIJlc4a42AXrjsRmxOvhd194fA"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJlc4a42AXrjsRmxOvhd194fA%2Fphotos%2FAVoNoXRj6mlk1rQ6YPuB6BP_u1uDC846KdrwQ0K8Ur5Y6o3mVwd05VqkrIxtftZSM0D0IBlqkjFYHYYUuqBXX3xAwqWujMYDdEsn04OH5kyqhbOOvxkRHk-3nZi7GPK8vXG2fFoQ1vvYgOjWvZTuuzDou7gZvoo1_SdlpQRrhxQ1pY17-sd9MDLkjKX99qtrlEtq8oKyPxO2r5SwGF4z6-iloJ-sXzJniC_H-wgAlFIAH9TXO4YPvO-cNoN-MywZSiUOOfHJPA1PHcLPk2qHF9xj-d0xyWdNhia-en2WfzsEsxA8aJZBlF4Qlt47jEdwbykgIOvRWi5ABj1vyfnPwjWh6T2VAKdsqWMf1a9kRRM8FWe9h5SIE6cGC7mkwI7WSAk-n24L-7chZMn-7rGZQ9JMkSQ4TTTk7_G5Ood-5g&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Kuuraku",
+                      "alt": "Kuuraku",
+                      "place_id": "ChIJlc4a42AXrjsRmxOvhd194fA"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Izakaya Vibe",
+                "rating": "4.6★ · 2283 reviews",
+                "price": null,
+                "why": "Lively Tokyo-style izakaya with a wide Japanese menu; ask the staff for tofu dishes when you visit.",
+                "hours": "12–3:30 PM, 6–10:30 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=17357292829246690203&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "095997 80020",
+                  "tel": "tel:09599780020"
+                }
+              },
+              {
+                "title": "Shiro, UB City",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Shiro",
+                  "query": "Shiro UB City zen restaurant",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXRxy-ghoUzgvbx5TcbEKlyo6ClOk4ik3l1SpK7vaxlO1wOmfamWcXx8-QR_4cwjt9TWoCMV8FU3ggjSNqSNVIBP_dkWdu850LKIZlcHB5siFe-BcmjVy1GUxX3Arw4rtgtaBhMExTeanCaTR6G8onrPUHPU4_ZVYUrz_fkJMpOM-8b8sZ50ALZz3N1RPg2-PBTF6A9_hkHI1UaT23h_lrnlYYG_OBtMomGgOO97Bu0y-r9-4cwNVep-QZxlrXVhkdsu5k4CQ0GKaAB7KErx7R7Ga_53tYVL7FQ2g8yCKIfZP62Z4jcZFGEOqeggnakQay4aoZHUCTXutR3lUO44E0W6r_65wk4CvKqHWaKMh8IrphQ9pgFZqBlZFruLEC1vv2B-ie6YOmnleuVWl0n0JHAw7Vaj_pUmTIxoX97V1hv7WSPR&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Shiro Bengaluru",
+                      "alt": "Shiro Bengaluru",
+                      "place_id": "ChIJ897J43kWrjsRwLzr4oSg67c"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXSMARsNae24GiTpGByHo3bh5CaaFfRW8uNPD8NqYiQqryaAmc0_JOaWrvxOWD7N0IKzRpPY1PaSRQBrSiYvCpk3DL8RyyQsvvfzXSIhUpt6NgeX3o1NMvs4HhaoiFakkEqOKm3tf2QaGzPIpTl8ZIrEluFiV29NbHzuhVnOOtkugfaI90MoYVDsigL4WLOQGOBmCcHmSpITWOgGjzayC0sQLgGZ6eBEsDzgIFn534O0vwFcGQW98xLxLXD94dG_H90CAzXgURvWYisWhVswCTeJqrv5fAwY7b3eHxlkk3Bo5xMqFqZHL1Mj0vIlQ-7-tUac3m3Wce36dhQEbvSbn_STBD9Cs9xe7-REdr4fqBWF7Fuz9sD5CHcWHUigtSmjc94q34s8gbQWFdDUbMQ1DcKEVg_M2-OzBKisPTX7Ku-TQu5W&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Shiro Bengaluru",
+                      "alt": "Shiro Bengaluru",
+                      "place_id": "ChIJ897J43kWrjsRwLzr4oSg67c"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ897J43kWrjsRwLzr4oSg67c%2Fphotos%2FAVoNoXRzUncVYZvBbx_zH6g2SKxY7jEEjfT-y60br9Ekx1rPIytFFgZxpQHQRs9pafdjAZB10x3_JRl4840friQ2OPDocdRwx-qDBi-EdG2Hrcy5fFj-bLNDgaSRAdLWcMKhuQ4Sm5j5qoviBjKG8-kznzZ72nYEPS-qxiehDITUsRTv6mebF1xCmsVds80Zq6mEFW3JKacS84-90y7P7FypacAOF8E-2nGQIFOzzWjPl-kYesDphKo3Ci37bDy4UPI8LI4TvH8hE210vgm8LYJawU0j4JSYr_NsZViIYXeR6ibw2GV_w4DaaaGWFTHhj-awmo0UUWW9_ZXjXud7epxdDHK5FShumtqqWK8n2r5DTJVozQNSnBR6RDlYMahMZHx5fuXY3lN9XxOS8lfPzrCP4r70e2v7gDdm3gtn7fBjytbzdDdUsRnvdE8coLG7lDQy&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Shiro Bengaluru",
+                      "alt": "Shiro Bengaluru",
+                      "place_id": "ChIJ897J43kWrjsRwLzr4oSg67c"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Zen Ambience",
+                "rating": "4.5★ · 6623 reviews",
+                "price": "₹2000+ per person",
+                "why": "Buddha-inspired zen interiors that match the Yudofu mood; premium pan-Asian with a chef-guided menu.",
+                "hours": "Open till 1:00 AM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=13252862821071043776&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "080 4173 8861",
+                  "tel": "tel:08041738861"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Reviews for EBISU's tofu dishes",
+          "How to make yudofu at home",
+          "Vegetarian Japanese options in Bangalore",
+          "Book a table at EBISU"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "completion"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_skills_used",
+    "label": "LLM used skills (1)",
+    "ts": 1787565029729,
+    "detail": "food"
+  },
+  {
+    "type": "turn_complete",
+    "turn_id": "582f6823-6343-4a02-8ab7-fbef9f06f688",
+    "input_tokens": 86559,
+    "output_tokens": 2800,
+    "reasoning_tokens": 903,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 51200,
+    "latency_ms": 49719,
+    "agent_steps": 3,
+    "tool_call_count": 6,
+    "skills_loaded": [
+      "default",
+      "food"
+    ]
+  },
+  {
+    "type": "[DONE]"
+  }
+]

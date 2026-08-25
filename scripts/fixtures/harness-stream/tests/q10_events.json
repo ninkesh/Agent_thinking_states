@@ -1,0 +1,923 @@
+[
+  {
+    "type": "turn_started"
+  },
+  {
+    "type": "insight",
+    "subtype": "guardrail_passed",
+    "label": "Guardrail passed",
+    "ts": 1787565215685,
+    "detail": "nsfw check ✓"
+  },
+  {
+    "type": "insight",
+    "subtype": "query_enriched",
+    "label": "Enrichment skipped — no prior history",
+    "ts": 1787565215687
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_selected",
+    "label": "Skills selected (1)",
+    "ts": 1787565215687,
+    "detail": "food (0.82)"
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_loaded",
+    "label": "Skills loaded (2)",
+    "ts": 1787565215689,
+    "detail": "default, food"
+  },
+  {
+    "type": "insight",
+    "subtype": "context_built",
+    "label": "Context built",
+    "ts": 1787565215689,
+    "detail": "stm=no · 0 msgs"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_start",
+    "label": "LLM started",
+    "ts": 1787565215691
+  },
+  {
+    "type": "insight",
+    "subtype": "tools_loaded",
+    "label": "Tools loaded (12)",
+    "detail": "GetRoute, GetWeather, MemoryRead, MemoryWrite, NearbyPlaces, PlaceDetails, PlaceReviews, PlaceSearch, Task, TodoWrite, WebFetch, WebSearch",
+    "ts": 1787565215693
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "user_query"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "0 / 100,000 tokens (threshold)",
+    "token_count": 0,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565216949
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Assuming you're in Bangalore (the city's Thai scene is strong) — I'll search for the top Som Tum spots now.",
+    "step_id": 1,
+    "names": [
+      "PlaceSearch"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceSearch",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787565218741,
+    "detail": "best Som Tum Thai restaurants Bangalore authentic"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "best Som Tum Thai restaurants Bangalore authentic",
+      "city": "Bangalore",
+      "max_results": 15
+    },
+    "tool_use_id": "49a465d4-ce63-4a52-a623-58b06a97ee1d"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787565218752,
+    "detail": "authentic Thai food Som Tum green papaya salad Bangalore"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "authentic Thai food Som Tum green papaya salad Bangalore",
+      "city": "Bangalore",
+      "max_results": 15
+    },
+    "tool_use_id": "91d59769-15f6-4bba-b5ee-d047d8fa0a8c"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 25,007 · out: 753",
+    "ts": 1787565218760,
+    "detail": "step 1"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 25007,
+    "output_tokens": 753,
+    "reasoning_tokens": 0,
+    "reasoning_estimated": false,
+    "cache_read_tokens": 0,
+    "text": "Tokens — in: 25,007 · out: 753"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 2 tools in parallel",
+    "ts": 1787565218768,
+    "detail": "PlaceSearch, PlaceSearch"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 2,
+    "names": [
+      "PlaceSearch",
+      "PlaceSearch"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787565219778,
+    "detail": "12328 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"best Som Tum Thai restaurants Bangalore authentic\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJ7-VsECEVrjsRwwQfafTtfRg\", \"name\": \"Thai Basil\", \"formatted_address\": \"Plot No. 32, 80 Feet Rd, S.T. Bed, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 1968, \"price_display\": \"\\u20b9600\\u20131400 per person\", \"open_now\": true, \"phone\": \"080 4989 1968\", \"website\": \"https://www.thaibasilin.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=1764828262990546115&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.931408, \"longitude\": 77.6329181, \"photo_url\": \"/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXQN9JC04ZheJJq664AxA_SC4qurfOWHCup4O0iAa-lty01lXMskaxWNsqhO2A10H_b_X112TKJtJNB3hR9e1Yn-U148FT9MbMayfvm6gWlsJGMHtH3RYyzm9gtvhMCuWhVdnEhe7bb_ScfjthgJ6RwHDPYpapNxm1GboP_vo2qNn_HhCXgSwX6MkiarUPjL4PvMFcr3c0HpKuyUMEyYM97cBW-WR-Wses01xAoX-SJelLPZ6IrbHqMR7t0p9jWao7b4-_phjfWya8i_rv3sVRpZ0oyjB68XdaCDBxH6jSj2LKbCwSPwwnNQgfzmULDOSq53iOuFYW0i922oYlwwVQQOTFfj2slB8hyxae38AhlsA6PkEPMz5H_udRs2vcH_rua99N-0At6H_S84Y5bOMKN3x2qYNgastqLWhwLwRJtf2g&maxWidth=400\"}, {\"place_id\": \"ChIJH139DgAXrjsRSvY_aJ52sl0\", \"name\": \"Baan Phadthai Indiranagar\", \"formatted_address\": \"Sai Suraksha, 1090, 12th Main Rd, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 1635, \"price_display\": \"\", \"open_now\": true, \"phone\": \"089712 02645\", \"website\": \"https://widget.reservego.co/reserveOutlets/687e32b503ac54f3d593b9ab?source=6\", \"google_maps_uri\": \"https://maps.google.com/?cid=6751589214107727434&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9698693, \"longitude\": 77.6377675, \"photo_url\": \"/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXQIDSPULVUE7zO3W65Rl7RtXkXQVywH1Sc5OEOsDGklH58FRzC9HKpH1DYHT_S30tyBJ57sQBndwYPSmuiWXC2MRfyCjlAW9-Cs7PBn6lwtJuS4uvBwnqvdhN222N5XU0oN8ruaIMfxXi6T410ocluZfzTRMk62AVw_NkS88eQjYoEGt2aFR2RjfGHlWP3HqHepOLrn6VWKMlAc1Zcb0iSh53Z6S-me5zkvCrA-5EM8gc84dZCedrwN5ehfrPZXbItMEOKnP9WWn6bnzXEysbyquX1-SuL7uEa54za2K0qO7AS_ze6cDL14MggJy_pMMLFgzTj_zExxtgKdMz-Vu__o_yEEK8y-C6_DB-rDpgOKKMsveNh3bQJvy8EJH1fnC4_9YCrtIVY4ivQsuCJb0BZBV8aDLq9Hhu8mNJtAQZrGQCBZMwgKaNH53MxpcQ&maxWidth=400\"}, {\"place_id\": \"ChIJL6R6rMYVrjsRfv2Smf-LOiI\", \"name\": \"PHRA NAKHON, Thai Cafe\", \"formatted_address\": \"JT Plaza, 487, Jyoti Nivas College Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 419, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": true, \"phone\": \"080882 59532\", \"website\": \"https://phranakhon.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=2466437675848236414&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9337599, \"longitude\": 77.61880049999999, \"photo_url\": \"/api/photo?name=places%2FChIJL6R6rMYVrjsRfv2Smf-LOiI%2Fphotos%2FAVoNoXTmiydk_MRxXzeD1FTmaMyja0nmfZtAqe-ywuiFREQ_h84dzGXOXUpCpRsPKoEFUPlCDNQmStW4LPUtmMjlJcz-WzJP5bdv9aGRDLuN3ZgZ5SrTBCagvZAumKc1uszoE2qNYhEfhOvMa7OeHKayTkkNvrxcYtQ3I75WKUPX2O3rmRwRZoxZnNZ-flXAQhmi9BznGwGvtmBzx2zpkN3RWcB_2Q7MmIbKf6BBol3SGMG2AYIPqZ_9K7tHxwHK1YOs8SDryN2kPOrxdX1_MWS9wflqmdOqAUJO4fGv3D4FhLx8iWV-qlJJhFmJ3sHygLcmswThFLrbbzKYLEgzigk-SYflbn1KR2erOPAEuxtIrcoUhdw8z-U5Th2dO86LeRFpEIiWxuQ-TQmQc5eABfV24XSdmSsmbCnYET2EiVmoA-Vt4In6&maxWidth=400\"}, {\"place_id\": \"ChIJO_vB0ywXrjsRSNEAgd5dOB4\", \"name\": \"Thai Alley Restaurant\", \"formatted_address\": \"No 38, 1st floor, Kammanahalli Main Rd, St Thomas Town, Ramaiah Layout, Kammanahalli, Bengaluru, Karnataka 560084, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.9, \"user_rating_count\": 793, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"096634 78086\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=2177593630062072136&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 13.0172277, \"longitude\": 77.6362015, \"photo_url\": \"/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXRs13b9MQirXKUuScsfFQhJAmZd0HuN9oVKTgRQypZG7VittNyL2L6N4ltA8_Bh5F2R3pRxbn9THNzYrbBLvx-P--erTt7a1rJr7vn0iSaG0o_mzck2_iXEx7uGiGHL2VZAb0ZysDhRtMngpDe9Gtp-ilKPa8XeniMKKjuz0OM4xXk4GBPkybPQeEfqcPgmXfmjukDplOhxxDRBOWWUM1Y75xhPi198U-x1PRJ6ERO93T-LL2IyyV4NKACNxYP5rLsySJYW80YvxJlZCDbFHz-cHyUdagw3R1Jj8f5gxDjK4qKMuvr2wrONhi8p7-0341B1AFKQ5gpw5UpSsXGzOis7XX0_9aA0UYSbNGQlQqLj1HwoP-RrllFFqJZjN4beqpTbtv5GLa-9SuFhpxzKvFgin9tptQApMpG8yhg3UuvghdHFLUKJqtv1EJpLchFG&maxWidth=400\"}, {\"place_id\": \"ChIJVWs9jtIVrjsRREDZI3Pebms\", \"name\": \"Tuk Tuk \\u2013 Koramangala | 100% Pure Veg Pan Asian Fine Dine Restaurant. Thai Curry, Best Sushi,Best Bao, Pad Thai, Dim sum\", \"formatted_address\": \"17th Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"fine_dining_restaurant\", \"asian_restaurant\", \"family_restaurant\", \"sushi_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 1257, \"price_display\": \"\\u20b9400\\u20131600 per person\", \"open_now\": true, \"phone\": \"097405 73522\", \"website\": \"http://www.tuktukthai.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=7741369395600506948&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9334264, \"longitude\": 77.6223869, \"photo_url\": \"/api/photo?name=places%2FChIJVWs9jtIVrjsRREDZI3Pebms%2Fphotos%2FAVoNoXScQpjyVm9VJylMynIY2imr16XvFyEDCWTj12_Sei7Lt8Qtpl9IwENtylcLp6l52HnBv6fzqyBCyTcfZ4ZsXa-dSgMThNLrXXF7hPtawJFZ_eIqpo5RAxmJlRh9Fr9QdHbLKOF_80HyPOMB9L75rTDouSmLeVoVCJVU_4-DT8zG_yadv13gqtjXOWCB5jLDsXtZLWnz6LDfL0_khBlshpYjXKuUjwrWYcaQnjKPR6qBgogP7OuIGHhiV27pdg6hvoec8dqhqCl_nsImdiqHWwAIQzmQnqX-zU0A7LYawA0eIVqSESVUEDoQ7xkiDA4AMqx50VteDysCayzyPADMMEsTCIzWF3kIVUizyiMvmwuHwIq2dmcu-LT7ciiYmdkkjiJlHDq45yzqfjZDapycAPz0uIVdI6qtcOlstUXDa9lcyMElJbnrcRCEvtzjKg&maxWidth=400\"}, {\"place_id\": \"ChIJGfnPtLoWrjsRzLWqDqF-QGQ\", \"name\": \"Thai Basil\", \"formatted_address\": \"Dar Realty, 840A, 100 Feet Rd, Indira Nagar 1st Stage, H Colony, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.3, \"user_rating_count\": 1816, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": true, \"phone\": \"080 4865 8489\", \"website\": \"https://instagram.com/thaibasilin?igshid=NGVhN2U2NjQ0Yg==\", \"google_maps_uri\": \"https://maps.google.com/?cid=7223913032503178700&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9807653, \"longitude\": 77.6409513, \"photo_url\": \"/api/photo?name=places%2FChIJGfnPtLoWrjsRzLWqDqF-QGQ%2Fphotos%2FAVoNoXRjnyqQMInp7wyUD2Giptz4iu3XeY9SZE1DuEio8SH-2O9afm--lxvbY3Lx-VOPu1BmkAvchzIS6_f03r-6qOoja3s4M8tIfO9a_4HEIwHy-JDnIf_wF2z7MNGfUVeKkp3GxWWf6iR_kqso5NUSYz_o-gsd2Wnmw4bR8pvkpfH20s0BeSpIM25D5giO1xoZEphTZ8Zf4-eHzdkqJBqiOxN-qeoDsIzGKk1tjz0YYfjZu0Sy2RzERbjahcJBE-T_cn6AodtodcafWzRK3MdkrZemMkn3-_A7ZP2enmeRc1OkmPRYtlX60WDjRZvjVs5OiBK6swI2_J6zmq9tuVYtcv50l5NHCLRsmRGt5V2jszSiKJDvhlw5BQafGL9-qxfjbLuKyfAlmEwlJI7r1s0D8Tc4XzgCKrnL0rd3_sBnP0syHnSC&maxWidth=400\"}, {\"place_id\": \"ChIJNcKZykIUrjsR5_XmIUVem_k\", \"name\": \"Nasi and Mee - Koramangala\", \"formatted_address\": \"974, 80 Feet Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"malaysian_restaurant\", \"thai_restaurant\", \"japanese_restaurant\", \"restaurant\"], \"rating\": 4.4, \"user_rating_count\": 7433, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"070225 45466\", \"website\": \"https://www.nasiandmee.co.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=17986073187848746471&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9351203, \"longitude\": 77.6292231, \"photo_url\": \"/api/photo?name=places%2FChIJNcKZykIUrjsR5_XmIUVem_k%2Fphotos%2FAVoNoXSyq438xVs56cf8AegLeafop_Q8wp7X1pGrDcXWnKEF1kP8H1Qjz7Ijlqz1dlv0lxdgloPfifytrXiffpJcB43fn29v7jdHU3OQTkZWmahYQteVie9Q5-Gm9cdV6epgcrgwDWLK-Hv5dxclER7Ant89fga4EJW_PfFXdExB6Cmywtb-Y9v1a7eSeyt-BXEdgapkz6xDOsi8SNM8qFEvZRzmtlrMkutDb4isV30pftwR_kuUSEpjkTtpiJnju2Ah2SH_tG93dXM8UPvbRTp1NXAXWLKCyCeujeUGXVuSAQFl_S4Ytv5pzXNT_QDO2zdQqKVrOmnNRZngEG07lCcs3piDAVHVF5heXVQWu011UoDpoVhiVR8I2GAvkx6XNd_DmcnYUPPRsAcmf1SxjRfISc6w1ZWs8V-AOyl42MoxRLvFgg&maxWidth=400\"}, {\"place_id\": \"ChIJK803PwAXrjsRj8iyPRQgxi4\", \"name\": \"Siam Gaja Thai Restaurant\", \"formatted_address\": \"Sahara India Parivar, 2/B, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 99, \"price_display\": \"\\u20b9600\\u2013800 per person\", \"open_now\": true, \"phone\": \"095915 94944\", \"website\": \"https://www.facebook.com/share/18GKpJ4xX3/?mibextid=wwXIfr\", \"google_maps_uri\": \"https://maps.google.com/?cid=3370416642439956623&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.974382199999999, \"longitude\": 77.6073175, \"photo_url\": \"/api/photo?name=places%2FChIJK803PwAXrjsRj8iyPRQgxi4%2Fphotos%2FAVoNoXS3EWyR4_HW5SUtL9E2ZB8_cz_tysDcPVvcJCkw3iDlR099mvWgwbUiYwlWaDSPIaxinpNz8Hz18xGkTcikHQ6fn3cFVc1s8hsUTnL7HhKIRoBTBe7DrPm5t7Xo6QJrrLrokuU77EjiM2jTn5kzFqUVTVXjIY3F8RcO6iTlQF8ipFcjI7wMMuisYJm1N1KIf_ZeQMbB6NQInKUHTN8ncgl_uhAUgMfwX4UIbWpPg14T5WqtoZ4U7vMxuxa1hbkUitkVZPCkYo2kQ_idUjQKzZTWCJay-4fKd6HA09Ipn8q7I7X4mijFxKnuDFQTlBkoQg_XtwSPGlpYEyTsHEFzUYVxL2Uzattqj8QA2e-n38eIcotn7XQrdAoXy-mXLPHrsvcKpV_lvBlCCqzp6RYHh3C4RfVvLnS2xY8MU3H0w_bJpPyBWpiAMVS_DwzOWA&maxWidth=400\"}, {\"place_id\": \"ChIJGQn6Z8kPrjsRk9W-rq_unCQ\", \"name\": \"Tuk Tuk - Whitefield | Pure Veg Pan Asian Fine Dine Restaurant. Best Pad Thai & Bao, Thai Curry & Sushi Whitefield\", \"formatted_address\": \"Channasandra Main Rd, Ambedkar Nagar, Whitefield, Bengaluru, Karnataka 560066, India\", \"types\": [\"fine_dining_restaurant\", \"asian_fusion_restaurant\", \"asian_restaurant\", \"sushi_restaurant\"], \"rating\": 4.5, \"user_rating_count\": 1693, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"080 2990 1531\", \"website\": \"http://www.tuktukthai.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=2638245920050697619&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9822705, \"longitude\": 77.75791360000001, \"photo_url\": \"/api/photo?name=places%2FChIJGQn6Z8kPrjsRk9W-rq_unCQ%2Fphotos%2FAVoNoXRD6SqK6zHe8oCNz72T5qBxwn7xX1UxwdPPWgMOYmVzxfcJn7hKEpDJxd8mtJQ6wAbLVSqzzNzAARv9AtQWaoMisq4wsWGBIl2YSJ3nF2dTIGf-eLBnbMa8exXDjbCsHXfXNJSTt-C_WkzwfSBBYnJVyl_U-I_arPHmnqmx4ikghcIPLF81DP_8xW0wjW7UWrdAbgMuBnejkryywCgo4d98qF8mm9zJ3oxQ-DfMdp77VSyDbfHpQ5oubt-accK8LRWFywasNF8Fh4zN_-CXsKX-i3DJTX5bJUwsqvMptYAlH86w4LSGis6sZ2f3bD4uy5SsKNX22n1qP0_GlqnLN-DBXg4gmO5gC0V9GwkL2eC5vTkXTUo410x2Ad8WAES0Mb6K2iq_BXpzRjXW8WTbh03B9e_TJP7Y859CxbBv-5MQVifwaAyvkE2mbrT6f21V&maxWidth=400\"}, {\"place_id\": \"ChIJNWGWH6QXrjsRn3DNLIFXn2M\", \"name\": \"SAWADEE - AUTHENTIC THAI VEGAN KITCHEN - Dining & Takeaway\", \"formatted_address\": \"13 Padmalaya, Bachammal Rd, Cox Town, Bengaluru, Karnataka 560005, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.8, \"user_rating_count\": 273, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": false, \"phone\": \"095910 24447\", \"website\": \"http://www.thethaivegankitchen.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=7178552543365918879&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.997094299999999, \"longitude\": 77.61770039999999, \"photo_url\": \"/api/photo?name=places%2FChIJNWGWH6QXrjsRn3DNLIFXn2M%2Fphotos%2FAVoNoXS58YFctHbVFkDmjpG45egIN574XeOcMcbL7vFmTuWZGbznM4RvL7KOikoejK1LTaTNKqVC9gStEeyUf2XrCMoDIbY0_oiX3D27h1Mt64LOkEeWngnafSapXpHZ02CRmm2Rv98OXL-hAHy1JzJwI8dkM_JLHADGRazlJvQoWwZd_EePlSHtDODxBZ7jHk1AODtM0yu_5bGSH2AWxGGhGPIobA0d5zieqo0KIAbHhAJYeJ5MUZbdtyCUvJ1lBg09Tq_kNWsHbCVx32hcz3t8e868Yb2B8sciWESLU05CQbwwYjs4MM-whO1jFfy0Q--IHgJSgmGAvFIbT7z1iX8A69EFW9kSQzN1xBIp7xjXnQT1vY_bem2VA3eUB5Nv7NPlNo3jCCrCxTWwWeStv-0c5FQIsg-8xYsKqEPujXhgrk86PPBz&maxWidth=400\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "8bc13b69-ffe1-4639-914c-ec4a76c8f346",
+    "is_error": false,
+    "llm_text": "{\"query\": \"best Som Tum Thai restaurants Bangalore authentic\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJ7-VsECEVrjsRwwQfafTtfRg\", \"name\": \"Thai Basil\", \"formatted_address\": \"Plot No. 32, 80 Feet Rd, S.T. Bed, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 1968, \"price_display\": \"\\u20b9600\\u20131400 per person\", \"open_now\": true, \"phone\": \"080 4989 1968\", \"latitude\": 12.931408, \"longitude\": 77.6329181}, {\"place_id\": \"ChIJH139DgAXrjsRSvY_aJ52sl0\", \"name\": \"Baan Phadthai Indiranagar\", \"formatted_address\": \"Sai Suraksha, 1090, 12th Main Rd, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 1635, \"price_display\": \"\", \"open_now\": true, \"phone\": \"089712 02645\", \"latitude\": 12.9698693, \"longitude\": 77.6377675}, {\"place_id\": \"ChIJL6R6rMYVrjsRfv2Smf-LOiI\", \"name\": \"PHRA NAKHON, Thai Cafe\", \"formatted_address\": \"JT Plaza, 487, Jyoti Nivas College Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 419, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": true, \"phone\": \"080882 59532\", \"latitude\": 12.9337599, \"longitude\": 77.61880049999999}, {\"place_id\": \"ChIJO_vB0ywXrjsRSNEAgd5dOB4\", \"name\": \"Thai Alley Restaurant\", \"formatted_address\": \"No 38, 1st floor, Kammanahalli Main Rd, St Thomas Town, Ramaiah Layout, Kammanahalli, Bengaluru, Karnataka 560084, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.9, \"user_rating_count\": 793, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"096634 78086\", \"latitude\": 13.0172277, \"longitude\": 77.6362015}, {\"place_id\": \"ChIJVWs9jtIVrjsRREDZI3Pebms\", \"name\": \"Tuk Tuk \\u2013 Koramangala | 100% Pure Veg Pan Asian Fine Dine Restaurant. Thai Curry, Best Sushi,Best Bao, Pad Thai, Dim sum\", \"formatted_address\": \"17th Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"fine_dining_restaurant\", \"asian_restaurant\", \"family_restaurant\", \"sushi_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 1257, \"price_display\": \"\\u20b9400\\u20131600 per person\", \"open_now\": true, \"phone\": \"097405 73522\", \"latitude\": 12.9334264, \"longitude\": 77.6223869}, {\"place_id\": \"ChIJGfnPtLoWrjsRzLWqDqF-QGQ\", \"name\": \"Thai Basil\", \"formatted_address\": \"Dar Realty, 840A, 100 Feet Rd, Indira Nagar 1st Stage, H Colony, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.3, \"user_rating_count\": 1816, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": true, \"phone\": \"080 4865 8489\", \"latitude\": 12.9807653, \"longitude\": 77.6409513}, {\"place_id\": \"ChIJNcKZykIUrjsR5_XmIUVem_k\", \"name\": \"Nasi and Mee - Koramangala\", \"formatted_address\": \"974, 80 Feet Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"malaysian_restaurant\", \"thai_restaurant\", \"japanese_restaurant\", \"restaurant\"], \"rating\": 4.4, \"user_rating_count\": 7433, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"070225 45466\", \"latitude\": 12.9351203, \"longitude\": 77.6292231}, {\"place_id\": \"ChIJK803PwAXrjsRj8iyPRQgxi4\", \"name\": \"Siam Gaja Thai Restaurant\", \"formatted_address\": \"Sahara India Parivar, 2/B, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 99, \"price_display\": \"\\u20b9600\\u2013800 per person\", \"open_now\": true, \"phone\": \"095915 94944\", \"latitude\": 12.974382199999999, \"longitude\": 77.6073175}, {\"place_id\": \"ChIJGQn6Z8kPrjsRk9W-rq_unCQ\", \"name\": \"Tuk Tuk - Whitefield | Pure Veg Pan Asian Fine Dine Restaurant. Best Pad Thai & Bao, Thai Curry & Sushi Whitefield\", \"formatted_address\": \"Channasandra Main Rd, Ambedkar Nagar, Whitefield, Bengaluru, Karnataka 560066, India\", \"types\": [\"fine_dining_restaurant\", \"asian_fusion_restaurant\", \"asian_restaurant\", \"sushi_restaurant\"], \"rating\": 4.5, \"user_rating_count\": 1693, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"080 2990 1531\", \"latitude\": 12.9822705, \"longitude\": 77.75791360000001}, {\"place_id\": \"ChIJNWGWH6QXrjsRn3DNLIFXn2M\", \"name\": \"SAWADEE - AUTHENTIC THAI VEGAN KITCHEN - Dining & Takeaway\", \"formatted_address\": \"13 Padmalaya, Bachammal Rd, Cox Town, Bengaluru, Karnataka 560005, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.8, \"user_rating_count\": 273, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": false, \"phone\": \"095910 24447\", \"latitude\": 12.997094299999999, \"longitude\": 77.61770039999999}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787565219783,
+    "detail": "12218 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"authentic Thai food Som Tum green papaya salad Bangalore\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJ7-VsECEVrjsRwwQfafTtfRg\", \"name\": \"Thai Basil\", \"formatted_address\": \"Plot No. 32, 80 Feet Rd, S.T. Bed, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 1968, \"price_display\": \"\\u20b9600\\u20131400 per person\", \"open_now\": true, \"phone\": \"080 4989 1968\", \"website\": \"https://www.thaibasilin.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=1764828262990546115&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.931408, \"longitude\": 77.6329181, \"photo_url\": \"/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXTqvAhR2oHPe2BWanFJT4Bj9QMHHTS7GOMGxzBz71VNRdmNHG5lj6xaE7QMhjsXIneFBuNMS0pz1gHTkudc7YIXbCLTF35H3wJmCHGWP-obLUP3K2M-rgLCa5gsOqD8gRReSGkx-dPV2u6Cos9VUVsGPxul5yMLZqvJu3H9dTIXpSQyypMqvO55_CeaNIuplN-UgaPtKyZX8WQRs6gOoQHCKQiSrMm4WGUBou97CG5uTMvxIYgPSKrImrxdUr-THcRJJwmUC1FYvM4gMRd1RfUYIDkBbcvYxKpjg0RAuNjnGQPlXeNA4kYPTWwcqI9fvFnPV-jtHkeadIyvXJ8QW75_S8EgwcaTX77cnseJUbkn6Cq8vxvhrmAgIqq5ftAiKAcZUBXWjfSrChB3-BqwfEysRj92tFbJk9lg3aT6IOBTeA&maxWidth=400\"}, {\"place_id\": \"ChIJL6R6rMYVrjsRfv2Smf-LOiI\", \"name\": \"PHRA NAKHON, Thai Cafe\", \"formatted_address\": \"JT Plaza, 487, Jyoti Nivas College Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 419, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": true, \"phone\": \"080882 59532\", \"website\": \"https://phranakhon.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=2466437675848236414&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9337599, \"longitude\": 77.61880049999999, \"photo_url\": \"/api/photo?name=places%2FChIJL6R6rMYVrjsRfv2Smf-LOiI%2Fphotos%2FAVoNoXR_hV3wreQvOwgsZ5B5R-wFZZBjLVbIl1aIpPFtDHCFlEv8beskTvnBw-Z7mo_SJBba7Jjt_LxUUHP58XnNag6Lb4LpTpz2YDTgcNwN4TcHvsJLJ-s2_677JQUbYYMY3iekoycqciV93n03_NLbS4GX8JNoHD02YCqZzEKTIHUlCSdY3Dw6qKKg3kUwBP7UQ6Jwir3PvqCZMlo7Av5gA9WspnxlQV4yq4Quw9JSx6QAeVFog0Ldq9sxcxTPbiIXbDSBqn8ZyZVFuR7-L_HNAk9iwciOZN36LSECZVLgDr_xlm8WfIYE5OQEz0mHqP65Ai2IzGpIhTDeU5H2y1NWaUAB8hOTCKTlv41nfmmenTCUQ_hOADQ4Xe5uXzBYO3XKEhi7kuHisc2esChykRV_nR1icXqQ-_xA9DTLUP4hL8Gt17sN&maxWidth=400\"}, {\"place_id\": \"ChIJVWs9jtIVrjsRREDZI3Pebms\", \"name\": \"Tuk Tuk \\u2013 Koramangala | 100% Pure Veg Pan Asian Fine Dine Restaurant. Thai Curry, Best Sushi,Best Bao, Pad Thai, Dim sum\", \"formatted_address\": \"17th Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"vegan_restaurant\", \"family_restaurant\", \"thai_restaurant\", \"sushi_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 1257, \"price_display\": \"\\u20b9400\\u20131600 per person\", \"open_now\": true, \"phone\": \"097405 73522\", \"website\": \"http://www.tuktukthai.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=7741369395600506948&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9334264, \"longitude\": 77.6223869, \"photo_url\": \"/api/photo?name=places%2FChIJVWs9jtIVrjsRREDZI3Pebms%2Fphotos%2FAVoNoXQclPmTBMXRTqkcf3mi7vKn6tq3nZ1_tx73QtMW5Quh0UFJQqf-I65TUM7mex83fzkF2WlPUjhAsL6KecaIdTXz643WnVgs6cIQ3zWJVz2J3zOtDFfgnJleweeNFSlvQUFLNvpm7C4So2xfHMsjc4wWU5dKMO1XoEYMA_oCRm7irXYdnx43Uaohy_fdUN9Sfv83wx5Y2jZPIGxs2LP9mnCYJkoNfM5UA991DloiT0yaEneu9vEbUJRAn9UnINi0YWJ18u5a5uZzPp0CVNhItoHW4surA2nc2cRNEe8XkU5kw3E9IuDCjqBQpiHQZmIAPHOyS84HDTatA28w3khgJcHRtIlv3flX82M4dZL5GiUiIjzgRi75J1wg2ekei6R4htWnZAo3u63U6Kcw_SH74N2mN4WxfU1_W_9jDkfoazvC4eWcT9JddM7w9SDhYQ&maxWidth=400\"}, {\"place_id\": \"ChIJH139DgAXrjsRSvY_aJ52sl0\", \"name\": \"Baan Phadthai Indiranagar\", \"formatted_address\": \"Sai Suraksha, 1090, 12th Main Rd, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 1635, \"price_display\": \"\", \"open_now\": true, \"phone\": \"089712 02645\", \"website\": \"https://widget.reservego.co/reserveOutlets/687e32b503ac54f3d593b9ab?source=6\", \"google_maps_uri\": \"https://maps.google.com/?cid=6751589214107727434&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9698693, \"longitude\": 77.6377675, \"photo_url\": \"/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXTMU_svUJOmtxEc39O-wtjeu2NrVVQu6zYyX0KwdCiY25TxnOFpF7HbPQJi9Q077E-XgjLKqQPwuI47Qr-Aae9H_jEzkGNlu26Z4Oin8IgaowRWkA2Bny6rNjp_KUI1hsZUSGrduubgkNmZBWJFnEBtOLVWglXzYwVjb5EETJGETWHZtjYKqceVfjG6HkPJGWc8B0vZurr2CxvRguh39Oh51p3pjcz4jlRzNX-pFxJRRZFDIJr7kvhrA6r9sECcq79GNRA394uOTQkA9fMjA5y5T3uWLg7aPY-XFldqs4tdqPXBoKj7yAx8d8tpFEoLYJftQhLobbr1rifhzhXfw5NYQHPHoOxUXM1Nb1q_eX-n0WTzG0X_87Fefey7CBZ6MC9sqjj-ISXWbG0d06k7RAnDNnxAN6ZILFESubK21fV6Z0fnZq8pMI4rUS0WmA&maxWidth=400\"}, {\"place_id\": \"ChIJGfnPtLoWrjsRzLWqDqF-QGQ\", \"name\": \"Thai Basil\", \"formatted_address\": \"Dar Realty, 840A, 100 Feet Rd, Indira Nagar 1st Stage, H Colony, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.3, \"user_rating_count\": 1816, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": true, \"phone\": \"080 4865 8489\", \"website\": \"https://instagram.com/thaibasilin?igshid=NGVhN2U2NjQ0Yg==\", \"google_maps_uri\": \"https://maps.google.com/?cid=7223913032503178700&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9807653, \"longitude\": 77.6409513, \"photo_url\": \"/api/photo?name=places%2FChIJGfnPtLoWrjsRzLWqDqF-QGQ%2Fphotos%2FAVoNoXQxEoCOaduzJLoISNjOL2uJTNZBjo16RsslOWUBCZqwTYR11WYXsQnwOjx_oaN-25qosBkBDN8CcOXsP4SoLsZeVu4KnNL3x2pCVaINceRXrbnb9JQvbEYFqZxcGDQ3OkpVnIVhqJUQty3t70JWuDOTFdL-8aya78eyxGrcpz3I3X-BR83p4tCej__JALwsOufUMidbBhcsgeEfggUv1mzEX8uOUxLlwRTcZ7EFoTxLEKWZBy0u_TkZfR8WDyCE-XaJ0npH7iHb4rbSKQVEcyZEgu1TeIlK3oqNk8Jugpu-qtRgea-QaRg4Aa9iEuhgNo7ppmejQFi4a9i0pqGEuebKBV2TVcoeJ3j__cnpA4hUzHMFucHfGvtCu2mOrT-4enjmXhCq2IMK932MFHeiwEuwQkA4i2L_NSt9Dr5DfI6Iaii0&maxWidth=400\"}, {\"place_id\": \"ChIJO_vB0ywXrjsRSNEAgd5dOB4\", \"name\": \"Thai Alley Restaurant\", \"formatted_address\": \"No 38, 1st floor, Kammanahalli Main Rd, St Thomas Town, Ramaiah Layout, Kammanahalli, Bengaluru, Karnataka 560084, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.9, \"user_rating_count\": 793, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"096634 78086\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=2177593630062072136&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 13.0172277, \"longitude\": 77.6362015, \"photo_url\": \"/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXR4-8AVW3aoM9lf8RHzOW3j8zAm9fFRFrLTcgj7Q8GTDFZReXC3lJZ5C_zJrOVGU_13_byrozNo9nYOCqNVV-VDmWmWrxr3ixg4VyNOJOpA_KctPVRj8BMmVNaLNhleHksqVwVVZEK0B4dHil3vpEK0sdOX1xL5YTv2aebmkZFg9Zem_fCY8nqfNPth8G9VrsrEsUOJLQfZHqqwLburo0tcaN5FjRJwGMfLkrd2MRzBtE7oPiUannUWBud79-xIH4ML_bGO37g8ltVMccK-jiJW9Wcu74EXVggEXOFgkR3ReKc_l5901WJL65dYUkYoFfAXZ6TP7SkqkW-Ms30sbvTJTaxJfjsw9_sYNwsh9btVLQicsnl0PDHymQNxeRMIPTN3GO1dWVFHmzK-2NxlinR2qrU3ZIlqB9asFVrQlsslnyGi5VBgfUABaDo1OsFH&maxWidth=400\"}, {\"place_id\": \"ChIJK803PwAXrjsRj8iyPRQgxi4\", \"name\": \"Siam Gaja Thai Restaurant\", \"formatted_address\": \"Sahara India Parivar, 2/B, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 99, \"price_display\": \"\\u20b9600\\u2013800 per person\", \"open_now\": true, \"phone\": \"095915 94944\", \"website\": \"https://www.facebook.com/share/18GKpJ4xX3/?mibextid=wwXIfr\", \"google_maps_uri\": \"https://maps.google.com/?cid=3370416642439956623&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.974382199999999, \"longitude\": 77.6073175, \"photo_url\": \"/api/photo?name=places%2FChIJK803PwAXrjsRj8iyPRQgxi4%2Fphotos%2FAVoNoXRTEBL55zaqGmAseC2dTtzksWu14onzjgSroa09XCXTZBLJi9evpQkR9as3SkIIEyhm9RbtSXJo0snus6D8yKT5EBh8CntKlN8-35WqdxbgJnL78OVMzFWg-rlsxbYK76dUW11ngXjIUQba3_9936BeqTJwGB_i7ySqU5Cz0Yy2SgB2ijV8r-TsLRdueYHv9NfiCAXXHrIWaLB3SRzaDzmojbBRRD1g9OoTJnYwLvPofV6mTtlYAv-mgS7O-Nqm7wufZx4UafLzONbn-bKYkzqIJW3TONceaYkkDzXoDMf6UfeX1Ez5KqTyn5sN3bbLq6vX-pWkamn07ixaVZ8LH0-kMcnVK2b4eMhWeDht5hkhr9II0K1OovVDqOlUUmZsJ5gXFhsnhgdhevOmWIcPbwgdZeNnrXFV6lsSBpPmiPiOjE81upXPkWLs6iHOIg&maxWidth=400\"}, {\"place_id\": \"ChIJWwS0u7EXrjsRqYDisF0m2G8\", \"name\": \"Krung Thep - Thai Street Food\", \"formatted_address\": \"78/1, Bheemaneni Towers, 4th Main Rd, opp. Tulasi Paradise Ladies PG, next to Zudio Showroom, Chanakya Layout, Nagavara, Bengaluru, Karnataka 560045, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 5, \"user_rating_count\": 71, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"091139 51433\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=8059233717020950697&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 13.040124899999999, \"longitude\": 77.6190731, \"photo_url\": \"/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXSnI_T86lw-g2OlBCwCk2v2Qs67UrpTIgcJZYmDUwm8luVe09oP80118K406Uep1BcV53uOn8ugPE5EXwvc8FnL8qt5nbc4MqXgT2lxb8KE9kvRFhr2nbB9K1HfX0VivqOr-tQdAIxWKqxGMK7MlXE3LOrpVFWdDNx1LrsEojZ5E69OrABlk3xpVJ26qac5dMbGj6yBWJhSVWdPd6r1ESMlihyrJE4wtR7I0t_l1lAJpXsZttqIIvjp_0zc_1wRDgGt8pKpfivPQURirIA_9rqguXuuLdXZWD4GS418F12wKjwDgVXh20eBqk7781RwBFdBNmvRrnTGQvKVKqSvDzJWuqLapibbDaZh4uFfiDmuH3UhbXildrbyfGPzC-xX1rJ4056PbqLDed4UxB9A5X3xiBwtjqEmlKtDYqgTv4qbYOehty6wahC5hFSC3xoa&maxWidth=400\"}, {\"place_id\": \"ChIJNWGWH6QXrjsRn3DNLIFXn2M\", \"name\": \"SAWADEE - AUTHENTIC THAI VEGAN KITCHEN - Dining & Takeaway\", \"formatted_address\": \"13 Padmalaya, Bachammal Rd, Cox Town, Bengaluru, Karnataka 560005, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.8, \"user_rating_count\": 273, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": false, \"phone\": \"095910 24447\", \"website\": \"http://www.thethaivegankitchen.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=7178552543365918879&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.997094299999999, \"longitude\": 77.61770039999999, \"photo_url\": \"/api/photo?name=places%2FChIJNWGWH6QXrjsRn3DNLIFXn2M%2Fphotos%2FAVoNoXQKfA2Q5QF_6_udjmWn5cxvG_oBt_MioOkvGamwhENZC1zzRzKoVqynb2cJulmU4Xde1UO29QArEl1mm5cAVZy5tJWviZNEEElNj49ftjBrAN_6ElKgSW2KNT2JUL5650sZCFe479xCKQX-z4JX5z1Kns1jcIAjpGaqVclhVm8HFYzDBrE2CcBIV7aqLdYIAowuXF81_ZjFPF-yH1OXhpq8rGLZJx7RehhjObTM_KQgGZ9kFrlt7an8obMjxqnKRIbjtqYD6yI_DThfQO4xRFYgr1P3wmXksnNVnuVfw_bjpxC7KARRGglGScw39f5MbdhYMFgENOlxB8J0B4C5IG7vwcBtbETLNNpa_PycnS3SAjLTq21GNXVP0fUtepVHQrd94QUpyOuxaQNTkNPN9swDOwONASZ9WAGLiTrhnAtbmLl0&maxWidth=400\"}, {\"place_id\": \"ChIJJeF3Fv4XrjsRJUpT3cQz1ww\", \"name\": \"THAI HUB\", \"formatted_address\": \"Ground floor, 5th Avenue mall, Brigade Rd, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.2, \"user_rating_count\": 266, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"open_now\": true, \"phone\": \"096067 80891\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=925265169067756069&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.973193499999999, \"longitude\": 77.607012, \"photo_url\": \"/api/photo?name=places%2FChIJJeF3Fv4XrjsRJUpT3cQz1ww%2Fphotos%2FAVoNoXRdBMvVOuHGO4jI3mBqXDGhCwQJfm6hCczSBBOXaobzYQ3NNlVXQPSRqUqPzHAuVpGHG9VW_100u9ldskK5jVvdbjIVumZcj4VpKde1DV37yU2jf-aDwaYLXozxZlyA470mN9ZJ9kg-mayWJRo4KJKdrh0qd6Ga5lSglFnzeDhtV8xvxaSvk7FZ5qdqlEzPky_hdrSLFvXlcp_VzmPA5y0bvmmLdJw0lt3HKxsI9ATa6t97D5Oa63_aVaLrci-yk-nH-YhekjNEPMKruzzVCJQSB2vx_ESMM-SXYj6tWEwZSXSf0BiN3JUin4O7pOcRZmUN47-rAltKVMLMbbSjlNSYwYUyVOV2HxrTw8XafiIDvkqIm93cuWr6SM2P2Z3ugbQtW9yLJMn3LNVw6X4lv35HVyZ7-a0UXNd-9Ub1660&maxWidth=400\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "d108d6bb-f6a9-4305-b172-fcac5f9da7f3",
+    "is_error": false,
+    "llm_text": "{\"query\": \"authentic Thai food Som Tum green papaya salad Bangalore\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJ7-VsECEVrjsRwwQfafTtfRg\", \"name\": \"Thai Basil\", \"formatted_address\": \"Plot No. 32, 80 Feet Rd, S.T. Bed, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 1968, \"price_display\": \"\\u20b9600\\u20131400 per person\", \"open_now\": true, \"phone\": \"080 4989 1968\", \"latitude\": 12.931408, \"longitude\": 77.6329181}, {\"place_id\": \"ChIJL6R6rMYVrjsRfv2Smf-LOiI\", \"name\": \"PHRA NAKHON, Thai Cafe\", \"formatted_address\": \"JT Plaza, 487, Jyoti Nivas College Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 419, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": true, \"phone\": \"080882 59532\", \"latitude\": 12.9337599, \"longitude\": 77.61880049999999}, {\"place_id\": \"ChIJVWs9jtIVrjsRREDZI3Pebms\", \"name\": \"Tuk Tuk \\u2013 Koramangala | 100% Pure Veg Pan Asian Fine Dine Restaurant. Thai Curry, Best Sushi,Best Bao, Pad Thai, Dim sum\", \"formatted_address\": \"17th Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"vegan_restaurant\", \"family_restaurant\", \"thai_restaurant\", \"sushi_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 1257, \"price_display\": \"\\u20b9400\\u20131600 per person\", \"open_now\": true, \"phone\": \"097405 73522\", \"latitude\": 12.9334264, \"longitude\": 77.6223869}, {\"place_id\": \"ChIJH139DgAXrjsRSvY_aJ52sl0\", \"name\": \"Baan Phadthai Indiranagar\", \"formatted_address\": \"Sai Suraksha, 1090, 12th Main Rd, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 1635, \"price_display\": \"\", \"open_now\": true, \"phone\": \"089712 02645\", \"latitude\": 12.9698693, \"longitude\": 77.6377675}, {\"place_id\": \"ChIJGfnPtLoWrjsRzLWqDqF-QGQ\", \"name\": \"Thai Basil\", \"formatted_address\": \"Dar Realty, 840A, 100 Feet Rd, Indira Nagar 1st Stage, H Colony, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.3, \"user_rating_count\": 1816, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": true, \"phone\": \"080 4865 8489\", \"latitude\": 12.9807653, \"longitude\": 77.6409513}, {\"place_id\": \"ChIJO_vB0ywXrjsRSNEAgd5dOB4\", \"name\": \"Thai Alley Restaurant\", \"formatted_address\": \"No 38, 1st floor, Kammanahalli Main Rd, St Thomas Town, Ramaiah Layout, Kammanahalli, Bengaluru, Karnataka 560084, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.9, \"user_rating_count\": 793, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"096634 78086\", \"latitude\": 13.0172277, \"longitude\": 77.6362015}, {\"place_id\": \"ChIJK803PwAXrjsRj8iyPRQgxi4\", \"name\": \"Siam Gaja Thai Restaurant\", \"formatted_address\": \"Sahara India Parivar, 2/B, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 99, \"price_display\": \"\\u20b9600\\u2013800 per person\", \"open_now\": true, \"phone\": \"095915 94944\", \"latitude\": 12.974382199999999, \"longitude\": 77.6073175}, {\"place_id\": \"ChIJWwS0u7EXrjsRqYDisF0m2G8\", \"name\": \"Krung Thep - Thai Street Food\", \"formatted_address\": \"78/1, Bheemaneni Towers, 4th Main Rd, opp. Tulasi Paradise Ladies PG, next to Zudio Showroom, Chanakya Layout, Nagavara, Bengaluru, Karnataka 560045, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 5, \"user_rating_count\": 71, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"091139 51433\", \"latitude\": 13.040124899999999, \"longitude\": 77.6190731}, {\"place_id\": \"ChIJNWGWH6QXrjsRn3DNLIFXn2M\", \"name\": \"SAWADEE - AUTHENTIC THAI VEGAN KITCHEN - Dining & Takeaway\", \"formatted_address\": \"13 Padmalaya, Bachammal Rd, Cox Town, Bengaluru, Karnataka 560005, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.8, \"user_rating_count\": 273, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": false, \"phone\": \"095910 24447\", \"latitude\": 12.997094299999999, \"longitude\": 77.61770039999999}, {\"place_id\": \"ChIJJeF3Fv4XrjsRJUpT3cQz1ww\", \"name\": \"THAI HUB\", \"formatted_address\": \"Ground floor, 5th Avenue mall, Brigade Rd, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.2, \"user_rating_count\": 266, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"open_now\": true, \"phone\": \"096067 80891\", \"latitude\": 12.973193499999999, \"longitude\": 77.607012}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 2",
+    "ts": 1787565219790,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "25,007 / 100,000 tokens (threshold)",
+    "token_count": 25007,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565219793
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Good pool of candidates. Now pulling opening hours for the four finalists so the shortlist is complete.",
+    "step_id": 2,
+    "names": [
+      "PlaceDetails"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceDetails",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565234915,
+    "detail": "ChIJO_vB0ywXrjsRSNEAgd5dOB4"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJO_vB0ywXrjsRSNEAgd5dOB4"
+    },
+    "tool_use_id": "d81a38ce-7121-4d93-8766-f3045fbd8f30"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565234916,
+    "detail": "ChIJWwS0u7EXrjsRqYDisF0m2G8"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJWwS0u7EXrjsRqYDisF0m2G8"
+    },
+    "tool_use_id": "bcf13c78-cd8c-42b8-8771-e43a5c4a6c33"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565234917,
+    "detail": "ChIJH139DgAXrjsRSvY_aJ52sl0"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJH139DgAXrjsRSvY_aJ52sl0"
+    },
+    "tool_use_id": "a4814760-7142-40ce-8081-c369eaf0205f"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565234918,
+    "detail": "ChIJ7-VsECEVrjsRwwQfafTtfRg"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJ7-VsECEVrjsRwwQfafTtfRg"
+    },
+    "tool_use_id": "a2d1dbea-7cbd-4bd1-84b2-12f67c754a84"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 29,438 · out: 838 · cached: 24,800 · reasoning: 497",
+    "ts": 1787565234921,
+    "detail": "step 2"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 29438,
+    "output_tokens": 838,
+    "reasoning_tokens": 497,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24800,
+    "text": "Tokens — in: 29,438 (cache: 24,800) · out: 838 (reasoning: ~497)"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 4 tools in parallel",
+    "ts": 1787565234922,
+    "detail": "PlaceDetails, PlaceDetails, PlaceDetails, PlaceDetails"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 4,
+    "names": [
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565235431,
+    "detail": "5589 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJO_vB0ywXrjsRSNEAgd5dOB4\", \"name\": \"Thai Alley Restaurant\", \"formatted_address\": \"No 38, 1st floor, Kammanahalli Main Rd, St Thomas Town, Ramaiah Layout, Kammanahalli, Bengaluru, Karnataka 560084, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.9, \"user_rating_count\": 793, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"phone\": \"096634 78086\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=2177593630062072136&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Tuesday: Closed\", \"Wednesday: 12:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Thursday: 12:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Friday: 12:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Kyoko Chan\", \"rating\": 5, \"text\": \"Good experience! Veg choices are good too with tofu and vegetables the centre. Good quantity and quick service of the orders! The staff were helpful with picking out our choices and very friendly with the questions (including catering to an unexpected request for burnt garlic \\ud83d\\ude02)!  The atmosphere is very nice too with thai music playing and overall it's a good place for trying out thai cuisine!\", \"published\": \"2 months ago\"}, {\"author\": \"Kirti\", \"rating\": 5, \"text\": \"Excellent food. Period. Too good. Must try. We tried scallops in chilli paste (simply awsome. The chilli paste/sauce was so too good. It was in the day's specials menu), Thai green curry, papaya salad, mango sticky rice, bagel tea(very soothing, especially cs i had a cold and it felt good), Thai tea iced. (very good). The quality of the food was too good and thats all I can say. Very hard to describe anything as its more of a feeling.\", \"published\": \"4 months ago\"}, {\"author\": \"Melli Lali\", \"rating\": 5, \"text\": \"Authentic Thai cuisine in the heart of Kammanahalli. \\ud83c\\uddf9\\ud83c\\udded\\u2728This cozy little spot may be small, but it delivers big on flavor and authenticity. A must-try is the Khao Pad Rotfai Seafood Fried Rice and the Som Tum with fermented fish both bursting with bold, traditional Thai flavors. Every bite is incredibly satisfying and comforting, making for a truly soul-satisfying dining experience. Highly recommended!\", \"published\": \"2 months ago\"}, {\"author\": \"Susmita Bishnu\", \"rating\": 5, \"text\": \"This is a very clean and cozy resturant very accessible still feels like in its own corner.\\nAnd the food is very good.\\nThis was the first time I visited this place and surely will be revisiting beacuse the food is yummy \\ud83d\\ude0b.\\nOrdered spring roll, pork ribs and Thai red curry.\\nThe waitresses taking the order is patient to hear and answer your queries and even provide you with the most feasible to way to order something to your liking and spice level .\", \"published\": \"a month ago\"}, {\"author\": \"ramesh krishna\", \"rating\": 5, \"text\": \"this place is a gem, i tried thai cuisines in multiple places and only in few places you would feel the authenticity. this place is one. it is a small restaurant and chef is thai. so you know, that you have landed up in for right taste.\\n\\nmust try: tom yum soup- the portion can serve 3-4 ppl.\", \"published\": \"4 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXRzNEcys3GfpBVpCIr86ezhe6DH5vDQS44aScTy0FnXzASy_ZUuU_xSANsNXwPMia_FViK9iXDeU4IT-sgiyfrynY1miopv4Wdua-O9lR4lAlW6QgY3M8CrzoS0QGUTJydzvxfhUSom8gkgzTQFtXuPnjZKH4YllvG2okqSPGDPsPxldiq-eUvGDCB4umlRRzvQvqklCg_lWSiCrq0dnLtqxDJoZlnmEu2lu3b1g_e9J3Hf6LdEc2zRWaxYZwVzIHjRJGPQpttRXvI2mpFanzLVyK1KUpOsRm6KhuL4sk8fkS3y4jh8RNWIhDV6e7ooBhjybJcHhiPdhYO3eTFUuJzwQyBxwrOvZOr3aCdQrgvmwdxfxK-b7sIHGBOsRkpr_hXO4ZMzF8cKBuJNBZass59ChFl__BRsJd12XxwFNHXz8FcLCob7YokxbKR4Tgpd&maxWidth=600\", \"/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXQ3Z4s50xlNSmDleylZNqL0lF2cBaiNKD5wnImkb8y7fgWghnJF6OCPuMjD6nSQJn0gUwLUjuKGtQan2pCLu8O1zWVetZAyjQA73WFmU49_ySEHV1qQKEBzBHOrGphyO2klgk8B1oNLhsBXQyEVTWB694GRMQkDS4OLNFcw5782V2Uwo44zJCs5J4Ovo-A7AN57HNcaPy8nZ0avAVkUlrI0BWwtTc_0lgnmY6Z5SCw10Vv1o1BYIAq1RNyGAatlL_vMztHdp4R3vIR-Xt_m9-kB64bGv8BbRXx1mb7JR81lxFMCkII6J-oVY7AirWq-WUdGaqkkJi-udUTN5d4Q-xlPrwnlzL9ehaPU8FQg1fTQZZIwlKeacoqh0uy7-tuFDOwyOI947n8O1IYLn0DX4ZPv_2V2biNGE4Xgi633nfu2WCdX6WgwopFQ0Yjhe6q4&maxWidth=600\", \"/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXSZBuhVxfkl-qcHJQ_QOpsWU1zNlKhYqJwM--2l2sxHKmCFY4VBDI8cIfhDnRf_9F3hFONQYiljhIfO9bMiUTnycVFlZRzd5wv7RJ8kntTLzUoPh_4OJQQOLkkb6lNUzImgLPiN12hZXliw4EQSNcftLIMRVqeMQ4uYUTHJTdJCFPQxPMaeYoKOYlLQ1q3kS4hzkMtp-32Z6yxxTy9VOE1voTssXXIIZubpEWzKTGUC8cjQ_0ebVbEKPQBdhBJCBtzJkfA8qy0S6EVDWrIy54YrNdliPEZ9YEiglwE73E5uhDp6tIsABqnuU2C121uMBiBUs0NYbMdmi-GToxeiOOKIyk91dE4CKe2KZdtnMImYALngIJl8uCVp1yGrWDc2dJOymFjLR6sZIvr2EyZUpphZIE-eG7befF_F3ICNx6wgY3RLfXkzYIIp2uMqxOFJ&maxWidth=600\", \"/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXSpnjEw4XO9QnrJLu4L6ZKrC3uUMsXmectrznp6z4rKsU4EbIPLNcpnZ6Cs4BWQE4uYLjEz4lbMO2BhOx1ifqXC-IU8zAr4K4bSPzfEcZ2veZ6tHIfa6VgXIVcnTowGskbrz43mcAOKEYcvYGPxd5FnC81BdPBHcYuiZd4P9uTPr-RB7TTvahQo8CieMg7vpVXc0ngl5PfbPTXDZH8o1EuBPzhBtrJyzKBZuzJ62uc0cpSLTTHkwpzU_FWA-R7PVvKVPK9SfnFCm3Ln3SbNSivVlFUU7XbAUb2qEDfmVoqW89m4K1Yd7F-Bx0NFiIhGU3-nGddphqYlACsGMG7fxvbHC_iSsbhholLi7uatM7KsHLH1oAE0mqMi8vDsZDaZ55U4z6Z7r7gDIjLdz6tDKPprIf3-VVKQp8yxRKrXWAJZ_vFrxfNXPsUeM8TzCg&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "da169c62-5bbe-4afb-bfec-40e1767d2fec",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJO_vB0ywXrjsRSNEAgd5dOB4\", \"name\": \"Thai Alley Restaurant\", \"formatted_address\": \"No 38, 1st floor, Kammanahalli Main Rd, St Thomas Town, Ramaiah Layout, Kammanahalli, Bengaluru, Karnataka 560084, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.9, \"website\": \"\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Tuesday: Closed\", \"Wednesday: 12:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Thursday: 12:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Friday: 12:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"Good experience! Veg choices are good too with tofu and vegetables the centre. Good quantity and quick service of the orders! The staff were helpful with picking out our choices and very friendly with the questions (including catering to an unexpected request for burnt garlic \\ud83d\\ude02)!  The atmosphere is very nice too with thai music playing and overall it's a good place for trying out thai cuisine!\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"Excellent food. Period. Too good. Must try. We tried scallops in chilli paste (simply awsome. The chilli paste/sauce was so too good. It was in the day's specials menu), Thai green curry, papaya salad, mango sticky rice, bagel tea(very soothing, especially cs i had a cold and it felt good), Thai tea iced. (very good). The quality of the food was too good and thats all I can say. Very hard to describe anything as its more of a feeling.\", \"published\": \"4 months ago\"}, {\"rating\": 5, \"text\": \"Authentic Thai cuisine in the heart of Kammanahalli. \\ud83c\\uddf9\\ud83c\\udded\\u2728This cozy little spot may be small, but it delivers big on flavor and authenticity. A must-try is the Khao Pad Rotfai Seafood Fried Rice and the Som Tum with fermented fish both bursting with bold, traditional Thai flavors. Every bite is incredibly satisfying and comforting, making for a truly soul-satisfying dining experience. Highly recommended!\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"This is a very clean and cozy resturant very accessible still feels like in its own corner.\\nAnd the food is very good.\\nThis was the first time I visited this place and surely will be revisiting beacuse the food is yummy \\ud83d\\ude0b.\\nOrdered spring roll, pork ribs and Thai red curry.\\nThe waitresses taking the order is patient to hear and answer your queries and even provide you with the most feasible to way to order something to your liking and spice level .\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"this place is a gem, i tried thai cuisines in multiple places and only in few places you would feel the authenticity. this place is one. it is a small restaurant and chef is thai. so you know, that you have landed up in for right taste.\\n\\nmust try: tom yum soup- the portion can serve 3-4 ppl.\", \"published\": \"4 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565235436,
+    "detail": "5316 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJWwS0u7EXrjsRqYDisF0m2G8\", \"name\": \"Krung Thep - Thai Street Food\", \"formatted_address\": \"78/1, Bheemaneni Towers, 4th Main Rd, opp. Tulasi Paradise Ladies PG, next to Zudio Showroom, Chanakya Layout, Nagavara, Bengaluru, Karnataka 560045, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 5, \"user_rating_count\": 71, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"phone\": \"091139 51433\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=8059233717020950697&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: Closed\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Abhiroop Basu\", \"rating\": 5, \"text\": \"Excellent food. Even more unbelievable pricing. Must try for authentic Thai cuisine, it's actually really great for Indian tastebuds.\", \"published\": \"2 months ago\"}, {\"author\": \"Pratyaksh Mundra\", \"rating\": 5, \"text\": \"Ok so i have basically tried most thai places in bangalore, but i have to be honest this is the best thai place in bangalore hands down.\\nOn first glance this shop moght seem unassuming, but the food is made by an actual thai person and the food is as good as what i ate in thailand. And it is also very cheap, basically each dish is just 200 rs.\\n\\n10/10 recommended\", \"published\": \"a month ago\"}, {\"author\": \"SUBRAJIT PANDEY\", \"rating\": 5, \"text\": \"Authentic Thai food made with love team who brought the taste of Thailand to Bangalore. Great food, warm hospitality, and true Thai flavors. Highly recommended! \\ud83c\\uddf9\\ud83c\\udded\\ud83c\\udf5c\", \"published\": \"2 months ago\"}, {\"author\": \"Jm Reillo\", \"rating\": 5, \"text\": \"Krung Thep Thai Street Food is one of the best places in Bangalore for authentic Thai cuisine. The flavors are incredibly authentic, and every dish we tried was fresh, flavorful, and perfectly prepared. The menu offers a wide variety of options, making it easy to find something for everyone, whether you enjoy spicy curries, noodles, or classic Thai appetizers. The staff were warm, friendly, and attentive, making the entire dining experience even more enjoyable. If you\\u2019re looking for delicious Thai food with excellent service, Krung Thep is definitely worth a visit. Highly recommended!\", \"published\": \"a month ago\"}, {\"author\": \"Dinesh Kumar\", \"rating\": 5, \"text\": \"Absolutely loved this place! The food is incredibly authentic and tastes just like real Thai street food. Every dish was fresh, flavorful, and packed with authentic Thai flavors. What made the experience even better was the owners\\u2014they are extremely friendly, welcoming, and passionate about their food. They made us feel right at home. If you're craving genuine Thai street food, this place is definitely worth a visit. Highly recommended!\", \"published\": \"a month ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXT1XQKbxmUMIIUWMnm49HrzedIga2pSzpUHFYj1Uq81qd9jKAUblO_2_QweDXfAgMhvuq596JbTNXKICfN1hpsgUYf2DSXlUGUXKHd7vVKxeWl01KukQ7OxcJ-msEDnyhXr9I9DXFhP5l5iPcrAHNbPoYTE7cOYkzbqGzDB6iUrUQpTZwP1cxm0cQPaUOUyov61yAFgsXBx8n-IvfZzHATcMxe0U6-2SlArkh--ZFhMX8Rw3o-6g-YyS62brEN31ubu-Cye5BaTajyXifpeDz6SU3pAo6Vf5l5NnItlTDlM4BQUC_P35Qo4XN6Mk952RdTwV1h1GPRaXkFd8YfYG56v8Poiuy-o7V8S_sKQoL66cjwShqj4OEXQLoty7iBQEpgeFgu1UbLBj4LIqh_0AunrWFnA02LJv8aOmjy2RlSCsgchKFZu9Y4N1Z-TkWmw&maxWidth=600\", \"/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXRcJu86QTE6HAP8kIVllfKLPpTHw30YS3_9aB7y4xUTC7l48q6Eu2wwjRYq0NaJ9wqFQvhtEK0njR2FYuUeLd_hvaDfMh5NyxuSwRvgUEl7wUyKKU0RIgz0FJ58fe3fBaDaf_uXdXz9KcNo7z92_X5odpCacKRwAX0uCVd5E82HGdx65Q9-xFTDHBFDxnaUc0Bc8uCbU5lRrJIsiT60S3TrPHeXNDnS2kV0Ib228HgqF4EYOGTrQwTiYuyx0XXnLJZh2OriRn6Ig65DMeOnHV5G_InvNQPYMg0BBnmF7KJbLB_rwmzmIjeR58vKRGSXi5hzxDrRGYsgYm4WtGKRjRyz8FGyP97Qp0tmt_NCyD3rYwvt_5P1x12LWaz-lZui1Zx4_hJKpvYuz8fwr991B4XIUIMCeusWcjX1UCtIkyzjsVyglsM8noaKryxjpxml&maxWidth=600\", \"/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXTmX9Usa-g0B7aSItPygqN4Bnneyyc4G0lQm1G4cpdcIqWlXVjQI3FdDc3vV3s9Snk5LDoBnl4Qqtja8PdAO2C_CPdaDGyG2tSFpNZIHaZqy9VWReCF3ezR0nR0YY1K4SH0FnfQRDgcsVk5kmNkU-ap6gMSRuRhFBSs3NDEF9VjBPQZ8m7gYWiX9caEL6KUvbgaDxousrE2PXquw9NCE9CLNT0TEjg9zzU1YI7bM6ubVUAB_HLoq67xP_sYWb1nks-bhPiorhbF3gP85x3bskD1JSO2HNuzm7mxCpCsZbSJ2MUo6hmEDF00vXdUp5_ElD6ee7BewWznq-bX1jT62vvLQIsDH4qqhd4Twi_nG1wXRx7CXQ57HJXhTM9IcajUErl1lQ3Ff4EjGEfBl95ZSEukK4AAAvdFCsFaloCDE90dUlm0lmqZlrjMkeiqhwPb&maxWidth=600\", \"/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXSdVLPffv5ytDSKex0xF1XizUckt3HyglhHXeFpbEZYStfKOJg8-OODpwYHrfee9nuK_7da6C7pytoK0_6bszz1EDA0RXnI9wR1YivoeWhsZt0ijYxgLQzrrQ6wLBmpMLbUIUQTDQ64sqAmjzNrCXScp5iQatOiYFWc5VeTRogzcAJyxLY80t8yTI3Aj0HaiOmnhiiB2WuginL9wn54Q_aB5-lXp8LLVLJMfAWf3DhH5JY5N0_6Ffv-6aPVv28i4NcBddDhBCkuNhYMnA5z6EG2STOxr-4bs7fEWDxsAXXbX2Lj2VEWRhoSBw4z0BNj1Pn0MUu4jW_hvP5nbqgEhUPbq3jye_Rk2N9FK3xfqOxxkgDV8xcH3oCuPF4cXDaLsixuXtdLg2ivy9kCkeqYEK-clHUDJwgY3ygYv8iQlAlKXfjEJ3AtioqH9lmxRO6N&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "02ba9a33-e4fc-4faa-b070-c563f8b8a3de",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJWwS0u7EXrjsRqYDisF0m2G8\", \"name\": \"Krung Thep - Thai Street Food\", \"formatted_address\": \"78/1, Bheemaneni Towers, 4th Main Rd, opp. Tulasi Paradise Ladies PG, next to Zudio Showroom, Chanakya Layout, Nagavara, Bengaluru, Karnataka 560045, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 5, \"website\": \"\", \"open_now\": true, \"opening_hours\": [\"Monday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 3:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: Closed\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"Excellent food. Even more unbelievable pricing. Must try for authentic Thai cuisine, it's actually really great for Indian tastebuds.\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"Ok so i have basically tried most thai places in bangalore, but i have to be honest this is the best thai place in bangalore hands down.\\nOn first glance this shop moght seem unassuming, but the food is made by an actual thai person and the food is as good as what i ate in thailand. And it is also very cheap, basically each dish is just 200 rs.\\n\\n10/10 recommended\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"Authentic Thai food made with love team who brought the taste of Thailand to Bangalore. Great food, warm hospitality, and true Thai flavors. Highly recommended! \\ud83c\\uddf9\\ud83c\\udded\\ud83c\\udf5c\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"Krung Thep Thai Street Food is one of the best places in Bangalore for authentic Thai cuisine. The flavors are incredibly authentic, and every dish we tried was fresh, flavorful, and perfectly prepared. The menu offers a wide variety of options, making it easy to find something for everyone, whether you enjoy spicy curries, noodles, or classic Thai appetizers. The staff were warm, friendly, and attentive, making the entire dining experience even more enjoyable. If you\\u2019re looking for delicious Thai food with excellent service, Krung Thep is definitely worth a visit. Highly recommended!\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"Absolutely loved this place! The food is incredibly authentic and tastes just like real Thai street food. Every dish was fresh, flavorful, and packed with authentic Thai flavors. What made the experience even better was the owners\\u2014they are extremely friendly, welcoming, and passionate about their food. They made us feel right at home. If you're craving genuine Thai street food, this place is definitely worth a visit. Highly recommended!\", \"published\": \"a month ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565235440,
+    "detail": "7503 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJH139DgAXrjsRSvY_aJ52sl0\", \"name\": \"Baan Phadthai Indiranagar\", \"formatted_address\": \"Sai Suraksha, 1090, 12th Main Rd, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"user_rating_count\": 1635, \"price_display\": \"\", \"phone\": \"089712 02645\", \"website\": \"https://widget.reservego.co/reserveOutlets/687e32b503ac54f3d593b9ab?source=6\", \"google_maps_uri\": \"https://maps.google.com/?cid=6751589214107727434&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Tuesday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Wednesday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Thursday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Friday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Saturday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Sunday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Snehanjan Chatterjee\", \"rating\": 4, \"text\": \"Came here for the first time and really enjoyed the meal. The Chicken Pad Thai was delicious with well-balanced flavours, and the Gai Yang Vichianburi was the highlight for me, juicy, smoky and perfectly grilled. The ambience is lovely, the service was attentive, and the food felt authentic. I\\u2019ll definitely be back to try more of the menu.\", \"published\": \"3 weeks ago\"}, {\"author\": \"Bismay Chaki\", \"rating\": 4, \"text\": \"Good for people who like (know) thai cuisine. Pork dishes are star of the show (Moo Hong in particular). The fried rice (Khao Phad) is also fantastic (Palatable to Indian audience). Paad thai is okay at best. The cocktails are unique. Arroy mak mak is especially delicious. The menu should definitely be researched before this spot is ventured into.\", \"published\": \"a month ago\"}, {\"author\": \"Deepak\", \"rating\": 1, \"text\": \"PLEASE AVOID !!This is another addition to the new breed of totally overhyped restaurants mushrooming allover ,purely creating an artificial demand thru social media blitz, luring and exploiting hapless customers.They are more of sheer business start ups without offering any basic hospitality standards.\\nFirst of all their advance  table reservation is a mess and next they call up and inform that the tables can be occupied only for a limited time of 90 minutes!! Lol !! Come on ,this is extreme low on any hospitality standards.What a joke on  customers.It is not a free charity.Customers are charged a hefty amount for food and still asked to vacate within a time slot.Totally unacceptable!!This is also a gross violation of basic consumer rights.\\nThis unnecessary hype of artificial demand is created despite noticing empty tables all the time.\\nThe restaurant is a small and compact place with limited basic seating.Absolutely difficult to get a parking around.\\nTheir speciality Pad Thai Chicken is terrible.Tom Yum Kaichiau ( Crab Omlette) stinks with a nauseating foul smell.Phad Krapao is too mid.Menu is limited.Choice of beverages are limited to a very small range and too average tasting.\\nTheir drinking water glasses and also cutleries are in poor hygiene,stink terrible with a strong pukish fish  smell.This seems to be their speciality offering since the beginning without any action despite promises.\\nPortion sizes are small and prices are too steep.\\nTo add to this pathetic experience ,they levy a high service charge of 10 % in total violation of CCPA and court rulings.\\nMany other restaurants and even  street side carts offer far tastier dishes at much lesser prices and a satisfying experience.\\nPlease donot go by the fad and done at these places with no value for customers time and money.\\nDefinitely not at all recommended!!\", \"published\": \"a month ago\"}, {\"author\": \"Ajit Bhaskar\", \"rating\": 3, \"text\": \"I've been meaning to try this place for a long time. Finally made it for dinner. I started with the mushroom larb. The staff mentioned it would be sour and spicy. It was just that, but it didn't feel coherent. The spice/heat was a bit raw or something. Maybe I need to familiarise myself with larb better. But this wasn't my cup of tea.\\nThe vegetarian pad thai was nice! The morning glory also felt a bit raw (especially loads of garlic and chilies). The eggplant dish had very little sauce and the eggplant pieces were too big. The dessert (pandan toast) was a miss for me but the smoked coconut ice cream on top of it was stellar! Overall, mixed bag for me.\", \"published\": \"a month ago\"}, {\"author\": \"ayushi pradhan\", \"rating\": 4, \"text\": \"Finally got a reservation at this restaurant after a very long waiting. Was super excited to try out their food.\\n\\nWe ordered their famous Ban Phad Thai (Prawns). It tasted delicious and was a banger. The tiger prawns that came with the dish was amazing\\n\\nWe ordered the Lamb Massaman curry, which was overly sweet. Didn't suit our taste pallete.\\n\\nWhat really stood out was the hospitality. The staff were incredibly friendly and welcoming, and the service throughout the meal was excellent. The drinks were great too and paired really well with the food.\\n\\nWill definitely come back again to try more of their menu items.\", \"published\": \"2 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXTb7zAa9p69DjaRyYFlXMugPhFSrc57EEDtGlstXuooReCvTMF3vx2Niu6N6nBtJfLPmEyzUXQn1WVGkdbjk_8fwTn0UdPlRLb8ABP4Hm5wNJAjRwLVaR_OyVkFDzkuQ5wXEdm1vlSHxSxxAjvZV039yu_f6m0yF4cZ3TDRFHCFOiopzCKY-i_EzJP3D2ypaDjy_c0kUvGmofwYiLwh4EcKQ9aWbleixC2G95kLTV7VSamYmVHd7hdI6Z5_2YIHuzsrbO_rJrZuDbft5HGDIfYTh9LZ_Z7ExjQ9soP9XUDDrZU_3z-TaqxItcJuaVmf0bVXm5FA2wNAx0xuvnaBW_CpBxjYPaAyKrHfmPrWjNmFxlJ7XgpnKHhgV1pOhGDL0nxy_GX7Gyw5hTir87kJRVOSADihz26oCk-yPYIuPhAYDU_kTA7TgJ2yIvzlPw&maxWidth=600\", \"/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXQmi6I4Hqgp1tRk4VPvk50P7x7p5MtsRN7e59PuFW5l2p80Lj9FeKw6lN2YlehQm5afqFqUOIc59lxjkwUP1N5Nap0qUlgQsMta2RqrG9DbKX8P5ColOBYSlUWB4F5D6haVIQv30tvHjEgcFIC-aqdEVH8YNqLa4nrhzfPoz2c3sycL28XMObJyGQlAKLgyY7kUPvimZ1uWyAaDhQrsJ9jzew_vbYwgfyvWKkaBuyXYnu3re9yQN7fCBJ-tdllxibTkNFE2r6wlIQ79IilF43ChTS6UJayhwRMts4zC_rlt0f9ouVQ2JUNKWeytf486jMIm2SLWpHFMF9xmsGa6_CUx0psg5ZeOAWOYtR9lqMxworEod_mAmYpqaZkIVmIHbyTjZSELMwTRQynMDBOyBZyjE30NkRQiJTJzhufM7RWMLy1f9XqaTap47lsndl1y&maxWidth=600\", \"/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXScB3Q6NsUyjEvsyBSPFOByn2i2RxHG_0FSqniWqIPuxN-eMKsD1GuDAE0x--QMhhjTzyA9pNQF4bcZAaJLO3WnjUSKNomPZvhcNyIFPg6_C-EeWxt9sNdSnlsQbNOtqJ6rFxm5Ph8iKzoS97I06KVqvG9LF1QDOTdtpN6BI2dEPnCWJ2Sxgt2_UXtYBnzk3qywfRKijx5um2PWeqW3ttd06u3mgoaRsF02ubGmbd9OUa-OlNB38scyKjmUj1hT4nuNUzzUYE0kf4s3WCN6EdyRUMWsTRXD3HHSx5kB-wCOd3uo3YSMkeB-MpLzEjNpLeX4e0s8Ro6mIEZh6psYOP6n3Qc2nJPAXvzyKCqIJPZ8B8uzvSFuHkZe-ayv7_8XYqt_xbpbdI49RzLN1sRAnQXNVKdAo_z8WQgCM4LnQ1yPs_t2cQNKxvAERhPcB6aR&maxWidth=600\", \"/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXQRjL787OZFJpddfd--zXTCI_wdh_dSPll4yv72oXjZhidXoBMKROsBei0uHIGdHjWppUF1PtEniuHgQ9vlFpeTCLfSViCGUYVpsVt_U7_LI8LsSsAV5deYGRsq1oONPmO6s1sV-Yu4nbqr_kpNbhL63hq5OW4Atou4qfc2CjlgOQ9TNFtKasSTRgGttEDdPLGpb21um7X7GqedUsgSyxEC91yaEafsusfnQdyaglK9Xpt9Yf3q5aSP4aDbpDk3WX8QeLva9T4jDW5L0N1VvP1F8YMODI0US1XQI5n5LCEBzpk2KMpSn0qmfNpac4AEz5gLlh4SoA-G7spDtp78WSRNSDNnwGPcnAr7B7jEySuA2AD-FzG_oMoFI10HLa69E8LelWKr-sGBKNZg0e4NdzgQ6cI-tL_uAVIPHnQWWjsLQ71khkDIw50XSEUHGN-7&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "3948b45c-31d2-4ea7-9cab-b49670c07157",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJH139DgAXrjsRSvY_aJ52sl0\", \"name\": \"Baan Phadthai Indiranagar\", \"formatted_address\": \"Sai Suraksha, 1090, 12th Main Rd, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"website\": \"https://widget.reservego.co/reserveOutlets/687e32b503ac54f3d593b9ab?source=6\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Tuesday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Wednesday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Thursday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Friday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Saturday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\", \"Sunday: 12:00\\u202fPM\\u2009\\u2013\\u20091:00\\u202fAM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"Came here for the first time and really enjoyed the meal. The Chicken Pad Thai was delicious with well-balanced flavours, and the Gai Yang Vichianburi was the highlight for me, juicy, smoky and perfectly grilled. The ambience is lovely, the service was attentive, and the food felt authentic. I\\u2019ll definitely be back to try more of the menu.\", \"published\": \"3 weeks ago\"}, {\"rating\": 4, \"text\": \"Good for people who like (know) thai cuisine. Pork dishes are star of the show (Moo Hong in particular). The fried rice (Khao Phad) is also fantastic (Palatable to Indian audience). Paad thai is okay at best. The cocktails are unique. Arroy mak mak is especially delicious. The menu should definitely be researched before this spot is ventured into.\", \"published\": \"a month ago\"}, {\"rating\": 1, \"text\": \"PLEASE AVOID !!This is another addition to the new breed of totally overhyped restaurants mushrooming allover ,purely creating an artificial demand thru social media blitz, luring and exploiting hapless customers.They are more of sheer business start ups without offering any basic hospitality standards.\\nFirst of all their advance  table reservation is a mess and next they call up and inform that the tables can be occupied only for a limited time of 90 minutes!! Lol !! Come on ,this is extreme low on any hospitality standards.What a joke on  customers.It is not a free charity.Customers are charged a hefty amount for food and still asked to vacate within a time slot.Totally unacceptable!!This is also a gross violation of basic consumer rights.\\nThis unnecessary hype of artificial demand is created despite noticing empty tables all the time.\\nThe restaurant is a small and compact place with limited basic seating.Absolutely difficult to get a parking around.\\nTheir speciality Pad Thai Chicken is terrible.Tom Yum Kaichiau ( Crab Omlette) stinks with a nauseating foul smell.Phad Krapao is too mid.Menu is limited.Choice of beverages are limited to a very small range and too average tasting.\\nTheir drinking water glasses and also cutleries are in poor hygiene,stink terrible with a strong pukish fish  smell.This seems to be their speciality offering since the beginning without any action despite promises.\\nPortion sizes are small and prices are too steep.\\nTo add to this pathetic experience ,they levy a high service charge of 10 % in total violation of CCPA and court rulings.\\nMany other restaurants and even  street side carts offer far tastier dishes at much lesser prices and a satisfying experience.\\nPlease donot go by the fad and done at these places with no value for customers time and money.\\nDefinitely not at all recommended!!\", \"published\": \"a month ago\"}, {\"rating\": 3, \"text\": \"I've been meaning to try this place for a long time. Finally made it for dinner. I started with the mushroom larb. The staff mentioned it would be sour and spicy. It was just that, but it didn't feel coherent. The spice/heat was a bit raw or something. Maybe I need to familiarise myself with larb better. But this wasn't my cup of tea.\\nThe vegetarian pad thai was nice! The morning glory also felt a bit raw (especially loads of garlic and chilies). The eggplant dish had very little sauce and the eggplant pieces were too big. The dessert (pandan toast) was a miss for me but the smoked coconut ice cream on top of it was stellar! Overall, mixed bag for me.\", \"published\": \"a month ago\"}, {\"rating\": 4, \"text\": \"Finally got a reservation at this restaurant after a very long waiting. Was super excited to try out their food.\\n\\nWe ordered their famous Ban Phad Thai (Prawns). It tasted delicious and was a banger. The tiger prawns that came with the dish was amazing\\n\\nWe ordered the Lamb Massaman curry, which was overly sweet. Didn't suit our taste pallete.\\n\\nWhat really stood out was the hospitality. The staff were incredibly friendly and welcoming, and the service throughout the meal was excellent. The drinks were great too and paired really well with the food.\\n\\nWill definitely come back again to try more of their menu items.\", \"published\": \"2 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565235441,
+    "detail": "7089 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJ7-VsECEVrjsRwwQfafTtfRg\", \"name\": \"Thai Basil\", \"formatted_address\": \"Plot No. 32, 80 Feet Rd, S.T. Bed, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.5, \"user_rating_count\": 1968, \"price_display\": \"\\u20b9600\\u20131400 per person\", \"phone\": \"080 4989 1968\", \"website\": \"https://www.thaibasilin.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=1764828262990546115&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"sudha ram\", \"rating\": 4, \"text\": \"I googled 'best thai restaurant in bangalore' and Thai Basil came up. Went for lunch alone and was seated in a corner. Ambience is good. Ordered Papaya veg salad and garlic pepper prawns which was on point. The mango sticky rice was okay. What stuck out like a sore thumb was the service. The place was not crowded at all and there were plenty of servers wandering around with no focus on the customers. I had to get up and ask for water. I had to call them to take my order. After I was finished I had to call them to order desert. Then again call them for the bill. Pathetic!!. When the customer leaves there is no thank you or bye. Well well...they included the service charge etc in the bill so why would the servers bother...right?\\nThere is competition at a crazy level in the restaurant business in bangalore. So restaurants have to be be up to the mark or else it leaves a bad taste in the mouth and we dont return.\", \"published\": \"2 months ago\"}, {\"author\": \"Madhulika Liddle\", \"rating\": 4, \"text\": \"This is a very stylish restaurant, spread over quite a substantial area: indoor spaces across two floors, an extensive outdoor space as well. The decor is chic, with elegant bamboo lampshades, wood panelling, and hanging lights. The menu, is of course all Thai (barring a bakery section which does have some Thai style cakes and desserts but also favourites like banoffee pie). The choice is huge, with everything from salads and soups to starters, stir fries, curries, noodles, rice, and even a range of Thai-inspired beverages, including boba teas.\\n\\nBetween the three of us, we shared a green papaya salad (vegetarian), a garlic butter pepper prawns, a seafood (prawn and squid) red curry with jasmine rice, and a cha Thai cake (a tea cake). The salad and prawns were excellent, the red curry was good, and the cake\\u2014not very highly flavoured with tea, but subtle\\u2014was good. Overall, a really good meal in a very pleasant setting.\", \"published\": \"3 months ago\"}, {\"author\": \"Linu. J\", \"rating\": 4, \"text\": \"Stepping into Thai Basil feels like being transported to a charming corner of Thailand. The restaurant strikes a beautiful balance between elegance and warmth, with its tasteful d\\u00e9cor, soft lighting, and inviting spaces that instantly put you at ease. What truly elevates the experience is the gentle melody of Thai folk music playing in the background, adding a layer of authenticity that perfectly complements the setting.\\nWe tried the Thoong Thong (Chicken & Prawns), Veg Thoong Thong, Pad Thai Prawns, Pad Ka Praw Gai, and Khaw Neaw Ma Muang. While every dish brought something unique to the table, the absolute stars of the meal were the Khaw Neaw Ma Muang (Mango Sticky Rice) and the Thoong Thong with Chicken & Prawns.\\nThe service was generally pleasant, although a few staff members seemed slightly unsure at times.\\nOverall, Thai Basil offers more than just a meal\\u2014it delivers an experience.\", \"published\": \"2 months ago\"}, {\"author\": \"Sheshank Reddy\", \"rating\": 5, \"text\": \"A really beautiful restaurant with an idyllic garden hidden at the back. Thai Basil is one of the oldest authentic Thai restaurants in Bengaluru.\\n\\nI've been a fan of their Basil Stir Fry (Pad Kaprao) and their Red Curry Stir Fry for a long time.\\n\\nTheir Pandan Coconut Cake and their Cold Iced Coffee are perfect. The coffee is not too sweet. The cake tastes natural and delicious.\\n\\nService is polite and prompt. The prices are commensurate with the product. All in all, a great restaurant. Avoid the coconut icecream.\", \"published\": \"4 months ago\"}, {\"author\": \"Nalini\", \"rating\": 4, \"text\": \"We ordered a variety of soups and dishes, while most of it was nice, we felt the staff couldn\\u2019t explain the menu or the dishes well. Like they weren\\u2019t fully aware and for plush dining experiences some information becomes vital for ordering.\", \"published\": \"2 weeks ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXSP5n-yiPd0eOdxitwVDcEbfJZ7NIMcyvMAEcxNAozRPNtP_YNj8YrelKSpGoqxKdSwWXMwa4tmEAewtNzqrhWjLItrNWG3sJjoIU4FrZRnkCKQC4J60zzdc-nLEvee5xaRxFm74a7ptdmz2CU7WgUH3jScSdwBu6auCEsnHdFzBWYtESevTAMi7oXR7sbzjS4_gyx8l8U3GGBP5zWuJoBTGZYgJByANTu3e11g7X5gHTZtsaYypnmLvFJWKGlrB9Sr08PBZ77BY2I2OuAJ0UkkXIFebgwWGMdtDbwfGDLTg03rmEYWw3-ou1ORHOaHBAptQ6z5q9OtmU6i_-AV1X55_NOnlXEx7rZkMIxIsKB0zr0wPpedebEjDWCYBmPjn1J73Pr-l7pEwXPUQg2OHJbx2uUCOXXaHdfaoQ3YDvh2ow&maxWidth=600\", \"/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXSrVPRvZ0O4tkcfgwORCR8HkKE4SO_UlStyfEiNVqbAN8sTjTyNsUbHfaTPCdjbW4-7NaeMenHrAoad15UNQLGU9UQcPobf7twJTguLjEbQuzxjkZgTuJtltiLGzxs-a350GkzNWHd7PXnBPeY1bVfKFzDQSj9_khDLK9682d6B_IrnaFC97hevED4GF1XArtp5wNbkKuI3vYoG7VldAaK7QtBgik5DtQf--uCBXwEIevfd9DQb29GzS38zozBTdjrd9n8o5DtdJPnQt1IBfs9iFRjWh-YF2HJ1rBGaF1Odl8WzOoyp7FK2vJfI70-77Usv8RpmN1qxwWUPWcLr_qaXuIfvpMp9ih5q7UuxcMb8ugIT-6YIo5SDPHBJJK3ruI4ceis9c9D2q5kUxIv25fDnn-dk469BhGWXImkuvNcvjOiRdR0HhXkmvFyxPw&maxWidth=600\", \"/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXSfrMu1pCJET5-O0PPYaRyt9YVnLeNFisJ0gHYk4Ay-SBJ4v8nUGvFU9IgNJKqkD1j6kw5_fl3mZB46ZjRTuzevE8VBfcMUy8l5uUB3hL28_q12mP4_uwLQOkeuc-YpAfq8nhQBDvg9j1Wua3P0baiuKU9XsAFDLr4c28LKQ7-WLrgHP4eI_2ZAxShxEX_re2wL1stvrXZ7sEgKgtoey21RXftGorIV7VXtTGmb9KcQMInmjje1KDVcTDXZ4nPfl1ksyZejeNSGadCdpmYQs23zanoLW4j0TScGnieEZE7qmhjE3FdGxuJtlX_ox3_6r9wQ5_tkwbLMOuj6SMLHJC1GtlOXOxQmK1F5s4SdB8wEtV4lMdjiozWk8v3wCJZlp64rnD6NaS-g6FEY7u8qYeeLDbSjQ_-D_fIhwOaetZgJ_Bdj&maxWidth=600\", \"/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXSQ9PfvyymNJRuuHIL-ELiqG2t49VSPb9v2p5kySDHfRG6rwLdSjajeJlMHADSnxpmMAYxzSa0AbF0-N8xK8e5tPOTwrUaz_X_p0s2WwNWcFCEkpBRzTQ1V2frfGXJD8Cmq0nTWwMaia_awcP2tS1SNJIsYWO4vyHdXxlRmQBKMfq5uAPUr6dt6It9_MBPQtp0rKBtwvU3ycBg3EByNCv8PB1R66o3aAKTPLgvBwzJETTBXXPirhGfyee9TYYcWaVL7vjam7nn1I72qvCl280sBjB581LtCjc0j2iCrKaJJr3VsUlSZ8lr3sNE2UpKmni-Zzbg7aeoB7Ju__6cXvoUJvNtRDmDBKOC7PlWDhgQCFXKq2Wjm5QPucIPpRUq7lNglCki1HAWiz1WqyBYA_xh75hLJhgP4E5-aNpTMgRqexWPkt6ZGQoCmccfvwazs&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "14124ee6-7a84-4f94-bfaa-0d225fe1257b",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJ7-VsECEVrjsRwwQfafTtfRg\", \"name\": \"Thai Basil\", \"formatted_address\": \"Plot No. 32, 80 Feet Rd, S.T. Bed, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"thai_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.5, \"website\": \"https://www.thaibasilin.com/\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"I googled 'best thai restaurant in bangalore' and Thai Basil came up. Went for lunch alone and was seated in a corner. Ambience is good. Ordered Papaya veg salad and garlic pepper prawns which was on point. The mango sticky rice was okay. What stuck out like a sore thumb was the service. The place was not crowded at all and there were plenty of servers wandering around with no focus on the customers. I had to get up and ask for water. I had to call them to take my order. After I was finished I had to call them to order desert. Then again call them for the bill. Pathetic!!. When the customer leaves there is no thank you or bye. Well well...they included the service charge etc in the bill so why would the servers bother...right?\\nThere is competition at a crazy level in the restaurant business in bangalore. So restaurants have to be be up to the mark or else it leaves a bad taste in the mouth and we dont return.\", \"published\": \"2 months ago\"}, {\"rating\": 4, \"text\": \"This is a very stylish restaurant, spread over quite a substantial area: indoor spaces across two floors, an extensive outdoor space as well. The decor is chic, with elegant bamboo lampshades, wood panelling, and hanging lights. The menu, is of course all Thai (barring a bakery section which does have some Thai style cakes and desserts but also favourites like banoffee pie). The choice is huge, with everything from salads and soups to starters, stir fries, curries, noodles, rice, and even a range of Thai-inspired beverages, including boba teas.\\n\\nBetween the three of us, we shared a green papaya salad (vegetarian), a garlic butter pepper prawns, a seafood (prawn and squid) red curry with jasmine rice, and a cha Thai cake (a tea cake). The salad and prawns were excellent, the red curry was good, and the cake\\u2014not very highly flavoured with tea, but subtle\\u2014was good. Overall, a really good meal in a very pleasant setting.\", \"published\": \"3 months ago\"}, {\"rating\": 4, \"text\": \"Stepping into Thai Basil feels like being transported to a charming corner of Thailand. The restaurant strikes a beautiful balance between elegance and warmth, with its tasteful d\\u00e9cor, soft lighting, and inviting spaces that instantly put you at ease. What truly elevates the experience is the gentle melody of Thai folk music playing in the background, adding a layer of authenticity that perfectly complements the setting.\\nWe tried the Thoong Thong (Chicken & Prawns), Veg Thoong Thong, Pad Thai Prawns, Pad Ka Praw Gai, and Khaw Neaw Ma Muang. While every dish brought something unique to the table, the absolute stars of the meal were the Khaw Neaw Ma Muang (Mango Sticky Rice) and the Thoong Thong with Chicken & Prawns.\\nThe service was generally pleasant, although a few staff members seemed slightly unsure at times.\\nOverall, Thai Basil offers more than just a meal\\u2014it delivers an experience.\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"A really beautiful restaurant with an idyllic garden hidden at the back. Thai Basil is one of the oldest authentic Thai restaurants in Bengaluru.\\n\\nI've been a fan of their Basil Stir Fry (Pad Kaprao) and their Red Curry Stir Fry for a long time.\\n\\nTheir Pandan Coconut Cake and their Cold Iced Coffee are perfect. The coffee is not too sweet. The cake tastes natural and delicious.\\n\\nService is polite and prompt. The prices are commensurate with the product. All in all, a great restaurant. Avoid the coconut icecream.\", \"published\": \"4 months ago\"}, {\"rating\": 4, \"text\": \"We ordered a variety of soups and dishes, while most of it was nice, we felt the staff couldn\\u2019t explain the menu or the dishes well. Like they weren\\u2019t fully aware and for plush dining experiences some information becomes vital for ordering.\", \"published\": \"2 weeks ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 3",
+    "ts": 1787565235445,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "54,445 / 100,000 tokens (threshold)",
+    "token_count": 54445,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565235447
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 34,427 · out: 1,733 · cached: 28,000 · reasoning: 591",
+    "ts": 1787565260867,
+    "detail": "step 3"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 34427,
+    "output_tokens": 1733,
+    "reasoning_tokens": 591,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 28000,
+    "text": "Tokens — in: 34,427 (cache: 28,000) · out: 1,733 (reasoning: ~591)"
+  },
+  {
+    "type": "text_final",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "For authentic Som Tum pounded bold and traditional, these four are the ones worth the trip in Bangalore right now — from a Thai chef's kammanahalli gem to a street-food stall that tastes like Bangkok. All are open now.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "Thai Alley, Kammanahalli",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Thai Alley",
+                  "query": "Som Tum green papaya salad Thai",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXRs13b9MQirXKUuScsfFQhJAmZd0HuN9oVKTgRQypZG7VittNyL2L6N4ltA8_Bh5F2R3pRxbn9THNzYrbBLvx-P--erTt7a1rJr7vn0iSaG0o_mzck2_iXEx7uGiGHL2VZAb0ZysDhRtMngpDe9Gtp-ilKPa8XeniMKKjuz0OM4xXk4GBPkybPQeEfqcPgmXfmjukDplOhxxDRBOWWUM1Y75xhPi198U-x1PRJ6ERO93T-LL2IyyV4NKACNxYP5rLsySJYW80YvxJlZCDbFHz-cHyUdagw3R1Jj8f5gxDjK4qKMuvr2wrONhi8p7-0341B1AFKQ5gpw5UpSsXGzOis7XX0_9aA0UYSbNGQlQqLj1HwoP-RrllFFqJZjN4beqpTbtv5GLa-9SuFhpxzKvFgin9tptQApMpG8yhg3UuvghdHFLUKJqtv1EJpLchFG&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Thai Alley Restaurant",
+                      "alt": "Thai Alley Restaurant",
+                      "place_id": "ChIJO_vB0ywXrjsRSNEAgd5dOB4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXR4-8AVW3aoM9lf8RHzOW3j8zAm9fFRFrLTcgj7Q8GTDFZReXC3lJZ5C_zJrOVGU_13_byrozNo9nYOCqNVV-VDmWmWrxr3ixg4VyNOJOpA_KctPVRj8BMmVNaLNhleHksqVwVVZEK0B4dHil3vpEK0sdOX1xL5YTv2aebmkZFg9Zem_fCY8nqfNPth8G9VrsrEsUOJLQfZHqqwLburo0tcaN5FjRJwGMfLkrd2MRzBtE7oPiUannUWBud79-xIH4ML_bGO37g8ltVMccK-jiJW9Wcu74EXVggEXOFgkR3ReKc_l5901WJL65dYUkYoFfAXZ6TP7SkqkW-Ms30sbvTJTaxJfjsw9_sYNwsh9btVLQicsnl0PDHymQNxeRMIPTN3GO1dWVFHmzK-2NxlinR2qrU3ZIlqB9asFVrQlsslnyGi5VBgfUABaDo1OsFH&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Thai Alley Restaurant",
+                      "alt": "Thai Alley Restaurant",
+                      "place_id": "ChIJO_vB0ywXrjsRSNEAgd5dOB4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXRzNEcys3GfpBVpCIr86ezhe6DH5vDQS44aScTy0FnXzASy_ZUuU_xSANsNXwPMia_FViK9iXDeU4IT-sgiyfrynY1miopv4Wdua-O9lR4lAlW6QgY3M8CrzoS0QGUTJydzvxfhUSom8gkgzTQFtXuPnjZKH4YllvG2okqSPGDPsPxldiq-eUvGDCB4umlRRzvQvqklCg_lWSiCrq0dnLtqxDJoZlnmEu2lu3b1g_e9J3Hf6LdEc2zRWaxYZwVzIHjRJGPQpttRXvI2mpFanzLVyK1KUpOsRm6KhuL4sk8fkS3y4jh8RNWIhDV6e7ooBhjybJcHhiPdhYO3eTFUuJzwQyBxwrOvZOr3aCdQrgvmwdxfxK-b7sIHGBOsRkpr_hXO4ZMzF8cKBuJNBZass59ChFl__BRsJd12XxwFNHXz8FcLCob7YokxbKR4Tgpd&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Thai Alley Restaurant",
+                      "alt": "Thai Alley Restaurant",
+                      "place_id": "ChIJO_vB0ywXrjsRSNEAgd5dOB4"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.9★ · 793 reviews",
+                "price": "₹400–1400 per person",
+                "why": "Thai chef's Som Tum pounded with fermented fish — bold, traditional, exactly the flavor you want.",
+                "hours": "Open now · till 10:30 PM (closed Tue)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=2177593630062072136&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "096634 78086",
+                  "tel": "tel:09663478086"
+                }
+              },
+              {
+                "title": "Krung Thep, Nagavara",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Krung Thep",
+                  "query": "Thai street food Som Tum",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXSnI_T86lw-g2OlBCwCk2v2Qs67UrpTIgcJZYmDUwm8luVe09oP80118K406Uep1BcV53uOn8ugPE5EXwvc8FnL8qt5nbc4MqXgT2lxb8KE9kvRFhr2nbB9K1HfX0VivqOr-tQdAIxWKqxGMK7MlXE3LOrpVFWdDNx1LrsEojZ5E69OrABlk3xpVJ26qac5dMbGj6yBWJhSVWdPd6r1ESMlihyrJE4wtR7I0t_l1lAJpXsZttqIIvjp_0zc_1wRDgGt8pKpfivPQURirIA_9rqguXuuLdXZWD4GS418F12wKjwDgVXh20eBqk7781RwBFdBNmvRrnTGQvKVKqSvDzJWuqLapibbDaZh4uFfiDmuH3UhbXildrbyfGPzC-xX1rJ4056PbqLDed4UxB9A5X3xiBwtjqEmlKtDYqgTv4qbYOehty6wahC5hFSC3xoa&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Krung Thep - Thai Street Food",
+                      "alt": "Krung Thep - Thai Street Food",
+                      "place_id": "ChIJWwS0u7EXrjsRqYDisF0m2G8"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXT1XQKbxmUMIIUWMnm49HrzedIga2pSzpUHFYj1Uq81qd9jKAUblO_2_QweDXfAgMhvuq596JbTNXKICfN1hpsgUYf2DSXlUGUXKHd7vVKxeWl01KukQ7OxcJ-msEDnyhXr9I9DXFhP5l5iPcrAHNbPoYTE7cOYkzbqGzDB6iUrUQpTZwP1cxm0cQPaUOUyov61yAFgsXBx8n-IvfZzHATcMxe0U6-2SlArkh--ZFhMX8Rw3o-6g-YyS62brEN31ubu-Cye5BaTajyXifpeDz6SU3pAo6Vf5l5NnItlTDlM4BQUC_P35Qo4XN6Mk952RdTwV1h1GPRaXkFd8YfYG56v8Poiuy-o7V8S_sKQoL66cjwShqj4OEXQLoty7iBQEpgeFgu1UbLBj4LIqh_0AunrWFnA02LJv8aOmjy2RlSCsgchKFZu9Y4N1Z-TkWmw&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Krung Thep - Thai Street Food",
+                      "alt": "Krung Thep - Thai Street Food",
+                      "place_id": "ChIJWwS0u7EXrjsRqYDisF0m2G8"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXRcJu86QTE6HAP8kIVllfKLPpTHw30YS3_9aB7y4xUTC7l48q6Eu2wwjRYq0NaJ9wqFQvhtEK0njR2FYuUeLd_hvaDfMh5NyxuSwRvgUEl7wUyKKU0RIgz0FJ58fe3fBaDaf_uXdXz9KcNo7z92_X5odpCacKRwAX0uCVd5E82HGdx65Q9-xFTDHBFDxnaUc0Bc8uCbU5lRrJIsiT60S3TrPHeXNDnS2kV0Ib228HgqF4EYOGTrQwTiYuyx0XXnLJZh2OriRn6Ig65DMeOnHV5G_InvNQPYMg0BBnmF7KJbLB_rwmzmIjeR58vKRGSXi5hzxDrRGYsgYm4WtGKRjRyz8FGyP97Qp0tmt_NCyD3rYwvt_5P1x12LWaz-lZui1Zx4_hJKpvYuz8fwr991B4XIUIMCeusWcjX1UCtIkyzjsVyglsM8noaKryxjpxml&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Krung Thep - Thai Street Food",
+                      "alt": "Krung Thep - Thai Street Food",
+                      "place_id": "ChIJWwS0u7EXrjsRqYDisF0m2G8"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Best Value",
+                "rating": "5.0★ · 71 reviews",
+                "price": "₹200–400 per person",
+                "why": "Thai-run street-food stall, dishes ~₹200, tastes just like Bangkok street food — fresh and punchy.",
+                "hours": "Open now · till 11:00 PM (closed Sun)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=8059233717020950697&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "091139 51433",
+                  "tel": "tel:09113951433"
+                }
+              },
+              {
+                "title": "Thai Basil, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Thai Basil",
+                  "query": "Thai Basil restaurant green papaya salad",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXQN9JC04ZheJJq664AxA_SC4qurfOWHCup4O0iAa-lty01lXMskaxWNsqhO2A10H_b_X112TKJtJNB3hR9e1Yn-U148FT9MbMayfvm6gWlsJGMHtH3RYyzm9gtvhMCuWhVdnEhe7bb_ScfjthgJ6RwHDPYpapNxm1GboP_vo2qNn_HhCXgSwX6MkiarUPjL4PvMFcr3c0HpKuyUMEyYM97cBW-WR-Wses01xAoX-SJelLPZ6IrbHqMR7t0p9jWao7b4-_phjfWya8i_rv3sVRpZ0oyjB68XdaCDBxH6jSj2LKbCwSPwwnNQgfzmULDOSq53iOuFYW0i922oYlwwVQQOTFfj2slB8hyxae38AhlsA6PkEPMz5H_udRs2vcH_rua99N-0At6H_S84Y5bOMKN3x2qYNgastqLWhwLwRJtf2g&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Thai Basil",
+                      "alt": "Thai Basil",
+                      "place_id": "ChIJ7-VsECEVrjsRwwQfafTtfRg"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXTqvAhR2oHPe2BWanFJT4Bj9QMHHTS7GOMGxzBz71VNRdmNHG5lj6xaE7QMhjsXIneFBuNMS0pz1gHTkudc7YIXbCLTF35H3wJmCHGWP-obLUP3K2M-rgLCa5gsOqD8gRReSGkx-dPV2u6Cos9VUVsGPxul5yMLZqvJu3H9dTIXpSQyypMqvO55_CeaNIuplN-UgaPtKyZX8WQRs6gOoQHCKQiSrMm4WGUBou97CG5uTMvxIYgPSKrImrxdUr-THcRJJwmUC1FYvM4gMRd1RfUYIDkBbcvYxKpjg0RAuNjnGQPlXeNA4kYPTWwcqI9fvFnPV-jtHkeadIyvXJ8QW75_S8EgwcaTX77cnseJUbkn6Cq8vxvhrmAgIqq5ftAiKAcZUBXWjfSrChB3-BqwfEysRj92tFbJk9lg3aT6IOBTeA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Thai Basil",
+                      "alt": "Thai Basil",
+                      "place_id": "ChIJ7-VsECEVrjsRwwQfafTtfRg"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXSP5n-yiPd0eOdxitwVDcEbfJZ7NIMcyvMAEcxNAozRPNtP_YNj8YrelKSpGoqxKdSwWXMwa4tmEAewtNzqrhWjLItrNWG3sJjoIU4FrZRnkCKQC4J60zzdc-nLEvee5xaRxFm74a7ptdmz2CU7WgUH3jScSdwBu6auCEsnHdFzBWYtESevTAMi7oXR7sbzjS4_gyx8l8U3GGBP5zWuJoBTGZYgJByANTu3e11g7X5gHTZtsaYypnmLvFJWKGlrB9Sr08PBZ77BY2I2OuAJ0UkkXIFebgwWGMdtDbwfGDLTg03rmEYWw3-ou1ORHOaHBAptQ6z5q9OtmU6i_-AV1X55_NOnlXEx7rZkMIxIsKB0zr0wPpedebEjDWCYBmPjn1J73Pr-l7pEwXPUQg2OHJbx2uUCOXXaHdfaoQ3YDvh2ow&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Thai Basil",
+                      "alt": "Thai Basil",
+                      "place_id": "ChIJ7-VsECEVrjsRwwQfafTtfRg"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Classic Choice",
+                "rating": "4.5★ · 1968 reviews",
+                "price": "₹600–1400 per person",
+                "why": "One of Bengaluru's oldest authentic Thai spots, garden setting, well-executed veg papaya salad.",
+                "hours": "Open now · till 11:00 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=1764828262990546115&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "080 4989 1968",
+                  "tel": "tel:08049891968"
+                }
+              },
+              {
+                "title": "Baan Phadthai, Indiranagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Baan Phadthai",
+                  "query": "Baan Phadthai Thai restaurant",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXQIDSPULVUE7zO3W65Rl7RtXkXQVywH1Sc5OEOsDGklH58FRzC9HKpH1DYHT_S30tyBJ57sQBndwYPSmuiWXC2MRfyCjlAW9-Cs7PBn6lwtJuS4uvBwnqvdhN222N5XU0oN8ruaIMfxXi6T410ocluZfzTRMk62AVw_NkS88eQjYoEGt2aFR2RjfGHlWP3HqHepOLrn6VWKMlAc1Zcb0iSh53Z6S-me5zkvCrA-5EM8gc84dZCedrwN5ehfrPZXbItMEOKnP9WWn6bnzXEysbyquX1-SuL7uEa54za2K0qO7AS_ze6cDL14MggJy_pMMLFgzTj_zExxtgKdMz-Vu__o_yEEK8y-C6_DB-rDpgOKKMsveNh3bQJvy8EJH1fnC4_9YCrtIVY4ivQsuCJb0BZBV8aDLq9Hhu8mNJtAQZrGQCBZMwgKaNH53MxpcQ&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Baan Phadthai Indiranagar",
+                      "alt": "Baan Phadthai Indiranagar",
+                      "place_id": "ChIJH139DgAXrjsRSvY_aJ52sl0"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXTMU_svUJOmtxEc39O-wtjeu2NrVVQu6zYyX0KwdCiY25TxnOFpF7HbPQJi9Q077E-XgjLKqQPwuI47Qr-Aae9H_jEzkGNlu26Z4Oin8IgaowRWkA2Bny6rNjp_KUI1hsZUSGrduubgkNmZBWJFnEBtOLVWglXzYwVjb5EETJGETWHZtjYKqceVfjG6HkPJGWc8B0vZurr2CxvRguh39Oh51p3pjcz4jlRzNX-pFxJRRZFDIJr7kvhrA6r9sECcq79GNRA394uOTQkA9fMjA5y5T3uWLg7aPY-XFldqs4tdqPXBoKj7yAx8d8tpFEoLYJftQhLobbr1rifhzhXfw5NYQHPHoOxUXM1Nb1q_eX-n0WTzG0X_87Fefey7CBZ6MC9sqjj-ISXWbG0d06k7RAnDNnxAN6ZILFESubK21fV6Z0fnZq8pMI4rUS0WmA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Baan Phadthai Indiranagar",
+                      "alt": "Baan Phadthai Indiranagar",
+                      "place_id": "ChIJH139DgAXrjsRSvY_aJ52sl0"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXTb7zAa9p69DjaRyYFlXMugPhFSrc57EEDtGlstXuooReCvTMF3vx2Niu6N6nBtJfLPmEyzUXQn1WVGkdbjk_8fwTn0UdPlRLb8ABP4Hm5wNJAjRwLVaR_OyVkFDzkuQ5wXEdm1vlSHxSxxAjvZV039yu_f6m0yF4cZ3TDRFHCFOiopzCKY-i_EzJP3D2ypaDjy_c0kUvGmofwYiLwh4EcKQ9aWbleixC2G95kLTV7VSamYmVHd7hdI6Z5_2YIHuzsrbO_rJrZuDbft5HGDIfYTh9LZ_Z7ExjQ9soP9XUDDrZU_3z-TaqxItcJuaVmf0bVXm5FA2wNAx0xuvnaBW_CpBxjYPaAyKrHfmPrWjNmFxlJ7XgpnKHhgV1pOhGDL0nxy_GX7Gyw5hTir87kJRVOSADihz26oCk-yPYIuPhAYDU_kTA7TgJ2yIvzlPw&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Baan Phadthai Indiranagar",
+                      "alt": "Baan Phadthai Indiranagar",
+                      "place_id": "ChIJH139DgAXrjsRSvY_aJ52sl0"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Late Night",
+                "rating": "4.6★ · 1635 reviews",
+                "price": "Mid-range",
+                "why": "Established Thai kitchen open till 1 AM — the pick if your craving hits after dark.",
+                "hours": "Open now · till 1:00 AM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=6751589214107727434&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "089712 02645",
+                  "tel": "tel:08971202645"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Reviews for Thai Alley's Som Tum",
+          "Only veg Som Tum options",
+          "Route to Thai Alley from Koramangala",
+          "Best Tom Yum near me too"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "text_replace",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "For authentic Som Tum pounded bold and traditional, these four are the ones worth the trip in Bangalore right now — from a Thai chef's kammanahalli gem to a street-food stall that tastes like Bangkok. All are open now.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "Thai Alley, Kammanahalli",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Thai Alley",
+                  "query": "Som Tum green papaya salad Thai",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXRs13b9MQirXKUuScsfFQhJAmZd0HuN9oVKTgRQypZG7VittNyL2L6N4ltA8_Bh5F2R3pRxbn9THNzYrbBLvx-P--erTt7a1rJr7vn0iSaG0o_mzck2_iXEx7uGiGHL2VZAb0ZysDhRtMngpDe9Gtp-ilKPa8XeniMKKjuz0OM4xXk4GBPkybPQeEfqcPgmXfmjukDplOhxxDRBOWWUM1Y75xhPi198U-x1PRJ6ERO93T-LL2IyyV4NKACNxYP5rLsySJYW80YvxJlZCDbFHz-cHyUdagw3R1Jj8f5gxDjK4qKMuvr2wrONhi8p7-0341B1AFKQ5gpw5UpSsXGzOis7XX0_9aA0UYSbNGQlQqLj1HwoP-RrllFFqJZjN4beqpTbtv5GLa-9SuFhpxzKvFgin9tptQApMpG8yhg3UuvghdHFLUKJqtv1EJpLchFG&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Thai Alley Restaurant",
+                      "alt": "Thai Alley Restaurant",
+                      "place_id": "ChIJO_vB0ywXrjsRSNEAgd5dOB4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXR4-8AVW3aoM9lf8RHzOW3j8zAm9fFRFrLTcgj7Q8GTDFZReXC3lJZ5C_zJrOVGU_13_byrozNo9nYOCqNVV-VDmWmWrxr3ixg4VyNOJOpA_KctPVRj8BMmVNaLNhleHksqVwVVZEK0B4dHil3vpEK0sdOX1xL5YTv2aebmkZFg9Zem_fCY8nqfNPth8G9VrsrEsUOJLQfZHqqwLburo0tcaN5FjRJwGMfLkrd2MRzBtE7oPiUannUWBud79-xIH4ML_bGO37g8ltVMccK-jiJW9Wcu74EXVggEXOFgkR3ReKc_l5901WJL65dYUkYoFfAXZ6TP7SkqkW-Ms30sbvTJTaxJfjsw9_sYNwsh9btVLQicsnl0PDHymQNxeRMIPTN3GO1dWVFHmzK-2NxlinR2qrU3ZIlqB9asFVrQlsslnyGi5VBgfUABaDo1OsFH&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Thai Alley Restaurant",
+                      "alt": "Thai Alley Restaurant",
+                      "place_id": "ChIJO_vB0ywXrjsRSNEAgd5dOB4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO_vB0ywXrjsRSNEAgd5dOB4%2Fphotos%2FAVoNoXRzNEcys3GfpBVpCIr86ezhe6DH5vDQS44aScTy0FnXzASy_ZUuU_xSANsNXwPMia_FViK9iXDeU4IT-sgiyfrynY1miopv4Wdua-O9lR4lAlW6QgY3M8CrzoS0QGUTJydzvxfhUSom8gkgzTQFtXuPnjZKH4YllvG2okqSPGDPsPxldiq-eUvGDCB4umlRRzvQvqklCg_lWSiCrq0dnLtqxDJoZlnmEu2lu3b1g_e9J3Hf6LdEc2zRWaxYZwVzIHjRJGPQpttRXvI2mpFanzLVyK1KUpOsRm6KhuL4sk8fkS3y4jh8RNWIhDV6e7ooBhjybJcHhiPdhYO3eTFUuJzwQyBxwrOvZOr3aCdQrgvmwdxfxK-b7sIHGBOsRkpr_hXO4ZMzF8cKBuJNBZass59ChFl__BRsJd12XxwFNHXz8FcLCob7YokxbKR4Tgpd&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Thai Alley Restaurant",
+                      "alt": "Thai Alley Restaurant",
+                      "place_id": "ChIJO_vB0ywXrjsRSNEAgd5dOB4"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.9★ · 793 reviews",
+                "price": "₹400–1400 per person",
+                "why": "Thai chef's Som Tum pounded with fermented fish — bold, traditional, exactly the flavor you want.",
+                "hours": "Open now · till 10:30 PM (closed Tue)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=2177593630062072136&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "096634 78086",
+                  "tel": "tel:09663478086"
+                }
+              },
+              {
+                "title": "Krung Thep, Nagavara",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Krung Thep",
+                  "query": "Thai street food Som Tum",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXSnI_T86lw-g2OlBCwCk2v2Qs67UrpTIgcJZYmDUwm8luVe09oP80118K406Uep1BcV53uOn8ugPE5EXwvc8FnL8qt5nbc4MqXgT2lxb8KE9kvRFhr2nbB9K1HfX0VivqOr-tQdAIxWKqxGMK7MlXE3LOrpVFWdDNx1LrsEojZ5E69OrABlk3xpVJ26qac5dMbGj6yBWJhSVWdPd6r1ESMlihyrJE4wtR7I0t_l1lAJpXsZttqIIvjp_0zc_1wRDgGt8pKpfivPQURirIA_9rqguXuuLdXZWD4GS418F12wKjwDgVXh20eBqk7781RwBFdBNmvRrnTGQvKVKqSvDzJWuqLapibbDaZh4uFfiDmuH3UhbXildrbyfGPzC-xX1rJ4056PbqLDed4UxB9A5X3xiBwtjqEmlKtDYqgTv4qbYOehty6wahC5hFSC3xoa&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Krung Thep - Thai Street Food",
+                      "alt": "Krung Thep - Thai Street Food",
+                      "place_id": "ChIJWwS0u7EXrjsRqYDisF0m2G8"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXT1XQKbxmUMIIUWMnm49HrzedIga2pSzpUHFYj1Uq81qd9jKAUblO_2_QweDXfAgMhvuq596JbTNXKICfN1hpsgUYf2DSXlUGUXKHd7vVKxeWl01KukQ7OxcJ-msEDnyhXr9I9DXFhP5l5iPcrAHNbPoYTE7cOYkzbqGzDB6iUrUQpTZwP1cxm0cQPaUOUyov61yAFgsXBx8n-IvfZzHATcMxe0U6-2SlArkh--ZFhMX8Rw3o-6g-YyS62brEN31ubu-Cye5BaTajyXifpeDz6SU3pAo6Vf5l5NnItlTDlM4BQUC_P35Qo4XN6Mk952RdTwV1h1GPRaXkFd8YfYG56v8Poiuy-o7V8S_sKQoL66cjwShqj4OEXQLoty7iBQEpgeFgu1UbLBj4LIqh_0AunrWFnA02LJv8aOmjy2RlSCsgchKFZu9Y4N1Z-TkWmw&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Krung Thep - Thai Street Food",
+                      "alt": "Krung Thep - Thai Street Food",
+                      "place_id": "ChIJWwS0u7EXrjsRqYDisF0m2G8"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJWwS0u7EXrjsRqYDisF0m2G8%2Fphotos%2FAVoNoXRcJu86QTE6HAP8kIVllfKLPpTHw30YS3_9aB7y4xUTC7l48q6Eu2wwjRYq0NaJ9wqFQvhtEK0njR2FYuUeLd_hvaDfMh5NyxuSwRvgUEl7wUyKKU0RIgz0FJ58fe3fBaDaf_uXdXz9KcNo7z92_X5odpCacKRwAX0uCVd5E82HGdx65Q9-xFTDHBFDxnaUc0Bc8uCbU5lRrJIsiT60S3TrPHeXNDnS2kV0Ib228HgqF4EYOGTrQwTiYuyx0XXnLJZh2OriRn6Ig65DMeOnHV5G_InvNQPYMg0BBnmF7KJbLB_rwmzmIjeR58vKRGSXi5hzxDrRGYsgYm4WtGKRjRyz8FGyP97Qp0tmt_NCyD3rYwvt_5P1x12LWaz-lZui1Zx4_hJKpvYuz8fwr991B4XIUIMCeusWcjX1UCtIkyzjsVyglsM8noaKryxjpxml&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Krung Thep - Thai Street Food",
+                      "alt": "Krung Thep - Thai Street Food",
+                      "place_id": "ChIJWwS0u7EXrjsRqYDisF0m2G8"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Best Value",
+                "rating": "5.0★ · 71 reviews",
+                "price": "₹200–400 per person",
+                "why": "Thai-run street-food stall, dishes ~₹200, tastes just like Bangkok street food — fresh and punchy.",
+                "hours": "Open now · till 11:00 PM (closed Sun)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=8059233717020950697&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "091139 51433",
+                  "tel": "tel:09113951433"
+                }
+              },
+              {
+                "title": "Thai Basil, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Thai Basil",
+                  "query": "Thai Basil restaurant green papaya salad",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXQN9JC04ZheJJq664AxA_SC4qurfOWHCup4O0iAa-lty01lXMskaxWNsqhO2A10H_b_X112TKJtJNB3hR9e1Yn-U148FT9MbMayfvm6gWlsJGMHtH3RYyzm9gtvhMCuWhVdnEhe7bb_ScfjthgJ6RwHDPYpapNxm1GboP_vo2qNn_HhCXgSwX6MkiarUPjL4PvMFcr3c0HpKuyUMEyYM97cBW-WR-Wses01xAoX-SJelLPZ6IrbHqMR7t0p9jWao7b4-_phjfWya8i_rv3sVRpZ0oyjB68XdaCDBxH6jSj2LKbCwSPwwnNQgfzmULDOSq53iOuFYW0i922oYlwwVQQOTFfj2slB8hyxae38AhlsA6PkEPMz5H_udRs2vcH_rua99N-0At6H_S84Y5bOMKN3x2qYNgastqLWhwLwRJtf2g&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Thai Basil",
+                      "alt": "Thai Basil",
+                      "place_id": "ChIJ7-VsECEVrjsRwwQfafTtfRg"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXTqvAhR2oHPe2BWanFJT4Bj9QMHHTS7GOMGxzBz71VNRdmNHG5lj6xaE7QMhjsXIneFBuNMS0pz1gHTkudc7YIXbCLTF35H3wJmCHGWP-obLUP3K2M-rgLCa5gsOqD8gRReSGkx-dPV2u6Cos9VUVsGPxul5yMLZqvJu3H9dTIXpSQyypMqvO55_CeaNIuplN-UgaPtKyZX8WQRs6gOoQHCKQiSrMm4WGUBou97CG5uTMvxIYgPSKrImrxdUr-THcRJJwmUC1FYvM4gMRd1RfUYIDkBbcvYxKpjg0RAuNjnGQPlXeNA4kYPTWwcqI9fvFnPV-jtHkeadIyvXJ8QW75_S8EgwcaTX77cnseJUbkn6Cq8vxvhrmAgIqq5ftAiKAcZUBXWjfSrChB3-BqwfEysRj92tFbJk9lg3aT6IOBTeA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Thai Basil",
+                      "alt": "Thai Basil",
+                      "place_id": "ChIJ7-VsECEVrjsRwwQfafTtfRg"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ7-VsECEVrjsRwwQfafTtfRg%2Fphotos%2FAVoNoXSP5n-yiPd0eOdxitwVDcEbfJZ7NIMcyvMAEcxNAozRPNtP_YNj8YrelKSpGoqxKdSwWXMwa4tmEAewtNzqrhWjLItrNWG3sJjoIU4FrZRnkCKQC4J60zzdc-nLEvee5xaRxFm74a7ptdmz2CU7WgUH3jScSdwBu6auCEsnHdFzBWYtESevTAMi7oXR7sbzjS4_gyx8l8U3GGBP5zWuJoBTGZYgJByANTu3e11g7X5gHTZtsaYypnmLvFJWKGlrB9Sr08PBZ77BY2I2OuAJ0UkkXIFebgwWGMdtDbwfGDLTg03rmEYWw3-ou1ORHOaHBAptQ6z5q9OtmU6i_-AV1X55_NOnlXEx7rZkMIxIsKB0zr0wPpedebEjDWCYBmPjn1J73Pr-l7pEwXPUQg2OHJbx2uUCOXXaHdfaoQ3YDvh2ow&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Thai Basil",
+                      "alt": "Thai Basil",
+                      "place_id": "ChIJ7-VsECEVrjsRwwQfafTtfRg"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Classic Choice",
+                "rating": "4.5★ · 1968 reviews",
+                "price": "₹600–1400 per person",
+                "why": "One of Bengaluru's oldest authentic Thai spots, garden setting, well-executed veg papaya salad.",
+                "hours": "Open now · till 11:00 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=1764828262990546115&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "080 4989 1968",
+                  "tel": "tel:08049891968"
+                }
+              },
+              {
+                "title": "Baan Phadthai, Indiranagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Baan Phadthai",
+                  "query": "Baan Phadthai Thai restaurant",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXQIDSPULVUE7zO3W65Rl7RtXkXQVywH1Sc5OEOsDGklH58FRzC9HKpH1DYHT_S30tyBJ57sQBndwYPSmuiWXC2MRfyCjlAW9-Cs7PBn6lwtJuS4uvBwnqvdhN222N5XU0oN8ruaIMfxXi6T410ocluZfzTRMk62AVw_NkS88eQjYoEGt2aFR2RjfGHlWP3HqHepOLrn6VWKMlAc1Zcb0iSh53Z6S-me5zkvCrA-5EM8gc84dZCedrwN5ehfrPZXbItMEOKnP9WWn6bnzXEysbyquX1-SuL7uEa54za2K0qO7AS_ze6cDL14MggJy_pMMLFgzTj_zExxtgKdMz-Vu__o_yEEK8y-C6_DB-rDpgOKKMsveNh3bQJvy8EJH1fnC4_9YCrtIVY4ivQsuCJb0BZBV8aDLq9Hhu8mNJtAQZrGQCBZMwgKaNH53MxpcQ&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Baan Phadthai Indiranagar",
+                      "alt": "Baan Phadthai Indiranagar",
+                      "place_id": "ChIJH139DgAXrjsRSvY_aJ52sl0"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXTMU_svUJOmtxEc39O-wtjeu2NrVVQu6zYyX0KwdCiY25TxnOFpF7HbPQJi9Q077E-XgjLKqQPwuI47Qr-Aae9H_jEzkGNlu26Z4Oin8IgaowRWkA2Bny6rNjp_KUI1hsZUSGrduubgkNmZBWJFnEBtOLVWglXzYwVjb5EETJGETWHZtjYKqceVfjG6HkPJGWc8B0vZurr2CxvRguh39Oh51p3pjcz4jlRzNX-pFxJRRZFDIJr7kvhrA6r9sECcq79GNRA394uOTQkA9fMjA5y5T3uWLg7aPY-XFldqs4tdqPXBoKj7yAx8d8tpFEoLYJftQhLobbr1rifhzhXfw5NYQHPHoOxUXM1Nb1q_eX-n0WTzG0X_87Fefey7CBZ6MC9sqjj-ISXWbG0d06k7RAnDNnxAN6ZILFESubK21fV6Z0fnZq8pMI4rUS0WmA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Baan Phadthai Indiranagar",
+                      "alt": "Baan Phadthai Indiranagar",
+                      "place_id": "ChIJH139DgAXrjsRSvY_aJ52sl0"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJH139DgAXrjsRSvY_aJ52sl0%2Fphotos%2FAVoNoXTb7zAa9p69DjaRyYFlXMugPhFSrc57EEDtGlstXuooReCvTMF3vx2Niu6N6nBtJfLPmEyzUXQn1WVGkdbjk_8fwTn0UdPlRLb8ABP4Hm5wNJAjRwLVaR_OyVkFDzkuQ5wXEdm1vlSHxSxxAjvZV039yu_f6m0yF4cZ3TDRFHCFOiopzCKY-i_EzJP3D2ypaDjy_c0kUvGmofwYiLwh4EcKQ9aWbleixC2G95kLTV7VSamYmVHd7hdI6Z5_2YIHuzsrbO_rJrZuDbft5HGDIfYTh9LZ_Z7ExjQ9soP9XUDDrZU_3z-TaqxItcJuaVmf0bVXm5FA2wNAx0xuvnaBW_CpBxjYPaAyKrHfmPrWjNmFxlJ7XgpnKHhgV1pOhGDL0nxy_GX7Gyw5hTir87kJRVOSADihz26oCk-yPYIuPhAYDU_kTA7TgJ2yIvzlPw&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Baan Phadthai Indiranagar",
+                      "alt": "Baan Phadthai Indiranagar",
+                      "place_id": "ChIJH139DgAXrjsRSvY_aJ52sl0"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Late Night",
+                "rating": "4.6★ · 1635 reviews",
+                "price": "Mid-range",
+                "why": "Established Thai kitchen open till 1 AM — the pick if your craving hits after dark.",
+                "hours": "Open now · till 1:00 AM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=6751589214107727434&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "089712 02645",
+                  "tel": "tel:08971202645"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Reviews for Thai Alley's Som Tum",
+          "Only veg Som Tum options",
+          "Route to Thai Alley from Koramangala",
+          "Best Tom Yum near me too"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "completion"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_skills_used",
+    "label": "LLM used skills (1)",
+    "ts": 1787565261154,
+    "detail": "food"
+  },
+  {
+    "type": "turn_complete",
+    "turn_id": "97fc1ce9-e2b0-4ccd-b4cc-4648926fdd8e",
+    "input_tokens": 88872,
+    "output_tokens": 3324,
+    "reasoning_tokens": 1088,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 52800,
+    "latency_ms": 49799,
+    "agent_steps": 3,
+    "tool_call_count": 6,
+    "skills_loaded": [
+      "default",
+      "food"
+    ]
+  },
+  {
+    "type": "[DONE]"
+  }
+]

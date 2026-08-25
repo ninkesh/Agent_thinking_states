@@ -1,0 +1,961 @@
+[
+  {
+    "type": "turn_started"
+  },
+  {
+    "type": "insight",
+    "subtype": "guardrail_passed",
+    "label": "Guardrail passed",
+    "ts": 1787565265915,
+    "detail": "nsfw check ✓"
+  },
+  {
+    "type": "insight",
+    "subtype": "query_enriched",
+    "label": "Enrichment skipped — no prior history",
+    "ts": 1787565265916
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_selected",
+    "label": "Skills selected (1)",
+    "ts": 1787565265916,
+    "detail": "food (0.82)"
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_loaded",
+    "label": "Skills loaded (2)",
+    "ts": 1787565265918,
+    "detail": "default, food"
+  },
+  {
+    "type": "insight",
+    "subtype": "context_built",
+    "label": "Context built",
+    "ts": 1787565265919,
+    "detail": "stm=no · 0 msgs"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_start",
+    "label": "LLM started",
+    "ts": 1787565266502
+  },
+  {
+    "type": "insight",
+    "subtype": "tools_loaded",
+    "label": "Tools loaded (12)",
+    "detail": "GetRoute, GetWeather, MemoryRead, MemoryWrite, NearbyPlaces, PlaceDetails, PlaceReviews, PlaceSearch, Task, TodoWrite, WebFetch, WebSearch",
+    "ts": 1787565266508
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "user_query"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "0 / 100,000 tokens (threshold)",
+    "token_count": 0,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565269730
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Searching for top-rated Italian spots in Delhi that serve cicchetti-style small plates.",
+    "step_id": 1,
+    "names": [
+      "PlaceSearch",
+      "WebSearch"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceSearch",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      },
+      {
+        "tool_name": "WebSearch",
+        "user_facing_tool_label": "Searching...",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MagnifyingGlass.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787565271485,
+    "detail": "best Italian restaurants Delhi cicchetti small plates"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "best Italian restaurants Delhi cicchetti small plates",
+      "latitude": 28.6139,
+      "longitude": 77.209,
+      "bias_radius_meters": 15000,
+      "max_results": 12
+    },
+    "tool_use_id": "ce2be9f6-6e60-4013-8197-e7f71fd6bcd4"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → WebSearch",
+    "ts": 1787565271488,
+    "detail": "best cicchetti Italian small plates restaurants Delhi authentic Venetian"
+  },
+  {
+    "type": "tool_use",
+    "name": "WebSearch",
+    "input": {
+      "query": "best cicchetti Italian small plates restaurants Delhi authentic Venetian"
+    },
+    "tool_use_id": "2a3f0492-112e-4f35-af18-73946c47c9f2"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 25,017 · out: 365",
+    "ts": 1787565271494,
+    "detail": "step 1"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 25017,
+    "output_tokens": 365,
+    "reasoning_tokens": 0,
+    "reasoning_estimated": false,
+    "cache_read_tokens": 0,
+    "text": "Tokens — in: 25,017 · out: 365"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 2 tools in parallel",
+    "ts": 1787565271495,
+    "detail": "PlaceSearch, WebSearch"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 2,
+    "names": [
+      "PlaceSearch",
+      "WebSearch"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787565272203,
+    "detail": "11932 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"best Italian restaurants Delhi cicchetti small plates\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJ8X4yPvThDDkR63Ekel5uUSc\", \"name\": \"Cicchetti Italiano\", \"formatted_address\": \"First Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.1, \"user_rating_count\": 264, \"price_display\": \"\", \"open_now\": true, \"phone\": \"096505 69946\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=2833166992647942635&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 28.5998485, \"longitude\": 77.2263138, \"photo_url\": \"/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXSKI1VDnCcCjEsa85od3Djh33mDgEjxsKkDRipXUWo8VV0WmQf2SLtC7stmd7b_MzO0KZHre3BPLfk62BoJeW3VP7A978kRgHspFf-Sj5TKsEIRPBTtBzJAhvtIHUDxyXdg35HI1OyWnEO5ytX0RWA8GxivBS-mWANznR-qJlzF9hcxd-LjHW6P4dPHe-NFfB2yJ5qb__iiG1lwVs-KECDaldKTZh6PSBD-EG3GhEnHmn3pHRP5HXwKI2l_tszmbNV1bj_r4fVeuet9zj0rjCe5ngRlWTyuk7Uhp4kRyCRZkl4EQ2lGeJbz6hq_ZMV0xBFg-m937s1qP4KDEIXqx9Lpt2sDnF3RkR85am6hBdJKuDmh7xyQT3WAckX_IUtFNiENaW1G62JkwFz3KvpFUvFu0ZcC7y6iKb3nQljECseoPEM&maxWidth=400\"}, {\"place_id\": \"ChIJN1VVJQPiDDkRgUjG6h0t9LY\", \"name\": \"EVOO - Delhi\", \"formatted_address\": \"Ground Floor, B-2, Shivalik Rd, Block B, Shivalik Colony, Malviya Nagar, New Delhi, Delhi 110017, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 2617, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"083684 28737\", \"website\": \"http://www.evooeaterypizzeria.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=13183211615736449153&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 28.533444499999998, \"longitude\": 77.20611079999999, \"photo_url\": \"/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXRjqqxb9Xa2Ml0caagR-t5S6jcNoU-_Tr7Wj3Ik-uMAXosuXUffQAV1G1HppgVsv_1b1vO_EA0MWpxTlSomaDfnLBZcKdsKDTpZ_LlUDNCTNjNXncSqCxtDTjZldomnhjz0DCrdj3vd12tHAfUdYxEYtAABrHokFWK-eUEW_NCjp-nu3eeBwA3LB48pymX_0RFgHWyNbbjWSwagEWlbamFZFQVGfCnncNBFdsTCjHB17x7h8vcSENxMNVkpruC0LN9wDhhoHaG5JCYpeoZypHiLbGSJVQ1uPtMd422PrwHquWchfzsYvRj1NPJT9hkWNwCNQdrMC1rPdp-0FPldlMDgv6jUfF4EKypxroMIX4QoRNnzuRwMQcHb9tgpXhc8SvCWjpoex-C-krdemaBVi1fqZPNWBtQP46CFQJA1r3W2oNIWN8nQMQsg2ksODw&maxWidth=400\"}, {\"place_id\": \"ChIJUdgCewD9DDkRFzhp2OXAx00\", \"name\": \"Si Nonna's\", \"formatted_address\": \"Ground Floor, Radisson Blu Marina Hotel, G 59, Block G, Connaught Place, New Delhi, Delhi 110002, India\", \"types\": [\"pizza_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 488, \"price_display\": \"\\u20b9600\\u20131600 per person\", \"open_now\": true, \"phone\": \"081044 86877\", \"website\": \"http://sinonnas.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=5604660354696689687&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 28.633846499999997, \"longitude\": 77.2173479, \"photo_url\": \"/api/photo?name=places%2FChIJUdgCewD9DDkRFzhp2OXAx00%2Fphotos%2FAVoNoXT4WfKi3mSBkobJH1FJWAxy-cAGXkVXuHafgTha0NCm6mRdyKq1hyRtx5LgO3eb8BOP8tchNef39vg-AQj9KPE9bxuLIuYNAauLENn4YWj1Guojg1EEuiKsCiEn3e7ChMcxWUNXhir9gD7kW3Hvf_dCOWdFRTOpRuA6xKP2R9opT-Dd7p5ryIfhJq5g6jCtmfcxRw3tCd77SPpKdaRxl02mMU0igY0JaHkjM5aqD0g-BnDrWB84qgPmzuXE43A0gzHNyXuXIV5d7RJ0x2tAr9pgqA0fk-AVycqj-OESfgDQ6XhF-HqlpP-QNleC8KGyjRApmWY8Ono8zY-F-waOFDeZ0SMOeIWgOJUtpsS-7tUYTJxLG5PfBaCj3aPwligqn2ZduGBrrkaveQgLaDWFLQ5oFaeWH8N3BZmtE9-s5YKrMUWUp3NdTGYBG9kABA&maxWidth=400\"}, {\"place_id\": \"ChIJ38Qxx4TjDDkRCp4UMbxQIs8\", \"name\": \"Casa Pasta Bar\", \"formatted_address\": \"First Floor, G-9, Hauz Khas Market, Block G, Hauz Khas, New Delhi, Delhi 110016, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 320, \"price_display\": \"\\u20b9800\\u20132000 per person\", \"open_now\": true, \"phone\": \"098182 29214\", \"website\": \"https://www.instagram.com/casapastabar?igsh=Z2c2MGJmM3YxbnVo\", \"google_maps_uri\": \"https://maps.google.com/?cid=14925580884266753546&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 28.550715, \"longitude\": 77.20511789999999, \"photo_url\": \"/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXRq3w3j64EHGtUWaUpZ6iqUlogI32KKK7eGffs842TRk5ZbuRuUP5SsRzhcm2xaqI5fMkt8M_pc5bHpfGzUaD1TDYxwe45KX8ZtenJJlWipLRxxiJVKmEvEGZjoQTrkAoChuL-YYAwz72CXaEF9XgYBziNa7CInl4xFjjvlPa1DRNPEBWv4zarB_2KowtK3Il_icGc-FVSMwavV9ev0Wjd01wODzt2kDFkcFYEZSnVnoC-5JSeyahGlAkATpus8xLwhZmQ_WXvufXy9vHNZpQvZWSaPnxyT65tyJiYZ5l7hbqsKW8XFn5kf4wtErtiNW5P-WQVx9BapxziOlmQmiqek-HFhU6xzKujeSCDb1vtdwCf5A56X8TlYKyBHoY4-bfAX3BLOvX_zVBB6I5k286X41MRHqqtm011oQu7XVTMEZbpiJDY_WQNSudTC2Q&maxWidth=400\"}, {\"place_id\": \"ChIJqxZShMriDDkRpKWstdJgQTQ\", \"name\": \"Sorrento\", \"formatted_address\": \"Lobby Level Shangri-La Eros New Delhi, 19, Ashoka Rd, Janpath, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 900, \"price_display\": \"\\u20b92000+ per person\", \"open_now\": true, \"phone\": \"011 4119 1040\", \"website\": \"http://www.shangri-la.com/newdelhi/erosshangrila/dining/restaurants/sorrento/\", \"google_maps_uri\": \"https://maps.google.com/?cid=3765397221565834660&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 28.62096, \"longitude\": 77.21816199999999, \"photo_url\": \"/api/photo?name=places%2FChIJqxZShMriDDkRpKWstdJgQTQ%2Fphotos%2FAVoNoXT3zcPCUdoyPLh1poQ1r5Eqj7DWdhQfIFOtjiOal9DkksEq5xrQzR--RK7YsbyXLLnWIKDYLAIJW_0bdwUsWONG9MxWq-mnb0nCw29QsFF8HmF_aFTMbBX7txeEZX1brvqBP_WgXiSHmSAXKYseRmirvDyfumgieQ1W75msHKTXwWHhpmuqgCjyn5ePKjZv6HCWxI4_H0c4xisr1NiQXEGKZkCo56Kvtafift6RnlLM-9V6Z8taZYwZRv7goE_b3yPXgjkQc544lFmdmJKy6U0rhLuUs-ds85Nr_WdTugM5kG7ykbuaOfD_sjOfSWPw2SP97yi01PTqO6X8ON3DD3S46HVKC4n98IDGwcR9C3ylwAk-AHlOkeQnPeizMQnI2g-nOtiy877TvNuJSFNQl9Qct4ojiQDUgTL6dYJwfFKHA3AI&maxWidth=400\"}, {\"place_id\": \"ChIJCVd4ITj9DDkRvVKGQ1YGcXA\", \"name\": \"Caff\\u00e8 Tonino\", \"formatted_address\": \"Plaza Cinema Building No 9, Block H, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"coffee_shop\", \"pizza_restaurant\", \"breakfast_restaurant\"], \"rating\": 4.3, \"user_rating_count\": 5680, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"085279 74888\", \"website\": \"https://www.toninoindia.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=8102264172186063549&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 28.635, \"longitude\": 77.2194444, \"photo_url\": \"/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXTVrMPTDyoZqHI8dVG3TgfZFxLpRVJ5kQyASJjG7ZJCBTqWSKqrRCy2FEOMoLEl7qB0LfLzPdutWYAQeKjCkVO1q9bSPe7Wvw792dNz1dTHTDC5FO8OboTUXk-CDwcwgrnZ0afc79wYhNee2EhXiMNOEC_ogD0JdX2nec5MevMCs92y0tOcQ-vVgQwlIhi1zQX51K7jddQSWp-snxwbhsEMxV-H_SGUgNlwDQsV7phtpm3F0S_oF01HnMNqhbxFaYYDyZjfvN9ENkqPx5fBjt7BOfnN2d6Ewx-WN4m-4l_pmzFYtT6mEIAV_6hJ6LUNxGT0cCa38667pspBh44oe5Zu9clj2sB3zM9i6KOjm-N5xd4Mao_BKtjvy444ijsSN9BN0SMw_wj7AXHv05I08Ha7V3nqwxYEr5XYQwNP54321w&maxWidth=400\"}, {\"place_id\": \"ChIJVXYjooodDTkRIr5IEbZVxEc\", \"name\": \"MIABELLA\", \"formatted_address\": \"2nd Floor, 50E, Hauz Khas Fort Rd, Hauz Khas Village, Deer Park, Hauz Khas, New Delhi, Delhi 110016, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4, \"user_rating_count\": 3801, \"price_display\": \"\", \"open_now\": true, \"phone\": \"084482 01901\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=5171352512590560802&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 28.553542, \"longitude\": 77.19421419999999, \"photo_url\": \"/api/photo?name=places%2FChIJVXYjooodDTkRIr5IEbZVxEc%2Fphotos%2FAVoNoXRcH-0nEPbQqPa8tmMTDZOmTzqbXCliQmC2dqVsGFx1uqlRawmBX_dJVJNgUX1IW00Bylfmh-KlmyiFXilLZg8h_ylvLa-2aoobEiRAfviwpw-bs5tdnv0gKI_wiX6Q5T1MW8-BQJKftHIMJvNFzXA6n_F9kO7oPEMaSS2qPX5ubvUQEKPxy4Ay456M0wRwLXDPiZLmrrPgF_SnZC1D589mhnc0nUaEvjlJKbP_jYhGT-To8pEDOxrk6zKN6JCmN8WORrOMbhXtmm14xjf9Vq2h6N5FrjU624goFFlVmEJIlGXcFF0zEiVgZE3dud1XrFz2gnrpBdPGp8TInlSIznC_Aj27AU8TMpj0XG2DWwTG70RQT2EylpIQKfQpFS90-asHChzpcTxMd5xB8hipZ7ck5rqOBUFZ4ojCbfM3-7TU2A&maxWidth=400\"}, {\"place_id\": \"ChIJmzJegjD9DDkRPyHyBRg--Kw\", \"name\": \"DIGGIN\", \"formatted_address\": \"12-a, Block A, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.1, \"user_rating_count\": 3734, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"011 4359 5672\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=12463780241647739199&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 28.6330405, \"longitude\": 77.218009, \"photo_url\": \"/api/photo?name=places%2FChIJmzJegjD9DDkRPyHyBRg--Kw%2Fphotos%2FAVoNoXSqroiyLQmvClNq7dClnndb4G_YaUYS6RnP6Oex-p1gGUJfzwA3Yo3Nzu7bEWsomgl8pt6gNl8EOCREEXuf2X1VlxyJ6MlGdqgLq9ZpZJJq-koBMNB69XjraU3neL25C_pBdt72JVjpuhIuhMbHRBYefn3m1qR9Qw7l3AotVo97XWVXoQhG1AuFyhIkj8jl_ra5GKKPj9nq55t7TFHCdKjaUsxd4-tTHKVcHA9DKXTn9-JZBb0kn59cILBLvtJtLS-MOpfoXA_YF6qwWF6RPazB1r8p6HLJow282tuhDv-CzWJ5zu8Wwfwf9m5qhTTpW-NMPrz0e6pRBOXRZo5VOu6Tdmj-eHOYgnGMqEL02OUgaSwwliLphXs49H0F_bTb81vxM4QGPkJfXdldW5ZF92QAmNkdQfvYBIaM0eQ1czrwE8eBuLVrdN9aljQA9hDE&maxWidth=400\"}, {\"place_id\": \"ChIJ____P9XjDDkRgrLoW_RCPBg\", \"name\": \"Diva - The Italian Restaurant\", \"formatted_address\": \"M-8A, M Block Market, Block M, Greater Kailash II, Greater Kailash, New Delhi, Delhi 110048, India\", \"types\": [\"italian_restaurant\", \"fine_dining_restaurant\", \"wine_bar\", \"dessert_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 1799, \"price_display\": \"\", \"open_now\": true, \"phone\": \"011 4163 7858\", \"website\": \"https://www.diva-italian.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=1746344372794339970&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 28.5343661, \"longitude\": 77.24320469999999, \"photo_url\": \"/api/photo?name=places%2FChIJ____P9XjDDkRgrLoW_RCPBg%2Fphotos%2FAVoNoXTP0s0YFCf3h_3nsrnsH41UwzBY6GpvY5lQAOQUnONoyX33iXoaP6Q17j4_XPhLm4rfyTyl6iGYDmN84nQD5IYvI4myPTpIjPu7jnCLM0xPxUuWmoDIgrSSCh4zF3cNswMn1CwkHWsEQ_sNaIL-IJLF-Qw52CscP4fc6VgFQAw8zPQQ9A9BllbWOb7OEHN_OmQqv0og9m8rnM5spdWZP5brtZShHMEaoQHGmx6tbnvIXSnhFIQUbpRnqs8K0qPrZVpVF3tU59aLGFXcYwXmiobwcwA_L-l9SkKMLebiE_K2WAJWI1HLDzxVxm5wn5zgB4kvMXZvspbmVEnQp3HGGqhuFoDZC3NUDaiXpbZYXh6KcjMZzo3e-bMMAIZ6FYs_eq6Wa-dBkQCfzB_3DvqSbp7644pl9jE7votFSebJ2_TWkw&maxWidth=400\"}, {\"place_id\": \"ChIJ_YXtczX9DDkRn9wtrR7TKh0\", \"name\": \"San Gimignano Restaurant\", \"formatted_address\": \"1, Lobby Level, The Imperial Hotel, Janpath, Connaught Place, Janpath, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 234, \"price_display\": \"\\u20b92000+ per person\", \"open_now\": false, \"phone\": \"011 4111 6608\", \"website\": \"http://www.theimperialindia.com/restaurant-menu/san-gimignano/\", \"google_maps_uri\": \"https://maps.google.com/?cid=2101724304829701279&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 28.625090699999998, \"longitude\": 77.2179001, \"photo_url\": \"/api/photo?name=places%2FChIJ_YXtczX9DDkRn9wtrR7TKh0%2Fphotos%2FAVoNoXSn8Pg4ryHG3TELMnQDJbMciqsUxnTyZ6UFvyy0twwyhiF0dIxhq7TmOXhXBD3sSdq0Cd-gNAjo2yyhiroTJFQwwZLLZ4H6L7T3MqwqH6j8Z0sp4tMOZfSBxcIE918--9fLVkoIF21zSpfJcs7aL_fRRGGsFyhGV4MeLdrKtdrdRAT5yVzf19cCCngXFHHAq2Gj5d6zAgS9bVY3A_RQaVxpsrq-Ikg3uFqAThqLlOEuQ9oKVSG3eBGpd1TYShoN4taM0TV4lTgvURYBg9gE7J1zh-qm-CrzUxFwDfya6_bGdVy1bpHymPvsD6SD6R-PkyT3MVwnrpuTmMUfxAwNMANgT3qzaNjENr4H24EafH0bH5lyM7pG9jp0zr3GMMEgVNKCKhVI1JKgGWp89xnHLbreKLAPlXi7jcd4XNZFduVoa6gGgqwlDmvY23FEP4lj&maxWidth=400\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "6eb7897e-30ee-4ae0-b867-6ed8e54973de",
+    "is_error": false,
+    "llm_text": "{\"query\": \"best Italian restaurants Delhi cicchetti small plates\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJ8X4yPvThDDkR63Ekel5uUSc\", \"name\": \"Cicchetti Italiano\", \"formatted_address\": \"First Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.1, \"user_rating_count\": 264, \"price_display\": \"\", \"open_now\": true, \"phone\": \"096505 69946\", \"latitude\": 28.5998485, \"longitude\": 77.2263138}, {\"place_id\": \"ChIJN1VVJQPiDDkRgUjG6h0t9LY\", \"name\": \"EVOO - Delhi\", \"formatted_address\": \"Ground Floor, B-2, Shivalik Rd, Block B, Shivalik Colony, Malviya Nagar, New Delhi, Delhi 110017, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 2617, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"083684 28737\", \"latitude\": 28.533444499999998, \"longitude\": 77.20611079999999}, {\"place_id\": \"ChIJUdgCewD9DDkRFzhp2OXAx00\", \"name\": \"Si Nonna's\", \"formatted_address\": \"Ground Floor, Radisson Blu Marina Hotel, G 59, Block G, Connaught Place, New Delhi, Delhi 110002, India\", \"types\": [\"pizza_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 488, \"price_display\": \"\\u20b9600\\u20131600 per person\", \"open_now\": true, \"phone\": \"081044 86877\", \"latitude\": 28.633846499999997, \"longitude\": 77.2173479}, {\"place_id\": \"ChIJ38Qxx4TjDDkRCp4UMbxQIs8\", \"name\": \"Casa Pasta Bar\", \"formatted_address\": \"First Floor, G-9, Hauz Khas Market, Block G, Hauz Khas, New Delhi, Delhi 110016, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 320, \"price_display\": \"\\u20b9800\\u20132000 per person\", \"open_now\": true, \"phone\": \"098182 29214\", \"latitude\": 28.550715, \"longitude\": 77.20511789999999}, {\"place_id\": \"ChIJqxZShMriDDkRpKWstdJgQTQ\", \"name\": \"Sorrento\", \"formatted_address\": \"Lobby Level Shangri-La Eros New Delhi, 19, Ashoka Rd, Janpath, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 900, \"price_display\": \"\\u20b92000+ per person\", \"open_now\": true, \"phone\": \"011 4119 1040\", \"latitude\": 28.62096, \"longitude\": 77.21816199999999}, {\"place_id\": \"ChIJCVd4ITj9DDkRvVKGQ1YGcXA\", \"name\": \"Caff\\u00e8 Tonino\", \"formatted_address\": \"Plaza Cinema Building No 9, Block H, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"coffee_shop\", \"pizza_restaurant\", \"breakfast_restaurant\"], \"rating\": 4.3, \"user_rating_count\": 5680, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"085279 74888\", \"latitude\": 28.635, \"longitude\": 77.2194444}, {\"place_id\": \"ChIJVXYjooodDTkRIr5IEbZVxEc\", \"name\": \"MIABELLA\", \"formatted_address\": \"2nd Floor, 50E, Hauz Khas Fort Rd, Hauz Khas Village, Deer Park, Hauz Khas, New Delhi, Delhi 110016, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4, \"user_rating_count\": 3801, \"price_display\": \"\", \"open_now\": true, \"phone\": \"084482 01901\", \"latitude\": 28.553542, \"longitude\": 77.19421419999999}, {\"place_id\": \"ChIJmzJegjD9DDkRPyHyBRg--Kw\", \"name\": \"DIGGIN\", \"formatted_address\": \"12-a, Block A, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.1, \"user_rating_count\": 3734, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"011 4359 5672\", \"latitude\": 28.6330405, \"longitude\": 77.218009}, {\"place_id\": \"ChIJ____P9XjDDkRgrLoW_RCPBg\", \"name\": \"Diva - The Italian Restaurant\", \"formatted_address\": \"M-8A, M Block Market, Block M, Greater Kailash II, Greater Kailash, New Delhi, Delhi 110048, India\", \"types\": [\"italian_restaurant\", \"fine_dining_restaurant\", \"wine_bar\", \"dessert_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 1799, \"price_display\": \"\", \"open_now\": true, \"phone\": \"011 4163 7858\", \"latitude\": 28.5343661, \"longitude\": 77.24320469999999}, {\"place_id\": \"ChIJ_YXtczX9DDkRn9wtrR7TKh0\", \"name\": \"San Gimignano Restaurant\", \"formatted_address\": \"1, Lobby Level, The Imperial Hotel, Janpath, Connaught Place, Janpath, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 234, \"price_display\": \"\\u20b92000+ per person\", \"open_now\": false, \"phone\": \"011 4111 6608\", \"latitude\": 28.625090699999998, \"longitude\": 77.2179001}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: WebSearch",
+    "ts": 1787565272205,
+    "detail": "30017 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "WebSearch",
+    "text": "Search results for 'best cicchetti Italian small plates restaurants Delhi authentic Venetian':\n\n1. Cicchetti Italiano\n   https://www.cicchettiitaliano.com/\n   Italy's Aperitivo Culture Reimagined in Delhi\n...\nCicchetti Italiano is more than just a restaurant—it's an immersive dining experience rooted in the spirit of Venetian cicchetti culture, re-interpreted for a plant-forward world. Here, you'll gather, share, indulge and linger—with friends, family, or a date—under an ambience designed to transport you.\n...\nWhere Tuscan warmth meets modern Delhi. Featuring olive-green accents, terracotta tones and hand-painted murals, the interiors of Cicchetti Italiano blend authenticity with elegance. Textural walls echo vintage cutlery finishes; lighting shifts from bright and fresh by day to moody and golden by evening. The result is a home away from home—one built for conversation, sharing, lingering and delight.\n...\nCicchetti Italiano offers a refined take on Italian cuisine with a 100% vegetarian menu, nestled in the heart of Khan Market.\n...\nFirst Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003\n...\nItaly's Aperitivo Culture Reimagined in Delhi\n...\nCicchetti Italiano is more than just a restaurant—it’s an immersive dining experience rooted in the spirit of Venetian cicchetti culture, re-interpreted for a plant-forward world. Here, you’ll gather, share, indulge and linger—with friends, family, or a date—under an ambience designed to transport you.\n...\nWhere Tuscan warmth meets modern Delhi. Featuring olive-green accents, terracotta tones and hand-painted murals, the interiors of Cicchetti Italiano blend authenticity with elegance. Textural walls echo vintage cutlery finishes; lighting shifts from bright and fresh by day to moody and golden by evening. The result is a home away from home—one built for conversation, sharing, lingering and delight.\n...\nCicchetti Italiano offers a refined take on Italian cuisine with a 100% vegetarian menu, nestled in the heart of Khan Market.\n...\nFirst Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003\n...\nBloom Cafe & Cakery Cicchetti Italiano The Lavender Flavours Firenze Gelateria & Caffè\n\n2. Cicchetti Italiano – Khan Market – 4.1 Rating – ₹3000 approx for two, with alcohol, exclusive of taxes – Authentic Venetian Cicchetti, Italian Small Plates & Casual Bar in New Delhi - Best Restaurants Reviews – Honest Food Ratings & New Openings\n   https://reviews.restaurant/cicchetti-italiano-khan-market-authentic-venetian-cicchetti-new-delhi\n   Cicchetti Italiano – Khan Market – 4.1 Rating – ₹3000 approx for two, with alcohol, exclusive of taxes – Authentic Venetian Cicchetti, Italian Small Plates & Casual Bar in New Delhi - Best Restaurants Reviews – Honest Food Ratings & New Openings\n...\n# Cicchetti Italiano – Khan Market – 4.1 Rating – ₹3000 approx for two, with alcohol, exclusive of taxes – Authentic Venetian Cicchetti, Italian Small Plates & Casual Bar in New Delhi\n...\n## Enjoy authentic Venetian cicchetti at Cicchetti Italiano in Khan Market – small plates, pizzas, pastas & lively bacaro ambience. Perfect casual Italian spot in Central Delhi.\n...\nIn the heart of upscale Khan Market, Cicchetti Italiano brings the vibrant tradition of Venetian bacari to Delhi with its authentic cicchetti – bite-sized small plates enjoyed with drinks. This charming spot offers fresh, seasonal Italian sharing dishes like crostini, arancini, and seafood bites alongside handmade pastas and pizzas – all in a lively, rustic space perfect for aperitivo-style evenings.\n...\n- Name of Restaurant: Cicchetti Italiano\n- Location + Full Address (with landmark): First Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003 (Landmark: Upper floor in middle lane of Khan Market, near popular eateries)\n- City + Area Tag: New Delhi, Khan Market\n- Opening Year: Around 2022\n- Type of Cuisine: Italian (Venetian cicchetti, small plates, pasta, pizza)\n- Dining Style: Casual Dining / Bar\n- Price Range: ₹₹₹₹ (approx. ₹3,000 for two, including alcohol)\n- Special Offers / Deals: Happy hours on drinks; occasional set menus\n...\nCicchetti Italiano evokes a cozy Venetian bacaro with rustic brick walls, wooden beams, warm terracotta tones, and subtle\n...\nCicchetti focuses on authentic Venetian small plates with fresh, seasonal ingredients and bold Italian flavors.\n...\nAglio Olio\n...\nCicchetti/Small Plates: ₹500–₹1,200 Pizzas/Pastas: ₹800–₹1,500 Mains: ₹1,000–₹2,000 Desserts: ₹500–₹800 Sharing-focused; cicchetti platters for groups.\n...\nCicchetti Italiano celebrates the Venetian tradition of \"bacaro hopping\" – enjoying small bites (cicchetti) with drinks in casual bars. It brings this social dining culture to Delhi with authentic recipes, fresh imported ingredients, and a focus on seasonal sharing plates. The lively bar, warm hospitality, and innovative twists on classics make it a standout for relaxed Italian evenings – no live entertainment, but the vibrant energy and flavorful bites create a memorable aperitivo experience.\n...\n| Parameter | Rating |\n| --- | --- |\n| Food Taste & Quality | ⭐⭐⭐⭐⭐ (5/5) |\n...\n| Service | ⭐⭐⭐⭐☆ (4.5/5) |\n| Ambience | ⭐⭐⭐⭐⭐ (5/5) |\n| Value for Money | ⭐⭐⭐⭐☆ (4/5) |\n| Overall Rating | ⭐⭐⭐⭐☆ (4.1/5) |\n...\n- Opening Hours: 12:00 PM – 12:00 AM (daily)\n- Contact Number: 096505 69946\n- Reservation Needed: Recommended\n- Delivery: Available on Zomato & Swiggy\n- Parking Availability: Paid parking in Khan Market\n- Wheelchair Accessible: Partial (first floor)\n\n3. Cicchetti Italiano Shines The Spotlight On Italian Flavours In The Heart Of Delhi\n   https://zeezest.com/food/cicchetti-italiano-shines-the-spotlight-on-italian-flavours-in-the-heart-of-delhi-8168\n   Authentic flavours meet innovative techniques at Cicchetti Italiano, a vegetarian restaurant in Khan Market.\n...\nUp a flight of stairs and right above the popular Bloom Café and Cakery in Khan Market, New Delhi, the sound of soft music wafts out along with the smell of freshly-cooked Italian food. The lighting is warm, the decor in shades of bottle green and beige looks inviting and the servers greet you with a gracious smile. ‘Welcome to Cicchetti Italiano, a little slice of Italy right here in Delhi’ they seem to say.\n...\nWell, because it does feel like we have been transported to a quaint restaurant somewhere in Venice or Milan. Chef Parth Gupta, who incidentally is also the founder of the café downstairs, visited parts of Northern Italy earlier this year and voila, decided to open Cicchetti Italiano to give the Delhiwallahs a taste of authentic Italian vegetarian cuisine. The word Cicchetti, (pronounced Chee-Ket-Tee), translates to sharing plates in Italian. “Just like we have our concept of chai and savouries in the evening, the Italians have an aperitivo hour. After work, they sit at local bars, order a selection of spritz and pair them with sharing plates known as cicchetti,” he explains, as he shows us to a table in the corner, opposite a painting of a cute cat sitting amidst slices of cheese and a bottle of olive oil.\n...\nThe highlight of the menu, however, is of course the cicchetti section which has been divided into three categories for ease. The first are the Bruschettas, followed by the fried snacks section called Fritti and then the Spuntini, which include the bar munchies. It is a pleasant surprise to see such a variety of vegetarian bruschettas on offer – right from the classic Caprese with slow-cooked cherry tomatoes, mozzarella and basil to the Confit Garlic E Rosemarino which is a confit of garlic and rosemary with parmesan, the Tapenade Alle Oliv E with olive, caramelised onions and garlic cream cheese and the Porcini E Parma with porcini mushrooms, parmesan and truffle pate among others. Each of the bruschettas does justice to their presence on the menu, but our favourite is the Tapenade Alle Oliv E in which the sharpness of the olives is balanced with the sweetness of caramelised onions.\n...\nThe chef is big on sustainability and it shows up in different ways in the food he serves us. The different kinds of caviars on the bruschettas - including balsamic, lemon and herbed – are made from different parts of the vegetables and leaves, so nothing goes to waste. The ingredients are sourced locally, and every dish is preservative-free and made from scratch using in-house breads, sauces and cheeses. The Porcini E Tartufo pizza we have next, has an organic sourdough base which has undergone a 72-hour fermentation process to develop gut-friendly bacteria. No wonder we don’t feel heavy or bloated even after tasting so many dishes.\n...\nAddress: Cicchetti Italiano, 70, Khan Market, New Delhi 110003 Meal for two: INR 2,500 plus taxes\n\n4. The makings of Delhi-NCR’s first vegetarian Italian restaurant  | YourStory\n   https://yourstory.com/ys-life/the-makings-of-delhi-first-vegetarian-italian-restaurant-cicchetti-italiano\n   There's no dearth of restaurants in Delhi-NCR serving Italian cuisine. From legacy restaurants to new-age concepts—the options are plenty for your favourite pasta, pizza, salads, and more. While most menus have a mix of vegetarian and non-vegetarian dishes, the former ends up being relegated to the sidelines.\n...\nCicchetti Italiano, a new fine dining restaurant in the capital city's buzzing Khan Market, celebrates Italian culinary traditions, albeit with a vegetarian twist.\n...\nAt Cicchetti Italiano, diners can expect to find bruschetta, salads, handmade pasta, risotto, pizza, and a selection of desserts—all vegetarian.\n...\n‘Cicchetti’ means small sharing plates or snacks served in the bars of Italy, often enjoyed with aperitifs (alcoholic drinks served before or after meals). At Cicchetti Italiano, Gupta has embraced this idea to craft a dining experience centred on sharing, socialising, and savouring various mindfully curated vegetarian dishes.\n...\n“Our interpretation extends beyond just the traditional Venetian offerings—we’ve infused the concept with modern techniques and flavours to suit the evolving palate of diners in Delhi while staying true to Italian authenticity,” he explains.\n...\nSince its inception, Cicchetti Italiano has received an encouraging response from diners in Delhi-NCR. Gupta believes it is their commitment to sustainability beyond tokenism that has made all the difference. “Sustainability for us goes beyond ingredient sourcing; it’s about creating food that diners can enjoy every day without facing health or environmental concerns,” he adds.\n...\n“Our future plans also include collaborations with local farmers and crafting in-house vegan cheeses, further solidifying Cicchetti’s reputation as a pioneer in innovative vegetarian Italian cuisine,” he says.\n...\nNCR’s first vegetarian Italian restaurant\n\n5. Cicchetti Italiano – Premier Italian Dining Destination in Khan Market (4.2★ Rating) - Khan Market Delhi – Luxury Shopping Experience -  Lifestyle, Fashion, Restaurants, Designer Labels, Food, Books etc\n   https://khan.market/cicchetti-italiano-premier-italian-dining-destination-in-Khan-market-4.2-rating-85\n   ## Cicchetti Italiano Khan Market is Delhi’s premier Italian restaurant, offering authentic pasta, wood-fired pizzas, and Venetian cicchetti. With curated Italian wines and elegant ambiance, it’s the perfect luxury dining destination for corporate meetings, elite gatherings, and refined European culinary experiences in South Delhi.\n...\nIn the bustling corridors of Khan Market, where culinary excellence meets sophisticated dining, Cicchetti Italiano stands as a beacon of authentic Italian gastronomy. This premier Italian restaurant has established itself as the go-to destination for discerning food enthusiasts seeking an elevated European dining experience in the heart of South Delhi. With its commitment to traditional Italian flavors and contemporary presentation, Cicchetti Italiano has become synonymous with luxury dining and premium culinary craftsmanship in Delhi's most prestigious shopping district.\n...\nThe restaurant attracts an elite clientele including corporate executives, embassy personnel, luxury hotel guests, and successful entrepreneurs who appreciate the finest in Italian cuisine. Cicchetti Italiano represents the perfect blend of Old World charm and modern sophistication, offering an authentic Italian experience that rivals the best European restaurants in Delhi. The establishment has carved a distinctive niche in Khan Market's competitive dining landscape, becoming the preferred choice for those seeking designer dining experiences and high-class lifestyle indulgence.\n...\nCicchetti Italiano was conceived by passionate culinary enthusiasts with a deep appreciation for authentic Italian cuisine and culture. The restaurant takes its name from the traditional Venetian small plates culture, reflecting the founders' commitment to bringing genuine Italian dining traditions to Delhi's sophisticated food scene. Established as a premium dining destination, the restaurant was born from the vision to create an authentic Italian experience that would satisfy the growing demand for European cuisine among Delhi's elite circles.\n...\nWhat distinguishes Cicchetti Italiano in South Delhi's premium dining market is its unwavering dedication to authentic Italian culinary traditions combined with contemporary fine-dining presentation. The restaurant stands as Khan Market's premier destination for genuine Italian cuisine, offering an extensive menu that celebrates regional Italian specialties while maintaining the highest standards of ingredient quality and preparation techniques.\n...\nCicchetti Italiano specializes in traditional Italian small plates (cicchetti), artisanal pasta preparations, wood-fired pizzas, and classic Italian entrees prepared using time-honored methods. Their unique approach includes importing select Italian ingredients, house-made pasta and sauces, and wine pairings curated by Italian wine experts. The restaurant also offers customized dining experiences for corporate events and private celebrations, making it the preferred choice for businesses and individuals seeking elegant European dining solutions.\n...\n- Antipasti & Cicchetti: Traditional Italian small plates, bruschetta varieties, and artisanal cheese selections\n- Pasta & Risotto: House-made fresh pasta, signature risotto dishes, and regional Italian specialties\n- Pizza: Wood-fired Neapolitan-style pizzas with authentic Italian toppings\n- Main Courses: Classic Italian meat and seafood preparations, grilled specialties\n- Desserts: Traditional Italian sweets including tiramisu, panna cotta, and gelato\n- Beverages: Curated Italian wine selection, Italian coffee preparations, and signature cocktails\n...\nCicchetti Italiano has established a prestigious reputation among Delhi's sophisticated dining community, attracting corporate professionals from nearby business districts, international visitors seeking authentic European cuisine, and local connoisseurs who appreciate premium Italian gastronomy. The restaurant maintains an impressive 4.2-star rating, reflecting consistent excellence in food quality, service, and ambiance.\n...\nIf you are looking for the finest Italian dining experience in Khan Market, Cicchetti Italiano ensures authenticity, elegance, and culinary excellence in every dish. This premier establishment has redefined Italian cuisine in South Delhi, offering a sophisticated European dining journey that satisfies both traditional Italian food lovers and modern gastronomy enthusiasts. Contact them today to experience how authentic Italian cuisine can elevate your dining experience, whether for impressing corporate clients, celebrating special milestones, or simply indulging in luxury European gastronomy in the heart of Delhi's most prestigious market.\n\n6. Cicchetti by Mr. Beans, Italian Restaurant in Gurgaon, Delhi | GQ India\n   https://www.gqindia.com/content/cicchetti-by-mr-beans-italian-restaurant-in-delhi-gurgaon-modern-bistro-bringing-bacari-culture-to-india\n   Cicchetti by Mr. Beans, Italian Restaurant in Gurgaon, Delhi | GQ India\n...\n# This modern Italian bistro in Gurgaon is bringing the Bacari culture to India\n...\nVenetian old-world charm with a contemporary finesse.\n...\nIn the good old days, the traditional 'Bacari' bars in Venice used to serve small plates of food with a glass of native white wine. Designed to enhance the experience of getting a drink with someone, the small courses of Cicchetti would help keep the conversation going and the drinks pouring. We made a trip to the latest progressive modern European and Italian cuisine restaurant in Gurgaon- Cicchetti by Mr. Beans- which takes its inspiration from this 13th century Venetian dining culture.\n...\nFounded by the husband-wife duo, Abhimanyu Singh and Neha Singh, the restaurant is situated in one of the most exciting spots in Delhi NCR - DLF Cyber Hub. Neha is also the chef of the bistro and has specially curated its multi-layered European menu, which goes beyond the predictable pizza and pasta dishes. While her main effort is to recreate the magic of the Cicchetti days of Venice, Chef Neha has ensured that the significance of fresh produce and locally sourced ingredients is not lost in the process.\n...\nWith an inviting spread of cheese boards, appetising small plates and a scrumptious selection of main courses, the menu will leave you spoilt for choice. Everything is portion controlled, so you don't have to worry about having a tiny appetite. The Cicchetti experience allows you to order small plates and make a big meal out of it.\n...\nEverything about the restaurant is in line with its personality - every light, every piece of furniture, every dish, every corner tells you a story about the lanes of Venice. The elegance of the past is infused with the modernity of the present in a chic setting with a fresco setup. Whether you're looking to catch up with an old friend, have a big family dinner, or go out on a date - Cicchetti by Mr. Beans will not disappoint you.\n\n7. Get the flavour of Venice in Gurgaon at Cicchetti by Mr Beans | Architectural Digest India\n   https://www.architecturaldigest.in/content/get-the-flavour-of-venice-in-gurgaon-at-cicchetti-by-mr-beans/\n   This restaurant is an ode to ‘bacari’ bars of Venice in the heart of NCR\n...\nThe interiors of Cichheti might be a muted ode to times spent discovering flavours of Italy, but the progressive cuisine is far from understated. What would make you enter in the first place? The low-key ambience that echoes a reserved sense of fortitude in the face of scores of hyper-energetic dining contemporaries addressed in the buzzing Cyber Hub complex in Gurgaon (now Gurugram)! The eyes and ears are welcomed with a soothing décor and music that spans jazz, retro and Italian instrumental sounds. The quiet confidence lies in the fact that all the action is limited to the plate.\n...\nCicchetti by Mr Beans has entered the well-feted restaurant scene of the National Capital Region (NCR) in January of 2019 after successfully whetting their F&B skills in a number of destinations in India since 2002. Owners Abhimanyu Singh and Neha Singh (also the Chef) have recreated the Venetian charm in the throbbing epicentre of Delhi's satellite corporate hub. Having travelled regularly to Italy from Switzerland, where they lived for many years, the duo was personally fascinated with the concept of 'Cicchetti' (Shi-ke-tti), which means small plates typically served with a glass of native white wine in traditional ‘bacari' bars located in the narrow lanes of the country's most popular tourist drag, Venice. The bacari bars once offered an easy candour that reiterated the essence of simple, fun and shareable dining. The Singhs dreamt of bringing the essence of bacari bars in India, and the doors to Cicchetti by Mr Beans opened soon after.\n...\nThe narrative on the plate is a bit different. There is a clear sidestepping from the reticent mood of the décor, to give a whole-hearted splash of Italian flavours in bold dishes. The concept behind every dish is rooted in authentic Italian ingredients, but Chef and Owner Neha Singh has added the progressive arch to the dining. The Potato and Leek soup makes a sophisticated entrance, but the Gruyere Mac n Cheese gratin, Spinach Ricotta Gnudi and Pan Smeared Polenta Roundels are a happy assault on the senses – both eyes and the palate. “The idea of small plates is to have people taste little of everything, rather than big portions”, explains Singh.\n...\n“I personally whet each ingredient so the food is authentic and does not steer away from its Italian lineage. The novelty comes from seamless amalgamations, and new twists to these ingredients,” she adds. The large plates make perfect sense to share so you can sample more flavours. The Almond-crusted Fish and Verde-zucchini with Kalamata Olives and Herbed Ricotta are the main act of the evening. Pizookie, a warm, chewy chocolate chip semi-baked cookie with Nutella makes you linger longer post dinner.\n...\nAddress: Building\n...\n, Near HDFC\n...\n, DLF Cyber City, Gurgaon Contact:\n\n8. Why Authentic Italian Cuisine in India Needed a Vegetarian Disruptor\n   https://www.deccanchronicle.com/lifestyle/food/how-chef-parth-gupta-is-rewriting-italian-dining-in-india-1924422\n   Trained at Le Cordon Bleu and École Ducasse, Chef Parth Gupta returned to India with a clear mission: to make Italians recognise Italian food served in Delhi. Through Cicchetti Italiano, Firenze Gelateria & Caffè and Bloom Cafe and Cakery, the 25-year-old chef is shaping a new language of ingredient-driven, artisanal Italian dining in India.\n...\nI’ve never believed that “authentic” automatically means “delicious.” Every country has its own palate, and what feels traditional in one place may not evoke the same joy in another. My aim is to cook incredibly flavourful food using ingredients and techniques that feel new and exciting to the Indian palate. While classic Italian cuisine relies heavily on beef and pork, India isn’t a natural consumer of those meats anyway. So we focus on what truly defines Italian cooking for us—exceptional tomatoes, fresh cheeses, good olive oil, fermented breads and clarity of flavour. That’s where our authenticity lies.\n...\nFor me, the non-negotiable is ingredients. Italian cuisine lives or dies by the quality of what you put in. I refuse to compromise—whether it means making my own nut pastes, poaching fruit in-house, or producing fresh cheese daily. The technique matters, but the ingredient is the soul.\n...\nambience and theatrics\n...\neverything is the food. If\n...\nfood is exceptional, you earn loyalty for years. Another\n...\nis that good food alone is enough. In reality, service\n...\nmatter even more—thoughtful, intuitive service elevates the entire dining experience and gives\n...\nan edge that design can’\n...\nIndia is one of the world’s largest vegetarian markets, and the spending power of vegetarians has never been higher. They want purity, storytelling and honest flavour—but for years, premium vegetarian dining options were limited. That’s changing fast. The future of artisanal vegetarian cuisine in India is incredibly bright, and I want to keep building spaces that prove how rich, global and exciting vegetarian food can be.\n\n9. Cicchetti Italiano\n   https://www.cicchettiitaliano.com/about\n   Cicchetti Italiano\n...\nAt Cicchetti Italiano, we champion the philosophy of sustainable dining—food that is good for the environment and good for you.\n...\nOur 100% vegetarian menu is crafted with organic, locally sourced ingredients, supporting ethical farming and minimizing our carbon footprint. We partner with local dairies that uphold animal welfare and sustainability at every step. Every element on your plate is made from scratch—from breads and sauces to handcrafted cheeses. Our signature sourdough pizzas undergo a 72-hour fermentation for better digestion and a naturally complex flavor.\n...\nChef Parth Gupta is a passionate culinary innovator dedicated to transforming plant-based dining with artistry, sustainability, and mindful balance. With world-class training from renowned institutions including Ecole Ducasse in Paris and Le Cordon Bleu in London, Parth combines international expertise with a deep commitment to ethical, sustainable cuisine that celebrates the natural flavors of vegetarian ingredients.\n...\nFirst Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003\n...\nAt Cicchetti Italiano, we champion the philosophy of sustainable dining—food that is good for the environment and good for you.\n...\nOur 100% vegetarian menu is crafted with organic, locally sourced ingredients, supporting ethical farming and minimizing our carbon footprint. We partner with local dairies that uphold animal welfare and sustainability at every step. Every element on your plate is made from scratch—from breads and sauces to handcrafted cheeses. Our signature sourdough pizzas undergo a 72-hour fermentation for better digestion and a naturally complex flavor.\n...\nChef Parth Gupta is a passionate culinary innovator dedicated to transforming plant-based dining with artistry, sustainability, and mindful balance. With world-class training from renowned institutions including Ecole Ducasse in Paris and Le Cordon Bleu in London, Parth combines international expertise with a deep commitment to ethical, sustainable cuisine that celebrates the natural flavors of vegetarian ingredients.\n...\nFirst Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003\n...\nBloom Cafe & Cakery Cicchetti Italiano The Lavender Flavours Firenze Gelateria & Caffè\n\n10. In Delhi, an Italian restaurant got booked out in opening week  - The Nod Mag\n   https://thenodmag.com/content/mi-piaci-italian-restaurant-delhi\n   # In Delhi, this Italian restaurant has been booked out all week \n\n## Most hard-to-get tables have PR. Mi Piaci has tagliatelle tossed in a wheel of Parmigiano, tiramisù whipped tableside, and the Qutub Minar looming over them all\n...\nby Geetika Sachdev \n\nOn a random Tuesday evening in Delhi, Mi Piaci hums with the kind of energy most restaurants can only dream of. The Italian newcomer at Ambawatta One in Mehrauli has been open barely a week, yet the dining room is full—alive with soft laughter and the heady scent of butter and garlic in the air.\n...\nIn a city accustomed to grand launches and influencer-driven openings, Mi Piaci has quietly leapfrogged to the top of Delhi’s must-visit charts without celebrity endorsements, glossy PR campaigns or splashy parties. Instead, the ripple created by this 70-seater has only grown, carried by tales of hand-pinched ravioli, tiramisù whipped tableside with a flourish, warm lighting, and soft Italian jazz—details that have made Mi Piaci feel more like Florence than Mehrauli.\n...\nGwal Pahari\n...\nlocation, inaccessible from most\n...\nof Delhi, didn’\n...\nin Gurugram\n...\nthe way for their dream home\n...\nAmbawatta\n...\nbreathtaking location with\n...\nThe menu builds on that theatre with a deep respect for Italian craft, offering dishes rarely seen outside the country. We ease in with small plates of Ravioli Fritti (crisp vegetable-stuffed pasta buttons served with a silken parmesan fondue and fried potatoes) and Bruschetta con Burrata (toasted bread rubbed with garlic and topped with juicy cherry tomatoes and creamy burrata). The Diavola Bites, chicken morsels marinated with chilli, garlic and herbs, though, are a little on the chewy side.\n...\nThe pastas carry the warmth of tradition. Handmade options like Plin Piemontesi (delicate pinched ravioli filled with ricotta and\n...\nlamb demiglace and pecorino fondue) and the Risotto allo Zafferano, a golden, saffron-laced risotto enriched with parmesan fondue and the same rich jus, showcase\n...\nWoodfired pizzas balance indulgence and restraint: the earthy Pizza Tartufo with truffle cream and mushrooms, the rich Pizza Carbonara with pancetta and egg, the classic Margherita, and the prosciutto crowned with Parma ham and buffalo mozzarella. “These aren’t reinvented versions of Italian classics,” Lanzoni says, “They’re the kind of meals our grandmothers used to make.”\n...\nThat’s not to say the Indian diner has been ignored. “Italy has an incredible variety of vegetarian and creamy dishes, which Indian guests tend to enjoy,” Lanzoni says. “We simply highlighted those plates, ensuring they feel familiar yet remain uncompromisingly authentic.” That approach is evident in the Nerano pizza, topped with mozzarella fior di latte, pesto-coated zucchini, smoked scamorza, crisp zucchini chips, parmesan, basil, and a drizzle of EVO oil—a combination that has already become a crowd favourite.\n...\nThe desserts deliver both theatre and nostalgia. The decadent Tiramisù Mi Piaci is assembled tableside with espresso-soaked handmade lady fingers and airy mascarpone cream, drawing as many phones as spoons. The Millefoglie—flaky puff pastry layered with cream, fresh fruit, and sprigs of mint—is equally elegant, though it takes a little time to set up at the table, rewarding those with patience.\n...\nThis honesty has struck a chord. Guests aren’t just coming for dinner; they’re coming to witness a story they’ve been following online. When the rooftop opens in two weeks, those cocktails will have an even more fitting stage—Italian music in the background and views of the Qutub Minar. For Sukhija, Mi Piaci is a chance to showcase Italian cuisine at its finest. “Italian food is the first choice for so many Indians when they travel abroad,” he says. “To bring that level of quality and authenticity to Delhi is something we’re very proud of.”\n...\nAs the restaurant settles into its\n...\nhome, Lanzoni is already dreaming bigger: deepening partnerships with Italian producers, introducing even more little-known regional dishes, and expanding\n...\nimmersive dining experience that has made Mi Piaci such a runaway hit. For now, though, he’s simply grateful. He says, “Guests tell us they feel like they’re in Italy. That’s the best compliment we could ever receive.”",
+    "tool_use_id": "20381f3b-b60c-4fca-bfd1-b7e52cc1b61f",
+    "is_error": false,
+    "llm_text": "Search results for 'best cicchetti Italian small plates restaurants Delhi authentic Venetian':\n\n1. Cicchetti Italiano\n   https://www.cicchettiitaliano.com/\n   Italy's Aperitivo Culture Reimagined in Delhi\n...\nCicchetti Italiano is more than just a restaurant—it's an immersive dining experience rooted in the spirit of Venetian cicchetti culture, re-interpreted for a plant-forward world. Here, you'll gather, share, indulge and linger—with friends, family, or a date—under an ambience designed to transport you.\n...\nWhere Tuscan warmth meets modern Delhi. Featuring olive-green accents, terracotta tones and hand-painted murals, the interiors of Cicchetti Italiano blend authenticity with elegance. Textural walls echo vintage cutlery finishes; lighting shifts from bright and fresh by day to moody and golden by evening. The result is a home away from home—one built for conversation, sharing, lingering and delight.\n...\nCicchetti Italiano offers a refined take on Italian cuisine with a 100% vegetarian menu, nestled in the heart of Khan Market.\n...\nFirst Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003\n...\nItaly's Aperitivo Culture Reimagined in Delhi\n...\nCicchetti Italiano is more than just a restaurant—it’s an immersive dining experience rooted in the spirit of Venetian cicchetti culture, re-interpreted for a plant-forward world. Here, you’ll gather, share, indulge and linger—with friends, family, or a date—under an ambience designed to transport you.\n...\nWhere Tuscan warmth meets modern Delhi. Featuring olive-green accents, terracotta tones and hand-painted murals, the interiors of Cicchetti Italiano blend authenticity with elegance. Textural walls echo vintage cutlery finishes; lighting shifts from bright and fresh by day to moody and golden by evening. The result is a home away from home—one built for conversation, sharing, lingering and delight.\n...\nCicchetti Italiano offers a refined take on Italian cuisine with a 100% vegetarian menu, nestled in the heart of Khan Market.\n...\nFirst Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003\n...\nBloom Cafe & Cakery Cicchetti Italiano The Lavender Flavours Firenze Gelateria & Caffè\n\n2. Cicchetti Italiano – Khan Market – 4.1 Rating – ₹3000 approx for two, with alcohol, exclusive of taxes – Authentic Venetian Cicchetti, Italian Small Plates & Casual Bar in New Delhi - Best Restaurants Reviews – Honest Food Ratings & New Openings\n   https://reviews.restaurant/cicchetti-italiano-khan-market-authentic-venetian-cicchetti-new-delhi\n   Cicchetti Italiano – Khan Market – 4.1 Rating – ₹3000 approx for two, with alcohol, exclusive of taxes – Authentic Venetian Cicchetti, Italian Small Plates & Casual Bar in New Delhi - Best Restaurants Reviews – Honest Food Ratings & New Openings\n...\n# Cicchetti Italiano – Khan Market – 4.1 Rating – ₹3000 approx for two, with alcohol, exclusive of taxes – Authentic Venetian Cicchetti, Italian Small Plates & Casual Bar in New Delhi\n...\n## Enjoy authentic Venetian cicchetti at Cicchetti Italiano in Khan Market – small plates, pizzas, pastas & lively bacaro ambience. Perfect casual Italian spot in Central Delhi.\n...\nIn the heart of upscale Khan Market, Cicchetti Italiano brings the vibrant tradition of Venetian bacari to Delhi with its authentic cicchetti – bite-sized small plates enjoyed with drinks. This charming spot offers fresh, seasonal Italian sharing dishes like crostini, arancini, and seafood bites alongside handmade pastas and pizzas – all in a lively, rustic space perfect for aperitivo-style evenings.\n...\n- Name of Restaurant: Cicchetti Italiano\n- Location + Full Address (with landmark): First Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003 (Landmark: Upper floor in middle lane of Khan Market, near popular eateries)\n- City + Area Tag: New Delhi, Khan Market\n- Opening Year: Around 2022\n- Type of Cuisine: Italian (Venetian cicchetti, small plates, pasta, pizza)\n- Dining Style: Casual Dining / Bar\n- Price Range: ₹₹₹₹ (approx. ₹3,000 for two, including alcohol)\n- Special Offers / Deals: Happy hours on drinks; occasional set menus\n...\nCicchetti Italiano evokes a cozy Venetian bacaro with rustic brick walls, wooden beams, warm terracotta tones, and subtle\n...\nCicchetti focuses on authentic Venetian small plates with fresh, seasonal ingredients and bold Italian flavors.\n...\nAglio Olio\n...\nCicchetti/Small Plates: ₹500–₹1,200 Pizzas/Pastas: ₹800–₹1,500 Mains: ₹1,000–₹2,000 Desserts: ₹500–₹800 Sharing-focused; cicchetti platters for groups.\n...\nCicchetti Italiano celebrates the Venetian tradition of \"bacaro hopping\" – enjoying small bites (cicchetti) with drinks in casual bars. It brings this social dining culture to Delhi with authentic recipes, fresh imported ingredients, and a focus on seasonal sharing plates. The lively bar, warm hospitality, and innovative twists on classics make it a standout for relaxed Italian evenings – no live entertainment, but the vibrant energy and flavorful bites create a memorable aperitivo experience.\n...\n| Parameter | Rating |\n| --- | --- |\n| Food Taste & Quality | ⭐⭐⭐⭐⭐ (5/5) |\n...\n| Service | ⭐⭐⭐⭐☆ (4.5/5) |\n| Ambience | ⭐⭐⭐⭐⭐ (5/5) |\n| Value for Money | ⭐⭐⭐⭐☆ (4/5) |\n| Overall Rating | ⭐⭐⭐⭐☆ (4.1/5) |\n...\n- Opening Hours: 12:00 PM – 12:00 AM (daily)\n- Contact Number: 096505 69946\n- Reservation Needed: Recommended\n- Delivery: Available on Zomato & Swiggy\n- Parking Availability: Paid parking in Khan Market\n- Wheelchair Accessible: Partial (first floor)\n\n3. Cicchetti Italiano Shines The Spotlight On Italian Flavours In The Heart Of Delhi\n   https://zeezest.com/food/cicchetti-italiano-shines-the-spotlight-on-italian-flavours-in-the-heart-of-delhi-8168\n   Authentic flavours meet innovative techniques at Cicchetti Italiano, a vegetarian restaurant in Khan Market.\n...\nUp a flight of stairs and right above the popular Bloom Café and Cakery in Khan Market, New Delhi, the sound of soft music wafts out along with the smell of freshly-cooked Italian food. The lighting is warm, the decor in shades of bottle green and beige looks inviting and the servers greet you with a gracious smile. ‘Welcome to Cicchetti Italiano, a little slice of Italy right here in Delhi’ they seem to say.\n...\nWell, because it does feel like we have been transported to a quaint restaurant somewhere in Venice or Milan. Chef Parth Gupta, who incidentally is also the founder of the café downstairs, visited parts of Northern Italy earlier this year and voila, decided to open Cicchetti Italiano to give the Delhiwallahs a taste of authentic Italian vegetarian cuisine. The word Cicchetti, (pronounced Chee-Ket-Tee), translates to sharing plates in Italian. “Just like we have our concept of chai and savouries in the evening, the Italians have an aperitivo hour. After work, they sit at local bars, order a selection of spritz and pair them with sharing plates known as cicchetti,” he explains, as he shows us to a table in the corner, opposite a painting of a cute cat sitting amidst slices of cheese and a bottle of olive oil.\n...\nThe highlight of the menu, however, is of course the cicchetti section which has been divided into three categories for ease. The first are the Bruschettas, followed by the fried snacks section called Fritti and then the Spuntini, which include the bar munchies. It is a pleasant surprise to see such a variety of vegetarian bruschettas on offer – right from the classic Caprese with slow-cooked cherry tomatoes, mozzarella and basil to the Confit Garlic E Rosemarino which is a confit of garlic and rosemary with parmesan, the Tapenade Alle Oliv E with olive, caramelised onions and garlic cream cheese and the Porcini E Parma with porcini mushrooms, parmesan and truffle pate among others. Each of the bruschettas does justice to their presence on the menu, but our favourite is the Tapenade Alle Oliv E in which the sharpness of the olives is balanced with the sweetness of caramelised onions.\n...\nThe chef is big on sustainability and it shows up in different ways in the food he serves us. The different kinds of caviars on the bruschettas - including balsamic, lemon and herbed – are made from different parts of the vegetables and leaves, so nothing goes to waste. The ingredients are sourced locally, and every dish is preservative-free and made from scratch using in-house breads, sauces and cheeses. The Porcini E Tartufo pizza we have next, has an organic sourdough base which has undergone a 72-hour fermentation process to develop gut-friendly bacteria. No wonder we don’t feel heavy or bloated even after tasting so many dishes.\n...\nAddress: Cicchetti Italiano, 70, Khan Market, New Delhi 110003 Meal for two: INR 2,500 plus taxes\n\n4. The makings of Delhi-NCR’s first vegetarian Italian restaurant  | YourStory\n   https://yourstory.com/ys-life/the-makings-of-delhi-first-vegetarian-italian-restaurant-cicchetti-italiano\n   There's no dearth of restaurants in Delhi-NCR serving Italian cuisine. From legacy restaurants to new-age concepts—the options are plenty for your favourite pasta, pizza, salads, and more. While most menus have a mix of vegetarian and non-vegetarian dishes, the former ends up being relegated to the sidelines.\n...\nCicchetti Italiano, a new fine dining restaurant in the capital city's buzzing Khan Market, celebrates Italian culinary traditions, albeit with a vegetarian twist.\n...\nAt Cicchetti Italiano, diners can expect to find bruschetta, salads, handmade pasta, risotto, pizza, and a selection of desserts—all vegetarian.\n...\n‘Cicchetti’ means small sharing plates or snacks served in the bars of Italy, often enjoyed with aperitifs (alcoholic drinks served before or after meals). At Cicchetti Italiano, Gupta has embraced this idea to craft a dining experience centred on sharing, socialising, and savouring various mindfully curated vegetarian dishes.\n...\n“Our interpretation extends beyond just the traditional Venetian offerings—we’ve infused the concept with modern techniques and flavours to suit the evolving palate of diners in Delhi while staying true to Italian authenticity,” he explains.\n...\nSince its inception, Cicchetti Italiano has received an encouraging response from diners in Delhi-NCR. Gupta believes it is their commitment to sustainability beyond tokenism that has made all the difference. “Sustainability for us goes beyond ingredient sourcing; it’s about creating food that diners can enjoy every day without facing health or environmental concerns,” he adds.\n...\n“Our future plans also include collaborations with local farmers and crafting in-house vegan cheeses, further solidifying Cicchetti’s reputation as a pioneer in innovative vegetarian Italian cuisine,” he says.\n...\nNCR’s first vegetarian Italian restaurant\n\n5. Cicchetti Italiano – Premier Italian Dining Destination in Khan Market (4.2★ Rating) - Khan Market Delhi – Luxury Shopping Experience -  Lifestyle, Fashion, Restaurants, Designer Labels, Food, Books etc\n   https://khan.market/cicchetti-italiano-premier-italian-dining-destination-in-Khan-market-4.2-rating-85\n   ## Cicchetti Italiano Khan Market is Delhi’s premier Italian restaurant, offering authentic pasta, wood-fired pizzas, and Venetian cicchetti. With curated Italian wines and elegant ambiance, it’s the perfect luxury dining destination for corporate meetings, elite gatherings, and refined European culinary experiences in South Delhi.\n...\nIn the bustling corridors of Khan Market, where culinary excellence meets sophisticated dining, Cicchetti Italiano stands as a beacon of authentic Italian gastronomy. This premier Italian restaurant has established itself as the go-to destination for discerning food enthusiasts seeking an elevated European dining experience in the heart of South Delhi. With its commitment to traditional Italian flavors and contemporary presentation, Cicchetti Italiano has become synonymous with luxury dining and premium culinary craftsmanship in Delhi's most prestigious shopping district.\n...\nThe restaurant attracts an elite clientele including corporate executives, embassy personnel, luxury hotel guests, and successful entrepreneurs who appreciate the finest in Italian cuisine. Cicchetti Italiano represents the perfect blend of Old World charm and modern sophistication, offering an authentic Italian experience that rivals the best European restaurants in Delhi. The establishment has carved a distinctive niche in Khan Market's competitive dining landscape, becoming the preferred choice for those seeking designer dining experiences and high-class lifestyle indulgence.\n...\nCicchetti Italiano was conceived by passionate culinary enthusiasts with a deep appreciation for authentic Italian cuisine and culture. The restaurant takes its name from the traditional Venetian small plates culture, reflecting the founders' commitment to bringing genuine Italian dining traditions to Delhi's sophisticated food scene. Established as a premium dining destination, the restaurant was born from the vision to create an authentic Italian experience that would satisfy the growing demand for European cuisine among Delhi's elite circles.\n...\nWhat distinguishes Cicchetti Italiano in South Delhi's premium dining market is its unwavering dedication to authentic Italian culinary traditions combined with contemporary fine-dining presentation. The restaurant stands as Khan Market's premier destination for genuine Italian cuisine, offering an extensive menu that celebrates regional Italian specialties while maintaining the highest standards of ingredient quality and preparation techniques.\n...\nCicchetti Italiano specializes in traditional Italian small plates (cicchetti), artisanal pasta preparations, wood-fired pizzas, and classic Italian entrees prepared using time-honored methods. Their unique approach includes importing select Italian ingredients, house-made pasta and sauces, and wine pairings curated by Italian wine experts. The restaurant also offers customized dining experiences for corporate events and private celebrations, making it the preferred choice for businesses and individuals seeking elegant European dining solutions.\n...\n- Antipasti & Cicchetti: Traditional Italian small plates, bruschetta varieties, and artisanal cheese selections\n- Pasta & Risotto: House-made fresh pasta, signature risotto dishes, and regional Italian specialties\n- Pizza: Wood-fired Neapolitan-style pizzas with authentic Italian toppings\n- Main Courses: Classic Italian meat and seafood preparations, grilled specialties\n- Desserts: Traditional Italian sweets including tiramisu, panna cotta, and gelato\n- Beverages: Curated Italian wine selection, Italian coffee preparations, and signature cocktails\n...\nCicchetti Italiano has established a prestigious reputation among Delhi's sophisticated dining community, attracting corporate professionals from nearby business districts, international visitors seeking authentic European cuisine, and local connoisseurs who appreciate premium Italian gastronomy. The restaurant maintains an impressive 4.2-star rating, reflecting consistent excellence in food quality, service, and ambiance.\n...\nIf you are looking for the finest Italian dining experience in Khan Market, Cicchetti Italiano ensures authenticity, elegance, and culinary excellence in every dish. This premier establishment has redefined Italian cuisine in South Delhi, offering a sophisticated European dining journey that satisfies both traditional Italian food lovers and modern gastronomy enthusiasts. Contact them today to experience how authentic Italian cuisine can elevate your dining experience, whether for impressing corporate clients, celebrating special milestones, or simply indulging in luxury European gastronomy in the heart of Delhi's most prestigious market.\n\n6. Cicchetti by Mr. Beans, Italian Restaurant in Gurgaon, Delhi | GQ India\n   https://www.gqindia.com/content/cicchetti-by-mr-beans-italian-restaurant-in-delhi-gurgaon-modern-bistro-bringing-bacari-culture-to-india\n   Cicchetti by Mr. Beans, Italian Restaurant in Gurgaon, Delhi | GQ India\n...\n# This modern Italian bistro in Gurgaon is bringing the Bacari culture to India\n...\nVenetian old-world charm with a contemporary finesse.\n...\nIn the good old days, the traditional 'Bacari' bars in Venice used to serve small plates of food with a glass of native white wine. Designed to enhance the experience of getting a drink with someone, the small courses of Cicchetti would help keep the conversation going and the drinks pouring. We made a trip to the latest progressive modern European and Italian cuisine restaurant in Gurgaon- Cicchetti by Mr. Beans- which takes its inspiration from this 13th century Venetian dining culture.\n...\nFounded by the husband-wife duo, Abhimanyu Singh and Neha Singh, the restaurant is situated in one of the most exciting spots in Delhi NCR - DLF Cyber Hub. Neha is also the chef of the bistro and has specially curated its multi-layered European menu, which goes beyond the predictable pizza and pasta dishes. While her main effort is to recreate the magic of the Cicchetti days of Venice, Chef Neha has ensured that the significance of fresh produce and locally sourced ingredients is not lost in the process.\n...\nWith an inviting spread of cheese boards, appetising small plates and a scrumptious selection of main courses, the menu will leave you spoilt for choice. Everything is portion controlled, so you don't have to worry about having a tiny appetite. The Cicchetti experience allows you to order small plates and make a big meal out of it.\n...\nEverything about the restaurant is in line with its personality - every light, every piece of furniture, every dish, every corner tells you a story about the lanes of Venice. The elegance of the past is infused with the modernity of the present in a chic setting with a fresco setup. Whether you're looking to catch up with an old friend, have a big family dinner, or go out on a date - Cicchetti by Mr. Beans will not disappoint you.\n\n7. Get the flavour of Venice in Gurgaon at Cicchetti by Mr Beans | Architectural Digest India\n   https://www.architecturaldigest.in/content/get-the-flavour-of-venice-in-gurgaon-at-cicchetti-by-mr-beans/\n   This restaurant is an ode to ‘bacari’ bars of Venice in the heart of NCR\n...\nThe interiors of Cichheti might be a muted ode to times spent discovering flavours of Italy, but the progressive cuisine is far from understated. What would make you enter in the first place? The low-key ambience that echoes a reserved sense of fortitude in the face of scores of hyper-energetic dining contemporaries addressed in the buzzing Cyber Hub complex in Gurgaon (now Gurugram)! The eyes and ears are welcomed with a soothing décor and music that spans jazz, retro and Italian instrumental sounds. The quiet confidence lies in the fact that all the action is limited to the plate.\n...\nCicchetti by Mr Beans has entered the well-feted restaurant scene of the National Capital Region (NCR) in January of 2019 after successfully whetting their F&B skills in a number of destinations in India since 2002. Owners Abhimanyu Singh and Neha Singh (also the Chef) have recreated the Venetian charm in the throbbing epicentre of Delhi's satellite corporate hub. Having travelled regularly to Italy from Switzerland, where they lived for many years, the duo was personally fascinated with the concept of 'Cicchetti' (Shi-ke-tti), which means small plates typically served with a glass of native white wine in traditional ‘bacari' bars located in the narrow lanes of the country's most popular tourist drag, Venice. The bacari bars once offered an easy candour that reiterated the essence of simple, fun and shareable dining. The Singhs dreamt of bringing the essence of bacari bars in India, and the doors to Cicchetti by Mr Beans opened soon after.\n...\nThe narrative on the plate is a bit different. There is a clear sidestepping from the reticent mood of the décor, to give a whole-hearted splash of Italian flavours in bold dishes. The concept behind every dish is rooted in authentic Italian ingredients, but Chef and Owner Neha Singh has added the progressive arch to the dining. The Potato and Leek soup makes a sophisticated entrance, but the Gruyere Mac n Cheese gratin, Spinach Ricotta Gnudi and Pan Smeared Polenta Roundels are a happy assault on the senses – both eyes and the palate. “The idea of small plates is to have people taste little of everything, rather than big portions”, explains Singh.\n...\n“I personally whet each ingredient so the food is authentic and does not steer away from its Italian lineage. The novelty comes from seamless amalgamations, and new twists to these ingredients,” she adds. The large plates make perfect sense to share so you can sample more flavours. The Almond-crusted Fish and Verde-zucchini with Kalamata Olives and Herbed Ricotta are the main act of the evening. Pizookie, a warm, chewy chocolate chip semi-baked cookie with Nutella makes you linger longer post dinner.\n...\nAddress: Building\n...\n, Near HDFC\n...\n, DLF Cyber City, Gurgaon Contact:\n\n8. Why Authentic Italian Cuisine in India Needed a Vegetarian Disruptor\n   https://www.deccanchronicle.com/lifestyle/food/how-chef-parth-gupta-is-rewriting-italian-dining-in-india-1924422\n   Trained at Le Cordon Bleu and École Ducasse, Chef Parth Gupta returned to India with a clear mission: to make Italians recognise Italian food served in Delhi. Through Cicchetti Italiano, Firenze Gelateria & Caffè and Bloom Cafe and Cakery, the 25-year-old chef is shaping a new language of ingredient-driven, artisanal Italian dining in India.\n...\nI’ve never believed that “authentic” automatically means “delicious.” Every country has its own palate, and what feels traditional in one place may not evoke the same joy in another. My aim is to cook incredibly flavourful food using ingredients and techniques that feel new and exciting to the Indian palate. While classic Italian cuisine relies heavily on beef and pork, India isn’t a natural consumer of those meats anyway. So we focus on what truly defines Italian cooking for us—exceptional tomatoes, fresh cheeses, good olive oil, fermented breads and clarity of flavour. That’s where our authenticity lies.\n...\nFor me, the non-negotiable is ingredients. Italian cuisine lives or dies by the quality of what you put in. I refuse to compromise—whether it means making my own nut pastes, poaching fruit in-house, or producing fresh cheese daily. The technique matters, but the ingredient is the soul.\n...\nambience and theatrics\n...\neverything is the food. If\n...\nfood is exceptional, you earn loyalty for years. Another\n...\nis that good food alone is enough. In reality, service\n...\nmatter even more—thoughtful, intuitive service elevates the entire dining experience and gives\n...\nan edge that design can’\n...\nIndia is one of the world’s largest vegetarian markets, and the spending power of vegetarians has never been higher. They want purity, storytelling and honest flavour—but for years, premium vegetarian dining options were limited. That’s changing fast. The future of artisanal vegetarian cuisine in India is incredibly bright, and I want to keep building spaces that prove how rich, global and exciting vegetarian food can be.\n\n9. Cicchetti Italiano\n   https://www.cicchettiitaliano.com/about\n   Cicchetti Italiano\n...\nAt Cicchetti Italiano, we champion the philosophy of sustainable dining—food that is good for the environment and good for you.\n...\nOur 100% vegetarian menu is crafted with organic, locally sourced ingredients, supporting ethical farming and minimizing our carbon footprint. We partner with local dairies that uphold animal welfare and sustainability at every step. Every element on your plate is made from scratch—from breads and sauces to handcrafted cheeses. Our signature sourdough pizzas undergo a 72-hour fermentation for better digestion and a naturally complex flavor.\n...\nChef Parth Gupta is a passionate culinary innovator dedicated to transforming plant-based dining with artistry, sustainability, and mindful balance. With world-class training from renowned institutions including Ecole Ducasse in Paris and Le Cordon Bleu in London, Parth combines international expertise with a deep commitment to ethical, sustainable cuisine that celebrates the natural flavors of vegetarian ingredients.\n...\nFirst Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003\n...\nAt Cicchetti Italiano, we champion the philosophy of sustainable dining—food that is good for the environment and good for you.\n...\nOur 100% vegetarian menu is crafted with organic, locally sourced ingredients, supporting ethical farming and minimizing our carbon footprint. We partner with local dairies that uphold animal welfare and sustainability at every step. Every element on your plate is made from scratch—from breads and sauces to handcrafted cheeses. Our signature sourdough pizzas undergo a 72-hour fermentation for better digestion and a naturally complex flavor.\n...\nChef Parth Gupta is a passionate culinary innovator dedicated to transforming plant-based dining with artistry, sustainability, and mindful balance. With world-class training from renowned institutions including Ecole Ducasse in Paris and Le Cordon Bleu in London, Parth combines international expertise with a deep commitment to ethical, sustainable cuisine that celebrates the natural flavors of vegetarian ingredients.\n...\nFirst Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003\n...\nBloom Cafe & Cakery Cicchetti Italiano The Lavender Flavours Firenze Gelateria & Caffè\n\n10. In Delhi, an Italian restaurant got booked out in opening week  - The Nod Mag\n   https://thenodmag.com/content/mi-piaci-italian-restaurant-delhi\n   # In Delhi, this Italian restaurant has been booked out all week \n\n## Most hard-to-get tables have PR. Mi Piaci has tagliatelle tossed in a wheel of Parmigiano, tiramisù whipped tableside, and the Qutub Minar looming over them all\n...\nby Geetika Sachdev \n\nOn a random Tuesday evening in Delhi, Mi Piaci hums with the kind of energy most restaurants can only dream of. The Italian newcomer at Ambawatta One in Mehrauli has been open barely a week, yet the dining room is full—alive with soft laughter and the heady scent of butter and garlic in the air.\n...\nIn a city accustomed to grand launches and influencer-driven openings, Mi Piaci has quietly leapfrogged to the top of Delhi’s must-visit charts without celebrity endorsements, glossy PR campaigns or splashy parties. Instead, the ripple created by this 70-seater has only grown, carried by tales of hand-pinched ravioli, tiramisù whipped tableside with a flourish, warm lighting, and soft Italian jazz—details that have made Mi Piaci feel more like Florence than Mehrauli.\n...\nGwal Pahari\n...\nlocation, inaccessible from most\n...\nof Delhi, didn’\n...\nin Gurugram\n...\nthe way for their dream home\n...\nAmbawatta\n...\nbreathtaking location with\n...\nThe menu builds on that theatre with a deep respect for Italian craft, offering dishes rarely seen outside the country. We ease in with small plates of Ravioli Fritti (crisp vegetable-stuffed pasta buttons served with a silken parmesan fondue and fried potatoes) and Bruschetta con Burrata (toasted bread rubbed with garlic and topped with juicy cherry tomatoes and creamy burrata). The Diavola Bites, chicken morsels marinated with chilli, garlic and herbs, though, are a little on the chewy side.\n...\nThe pastas carry the warmth of tradition. Handmade options like Plin Piemontesi (delicate pinched ravioli filled with ricotta and\n...\nlamb demiglace and pecorino fondue) and the Risotto allo Zafferano, a golden, saffron-laced risotto enriched with parmesan fondue and the same rich jus, showcase\n...\nWoodfired pizzas balance indulgence and restraint: the earthy Pizza Tartufo with truffle cream and mushrooms, the rich Pizza Carbonara with pancetta and egg, the classic Margherita, and the prosciutto crowned with Parma ham and buffalo mozzarella. “These aren’t reinvented versions of Italian classics,” Lanzoni says, “They’re the kind of meals our grandmothers used to make.”\n...\nThat’s not to say the Indian diner has been ignored. “Italy has an incredible variety of vegetarian and creamy dishes, which Indian guests tend to enjoy,” Lanzoni says. “We simply highlighted those plates, ensuring they feel familiar yet remain uncompromisingly authentic.” That approach is evident in the Nerano pizza, topped with mozzarella fior di latte, pesto-coated zucchini, smoked scamorza, crisp zucchini chips, parmesan, basil, and a drizzle of EVO oil—a combination that has already become a crowd favourite.\n...\nThe desserts deliver both theatre and nostalgia. The decadent Tiramisù Mi Piaci is assembled tableside with espresso-soaked handmade lady fingers and airy mascarpone cream, drawing as many phones as spoons. The Millefoglie—flaky puff pastry layered with cream, fresh fruit, and sprigs of mint—is equally elegant, though it takes a little time to set up at the table, rewarding those with patience.\n...\nThis honesty has struck a chord. Guests aren’t just coming for dinner; they’re coming to witness a story they’ve been following online. When the rooftop opens in two weeks, those cocktails will have an even more fitting stage—Italian music in the background and views of the Qutub Minar. For Sukhija, Mi Piaci is a chance to showcase Italian cuisine at its finest. “Italian food is the first choice for so many Indians when they travel abroad,” he says. “To bring that level of quality and authenticity to Delhi is something we’re very proud of.”\n...\nAs the restaurant settles into its\n...\nhome, Lanzoni is already dreaming bigger: deepening partnerships with Italian producers, introducing even more little-known regional dishes, and expanding\n...\nimmersive dining experience that has made Mi Piaci such a runaway hit. For now, though, he’s simply grateful. He says, “Guests tell us they feel like they’re in Italy. That’s the best compliment we could ever receive.”",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 2",
+    "ts": 1787565272209,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "25,017 / 100,000 tokens (threshold)",
+    "token_count": 25017,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565272211
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Pulling opening hours and signature details for the top candidates now.",
+    "step_id": 2,
+    "names": [
+      "PlaceDetails"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceDetails",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565282553,
+    "detail": "ChIJ8X4yPvThDDkR63Ekel5uUSc"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJ8X4yPvThDDkR63Ekel5uUSc"
+    },
+    "tool_use_id": "316ea3d4-c40f-442d-b55b-d07e34d1e174"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565282554,
+    "detail": "ChIJN1VVJQPiDDkRgUjG6h0t9LY"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJN1VVJQPiDDkRgUjG6h0t9LY"
+    },
+    "tool_use_id": "703858a1-833a-4a01-b6e5-4e61181399f9"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565282555,
+    "detail": "ChIJ38Qxx4TjDDkRCp4UMbxQIs8"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJ38Qxx4TjDDkRCp4UMbxQIs8"
+    },
+    "tool_use_id": "b59705b0-448a-414c-a4ce-8c1854c70b31"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565282556,
+    "detail": "ChIJCVd4ITj9DDkRvVKGQ1YGcXA"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJCVd4ITj9DDkRvVKGQ1YGcXA"
+    },
+    "tool_use_id": "69d9cce7-9263-4cfe-856f-7bf53afd2646"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565282557,
+    "detail": "ChIJ_YXtczX9DDkRn9wtrR7TKh0"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJ_YXtczX9DDkRn9wtrR7TKh0"
+    },
+    "tool_use_id": "da9136d8-4117-49ce-8827-ca688aa1e594"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 27,565 · out: 605 · cached: 24,800 · reasoning: 282",
+    "ts": 1787565282559,
+    "detail": "step 2"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 27565,
+    "output_tokens": 605,
+    "reasoning_tokens": 282,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24800,
+    "text": "Tokens — in: 27,565 (cache: 24,800) · out: 605 (reasoning: ~282)"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 5 tools in parallel",
+    "ts": 1787565282560,
+    "detail": "PlaceDetails, PlaceDetails, PlaceDetails, PlaceDetails, PlaceDetails"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 5,
+    "names": [
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565282965,
+    "detail": "8266 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJ8X4yPvThDDkR63Ekel5uUSc\", \"name\": \"Cicchetti Italiano\", \"formatted_address\": \"First Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.1, \"user_rating_count\": 264, \"price_display\": \"\", \"phone\": \"096505 69946\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=2833166992647942635&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"A G\", \"rating\": 5, \"text\": \"No words of praise are enough to express how amazing the food is. They have truly mastered the italian cuisine.\\n\\nWe ordered one pasta,one bruschetta,one pizza and two cocktails  for 2 people and our total bill was 5000rs.\\n\\nPasta was simply outstanding. Never had such great pasta anywhere in india. We got the vodka rigatoni and absolutely fell in love.\\n\\nThe pizza was so light and fluffy and flavorful. The sauce,the dough the cheese was super authentic. Their sourdough is specially light on the stomach and we didnt feel bloated at all.\\n\\nBruschetta was one dish that could have been skipped. It was good but not out of the ordinary and everything else had already raised the bar so high.\\n\\nQuite pricey, no extra discounts on any online platform so do check the menu and prices before going.\", \"published\": \"a month ago\"}, {\"author\": \"Shivie\", \"rating\": 4, \"text\": \"Tried the Cacio e Pepe pasta and Veggie Primavera pizza today. The pasta was honestly really good, balanced, and full of flavor without feeling too heavy.\\n\\nThe pizza toppings were fresh and tasty too, though the base was slightly soggy and not as crisp as I personally prefer. Still, the overall experience, ambience, and quality of ingredients made it a nice place to visit.\\nThe ambience was calm and aesthetic, good for both conversations and relaxing. Service was polite and the food arrived on time. Definitely one of those places that focuses more on quality than just presentation.\", \"published\": \"3 months ago\"}, {\"author\": \"Richa Jain\", \"rating\": 3, \"text\": \"I've been here three times now, and I really love the place overall. The ambience is beautiful, it's fully vegetarian (which is a huge plus for me), and the pistachio pesto pasta is genuinely one of my favourites. I've ordered it on all three visits because it's just perfectly creamy, flavourful, and yum.\\n\\nUnfortunately, my experience with the Arrabbiata pizza on my latest visit was the complete opposite. It was priced at \\u20b91,095 (which I'd say, is pretty expensive), so I had high expectations, but it was honestly very disappointing. The vegetables and cheese kept sliding off the base with every bite, making it messy and difficult to eat. Had to eat it like roti sabzi lol. I've never experienced that with a pizza before. It was so runny that the eating experience became unpleasant, and even the taste didn't justify the price. I can see the same issue in older reviews but don't think it's been resolved at all till now.\\n\\nI'd happily come back for the pasta and the ambience, but I'd skip any/all pizzas next time.\", \"published\": \"a month ago\"}, {\"author\": \"Aakash Kumbhat\", \"rating\": 5, \"text\": \"Located in Khan Market, found this pure vegetarian place. Visited on sunday at around 8. Got seated easily, might be because we're 4. Ordered One pizza, which was their newest edition. I don't remember the name but it was second last under pizza section. It was so good. I haven't eaten such excellent and tasty pizza till now. Its base and siding were also good.\", \"published\": \"3 months ago\"}, {\"author\": \"Kapil Soni\", \"rating\": 5, \"text\": \"Cicchetti Italiano delivers a memorable Italian dining experience rooted in genuine culinary traditions and bold flavors.\\nFrom the moment you step in, the elegant yet relaxed ambience evokes a feeling of dining in a cozy trattoria.\\nThe menu celebrates authentic Italian cuisine through its thoughtful use of fresh, high-quality ingredients and classic techniques.\\n\\nEach dish reflects a commitment to simplicity and purity of taste, hallmarks of true Italian cooking.\\n\\nStarters like the Insalata di Burrata showcase velvety burrata paired with vibrant herbs and tomato, capturing the spirit of Italy in every bite.\\nSignature pastas such as Ziti alla Vodka and Cacio e Pepe con Cipolla demonstrate mastery of classic Italian taste profiles.\\nHere, pasta is cooked to al dente perfection and sauces are rich yet nuanced, true to Italian tradition.\\n\\nThe Classic pizza reflects the art of simplicity with fresh basil, quality cheese, and tangy tomato.\\nDesserts like tiramisu and sticky toffee pudding provide a sweet finish that respects tradition without overwhelming the palate.\\n\\nService is attentive and knowledgeable, adding to the overall Italian dining experience.\\nStaff take time to explain dishes and ingredients, enhancing the authenticity of each course.\\n\\nThe restaurant maintains a measured balance between classic recipes and contemporary touches.\\n\\nFreshness and quality shine through in every dish, a core principle of true Italian cuisine.\\nThe menu avoids unnecessary complexity, allowing the natural flavors to speak for themselves.\\nThis restraint aligns perfectly with Italian culinary philosophy where less is more.\\nWhether enjoying antipasti or a main course, the taste evokes the rustic elegance of Italy.\\nPresentation is refined yet honest, further reinforcing the restaurant\\u2019s dedication to authenticity.\\n\\nFor lovers of authentic Italian cuisine, Cicchetti Italiano stands out as a destination that honors tradition and delivers taste with confidence.\", \"published\": \"7 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXRBV7oLoDQAuIeL2LxQB35Kt8GBcWBTKf9FcA6-fdfBoMBhBaNkanEOI8ULRu0Ac1bWNrkg1-xRXTeZI_JMdCSxc9vHbdy0OEFln_jFwi-xpJ6-HBVA-Fa2eR2kE05cIGjq8SODD1qYSE-fbjtEcUN8mA4_hFMC-ky0saGWcX3UI_NSwdUsAxN5GI6jNoh68NlIQnHZ0lc7O-fo4weBMXozkYUrEM_WLn46Nw2nMP7AWyCQMu14cw3dQ_YDQo_AlEN95oFRVKv1vAvwVl1ayJ3D4IA1gTu1pxnRL3FQsH4PYSeKzPw6LRULKlAs2-0ve1PRogdxtE34REuSWGXFFgFSK7gzJ2JlXfm3DXALclxNE4tJK201qZ_CU3iAh6sGKXJv4Z9qfA3EM8rSBM-2_DFng3xMPNsH6exZsdkgcfSvbxc&maxWidth=600\", \"/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXQOuUQ9KD1i2jOzrRZkeRllhBypdrIgQXRPprL4y3FaGAgACrJE7dfgfhTFVAhclUxCeKTPMn2h9wSXbI_peT92pLOy0qhyP1ypBy-sMTvcpiAwTU9K0jV_fzIXUseTh73Z1BqxiYTbIYItGUS93nrC_NcZeIQb6ty4FwDcuyWOmyhlrzN8iEEcmJHYlkjrIPLvHOMHUlG0jnGvJnprjoGwPgbl7wGv-8gTCreETuCTcOjvRwaiGkIIBU4CAcUwrUoMiX4_Tl6SqQ5aFbIuKq8lO9jq26xlm9wQDFTumhFPeGbU9CGXhE0dDPu9LAqn6WfqHZ3_D2KUi7toO_l7IIFuHG3GYL20sJM0044t8-L4XYkoSkpozI91qmM1YDDXgeSpl4DT_74nTS-QefyVmVa4bYA5l7GtCRil54VcO9sraDBR3kdD7VFvm9IdvKxf&maxWidth=600\", \"/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXQnT_V5g8s3d54VcmopEfVPq9D1sNBz1X2EtvZQw6ZqtVbe7jP7PdZC0EhXRVsBR4UVxqxCO5Zvul9TGdAofEtTJIG9-eES_u4WywmIzMiNgigXe4ikxUexcuDg3i8lVeFDFgFxwSJd31GejVwoS6Hqh2QL6ZbD_Y8xxHV7pBpLz2946AhwlPh3DRuxHgPMn9CFYIaslso0hHXQZc_u-3MNLD7uc972JXH22dpGihGWp3IWcJrrbIaoMDC-uoDKLK2I2bedwb15AdHuDpcCVd4Dvs1PpICwMi-WOSGgKx4Yc7yQ7_L8IYoHgYQ1BngNueSZ-4nTR8vbCKsvHMydoPiGtMg1Llzkxw_5dpFn4f3CLOvlyn0dl3a0jLzPnxeoNb58MqU1GC2raCfdtMbANPwV-Uqbp2X-AsgxOpJaDs_zxn6kfhy_nEz0NNnimKny&maxWidth=600\", \"/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXR7X1JgXWfgYebNhkoXsQkzJWbWdAWvg9zZqtyd-3dRzrtq0nScDgOEK_sWqNIYiSF-Lh7U5PBXxJLITfFnI2KFw5cPHjHiGJRgo9SYOGwQMosgztVkFtyoC8saKOwwvY7rXQjZbfp-xN8Ee2wAtFoh0g_Za4JngKbgJ5Pp-r1vVJjmAj7bSdOoM3dhMjMYx-B4TNiid9T-MRQm6FPYPDpni0jU7F-0skQDaW8Q8_5y_vLkUTfdMlxFs0CiBmJRphlQPwxlww8Uf85Rzb0mbEJnQYe_MW5PBVhqVAu_hN7tJmoIhwkpEBn1PJ5nWXO8b0NLMAtnY7ahCEHkfgCy8P0gSW_Exx8IYy51tMGLS9NOateQLgxbYJYBt5yu2UYBDmth8pk6omjuAoLVdXHxwPuXuVLgaLi2vevdfwM3nMDORtyASf84czf4iVfEgM3B&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "839f740e-c401-4ddb-ac2e-e473c4bb34ac",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJ8X4yPvThDDkR63Ekel5uUSc\", \"name\": \"Cicchetti Italiano\", \"formatted_address\": \"First Floor, 70, Khan Market, Rabindra Nagar, New Delhi, Delhi 110003, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.1, \"website\": \"\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"No words of praise are enough to express how amazing the food is. They have truly mastered the italian cuisine.\\n\\nWe ordered one pasta,one bruschetta,one pizza and two cocktails  for 2 people and our total bill was 5000rs.\\n\\nPasta was simply outstanding. Never had such great pasta anywhere in india. We got the vodka rigatoni and absolutely fell in love.\\n\\nThe pizza was so light and fluffy and flavorful. The sauce,the dough the cheese was super authentic. Their sourdough is specially light on the stomach and we didnt feel bloated at all.\\n\\nBruschetta was one dish that could have been skipped. It was good but not out of the ordinary and everything else had already raised the bar so high.\\n\\nQuite pricey, no extra discounts on any online platform so do check the menu and prices before going.\", \"published\": \"a month ago\"}, {\"rating\": 4, \"text\": \"Tried the Cacio e Pepe pasta and Veggie Primavera pizza today. The pasta was honestly really good, balanced, and full of flavor without feeling too heavy.\\n\\nThe pizza toppings were fresh and tasty too, though the base was slightly soggy and not as crisp as I personally prefer. Still, the overall experience, ambience, and quality of ingredients made it a nice place to visit.\\nThe ambience was calm and aesthetic, good for both conversations and relaxing. Service was polite and the food arrived on time. Definitely one of those places that focuses more on quality than just presentation.\", \"published\": \"3 months ago\"}, {\"rating\": 3, \"text\": \"I've been here three times now, and I really love the place overall. The ambience is beautiful, it's fully vegetarian (which is a huge plus for me), and the pistachio pesto pasta is genuinely one of my favourites. I've ordered it on all three visits because it's just perfectly creamy, flavourful, and yum.\\n\\nUnfortunately, my experience with the Arrabbiata pizza on my latest visit was the complete opposite. It was priced at \\u20b91,095 (which I'd say, is pretty expensive), so I had high expectations, but it was honestly very disappointing. The vegetables and cheese kept sliding off the base with every bite, making it messy and difficult to eat. Had to eat it like roti sabzi lol. I've never experienced that with a pizza before. It was so runny that the eating experience became unpleasant, and even the taste didn't justify the price. I can see the same issue in older reviews but don't think it's been resolved at all till now.\\n\\nI'd happily come back for the pasta and the ambience, but I'd skip any/all pizzas next time.\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"Located in Khan Market, found this pure vegetarian place. Visited on sunday at around 8. Got seated easily, might be because we're 4. Ordered One pizza, which was their newest edition. I don't remember the name but it was second last under pizza section. It was so good. I haven't eaten such excellent and tasty pizza till now. Its base and siding were also good.\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Cicchetti Italiano delivers a memorable Italian dining experience rooted in genuine culinary traditions and bold flavors.\\nFrom the moment you step in, the elegant yet relaxed ambience evokes a feeling of dining in a cozy trattoria.\\nThe menu celebrates authentic Italian cuisine through its thoughtful use of fresh, high-quality ingredients and classic techniques.\\n\\nEach dish reflects a commitment to simplicity and purity of taste, hallmarks of true Italian cooking.\\n\\nStarters like the Insalata di Burrata showcase velvety burrata paired with vibrant herbs and tomato, capturing the spirit of Italy in every bite.\\nSignature pastas such as Ziti alla Vodka and Cacio e Pepe con Cipolla demonstrate mastery of classic Italian taste profiles.\\nHere, pasta is cooked to al dente perfection and sauces are rich yet nuanced, true to Italian tradition.\\n\\nThe Classic pizza reflects the art of simplicity with fresh basil, quality cheese, and tangy tomato.\\nDesserts like tiramisu and sticky toffee pudding provide a sweet finish that respects tradition without overwhelming the palate.\\n\\nService is attentive and knowledgeable, adding to the overall Italian dining experience.\\nStaff take time to explain dishes and ingredients, enhancing the authenticity of each course.\\n\\nThe restaurant maintains a measured balance between classic recipes and contemporary touches.\\n\\nFreshness and quality shine through in every dish, a core principle of true Italian cuisine.\\nThe menu avoids unnecessary complexity, allowing the natural flavors to speak for themselves.\\nThis restraint aligns perfectly with Italian culinary philosophy where less is more.\\nWhether enjoying antipasti or a main course, the taste evokes the rustic elegance of Italy.\\nPresentation is refined yet honest, further reinforcing the restaurant\\u2019s dedication to authenticity.\\n\\nFor lovers of authentic Italian cuisine, Cicchetti Italiano stands out as a destination that honors tradition and delivers taste with confidence.\", \"published\": \"7 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565282972,
+    "detail": "5542 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJN1VVJQPiDDkRgUjG6h0t9LY\", \"name\": \"EVOO - Delhi\", \"formatted_address\": \"Ground Floor, B-2, Shivalik Rd, Block B, Shivalik Colony, Malviya Nagar, New Delhi, Delhi 110017, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.5, \"user_rating_count\": 2617, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"phone\": \"083684 28737\", \"website\": \"http://www.evooeaterypizzeria.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=13183211615736449153&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Neha Yadav\", \"rating\": 5, \"text\": \"I tried their tiramisu and it just melts after the bite.\\nI have tried tiramisu in many countries but making it right is an art itself.\\nIt didn\\u2019t disappoint me.\\nStaff were cooperative and helpful.\\nI loved the lighting and the ambience, warm & cozy!\\n\\nFine dinning feel!\\nI was short on time today but would love to come back some time soon to try their other dishes.\", \"published\": \"a month ago\"}, {\"author\": \"Love From London\", \"rating\": 4, \"text\": \"Decent place to dine. A bit pricey for the offerings.\\nWe ordered Linguini Aglio Olio, Gnocchi, and two Margherita pizzas. Everything tasted good. The tomato sauce in the pizza was a bit too sour, but otherwise it tasted good. It was disappointing that the lasagna which is listed as vegetarian, is in fact not vegetarian so we couldn't order it. We were looking forward to that.\", \"published\": \"4 months ago\"}, {\"author\": \"Rohini Tolsma\", \"rating\": 5, \"text\": \"If you\\u2019re looking for authentic Italian food in Delhi, Evoo is a must-visit. The food was absolutely delicious, with each dish offering a unique and distinct flavor. Everything was perfectly prepared and full of taste. The quality of the ingredients really stood out, and the overall experience was excellent.\\nHighly recommended for anyone who loves Italian cuisine!\\nRohini \\u2665\\ufe0f\", \"published\": \"7 months ago\"}, {\"author\": \"Afrin Yapper\", \"rating\": 4, \"text\": \"Pizza was really goood, thin crust, fresh toppings, and perfectly made. Highly recommending this place for some authentic italian pizza.\\n\\nWe also got the Aglio Olio pasta (EVOOs special) which was also good, very fresh & tasty, however it can be better.\\n\\nThe service was quick but i overheard the manager speaking/taunting one of the female employee in a negative manner. It was quite disrespectful. Please take some action against him. Such behavior shouldn't be tolerated\\n\\nWaiting can be there as the place is quite small with around 7-8 tables only. Will recommend this place for pizza.\", \"published\": \"4 months ago\"}, {\"author\": \"Samridhi Agarwal\", \"rating\": 5, \"text\": \"Evoo took me back to my Italy days, especially Naples, with its beautiful Neapolitan pizza!! Crust was perfectly light and thin, highly recommending Melanzana with its stunning pesto topping.\", \"published\": \"2 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXTDJ48XQIqTjcQvpAQrj6H_xyppBolRkIS9FEbzSUBkKPtpGmQ9b1K5h2emfX9eVydHudX7q1wPWV1QKM1hoL2Ma7y4SGU6L2Cf-bo7cyr_vZBlnGSC5cfoObpVDrFG_9YJBNMapWScsJdUgHN9DihbP50iQ-54UoOlLFPECxkO9r01z6NGaGm2O0Aqe4NGHjzYL6NfEHkC-dhhUCFV8Akec6AuT3t9cWl1hjzCUFj4xMbQ70q2aPLfZbnzydANwQRThrkHdDzpzs1EJo6uetXtHXl9tC8NcmNhb67c969CPckGr0kYCKJXBKYO_lQbT_-PQKs0kelNMneCyHd5vxP_Y-Pu-J18fZmugkksGvapZ6F40P5l97EEHwNP8pIpgC7aS32wYdOhDwI9nBYviNu2zAR_FxEu1ThG_EiUBZlGTWu_JqZ4YC1yaU0ZaA&maxWidth=600\", \"/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXR-dHpZ2MXRJHrHuxwLHRftIyj3OFgWme5wr-6lF9jxNVfnpUdc0C951ruSLNN5auX7VCfW10GntQ9lMYYwu41kSv5eta8c4wITxephBPjtQabRaTrrrDLOVoATQZJ3OEfFTWZ7fe8nqQN2ud-wsCcGjeQjmMdmsJykHQdtO-uyj0qyMTSeRqul7D4CpDsOhYKM8bG4x91w2wibJoHSwMLxd0abpKwptfeMlovLlEVEqJ6DL1zIfnRXRc4Z-rt5l4GGTWJ1foCNFeA7hqAf1Tg529NwtTCV_P-emb_-dPYKc-gEIil6uGpGraA2C7ifE0Muq1Xds3SG2hC1D8KEUXmkXco2OStT-PjKTfi4q3XLHMMDrZKj-Pizha4yeCVb_Cp8Xov6BwbDPLvLKx3M9iZC2OCJ58R8EX7Kf7qi_zbBniQqHtlmNZJtG2bvAbWC&maxWidth=600\", \"/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXS2CswD4i2HR6CfZoh_J73zixWd7CPvuty2scw0oBn6u86jWi5S_XBmE9VX-FwvO7O80yi2iGXDciLEYQW685LMfoE3WPRAmozHGwlLkeNTcMUYdZWSO9jpeOLcD1LMT0zjukiy8VvboPKaGcoHcSpJ5fA-uRP_oiVW9nsHvUPJEGWLZbjWiHc_9lLRwVPvBdlUmml2SppcaTWBHEoEEB7s8zxRpKF1CEcefHRgWurDnlHWB8wmXSQu-ysvC07g8us1yZqGmziDMdO-HTxxYL8MQPOoSohqd4gQ3Xp3O080bkcdXpcjFDOdMgeX7yTyhbfH3cJiqdkSOCvcNx7EFDRk7N881u7WK8YOpE3ntHlc0nHzemmjeXFRSaO1YqyUrf7ADWL09s7ZSyoqA3cUd7obR-7m-aXvSiR7WS2Ayh8NWHipewGNW1LZLiUSbswF&maxWidth=600\", \"/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXQ9zBnJSyo0AQ4kXuTSNwD1IxyeLtWO5U6GDHpIn-LrbxbDKbo_LFHTb-LivK9XlSe1S_6zCDN2hvY-TItsggq9oewCL1KBuQ7sQwyMhgURhfvE1_WQ0m0tXkf54t_OHxu5dh5UUtNBxFLAjH-SEMYVk3EDnAx4nUqn3G0IMzt4IwSE7F04KTVGy_b2R-o10amL9xHOO9tlujhX2J86noRSZPnwTwfwIBwd4KdYa-aO5F4GIIC4OF2W_n58KgIAhHBF5L9B1dyxx_MhTGBXx8uARqosWT1kMtnJMH3o8dAVBPTSniTkTEgeYqlKop6H5d0HYtlB64e2yG_oeAZZTtCViyUoPgpaYr3AAqbv-4ZNxbPG-FUMBgwUa5T1hNImNhAMp01i9lfHTcD318EP2NBIhS8S54OVbv5O5Q4ZLCXoZ3SGH8Kfc2TKYRlCsEwG&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "5dc38d2f-977e-4e70-b8d5-60931e8f78c1",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJN1VVJQPiDDkRgUjG6h0t9LY\", \"name\": \"EVOO - Delhi\", \"formatted_address\": \"Ground Floor, B-2, Shivalik Rd, Block B, Shivalik Colony, Malviya Nagar, New Delhi, Delhi 110017, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.5, \"website\": \"http://www.evooeaterypizzeria.com/\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u200910:30\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"I tried their tiramisu and it just melts after the bite.\\nI have tried tiramisu in many countries but making it right is an art itself.\\nIt didn\\u2019t disappoint me.\\nStaff were cooperative and helpful.\\nI loved the lighting and the ambience, warm & cozy!\\n\\nFine dinning feel!\\nI was short on time today but would love to come back some time soon to try their other dishes.\", \"published\": \"a month ago\"}, {\"rating\": 4, \"text\": \"Decent place to dine. A bit pricey for the offerings.\\nWe ordered Linguini Aglio Olio, Gnocchi, and two Margherita pizzas. Everything tasted good. The tomato sauce in the pizza was a bit too sour, but otherwise it tasted good. It was disappointing that the lasagna which is listed as vegetarian, is in fact not vegetarian so we couldn't order it. We were looking forward to that.\", \"published\": \"4 months ago\"}, {\"rating\": 5, \"text\": \"If you\\u2019re looking for authentic Italian food in Delhi, Evoo is a must-visit. The food was absolutely delicious, with each dish offering a unique and distinct flavor. Everything was perfectly prepared and full of taste. The quality of the ingredients really stood out, and the overall experience was excellent.\\nHighly recommended for anyone who loves Italian cuisine!\\nRohini \\u2665\\ufe0f\", \"published\": \"7 months ago\"}, {\"rating\": 4, \"text\": \"Pizza was really goood, thin crust, fresh toppings, and perfectly made. Highly recommending this place for some authentic italian pizza.\\n\\nWe also got the Aglio Olio pasta (EVOOs special) which was also good, very fresh & tasty, however it can be better.\\n\\nThe service was quick but i overheard the manager speaking/taunting one of the female employee in a negative manner. It was quite disrespectful. Please take some action against him. Such behavior shouldn't be tolerated\\n\\nWaiting can be there as the place is quite small with around 7-8 tables only. Will recommend this place for pizza.\", \"published\": \"4 months ago\"}, {\"rating\": 5, \"text\": \"Evoo took me back to my Italy days, especially Naples, with its beautiful Neapolitan pizza!! Crust was perfectly light and thin, highly recommending Melanzana with its stunning pesto topping.\", \"published\": \"2 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565282976,
+    "detail": "5835 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJ38Qxx4TjDDkRCp4UMbxQIs8\", \"name\": \"Casa Pasta Bar\", \"formatted_address\": \"First Floor, G-9, Hauz Khas Market, Block G, Hauz Khas, New Delhi, Delhi 110016, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"user_rating_count\": 320, \"price_display\": \"\\u20b9800\\u20132000 per person\", \"phone\": \"098182 29214\", \"website\": \"https://www.instagram.com/casapastabar?igsh=Z2c2MGJmM3YxbnVo\", \"google_maps_uri\": \"https://maps.google.com/?cid=14925580884266753546&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 1:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 1:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 1:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 1:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 1:00\\u2009\\u2013\\u200911:30\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:30\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Aditi D.\", \"rating\": 5, \"text\": \"We just headed in for a quick bite but stayed for the absolute amazing food! The pasta was absolutely delicious, but the pizza genuinely took our breaths away.\\nDefinitely check out their cocktail section as well, because they became the highlight of our night out. I\\u2019d love to visit again and try different dishes, but the food we did eat was absolutely stunning.\\nBonus points for us as the founder was right there, managing everything from the kitchen to the dining floor. What a treat for us to be able to see her in action!\", \"published\": \"2 months ago\"}, {\"author\": \"Sarb Kaur\", \"rating\": 5, \"text\": \"I recently tried this fantastic Italian restaurant, and if you\\u2019re an Italian food lover, it\\u2019s a must-visit! The ambiance is sophisticated and inviting, making it perfect for a cozy meal. The food? Amazing! And the service is top-notch.\\n\\nI went for the Passionfruit Chia Iced Tea, Casa Misu (Tiramisu dessert), and Tortellini Carbonara pasta \\u2014 and loved every bite (or sip!) of them. If Italian cuisine is your thing, you should definitely check this place out.\\ud83e\\udd70\", \"published\": \"5 months ago\"}, {\"author\": \"Paras Chandna\", \"rating\": 5, \"text\": \"Casa Pasta bar is a lovely place to try some Italian food. This place is very cozy and has really warm vibe. The staff is very polite,and adds to the overall great experience.\\nAnd ofcourse the best thing is their pasta.\\nMust try\\nCharcoal Mafaldine Truffle\\n\\nJust a suggestion,\\nI tried a basil ravioli (chef's special that day), add this to your permanent menu..\", \"published\": \"3 months ago\"}, {\"author\": \"Raghav Sood Magic\", \"rating\": 4, \"text\": \"ate at Casa last night. getting a res was easy, the staff are cordial and warm which is always good. started my meal with a glass of ros\\u00e9 and the prawns which were good. Followed by the chicken and mushroom ravioli which was confusing, the raviolis were too big and the sauce was too heavy. but the lamb ragu with the pappardelle was quite delicious. will definitely come again and try more!\", \"published\": \"4 months ago\"}, {\"author\": \"anagh singh\", \"rating\": 5, \"text\": \"Recently visited this authentic Italian, aesthetically beautiful cafe in hauz khas . I loved everything about this place..from ambience to food, the staff was also very helpful and kind. Tried 3 dishes there and loved all of them. Finally i found a place which servers better pasta than big chill. The tiramisu was okiesh , nothing too fancy but definitely worth a try. I highly recommend this place for authentic Italian food. Definitely wanna visit here again..\", \"published\": \"7 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXTbVt_HWlPGxNT1NOwStB98Alv0ophzdlPZLua0BbPL7ftbO0yDNTgpW-IGapqII99Uph4tXZxkc_iP9C1TzQ5xX0DZ4TCR4dOcXv6S94hQDPSnUis3cqia8uyxsUjvFWLO7hMA1wtkEi-BwWp7_K-WpxAdRXQlh71ftUxyXUdT2SVpp9SF_mQ1DsDQHKQcAHIhNOUU_-M2yEOqadzIaKclTS7GY6XwyTzzuae9Rc-BDKwxz-zSaYAgg5k6t2ndqA4r3vhV_ncAlwOb9GWIlrJ5XBzgIV4vIX6OIaYpIW3hMl13hZkUGh4KX2HcNCk507SaBvh34hm5tyPWdIaZZs8FL-jAosFIBqRHjo5Dc_JFuSbpytHpoc7lcSuBtkPs8zlepEe6WfWg2nte57zXTIdJaQfn6YRNgTslU-_YkH_37gZQB_nY15NTEIY1eA&maxWidth=600\", \"/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXRyzR_O8WeqTGcXJBRjQHd2Avo4KO-Pa76ks6bQZ3rEme10S3E3TBBZoLxSh5gcnXc1a3mN86VKk_YMglBXrbP7vG_TJpPmemQOqW6PF8dY2TBr6eKBAw9iUsYPoPOyUG1hU7O3xfS0oRFaXkQCBJGzkYQLj8zLIAkbpbwY0eqcABv73Qfx3VoUJqjg4QXg30CdLjAOH78NV8gc115qJxxPryL2cH3UnhT4ZgtHHFM8Z9KfpOJ1K4dR2O9czeMsBGWic8XsgkjsV4QN1zZDZe5LhLpMpn9qU_PFVnumFA8LsXqU1aotoZ6UJDWqpjQkkTm14bR7yMRDGvd5K1f9yLCHN_xZ4n1rbguwnXX0qoKKhi9ko1LtV2ACzBNymw0u5BgRj_zRMNVGlsAaz2qu4ULpfKYnnU8fS9dY3sa2vmjQ9Q&maxWidth=600\", \"/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXQQqVNWMiKjRFAgK9K-LdQlx_eAuUQwYi5A0biBs3dT3YIRhiwOEsDafxsz9XmUUbCLzld2GHNLeGS77CRH9Z_QZS5mXh1z3nXGz3uRwccQEefzGwJq22GxPjneZlP7C0Dn34mifjxolELcZBkNYe0IE79GmIOl1YoFwJ01xrS4D_pS30TCuj1cgGYwYq1HHzTIEIpzBWDKqCO8K5htRXnEUR7FUdLWtD15t9oH-GzitJmob03G4pHY7TfoP4_8Znz6nfFheB4IJf80Zcr3wjzSOrK7B3pE1-T5Lu1l9HET7v_2J4l-yO33LG9SfwqO8ercCX_VJxEgjcJGpk2mbY9NKIZzV070sHYXBPDc0uCMV3EXmodMIKMQJVz5Mj6wxCe5WkDrHkwPGpwEJt6mSjH8yUYghMX5cp1cDKA6OiXgji2cVaH8pGknr93WAljY&maxWidth=600\", \"/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXRvKYhnO-YyDztLYETcHeUkhV44Ii0Zf0aBsnehmE2dVYgT-rUcAqfftDjSyMTFFKCN8wM_3Pc5MuxcNxhAlIR6rjI2g77J82-FQCFFC3_-_B-lGWXHT3XzSgAukrg7m-wcd3Nn1Cp2WgrngCD6-dx7KcNOJlruAJsQ5RdN7bbNgX_vNE0eG3VwkAwh1YVpVvUTD8mRLCDjiNKVEg6B6pc_FVz-bFHNexlc0Xq7-XKNKl9xA3ufIw_GrfbJIk3GXU3kEDT4quEJ7wwtXyF4zTY3TiHA03xTH3kIl2Jyu9OWmVvkYNkzPwmATufX_Ym1XmDDOb8IokKqr6rQ-RFvD66_Tx6TLfbNCXflv1LwGXSmXM8gu7XdkoX9oktIko732ZqJkuQNmSRg-ixhs7rNxgHHWSIFVv1qdKYafmqN-7ii1QB-iPe92QraBc5P-YXj&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "c5e2a6d5-4c29-45af-8e4d-ef98d9e3dd31",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJ38Qxx4TjDDkRCp4UMbxQIs8\", \"name\": \"Casa Pasta Bar\", \"formatted_address\": \"First Floor, G-9, Hauz Khas Market, Block G, Hauz Khas, New Delhi, Delhi 110016, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"website\": \"https://www.instagram.com/casapastabar?igsh=Z2c2MGJmM3YxbnVo\", \"open_now\": true, \"opening_hours\": [\"Monday: 1:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 1:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 1:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 1:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 1:00\\u2009\\u2013\\u200911:30\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:30\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"We just headed in for a quick bite but stayed for the absolute amazing food! The pasta was absolutely delicious, but the pizza genuinely took our breaths away.\\nDefinitely check out their cocktail section as well, because they became the highlight of our night out. I\\u2019d love to visit again and try different dishes, but the food we did eat was absolutely stunning.\\nBonus points for us as the founder was right there, managing everything from the kitchen to the dining floor. What a treat for us to be able to see her in action!\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"I recently tried this fantastic Italian restaurant, and if you\\u2019re an Italian food lover, it\\u2019s a must-visit! The ambiance is sophisticated and inviting, making it perfect for a cozy meal. The food? Amazing! And the service is top-notch.\\n\\nI went for the Passionfruit Chia Iced Tea, Casa Misu (Tiramisu dessert), and Tortellini Carbonara pasta \\u2014 and loved every bite (or sip!) of them. If Italian cuisine is your thing, you should definitely check this place out.\\ud83e\\udd70\", \"published\": \"5 months ago\"}, {\"rating\": 5, \"text\": \"Casa Pasta bar is a lovely place to try some Italian food. This place is very cozy and has really warm vibe. The staff is very polite,and adds to the overall great experience.\\nAnd ofcourse the best thing is their pasta.\\nMust try\\nCharcoal Mafaldine Truffle\\n\\nJust a suggestion,\\nI tried a basil ravioli (chef's special that day), add this to your permanent menu..\", \"published\": \"3 months ago\"}, {\"rating\": 4, \"text\": \"ate at Casa last night. getting a res was easy, the staff are cordial and warm which is always good. started my meal with a glass of ros\\u00e9 and the prawns which were good. Followed by the chicken and mushroom ravioli which was confusing, the raviolis were too big and the sauce was too heavy. but the lamb ragu with the pappardelle was quite delicious. will definitely come again and try more!\", \"published\": \"4 months ago\"}, {\"rating\": 5, \"text\": \"Recently visited this authentic Italian, aesthetically beautiful cafe in hauz khas . I loved everything about this place..from ambience to food, the staff was also very helpful and kind. Tried 3 dishes there and loved all of them. Finally i found a place which servers better pasta than big chill. The tiramisu was okiesh , nothing too fancy but definitely worth a try. I highly recommend this place for authentic Italian food. Definitely wanna visit here again..\", \"published\": \"7 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565282978,
+    "detail": "6302 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJCVd4ITj9DDkRvVKGQ1YGcXA\", \"name\": \"Caff\\u00e8 Tonino\", \"formatted_address\": \"Plaza Cinema Building No 9, Block H, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"breakfast_restaurant\", \"coffee_shop\", \"cafe\", \"bar\", \"pizza_restaurant\"], \"rating\": 4.3, \"user_rating_count\": 5680, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"phone\": \"085279 74888\", \"website\": \"https://www.toninoindia.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=8102264172186063549&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"Charming, Tuscan villa-style cafe offering authentic Italian dishes, along with a breakfast menu.\", \"reviews\": [{\"author\": \"Aline\", \"rating\": 4, \"text\": \"We visited Caf\\u00e9 Tonino in Connaught Place and had a decent experience overall, though there were a few hits and misses.\\nThe food was reasonably good. The Eggs Benedict were okay, but nothing special. The bacon was a bit disappointing as it seemed boiled rather than crispy/fried, which gave it a slightly unusual taste. On the bright side, the waffles were very good and flavorful, and the coffee was excellent.\\nHowever, we had a frustrating experience when it came time to pay. The waitress claimed she had no change and simply kept the balance, forcing us to pay more than the actual amount of the bill. We found this unprofessional.\\nIt is a nice spot with good coffee and waffles, but make sure to bring exact change or pay by card so you don't end up overpaying!\", \"published\": \"2 months ago\"}, {\"author\": \"Siddharth\", \"rating\": 5, \"text\": \"Everything was perfect about this place. It has a huge variety of Italian cuisine. Vegan and gluten free options is also available.\\nLots of alcoholic and non- alcoholic drinks menu.\\nThe chicken lasagna is super delicious.\\nLove everything about this.\\n\\nNot that costly.\\nAmbience and service is great.\", \"published\": \"5 months ago\"}, {\"author\": \"Jenister Rai\", \"rating\": 5, \"text\": \"A truly elegant experience at Cafe Tonino, nestled in the heart of Connaught Place.\\n\\nFrom the moment you step in, the space exudes sophistication with its refined interiors and beautifully curated ambience. The music complements the setting perfectly, enhancing the overall dining experience.\\nThe food speaks volumes about authenticity and quality. The Spaghetti Aglio e Olio, Ravioli, Mushroom Cheese Balls, Grilled Chicken, and the indulgent Hot Brownie were all crafted to perfection. Each dish rich in flavor and beautifully presented. Even the dips served alongside were thoughtfully prepared and added an extra layer of delight to the meal.\\n\\nA special mention to Manav, whose service truly elevated our experience. Warm, courteous, and effortlessly professional, he attended to us with genuine care, a touch of humor, and a constant welcoming smile, setting a benchmark for hospitality.\\nThe caf\\u00e9 also maintains excellent hygiene standards, with clean and spacious washrooms adding to the comfort.\\n\\nAll in all, Cafe Tonino delivers a complete fine-dining experience. Elegant, flavorful, and memorable. Easily a 5-star destination for lovers of authentic Italian cuisine.\", \"published\": \"5 months ago\"}, {\"author\": \"Tirthadev Acharya\", \"rating\": 5, \"text\": \"Its a good place for hangout and some good italian food. The staff is very good. They also have a bar counter if you arr up for a drink also. Must try.\", \"published\": \"2 months ago\"}, {\"author\": \"PolarbearVP\", \"rating\": 4, \"text\": \"Delicious waffles, Average Coffee, Tasty Omlettes. Good breakfast options.\\nGood food, relatively affordable place.\\nService is a bit slow if you go in the mornings.\", \"published\": \"2 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXRhy8xs_BYE0_fCogBIESwohBHrzjqOs69T7O6EuY1xHmqixDSeNEV56kvUmdlqXDnSSThvRSInInNABergMSPwwBRjGuQ2fZt3BLnxyY3r03_sbjS2VKcmcXTpZJWyUDaSYRe3a3p0d1pfk8Wv-6U07lPy72CZr0aE1tbo-ryJW4rQLA7VnyOjENbkY9A1A9PsF0kRaLjL-N5rOlDweDWWUXtapm9QhWmiySsw8Q5Ub5kanvbHiAvcIUGtpAFM3Fve0Ef4JU5V6ggjdwPsVjdBcmSx-sb6bR2pUFlVJYyOGCIu7uN0I44jd5JVItUfIV5IdNSSqjwPPwgyVPTbVLcYSBzsBcNO9wq60TMJmZgbWAM1L7DBZGI0VP30yV7Ros87zVsOOcR2sgFDA_Trx09kReaPqExtyefXVTkxJ9aOtQ&maxWidth=600\", \"/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXQz5j2qDM_d3ecDADzPrfLd4vKG7wMKjlTVFfKim999QaeGa3Ds6FB1IUMH3531SONknzxgxlsm_diOEaIjx8vJDAy7jMWWEam-DnWjaMh5WlNauq6lY91EsbUPVvDthO82wTPk7QC3z6eAb4BNWK60Roq_RgC3Y8ctYWoGoQzoHD3qzbJvdihJ66bo1OPFdZ_ERMCsv7ZIlHJq1EKhf_GQZl3XJEIHGnqHzaEBQLxn_cxIyM9lOotdEj1BR76y01aKDLA_R46AQbBFVCqNP6Bgxid5WGee_8x6Ss1fGEWSJcsj3kxjCIImCWaOx-JStzUNrPltIlgb7vCO_QFUhKnc0D-upPwpQheOtR6yMwa5tD-9ppWWUjh5suGltw5wISAdy_hwzLl5Zw2ee0OaPkG6LM53Dj8XunRAEWpvbKGEys9a8o2IfPYRCS9mjAuA&maxWidth=600\", \"/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXTGSsDnVchvXHwzlh4TABt6p9knnXdJBcoTfI4R3I-prssA9VVSYopxsYoYjLWdkTxipdkNd2cmjfWD0l2ZikSfzQ5YYcu6YulXPMH1RCEleQZX7E0MXEeat0znIy1nJmhAORY4Rm2JhMW6l-VVpNo0K9j0bh10f2VbpDZg3qjP85BDR7yVIGCU1RM_iZd_CvqQ2FSqDZCdZhcWeDMl4lP3ZyBhdlwe1hMLQSBv-OncXWC-0nRlToHmyp2f7Xx6XrDN70yQPQMSak5dwkGZttdDztqsY9VA-8fURF3PI-V1Ad-n_X40QXTLrIJttWPHBYdd9UJhAVrkQ5p9a3SZHlH3ckqcRi3DXAVgbcdtAagY7cTTIrK3j-s1cLJ8Xi7uhRaMGJxDxA2PHcC9WppMe_qG18T3BxPnM6b2iAvNxlWidDwzHsksB-g0bKzl-0M5&maxWidth=600\", \"/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXSn3H-FZmAVTzOEH07ILXSdLRSMrJQNx9OkoDbA7CNISYuhAItVPr2t2tt9O_0m-Y4MCV8jRM_ZJvOdiZgD8Gcgm1GOECjML4jw_gFNe5uOOtUDoS5kHQXPIk0dKRiJiAX9vnw4VWaGAgfM4UaCckQRwDCz3y76MgkeoV85B2N01xJyNG2NrSYGIOUQ1C3p4Rvd2EQK0FA8C0OeHrqW90Ayh00yGqCHMeKgibod3qFCHy-gVWA9uGGVG7O_Gj-X3sbgke2EL2lh2EbvS6I4FpheaIIsCF6AgFm18a_DyfVqid3FRmYwJCaul3jtRPdSg3zo-hYFKqNjOaJkKt_2-5q6GjPr3VoISfLCRlCrOjIxNj7E-7qWcbdwGOZz_gDuBeCdOBD4NlMuT9YKhMqdj4ViTR1MEvgQZ5YEj24NSciIrDbR22n_5APPvfI_ROfF&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "10383159-34d5-456e-9051-1f5bfd8d4e6d",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJCVd4ITj9DDkRvVKGQ1YGcXA\", \"name\": \"Caff\\u00e8 Tonino\", \"formatted_address\": \"Plaza Cinema Building No 9, Block H, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"breakfast_restaurant\", \"coffee_shop\", \"cafe\", \"bar\", \"pizza_restaurant\"], \"rating\": 4.3, \"website\": \"https://www.toninoindia.com/\", \"open_now\": true, \"opening_hours\": [\"Monday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 8:30\\u202fAM\\u2009\\u2013\\u200911:00\\u202fPM\"], \"editorial_summary\": \"Charming, Tuscan villa-style cafe offering authentic Italian dishes, along with a breakfast menu.\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"We visited Caf\\u00e9 Tonino in Connaught Place and had a decent experience overall, though there were a few hits and misses.\\nThe food was reasonably good. The Eggs Benedict were okay, but nothing special. The bacon was a bit disappointing as it seemed boiled rather than crispy/fried, which gave it a slightly unusual taste. On the bright side, the waffles were very good and flavorful, and the coffee was excellent.\\nHowever, we had a frustrating experience when it came time to pay. The waitress claimed she had no change and simply kept the balance, forcing us to pay more than the actual amount of the bill. We found this unprofessional.\\nIt is a nice spot with good coffee and waffles, but make sure to bring exact change or pay by card so you don't end up overpaying!\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"Everything was perfect about this place. It has a huge variety of Italian cuisine. Vegan and gluten free options is also available.\\nLots of alcoholic and non- alcoholic drinks menu.\\nThe chicken lasagna is super delicious.\\nLove everything about this.\\n\\nNot that costly.\\nAmbience and service is great.\", \"published\": \"5 months ago\"}, {\"rating\": 5, \"text\": \"A truly elegant experience at Cafe Tonino, nestled in the heart of Connaught Place.\\n\\nFrom the moment you step in, the space exudes sophistication with its refined interiors and beautifully curated ambience. The music complements the setting perfectly, enhancing the overall dining experience.\\nThe food speaks volumes about authenticity and quality. The Spaghetti Aglio e Olio, Ravioli, Mushroom Cheese Balls, Grilled Chicken, and the indulgent Hot Brownie were all crafted to perfection. Each dish rich in flavor and beautifully presented. Even the dips served alongside were thoughtfully prepared and added an extra layer of delight to the meal.\\n\\nA special mention to Manav, whose service truly elevated our experience. Warm, courteous, and effortlessly professional, he attended to us with genuine care, a touch of humor, and a constant welcoming smile, setting a benchmark for hospitality.\\nThe caf\\u00e9 also maintains excellent hygiene standards, with clean and spacious washrooms adding to the comfort.\\n\\nAll in all, Cafe Tonino delivers a complete fine-dining experience. Elegant, flavorful, and memorable. Easily a 5-star destination for lovers of authentic Italian cuisine.\", \"published\": \"5 months ago\"}, {\"rating\": 5, \"text\": \"Its a good place for hangout and some good italian food. The staff is very good. They also have a bar counter if you arr up for a drink also. Must try.\", \"published\": \"2 months ago\"}, {\"rating\": 4, \"text\": \"Delicious waffles, Average Coffee, Tasty Omlettes. Good breakfast options.\\nGood food, relatively affordable place.\\nService is a bit slow if you go in the mornings.\", \"published\": \"2 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565282980,
+    "detail": "5439 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJ_YXtczX9DDkRn9wtrR7TKh0\", \"name\": \"San Gimignano Restaurant\", \"formatted_address\": \"1, Lobby Level, The Imperial Hotel, Janpath, Connaught Place, Janpath, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"user_rating_count\": 234, \"price_display\": \"\\u20b92000+ per person\", \"phone\": \"011 4111 6608\", \"website\": \"http://www.theimperialindia.com/restaurant-menu/san-gimignano/\", \"google_maps_uri\": \"https://maps.google.com/?cid=2101724304829701279&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Tuesday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Wednesday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Thursday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Friday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Saturday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Sunday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\"], \"open_now\": false, \"editorial_summary\": \"Elegant, wood-accented hotel dining room featuring a menu of traditional Italian classics.\", \"reviews\": [{\"author\": \"Kirtti Ssharma\", \"rating\": 5, \"text\": \"Luxurious food, royal service and wonderful interiors. This place not just serves your tongue well but also lets you experience the best of personalised hospitality. The food is flavoursome with everything on point.\\nLocated in the heritage hotel Imperial, this place is a perfect blend of luxury and ease.\\nHighly recommended.\", \"published\": \"a month ago\"}, {\"author\": \"Fred Hamilton\", \"rating\": 5, \"text\": \"Located at Lobby Level, this Italian restaurant is extremely fancy and well worth the Dining Experience.  Fresh hot bread even before the main course,  exquisite tomato soup and the PAPPARDELLE AL SUGO DI AGNELLO E FUNGHI PORCINI made my day. Its homemade pappardelle pasta, lamb and porcini mushroom sauce, truffle oil, parmesan cheese sprinkled with freshly ground black pepper.\\nFor a unique Italian full course meal, wine et all.. this is the place to visit.  The extremely friendly service adds to the pleasure of a great meal.\", \"published\": \"5 months ago\"}, {\"author\": \"Taha Hosseini\", \"rating\": 5, \"text\": \"We had a dinner at San Gemignano. It was an amazing experience. Everything was delicious and excellent service.\", \"published\": \"4 months ago\"}, {\"author\": \"Ravi Chadha\", \"rating\": 5, \"text\": \"Lovely Italian feel. Super nice atmosphere. Pumpkin soup was excellent. Pizzas also very good. Salad was nice but not as good as I hoped for. Service was slow on the day, maybe because our table was right in the corner. Maybe staff was a bit less.\\nOn the whole we had a very good time.\\nForgot to take pics.\", \"published\": \"6 months ago\"}, {\"author\": \"Eshan Sett\", \"rating\": 3, \"text\": \"It's Salads and Ravioli were great. The pizza was well below average. Really disappointed with it.\\n\\nThe cocktail was fine, not great but not too bad either.\\n\\nThe service was top notch.\", \"published\": \"a year ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJ_YXtczX9DDkRn9wtrR7TKh0%2Fphotos%2FAVoNoXT2hIKMn02NPP-vDZI2NIgjx_UvoFeKvC6rXBPcNHOv2Q8aGdVKV91xKkvFc0sAvcrvxLngHqsoP1iLba7JmkkxMMFg8Qj1xc9qUBbp4hG9hh3qU9aYu0Pu1w4OJhaLTLeMdnIS3bSm3NdPxt7XIvrl5GYGuy_QiL-aLgXZTvZIvP6QLsPBPHdxW8xeB1gATM40sd8F_ODPb7d1v5EUNtuCPx2JRQ-qC3Fjl1cZ1TDJsbOqpw_MFoK9hifn7NLX26i5B8QVmVLHRYlzroivJQvk7mdrRtSsCQed4E-SoZV_SNQ3rw47iuOUboNzHbWZfPaYWW3kQiJJrU4lWpB0vqQ7D7DAZx0d7K6vFykd_wcHD_zcNiYyhZVagxp0q7sPm8T-2Eo9ydE0jNAJzORLHykq-9LeApwTR9YMnpZdx_m90Ga9LayVW0ifmgHTZnwD&maxWidth=600\", \"/api/photo?name=places%2FChIJ_YXtczX9DDkRn9wtrR7TKh0%2Fphotos%2FAVoNoXTPZSHt8PhAH_G9I-7wNQ6sLdK0ZMIwFY8G1eHeFnrRKu2Zhb2tgR0GfEuUjK9aziDljTPM2imH5vmwPRphXGGRlWz1CPhkM5v-_aElFqjNyN9dYk_2_AyOrOnCLcBkZUpvD-LCJXvWI4qMYDk7ckx6lmsWDCvVisL2bnFNFj0CmiXxEMCgdJACSBoxN-CbsheLJ_GGWMX8MR_8YemqqEsVh71gidnYDVrz5xSvJ95vtA-UiXQVfFdep2FiLRv2xed3S619kvj3liCtmhsdtX3DPHE5aGZlIITIjjhJyne7FClIzW_A-jl2avsztwnfEyeouIFT5H2cWnL0m5DC4PF2Ttp8OCfyCSS7ngiWkfIO3LpCdFo1pLs5pGLj4ZcuaIuyVsvr2ZEQ1kB7oHy4_2xIQn1RAd3H5iuwjAwkGSilzAz3YBdOCwcs95k_nw&maxWidth=600\", \"/api/photo?name=places%2FChIJ_YXtczX9DDkRn9wtrR7TKh0%2Fphotos%2FAVoNoXR2dwbYHNfY8GpmgHarWmNZ-NHgAAUTb8hFMuHi52k1Qx_4WRp8ud3YZFUK2RJxiWbhvAwKWpf6so8GXt6yq7qOXhJuWYyVF6oN-0BIJKMy63jdYZhokn2h3uSTVoQh-A8kGFt2sdvQGrDPU0slNjF8MHDE2v6vOdb8VmfK3R92_EyXkiFRI6uG_soYQU08_Ibww4U4DubNpIpX7aKrtb1bnFYIS-HDSo_TTUsMKO8wUWHl-_epcKym0qP65eUBsXS-nbnJ8rCnLD92PUIEV6r1nkYxTHpFxidSMhyD6R26ZQjjy1OkgmZNbZlmg4fVxDCPupG8HiW2A5LnYUH-O-fWq76LBPLAQ18B7ggJc2cPrpyO2mvEd6EjCldZrp1_XINoFfgVIfffB9gH373tmHFynv3pInJrT7zXi26gQCbKHb0&maxWidth=600\", \"/api/photo?name=places%2FChIJ_YXtczX9DDkRn9wtrR7TKh0%2Fphotos%2FAVoNoXQTz_kPcZx0LbOJLut965M-jzuKNF662ZwQEV-RYMrKsF9rfQhNJLSfblI_EQum4UtSMQ4cerZ8T1jc9Bah1Car-JwwiGHrMA7OTNYVaaLZ1fgGx9CGeZRvWVzi2DovXtFvouXwyuI7mGfYu5H0ZvWmJmd34iggeiVpOFkJWDkNtoXH0Vk-3vnAiwTu1CdwHDS0KItXr_PYCinDD-PmQc_Z3Uzu1FAqvbpyUbKNkZZwFLNNaWR7jYzfvReyp_u1En5KdY2VDsrPKCbIEzcFDwRAh_up8_HmrGPF6s18nY-MleACiaq9n4y9mCC06mgovb-QuwUc8LRyDvEQLYhkjOUnvPAkiF7SmCefFCDSIHuTxYTTI53HtwIqSppss9mR_96XBg9Eb5LT1_sCDgadzap40hcnQ4AHvqyvvQX-IXifZWvyFiEpXq9RoPY9SqQn&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "e92389b2-b6b5-42e8-8191-1f93e0c1b952",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJ_YXtczX9DDkRn9wtrR7TKh0\", \"name\": \"San Gimignano Restaurant\", \"formatted_address\": \"1, Lobby Level, The Imperial Hotel, Janpath, Connaught Place, Janpath, Connaught Place, New Delhi, Delhi 110001, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"website\": \"http://www.theimperialindia.com/restaurant-menu/san-gimignano/\", \"open_now\": false, \"opening_hours\": [\"Monday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Tuesday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Wednesday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Thursday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Friday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Saturday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\", \"Sunday: 12:30\\u2009\\u2013\\u20092:45\\u202fPM, 7:00\\u2009\\u2013\\u200911:45\\u202fPM\"], \"editorial_summary\": \"Elegant, wood-accented hotel dining room featuring a menu of traditional Italian classics.\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"Luxurious food, royal service and wonderful interiors. This place not just serves your tongue well but also lets you experience the best of personalised hospitality. The food is flavoursome with everything on point.\\nLocated in the heritage hotel Imperial, this place is a perfect blend of luxury and ease.\\nHighly recommended.\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"Located at Lobby Level, this Italian restaurant is extremely fancy and well worth the Dining Experience.  Fresh hot bread even before the main course,  exquisite tomato soup and the PAPPARDELLE AL SUGO DI AGNELLO E FUNGHI PORCINI made my day. Its homemade pappardelle pasta, lamb and porcini mushroom sauce, truffle oil, parmesan cheese sprinkled with freshly ground black pepper.\\nFor a unique Italian full course meal, wine et all.. this is the place to visit.  The extremely friendly service adds to the pleasure of a great meal.\", \"published\": \"5 months ago\"}, {\"rating\": 5, \"text\": \"We had a dinner at San Gemignano. It was an amazing experience. Everything was delicious and excellent service.\", \"published\": \"4 months ago\"}, {\"rating\": 5, \"text\": \"Lovely Italian feel. Super nice atmosphere. Pumpkin soup was excellent. Pizzas also very good. Salad was nice but not as good as I hoped for. Service was slow on the day, maybe because our table was right in the corner. Maybe staff was a bit less.\\nOn the whole we had a very good time.\\nForgot to take pics.\", \"published\": \"6 months ago\"}, {\"rating\": 3, \"text\": \"It's Salads and Ravioli were great. The pizza was well below average. Really disappointed with it.\\n\\nThe cocktail was fine, not great but not too bad either.\\n\\nThe service was top notch.\", \"published\": \"a year ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 3",
+    "ts": 1787565282983,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "52,582 / 100,000 tokens (threshold)",
+    "token_count": 52582,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565282987
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 33,871 · out: 1,551 · cached: 26,400 · reasoning: 372",
+    "ts": 1787565305572,
+    "detail": "step 3"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 33871,
+    "output_tokens": 1551,
+    "reasoning_tokens": 372,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 26400,
+    "text": "Tokens — in: 33,871 (cache: 26,400) · out: 1,551 (reasoning: ~372)"
+  },
+  {
+    "type": "text_final",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "Delhi doesn't have a true Venetian bacaro, but these four nail the cicchetti spirit: small plates, antipasti, and a linger-over-a-drink vibe. I'd start with Cicchetti Italiano, the only spot built entirely around that tradition, then pick the rest by mood.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "Cicchetti Italiano, Khan Market",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Cicchetti Italiano",
+                  "query": "cicchetti small plates burrata antipasti",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXSKI1VDnCcCjEsa85od3Djh33mDgEjxsKkDRipXUWo8VV0WmQf2SLtC7stmd7b_MzO0KZHre3BPLfk62BoJeW3VP7A978kRgHspFf-Sj5TKsEIRPBTtBzJAhvtIHUDxyXdg35HI1OyWnEO5ytX0RWA8GxivBS-mWANznR-qJlzF9hcxd-LjHW6P4dPHe-NFfB2yJ5qb__iiG1lwVs-KECDaldKTZh6PSBD-EG3GhEnHmn3pHRP5HXwKI2l_tszmbNV1bj_r4fVeuet9zj0rjCe5ngRlWTyuk7Uhp4kRyCRZkl4EQ2lGeJbz6hq_ZMV0xBFg-m937s1qP4KDEIXqx9Lpt2sDnF3RkR85am6hBdJKuDmh7xyQT3WAckX_IUtFNiENaW1G62JkwFz3KvpFUvFu0ZcC7y6iKb3nQljECseoPEM&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Cicchetti Italiano",
+                      "alt": "Cicchetti Italiano",
+                      "place_id": "ChIJ8X4yPvThDDkR63Ekel5uUSc"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXRBV7oLoDQAuIeL2LxQB35Kt8GBcWBTKf9FcA6-fdfBoMBhBaNkanEOI8ULRu0Ac1bWNrkg1-xRXTeZI_JMdCSxc9vHbdy0OEFln_jFwi-xpJ6-HBVA-Fa2eR2kE05cIGjq8SODD1qYSE-fbjtEcUN8mA4_hFMC-ky0saGWcX3UI_NSwdUsAxN5GI6jNoh68NlIQnHZ0lc7O-fo4weBMXozkYUrEM_WLn46Nw2nMP7AWyCQMu14cw3dQ_YDQo_AlEN95oFRVKv1vAvwVl1ayJ3D4IA1gTu1pxnRL3FQsH4PYSeKzPw6LRULKlAs2-0ve1PRogdxtE34REuSWGXFFgFSK7gzJ2JlXfm3DXALclxNE4tJK201qZ_CU3iAh6sGKXJv4Z9qfA3EM8rSBM-2_DFng3xMPNsH6exZsdkgcfSvbxc&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Cicchetti Italiano",
+                      "alt": "Cicchetti Italiano",
+                      "place_id": "ChIJ8X4yPvThDDkR63Ekel5uUSc"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXQOuUQ9KD1i2jOzrRZkeRllhBypdrIgQXRPprL4y3FaGAgACrJE7dfgfhTFVAhclUxCeKTPMn2h9wSXbI_peT92pLOy0qhyP1ypBy-sMTvcpiAwTU9K0jV_fzIXUseTh73Z1BqxiYTbIYItGUS93nrC_NcZeIQb6ty4FwDcuyWOmyhlrzN8iEEcmJHYlkjrIPLvHOMHUlG0jnGvJnprjoGwPgbl7wGv-8gTCreETuCTcOjvRwaiGkIIBU4CAcUwrUoMiX4_Tl6SqQ5aFbIuKq8lO9jq26xlm9wQDFTumhFPeGbU9CGXhE0dDPu9LAqn6WfqHZ3_D2KUi7toO_l7IIFuHG3GYL20sJM0044t8-L4XYkoSkpozI91qmM1YDDXgeSpl4DT_74nTS-QefyVmVa4bYA5l7GtCRil54VcO9sraDBR3kdD7VFvm9IdvKxf&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Cicchetti Italiano",
+                      "alt": "Cicchetti Italiano",
+                      "place_id": "ChIJ8X4yPvThDDkR63Ekel5uUSc"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.1★ · 264 reviews",
+                "price": null,
+                "why": "The only Delhi restaurant built on Venetian cicchetti culture, 100% vegetarian with a plant-forward aperitivo menu.",
+                "hours": "Open till 11:00 PM daily",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=2833166992647942635&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "096505 69946",
+                  "tel": "tel:09650569946"
+                }
+              },
+              {
+                "title": "Casa Pasta Bar, Hauz Khas",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Casa Pasta Bar",
+                  "query": "italian pasta bar antipasti small plates",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXRq3w3j64EHGtUWaUpZ6iqUlogI32KKK7eGffs842TRk5ZbuRuUP5SsRzhcm2xaqI5fMkt8M_pc5bHpfGzUaD1TDYxwe45KX8ZtenJJlWipLRxxiJVKmEvEGZjoQTrkAoChuL-YYAwz72CXaEF9XgYBziNa7CInl4xFjjvlPa1DRNPEBWv4zarB_2KowtK3Il_icGc-FVSMwavV9ev0Wjd01wODzt2kDFkcFYEZSnVnoC-5JSeyahGlAkATpus8xLwhZmQ_WXvufXy9vHNZpQvZWSaPnxyT65tyJiYZ5l7hbqsKW8XFn5kf4wtErtiNW5P-WQVx9BapxziOlmQmiqek-HFhU6xzKujeSCDb1vtdwCf5A56X8TlYKyBHoY4-bfAX3BLOvX_zVBB6I5k286X41MRHqqtm011oQu7XVTMEZbpiJDY_WQNSudTC2Q&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Casa Pasta Bar",
+                      "alt": "Casa Pasta Bar",
+                      "place_id": "ChIJ38Qxx4TjDDkRCp4UMbxQIs8"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXTbVt_HWlPGxNT1NOwStB98Alv0ophzdlPZLua0BbPL7ftbO0yDNTgpW-IGapqII99Uph4tXZxkc_iP9C1TzQ5xX0DZ4TCR4dOcXv6S94hQDPSnUis3cqia8uyxsUjvFWLO7hMA1wtkEi-BwWp7_K-WpxAdRXQlh71ftUxyXUdT2SVpp9SF_mQ1DsDQHKQcAHIhNOUU_-M2yEOqadzIaKclTS7GY6XwyTzzuae9Rc-BDKwxz-zSaYAgg5k6t2ndqA4r3vhV_ncAlwOb9GWIlrJ5XBzgIV4vIX6OIaYpIW3hMl13hZkUGh4KX2HcNCk507SaBvh34hm5tyPWdIaZZs8FL-jAosFIBqRHjo5Dc_JFuSbpytHpoc7lcSuBtkPs8zlepEe6WfWg2nte57zXTIdJaQfn6YRNgTslU-_YkH_37gZQB_nY15NTEIY1eA&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Casa Pasta Bar",
+                      "alt": "Casa Pasta Bar",
+                      "place_id": "ChIJ38Qxx4TjDDkRCp4UMbxQIs8"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXRyzR_O8WeqTGcXJBRjQHd2Avo4KO-Pa76ks6bQZ3rEme10S3E3TBBZoLxSh5gcnXc1a3mN86VKk_YMglBXrbP7vG_TJpPmemQOqW6PF8dY2TBr6eKBAw9iUsYPoPOyUG1hU7O3xfS0oRFaXkQCBJGzkYQLj8zLIAkbpbwY0eqcABv73Qfx3VoUJqjg4QXg30CdLjAOH78NV8gc115qJxxPryL2cH3UnhT4ZgtHHFM8Z9KfpOJ1K4dR2O9czeMsBGWic8XsgkjsV4QN1zZDZe5LhLpMpn9qU_PFVnumFA8LsXqU1aotoZ6UJDWqpjQkkTm14bR7yMRDGvd5K1f9yLCHN_xZ4n1rbguwnXX0qoKKhi9ko1LtV2ACzBNymw0u5BgRj_zRMNVGlsAaz2qu4ULpfKYnnU8fS9dY3sa2vmjQ9Q&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Casa Pasta Bar",
+                      "alt": "Casa Pasta Bar",
+                      "place_id": "ChIJ38Qxx4TjDDkRCp4UMbxQIs8"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Highest Rated",
+                "rating": "4.6★ · 320 reviews",
+                "price": "₹800–2000 per person",
+                "why": "Cozy bar with shareable antipasti, standout charcoal mafaldine truffle, and a cocktail list that shines.",
+                "hours": "Open till 11:00 PM (11:30 Fri–Sat)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=14925580884266753546&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "098182 29214",
+                  "tel": "tel:09818229214"
+                }
+              },
+              {
+                "title": "EVOO, Malviya Nagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "EVOO",
+                  "query": "neapolitan pizza italian small plates",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXRjqqxb9Xa2Ml0caagR-t5S6jcNoU-_Tr7Wj3Ik-uMAXosuXUffQAV1G1HppgVsv_1b1vO_EA0MWpxTlSomaDfnLBZcKdsKDTpZ_LlUDNCTNjNXncSqCxtDTjZldomnhjz0DCrdj3vd12tHAfUdYxEYtAABrHokFWK-eUEW_NCjp-nu3eeBwA3LB48pymX_0RFgHWyNbbjWSwagEWlbamFZFQVGfCnncNBFdsTCjHB17x7h8vcSENxMNVkpruC0LN9wDhhoHaG5JCYpeoZypHiLbGSJVQ1uPtMd422PrwHquWchfzsYvRj1NPJT9hkWNwCNQdrMC1rPdp-0FPldlMDgv6jUfF4EKypxroMIX4QoRNnzuRwMQcHb9tgpXhc8SvCWjpoex-C-krdemaBVi1fqZPNWBtQP46CFQJA1r3W2oNIWN8nQMQsg2ksODw&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "EVOO - Delhi",
+                      "alt": "EVOO - Delhi",
+                      "place_id": "ChIJN1VVJQPiDDkRgUjG6h0t9LY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXTDJ48XQIqTjcQvpAQrj6H_xyppBolRkIS9FEbzSUBkKPtpGmQ9b1K5h2emfX9eVydHudX7q1wPWV1QKM1hoL2Ma7y4SGU6L2Cf-bo7cyr_vZBlnGSC5cfoObpVDrFG_9YJBNMapWScsJdUgHN9DihbP50iQ-54UoOlLFPECxkO9r01z6NGaGm2O0Aqe4NGHjzYL6NfEHkC-dhhUCFV8Akec6AuT3t9cWl1hjzCUFj4xMbQ70q2aPLfZbnzydANwQRThrkHdDzpzs1EJo6uetXtHXl9tC8NcmNhb67c969CPckGr0kYCKJXBKYO_lQbT_-PQKs0kelNMneCyHd5vxP_Y-Pu-J18fZmugkksGvapZ6F40P5l97EEHwNP8pIpgC7aS32wYdOhDwI9nBYviNu2zAR_FxEu1ThG_EiUBZlGTWu_JqZ4YC1yaU0ZaA&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "EVOO - Delhi",
+                      "alt": "EVOO - Delhi",
+                      "place_id": "ChIJN1VVJQPiDDkRgUjG6h0t9LY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXR-dHpZ2MXRJHrHuxwLHRftIyj3OFgWme5wr-6lF9jxNVfnpUdc0C951ruSLNN5auX7VCfW10GntQ9lMYYwu41kSv5eta8c4wITxephBPjtQabRaTrrrDLOVoATQZJ3OEfFTWZ7fe8nqQN2ud-wsCcGjeQjmMdmsJykHQdtO-uyj0qyMTSeRqul7D4CpDsOhYKM8bG4x91w2wibJoHSwMLxd0abpKwptfeMlovLlEVEqJ6DL1zIfnRXRc4Z-rt5l4GGTWJ1foCNFeA7hqAf1Tg529NwtTCV_P-emb_-dPYKc-gEIil6uGpGraA2C7ifE0Muq1Xds3SG2hC1D8KEUXmkXco2OStT-PjKTfi4q3XLHMMDrZKj-Pizha4yeCVb_Cp8Xov6BwbDPLvLKx3M9iZC2OCJ58R8EX7Kf7qi_zbBniQqHtlmNZJtG2bvAbWC&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "EVOO - Delhi",
+                      "alt": "EVOO - Delhi",
+                      "place_id": "ChIJN1VVJQPiDDkRgUjG6h0t9LY"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Neapolitan Favourite",
+                "rating": "4.5★ · 2.6k reviews",
+                "price": "₹600–1800 per person",
+                "why": "Authentic Neapolitan pizza and aglio olio pastas, ideal for grazing over a few small plates and a drink.",
+                "hours": "Open till 10:30 PM (11:00 Fri–Sat)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=13183211615736449153&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "083684 28737",
+                  "tel": "tel:08368428737"
+                }
+              },
+              {
+                "title": "Caffè Tonino, Connaught Place",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Caffè Tonino",
+                  "query": "tuscan italian cafe antipasti",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXTVrMPTDyoZqHI8dVG3TgfZFxLpRVJ5kQyASJjG7ZJCBTqWSKqrRCy2FEOMoLEl7qB0LfLzPdutWYAQeKjCkVO1q9bSPe7Wvw792dNz1dTHTDC5FO8OboTUXk-CDwcwgrnZ0afc79wYhNee2EhXiMNOEC_ogD0JdX2nec5MevMCs92y0tOcQ-vVgQwlIhi1zQX51K7jddQSWp-snxwbhsEMxV-H_SGUgNlwDQsV7phtpm3F0S_oF01HnMNqhbxFaYYDyZjfvN9ENkqPx5fBjt7BOfnN2d6Ewx-WN4m-4l_pmzFYtT6mEIAV_6hJ6LUNxGT0cCa38667pspBh44oe5Zu9clj2sB3zM9i6KOjm-N5xd4Mao_BKtjvy444ijsSN9BN0SMw_wj7AXHv05I08Ha7V3nqwxYEr5XYQwNP54321w&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Caffè Tonino",
+                      "alt": "Caffè Tonino",
+                      "place_id": "ChIJCVd4ITj9DDkRvVKGQ1YGcXA"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXRhy8xs_BYE0_fCogBIESwohBHrzjqOs69T7O6EuY1xHmqixDSeNEV56kvUmdlqXDnSSThvRSInInNABergMSPwwBRjGuQ2fZt3BLnxyY3r03_sbjS2VKcmcXTpZJWyUDaSYRe3a3p0d1pfk8Wv-6U07lPy72CZr0aE1tbo-ryJW4rQLA7VnyOjENbkY9A1A9PsF0kRaLjL-N5rOlDweDWWUXtapm9QhWmiySsw8Q5Ub5kanvbHiAvcIUGtpAFM3Fve0Ef4JU5V6ggjdwPsVjdBcmSx-sb6bR2pUFlVJYyOGCIu7uN0I44jd5JVItUfIV5IdNSSqjwPPwgyVPTbVLcYSBzsBcNO9wq60TMJmZgbWAM1L7DBZGI0VP30yV7Ros87zVsOOcR2sgFDA_Trx09kReaPqExtyefXVTkxJ9aOtQ&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Caffè Tonino",
+                      "alt": "Caffè Tonino",
+                      "place_id": "ChIJCVd4ITj9DDkRvVKGQ1YGcXA"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXQz5j2qDM_d3ecDADzPrfLd4vKG7wMKjlTVFfKim999QaeGa3Ds6FB1IUMH3531SONknzxgxlsm_diOEaIjx8vJDAy7jMWWEam-DnWjaMh5WlNauq6lY91EsbUPVvDthO82wTPk7QC3z6eAb4BNWK60Roq_RgC3Y8ctYWoGoQzoHD3qzbJvdihJ66bo1OPFdZ_ERMCsv7ZIlHJq1EKhf_GQZl3XJEIHGnqHzaEBQLxn_cxIyM9lOotdEj1BR76y01aKDLA_R46AQbBFVCqNP6Bgxid5WGee_8x6Ss1fGEWSJcsj3kxjCIImCWaOx-JStzUNrPltIlgb7vCO_QFUhKnc0D-upPwpQheOtR6yMwa5tD-9ppWWUjh5suGltw5wISAdy_hwzLl5Zw2ee0OaPkG6LM53Dj8XunRAEWpvbKGEys9a8o2IfPYRCS9mjAuA&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Caffè Tonino",
+                      "alt": "Caffè Tonino",
+                      "place_id": "ChIJCVd4ITj9DDkRvVKGQ1YGcXA"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Longest Hours",
+                "rating": "4.3★ · 5.7k reviews",
+                "price": "₹600–1800 per person",
+                "why": "Tuscan villa-style cafe with a big antipasti and ravioli menu, open from 8:30 AM for a slow cicchetti-style lunch.",
+                "hours": "8:30 AM – 11:00 PM daily",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=8102264172186063549&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "085279 74888",
+                  "tel": "tel:08527974888"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Reviews for Cicchetti Italiano",
+          "Only pure veg cicchetti spots",
+          "Directions to Casa Pasta Bar",
+          "What's a classic cicchetti to order"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "text_replace",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "Delhi doesn't have a true Venetian bacaro, but these four nail the cicchetti spirit: small plates, antipasti, and a linger-over-a-drink vibe. I'd start with Cicchetti Italiano, the only spot built entirely around that tradition, then pick the rest by mood.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "Cicchetti Italiano, Khan Market",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Cicchetti Italiano",
+                  "query": "cicchetti small plates burrata antipasti",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXSKI1VDnCcCjEsa85od3Djh33mDgEjxsKkDRipXUWo8VV0WmQf2SLtC7stmd7b_MzO0KZHre3BPLfk62BoJeW3VP7A978kRgHspFf-Sj5TKsEIRPBTtBzJAhvtIHUDxyXdg35HI1OyWnEO5ytX0RWA8GxivBS-mWANznR-qJlzF9hcxd-LjHW6P4dPHe-NFfB2yJ5qb__iiG1lwVs-KECDaldKTZh6PSBD-EG3GhEnHmn3pHRP5HXwKI2l_tszmbNV1bj_r4fVeuet9zj0rjCe5ngRlWTyuk7Uhp4kRyCRZkl4EQ2lGeJbz6hq_ZMV0xBFg-m937s1qP4KDEIXqx9Lpt2sDnF3RkR85am6hBdJKuDmh7xyQT3WAckX_IUtFNiENaW1G62JkwFz3KvpFUvFu0ZcC7y6iKb3nQljECseoPEM&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Cicchetti Italiano",
+                      "alt": "Cicchetti Italiano",
+                      "place_id": "ChIJ8X4yPvThDDkR63Ekel5uUSc"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXRBV7oLoDQAuIeL2LxQB35Kt8GBcWBTKf9FcA6-fdfBoMBhBaNkanEOI8ULRu0Ac1bWNrkg1-xRXTeZI_JMdCSxc9vHbdy0OEFln_jFwi-xpJ6-HBVA-Fa2eR2kE05cIGjq8SODD1qYSE-fbjtEcUN8mA4_hFMC-ky0saGWcX3UI_NSwdUsAxN5GI6jNoh68NlIQnHZ0lc7O-fo4weBMXozkYUrEM_WLn46Nw2nMP7AWyCQMu14cw3dQ_YDQo_AlEN95oFRVKv1vAvwVl1ayJ3D4IA1gTu1pxnRL3FQsH4PYSeKzPw6LRULKlAs2-0ve1PRogdxtE34REuSWGXFFgFSK7gzJ2JlXfm3DXALclxNE4tJK201qZ_CU3iAh6sGKXJv4Z9qfA3EM8rSBM-2_DFng3xMPNsH6exZsdkgcfSvbxc&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Cicchetti Italiano",
+                      "alt": "Cicchetti Italiano",
+                      "place_id": "ChIJ8X4yPvThDDkR63Ekel5uUSc"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ8X4yPvThDDkR63Ekel5uUSc%2Fphotos%2FAVoNoXQOuUQ9KD1i2jOzrRZkeRllhBypdrIgQXRPprL4y3FaGAgACrJE7dfgfhTFVAhclUxCeKTPMn2h9wSXbI_peT92pLOy0qhyP1ypBy-sMTvcpiAwTU9K0jV_fzIXUseTh73Z1BqxiYTbIYItGUS93nrC_NcZeIQb6ty4FwDcuyWOmyhlrzN8iEEcmJHYlkjrIPLvHOMHUlG0jnGvJnprjoGwPgbl7wGv-8gTCreETuCTcOjvRwaiGkIIBU4CAcUwrUoMiX4_Tl6SqQ5aFbIuKq8lO9jq26xlm9wQDFTumhFPeGbU9CGXhE0dDPu9LAqn6WfqHZ3_D2KUi7toO_l7IIFuHG3GYL20sJM0044t8-L4XYkoSkpozI91qmM1YDDXgeSpl4DT_74nTS-QefyVmVa4bYA5l7GtCRil54VcO9sraDBR3kdD7VFvm9IdvKxf&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Cicchetti Italiano",
+                      "alt": "Cicchetti Italiano",
+                      "place_id": "ChIJ8X4yPvThDDkR63Ekel5uUSc"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.1★ · 264 reviews",
+                "price": null,
+                "why": "The only Delhi restaurant built on Venetian cicchetti culture, 100% vegetarian with a plant-forward aperitivo menu.",
+                "hours": "Open till 11:00 PM daily",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=2833166992647942635&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "096505 69946",
+                  "tel": "tel:09650569946"
+                }
+              },
+              {
+                "title": "Casa Pasta Bar, Hauz Khas",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Casa Pasta Bar",
+                  "query": "italian pasta bar antipasti small plates",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXRq3w3j64EHGtUWaUpZ6iqUlogI32KKK7eGffs842TRk5ZbuRuUP5SsRzhcm2xaqI5fMkt8M_pc5bHpfGzUaD1TDYxwe45KX8ZtenJJlWipLRxxiJVKmEvEGZjoQTrkAoChuL-YYAwz72CXaEF9XgYBziNa7CInl4xFjjvlPa1DRNPEBWv4zarB_2KowtK3Il_icGc-FVSMwavV9ev0Wjd01wODzt2kDFkcFYEZSnVnoC-5JSeyahGlAkATpus8xLwhZmQ_WXvufXy9vHNZpQvZWSaPnxyT65tyJiYZ5l7hbqsKW8XFn5kf4wtErtiNW5P-WQVx9BapxziOlmQmiqek-HFhU6xzKujeSCDb1vtdwCf5A56X8TlYKyBHoY4-bfAX3BLOvX_zVBB6I5k286X41MRHqqtm011oQu7XVTMEZbpiJDY_WQNSudTC2Q&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Casa Pasta Bar",
+                      "alt": "Casa Pasta Bar",
+                      "place_id": "ChIJ38Qxx4TjDDkRCp4UMbxQIs8"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXTbVt_HWlPGxNT1NOwStB98Alv0ophzdlPZLua0BbPL7ftbO0yDNTgpW-IGapqII99Uph4tXZxkc_iP9C1TzQ5xX0DZ4TCR4dOcXv6S94hQDPSnUis3cqia8uyxsUjvFWLO7hMA1wtkEi-BwWp7_K-WpxAdRXQlh71ftUxyXUdT2SVpp9SF_mQ1DsDQHKQcAHIhNOUU_-M2yEOqadzIaKclTS7GY6XwyTzzuae9Rc-BDKwxz-zSaYAgg5k6t2ndqA4r3vhV_ncAlwOb9GWIlrJ5XBzgIV4vIX6OIaYpIW3hMl13hZkUGh4KX2HcNCk507SaBvh34hm5tyPWdIaZZs8FL-jAosFIBqRHjo5Dc_JFuSbpytHpoc7lcSuBtkPs8zlepEe6WfWg2nte57zXTIdJaQfn6YRNgTslU-_YkH_37gZQB_nY15NTEIY1eA&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Casa Pasta Bar",
+                      "alt": "Casa Pasta Bar",
+                      "place_id": "ChIJ38Qxx4TjDDkRCp4UMbxQIs8"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ38Qxx4TjDDkRCp4UMbxQIs8%2Fphotos%2FAVoNoXRyzR_O8WeqTGcXJBRjQHd2Avo4KO-Pa76ks6bQZ3rEme10S3E3TBBZoLxSh5gcnXc1a3mN86VKk_YMglBXrbP7vG_TJpPmemQOqW6PF8dY2TBr6eKBAw9iUsYPoPOyUG1hU7O3xfS0oRFaXkQCBJGzkYQLj8zLIAkbpbwY0eqcABv73Qfx3VoUJqjg4QXg30CdLjAOH78NV8gc115qJxxPryL2cH3UnhT4ZgtHHFM8Z9KfpOJ1K4dR2O9czeMsBGWic8XsgkjsV4QN1zZDZe5LhLpMpn9qU_PFVnumFA8LsXqU1aotoZ6UJDWqpjQkkTm14bR7yMRDGvd5K1f9yLCHN_xZ4n1rbguwnXX0qoKKhi9ko1LtV2ACzBNymw0u5BgRj_zRMNVGlsAaz2qu4ULpfKYnnU8fS9dY3sa2vmjQ9Q&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Casa Pasta Bar",
+                      "alt": "Casa Pasta Bar",
+                      "place_id": "ChIJ38Qxx4TjDDkRCp4UMbxQIs8"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Highest Rated",
+                "rating": "4.6★ · 320 reviews",
+                "price": "₹800–2000 per person",
+                "why": "Cozy bar with shareable antipasti, standout charcoal mafaldine truffle, and a cocktail list that shines.",
+                "hours": "Open till 11:00 PM (11:30 Fri–Sat)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=14925580884266753546&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "098182 29214",
+                  "tel": "tel:09818229214"
+                }
+              },
+              {
+                "title": "EVOO, Malviya Nagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "EVOO",
+                  "query": "neapolitan pizza italian small plates",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXRjqqxb9Xa2Ml0caagR-t5S6jcNoU-_Tr7Wj3Ik-uMAXosuXUffQAV1G1HppgVsv_1b1vO_EA0MWpxTlSomaDfnLBZcKdsKDTpZ_LlUDNCTNjNXncSqCxtDTjZldomnhjz0DCrdj3vd12tHAfUdYxEYtAABrHokFWK-eUEW_NCjp-nu3eeBwA3LB48pymX_0RFgHWyNbbjWSwagEWlbamFZFQVGfCnncNBFdsTCjHB17x7h8vcSENxMNVkpruC0LN9wDhhoHaG5JCYpeoZypHiLbGSJVQ1uPtMd422PrwHquWchfzsYvRj1NPJT9hkWNwCNQdrMC1rPdp-0FPldlMDgv6jUfF4EKypxroMIX4QoRNnzuRwMQcHb9tgpXhc8SvCWjpoex-C-krdemaBVi1fqZPNWBtQP46CFQJA1r3W2oNIWN8nQMQsg2ksODw&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "EVOO - Delhi",
+                      "alt": "EVOO - Delhi",
+                      "place_id": "ChIJN1VVJQPiDDkRgUjG6h0t9LY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXTDJ48XQIqTjcQvpAQrj6H_xyppBolRkIS9FEbzSUBkKPtpGmQ9b1K5h2emfX9eVydHudX7q1wPWV1QKM1hoL2Ma7y4SGU6L2Cf-bo7cyr_vZBlnGSC5cfoObpVDrFG_9YJBNMapWScsJdUgHN9DihbP50iQ-54UoOlLFPECxkO9r01z6NGaGm2O0Aqe4NGHjzYL6NfEHkC-dhhUCFV8Akec6AuT3t9cWl1hjzCUFj4xMbQ70q2aPLfZbnzydANwQRThrkHdDzpzs1EJo6uetXtHXl9tC8NcmNhb67c969CPckGr0kYCKJXBKYO_lQbT_-PQKs0kelNMneCyHd5vxP_Y-Pu-J18fZmugkksGvapZ6F40P5l97EEHwNP8pIpgC7aS32wYdOhDwI9nBYviNu2zAR_FxEu1ThG_EiUBZlGTWu_JqZ4YC1yaU0ZaA&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "EVOO - Delhi",
+                      "alt": "EVOO - Delhi",
+                      "place_id": "ChIJN1VVJQPiDDkRgUjG6h0t9LY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJN1VVJQPiDDkRgUjG6h0t9LY%2Fphotos%2FAVoNoXR-dHpZ2MXRJHrHuxwLHRftIyj3OFgWme5wr-6lF9jxNVfnpUdc0C951ruSLNN5auX7VCfW10GntQ9lMYYwu41kSv5eta8c4wITxephBPjtQabRaTrrrDLOVoATQZJ3OEfFTWZ7fe8nqQN2ud-wsCcGjeQjmMdmsJykHQdtO-uyj0qyMTSeRqul7D4CpDsOhYKM8bG4x91w2wibJoHSwMLxd0abpKwptfeMlovLlEVEqJ6DL1zIfnRXRc4Z-rt5l4GGTWJ1foCNFeA7hqAf1Tg529NwtTCV_P-emb_-dPYKc-gEIil6uGpGraA2C7ifE0Muq1Xds3SG2hC1D8KEUXmkXco2OStT-PjKTfi4q3XLHMMDrZKj-Pizha4yeCVb_Cp8Xov6BwbDPLvLKx3M9iZC2OCJ58R8EX7Kf7qi_zbBniQqHtlmNZJtG2bvAbWC&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "EVOO - Delhi",
+                      "alt": "EVOO - Delhi",
+                      "place_id": "ChIJN1VVJQPiDDkRgUjG6h0t9LY"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Neapolitan Favourite",
+                "rating": "4.5★ · 2.6k reviews",
+                "price": "₹600–1800 per person",
+                "why": "Authentic Neapolitan pizza and aglio olio pastas, ideal for grazing over a few small plates and a drink.",
+                "hours": "Open till 10:30 PM (11:00 Fri–Sat)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=13183211615736449153&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "083684 28737",
+                  "tel": "tel:08368428737"
+                }
+              },
+              {
+                "title": "Caffè Tonino, Connaught Place",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Caffè Tonino",
+                  "query": "tuscan italian cafe antipasti",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXTVrMPTDyoZqHI8dVG3TgfZFxLpRVJ5kQyASJjG7ZJCBTqWSKqrRCy2FEOMoLEl7qB0LfLzPdutWYAQeKjCkVO1q9bSPe7Wvw792dNz1dTHTDC5FO8OboTUXk-CDwcwgrnZ0afc79wYhNee2EhXiMNOEC_ogD0JdX2nec5MevMCs92y0tOcQ-vVgQwlIhi1zQX51K7jddQSWp-snxwbhsEMxV-H_SGUgNlwDQsV7phtpm3F0S_oF01HnMNqhbxFaYYDyZjfvN9ENkqPx5fBjt7BOfnN2d6Ewx-WN4m-4l_pmzFYtT6mEIAV_6hJ6LUNxGT0cCa38667pspBh44oe5Zu9clj2sB3zM9i6KOjm-N5xd4Mao_BKtjvy444ijsSN9BN0SMw_wj7AXHv05I08Ha7V3nqwxYEr5XYQwNP54321w&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Caffè Tonino",
+                      "alt": "Caffè Tonino",
+                      "place_id": "ChIJCVd4ITj9DDkRvVKGQ1YGcXA"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXRhy8xs_BYE0_fCogBIESwohBHrzjqOs69T7O6EuY1xHmqixDSeNEV56kvUmdlqXDnSSThvRSInInNABergMSPwwBRjGuQ2fZt3BLnxyY3r03_sbjS2VKcmcXTpZJWyUDaSYRe3a3p0d1pfk8Wv-6U07lPy72CZr0aE1tbo-ryJW4rQLA7VnyOjENbkY9A1A9PsF0kRaLjL-N5rOlDweDWWUXtapm9QhWmiySsw8Q5Ub5kanvbHiAvcIUGtpAFM3Fve0Ef4JU5V6ggjdwPsVjdBcmSx-sb6bR2pUFlVJYyOGCIu7uN0I44jd5JVItUfIV5IdNSSqjwPPwgyVPTbVLcYSBzsBcNO9wq60TMJmZgbWAM1L7DBZGI0VP30yV7Ros87zVsOOcR2sgFDA_Trx09kReaPqExtyefXVTkxJ9aOtQ&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Caffè Tonino",
+                      "alt": "Caffè Tonino",
+                      "place_id": "ChIJCVd4ITj9DDkRvVKGQ1YGcXA"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJCVd4ITj9DDkRvVKGQ1YGcXA%2Fphotos%2FAVoNoXQz5j2qDM_d3ecDADzPrfLd4vKG7wMKjlTVFfKim999QaeGa3Ds6FB1IUMH3531SONknzxgxlsm_diOEaIjx8vJDAy7jMWWEam-DnWjaMh5WlNauq6lY91EsbUPVvDthO82wTPk7QC3z6eAb4BNWK60Roq_RgC3Y8ctYWoGoQzoHD3qzbJvdihJ66bo1OPFdZ_ERMCsv7ZIlHJq1EKhf_GQZl3XJEIHGnqHzaEBQLxn_cxIyM9lOotdEj1BR76y01aKDLA_R46AQbBFVCqNP6Bgxid5WGee_8x6Ss1fGEWSJcsj3kxjCIImCWaOx-JStzUNrPltIlgb7vCO_QFUhKnc0D-upPwpQheOtR6yMwa5tD-9ppWWUjh5suGltw5wISAdy_hwzLl5Zw2ee0OaPkG6LM53Dj8XunRAEWpvbKGEys9a8o2IfPYRCS9mjAuA&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Caffè Tonino",
+                      "alt": "Caffè Tonino",
+                      "place_id": "ChIJCVd4ITj9DDkRvVKGQ1YGcXA"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Longest Hours",
+                "rating": "4.3★ · 5.7k reviews",
+                "price": "₹600–1800 per person",
+                "why": "Tuscan villa-style cafe with a big antipasti and ravioli menu, open from 8:30 AM for a slow cicchetti-style lunch.",
+                "hours": "8:30 AM – 11:00 PM daily",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=8102264172186063549&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "085279 74888",
+                  "tel": "tel:08527974888"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Reviews for Cicchetti Italiano",
+          "Only pure veg cicchetti spots",
+          "Directions to Casa Pasta Bar",
+          "What's a classic cicchetti to order"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "completion"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_skills_used",
+    "label": "LLM used skills (1)",
+    "ts": 1787565305880,
+    "detail": "food"
+  },
+  {
+    "type": "turn_complete",
+    "turn_id": "6a7819a8-ea5c-4ae7-9276-fd83614f4a77",
+    "input_tokens": 86453,
+    "output_tokens": 2521,
+    "reasoning_tokens": 654,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 51200,
+    "latency_ms": 44290,
+    "agent_steps": 3,
+    "tool_call_count": 7,
+    "skills_loaded": [
+      "default",
+      "food"
+    ]
+  },
+  {
+    "type": "[DONE]"
+  }
+]

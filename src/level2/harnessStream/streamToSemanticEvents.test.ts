@@ -5,32 +5,46 @@ import { streamToSemanticEvents } from './streamToSemanticEvents';
 import { buildScenarioFromHarnessStream } from './buildScenarioFromHarnessStream';
 import type { HarnessStreamEvent, HarnessTurnEventSource } from './types';
 
-/* Feeds all 10 real captured qNN_events.json files through the adapter —
+/* Feeds all 30 real captured event streams through the adapter —
    never synthetic data, matching this repo's own corpus-testing convention
    (see fromTrace.test.ts / registry.test.ts). Asserts well-formed output,
    not "looks right"; classification-quality reporting lives in
    scripts/validateHarnessStream.ts. */
 
 const FIXTURE_DIR = join(__dirname, '../../../scripts/fixtures/harness-stream');
+const CAPTURE_COLLECTIONS = [
+  { directory: FIXTURE_DIR, idPrefix: '' },
+  { directory: join(FIXTURE_DIR, 'tests'), idPrefix: 'test-' },
+];
 
 function loadAllTurns(): HarnessTurnEventSource[] {
-  const manifest: Record<string, string> = JSON.parse(readFileSync(join(FIXTURE_DIR, 'manifest.json'), 'utf-8'));
-  const ids = readdirSync(FIXTURE_DIR)
-    .filter((f) => f.endsWith('_events.json'))
-    .map((f) => f.replace('_events.json', ''))
-    .sort();
-  return ids.map((id) => {
-    const events: HarnessStreamEvent[] = JSON.parse(readFileSync(join(FIXTURE_DIR, `${id}_events.json`), 'utf-8'));
-    return { turnId: id, prompt: manifest[id], events };
+  return CAPTURE_COLLECTIONS.flatMap(({ directory, idPrefix }) => {
+    const manifest: Record<string, string> = JSON.parse(readFileSync(join(directory, 'manifest.json'), 'utf-8'));
+    const ids = readdirSync(directory)
+      .filter((f) => f.endsWith('_events.json'))
+      .map((f) => f.replace('_events.json', ''))
+      .sort();
+    return ids.map((id) => {
+      const events: HarnessStreamEvent[] = JSON.parse(readFileSync(join(directory, `${id}_events.json`), 'utf-8'));
+      return { turnId: `${idPrefix}${id}`, prompt: manifest[id], events };
+    });
   });
 }
 
 describe('streamToSemanticEvents — real captured turns', () => {
   const turns = loadAllTurns();
+  const reviewedTurns = turns.filter((turn) => !turn.turnId.startsWith('test-'));
+  const testTurns = turns.filter((turn) => turn.turnId.startsWith('test-'));
 
-  it('loads all 10 captured turns with a manifest prompt', () => {
-    expect(turns).toHaveLength(10);
+  it('loads all 30 captured turns with a manifest prompt', () => {
+    expect(turns).toHaveLength(30);
     for (const turn of turns) expect(turn.prompt).toBeTruthy();
+  });
+
+  it('keeps raw reasoning chunks out of the checked-in corpus', () => {
+    for (const turn of testTurns) {
+      expect(turn.events.some((event) => event.type === 'reasoning')).toBe(false);
+    }
   });
 
   it.each(turns.map((t) => [t.turnId, t] as const))('%s produces well-formed semantic events', (_id, turn) => {
@@ -66,12 +80,17 @@ describe('streamToSemanticEvents — real captured turns', () => {
         expect(p.id).toMatch(/^(?:hs-\d+-(?:status|result)|pass-synthesis-hs-\d+)$/);
       }
       const synthesis = result.scenario.thinkingPasses.find((p) => p.id.startsWith('pass-synthesis-'));
-      expect(synthesis?.sourceEventIds?.length).toBeGreaterThan(1);
+      // The original reviewed set established the multi-event synthesis
+      // contract. Some newly delivered tests genuinely have a one-operation
+      // run, so requiring >1 source there would invent a second event.
+      if (!turn.turnId.startsWith('test-')) {
+        expect(synthesis?.sourceEventIds?.length).toBeGreaterThan(1);
+      }
       expect(result.scenario.thinkingPasses.some((p) => p.valueType === 'intent' || p.valueType === 'synthesis_structure')).toBe(false);
     }
   });
 
-  it.each(turns.map((t) => [t.turnId, t] as const))('%s tags visible states with exact insight timestamps', (_id, turn) => {
+  it.each(reviewedTurns.map((t) => [t.turnId, t] as const))('%s tags visible states with exact insight timestamps', (_id, turn) => {
     const extraction = streamToSemanticEvents(turn.events);
     const result = buildScenarioFromHarnessStream(turn);
     expect(result.scenario).toBeDefined();

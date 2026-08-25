@@ -13,9 +13,33 @@ It answers five frontend questions:
 4. How does an entity remain the same card across different tool calls?
 5. What should happen when logged information is missing or inaccessible?
 
-The rules are data-driven. They do not contain Q01-Q10 conditionals and should
+The rules are data-driven. They do not contain capture-specific conditionals and should
 work for future places, products, routes, sources, and enrichment tools that
 follow the same event contracts.
+
+## Checked-in capture collections
+
+The developer selector exposes two real harness-stream collections:
+
+- `Reviewed`: the original 10 captures used to establish the mapping contract.
+- `Tests`: 20 additional captures, shown 10 per page in D mode.
+
+All capture prompts are verbatim from their manifests. Test capture IDs use a
+`test-` prefix internally so they cannot collide with reviewed IDs. Harness
+captures always replay on their logged timestamps; no demo clock is substituted.
+
+The delivered Tests files contained thousands of raw `reasoning` token chunks.
+The checked-in copies omit only those chunks because the adapter never consumes
+or renders chain of thought. Tool calls/results, insights, timestamps, interim
+and final responses, errors, and completion events remain intact.
+
+Mapping failures are indexed rather than hidden or replaced with fallback UI.
+At this update, 16 Tests captures are playable and four are explicit gaps:
+
+- `test-q03`: the run ends with a context-window error and no final response.
+- `test-q11`: the final response blocks are empty.
+- `test-q14`: no timestamped consumer-visible thinking event is available.
+- `test-q19`: the classified hybrid shape has fewer than two output forms.
 
 ## Non-negotiable rules
 
@@ -594,9 +618,8 @@ git diff --check
 
 Current baseline at the time of this document update:
 
-- 21 test files and 286 tests passing;
+- 22 test files and 333 tests passing;
 - production TypeScript/Vite build passing;
-- 38 states across the ten captures;
-- no state-to-state transition shorter than the 160 ms entrance duration;
-- shortest remaining transition: 409 ms;
-- median transition: 1.62 seconds.
+- 30 captures indexed: 10 Reviewed and 20 Tests;
+- 26 playable scenarios and four visible mapping gaps;
+- 83 generated thinking states across the 26 playable scenarios.

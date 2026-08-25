@@ -1,0 +1,874 @@
+[
+  {
+    "type": "turn_started"
+  },
+  {
+    "type": "insight",
+    "subtype": "guardrail_passed",
+    "label": "Guardrail passed",
+    "ts": 1787565368684,
+    "detail": "nsfw check ✓"
+  },
+  {
+    "type": "insight",
+    "subtype": "query_enriched",
+    "label": "Enrichment skipped — no prior history",
+    "ts": 1787565368686
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_selected",
+    "label": "Skills selected (1)",
+    "ts": 1787565368686,
+    "detail": "food (0.81)"
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_loaded",
+    "label": "Skills loaded (2)",
+    "ts": 1787565368688,
+    "detail": "default, food"
+  },
+  {
+    "type": "insight",
+    "subtype": "context_built",
+    "label": "Context built",
+    "ts": 1787565368689,
+    "detail": "stm=no · 0 msgs"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_start",
+    "label": "LLM started",
+    "ts": 1787565369563
+  },
+  {
+    "type": "insight",
+    "subtype": "tools_loaded",
+    "label": "Tools loaded (12)",
+    "detail": "GetRoute, GetWeather, MemoryRead, MemoryWrite, NearbyPlaces, PlaceDetails, PlaceReviews, PlaceSearch, Task, TodoWrite, WebFetch, WebSearch",
+    "ts": 1787565369565
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "user_query"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "0 / 100,000 tokens (threshold)",
+    "token_count": 0,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565370784
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Searching for top-rated spots serving fresh spinach and ricotta ravioli near you.",
+    "step_id": 1,
+    "names": [
+      "PlaceSearch"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceSearch",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787565372644,
+    "detail": "fresh spinach and ricotta ravioli handmade pasta"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "fresh spinach and ricotta ravioli handmade pasta",
+      "max_results": 10
+    },
+    "tool_use_id": "342e13be-56b6-43b7-8706-f21690773b99"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 25,011 · out: 299",
+    "ts": 1787565372649,
+    "detail": "step 1"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 25011,
+    "output_tokens": 299,
+    "reasoning_tokens": 0,
+    "reasoning_estimated": false,
+    "cache_read_tokens": 0,
+    "text": "Tokens — in: 25,011 · out: 299"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787565373561,
+    "detail": "12040 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"fresh spinach and ricotta ravioli handmade pasta\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJEfXy3cIVrjsRFKH0ilntLN4\", \"name\": \"Pasta Street Koramangala\", \"formatted_address\": \"Ground floor, 751, 80 Feet Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"italian_restaurant\", \"wine_bar\", \"pizza_restaurant\", \"european_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 4616, \"price_display\": \"\\u20b9600\\u20131600 per person\", \"open_now\": true, \"phone\": \"072592 32851\", \"website\": \"http://www.pastastreet.co.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=16009431744234430740&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.932819, \"longitude\": 77.6310416, \"photo_url\": \"/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXQbVnbxHVl2__PfJ2shhxsWVjk3GPsGUvvR1Pv00hH8sqwaLac2NRvl_ifbiEKNBGPWlsFeLEb8uWtlBCzaUbakVv8oVn4PB4xTQ5HmRkw-k35l6H4Q1TT-FS8UUqd5egUHMxEh_41l4IzwaunVBPZlb52TA8m6S-iJ8b0oCXeBqhSiSgsS_lnS5VCABput30aiNW3Dg9CycyGA5E0Uhky93MQKQgtTKaoEoS2s8GEcc-6k7L4_Tv9afvcuJTOu7t6w-jbk2dF19DFoAr_VVR1VrPmOp5PgVRG-6gqEXEs_AwcFlYuPkIXrk1q9cbBFT2w6KH4IWKI4suOto6VVvwWY4btuPanrUolKzRPyoMirTrlxIr_q-cl19HK29YSYffgoKNEbp17gqZZENVaoi7y_EWjV1nVs6JIVES2CNEt4cA&maxWidth=400\"}, {\"place_id\": \"ChIJwTjQW0EUrjsRIRf9d3YjyK4\", \"name\": \"Chianti, Koramangala\", \"formatted_address\": \"No 12,, 5th Block, Koramangala, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"italian_restaurant\", \"fine_dining_restaurant\", \"dessert_restaurant\", \"pizza_restaurant\"], \"rating\": 4.5, \"user_rating_count\": 6561, \"price_display\": \"\", \"open_now\": true, \"phone\": \"080 4113 2021\", \"website\": \"http://chiantiristorante.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=12594355349667780385&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.933465, \"longitude\": 77.6219085, \"photo_url\": \"/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXQFvLIjXLBsCYjuclStRJmUbBTRYJlS6PzkYi1K-7SItgY_SxxogkE99pk18vhDGWwN6iKIokejnTtVgCMPoneOXvnrBEzK8nKelgcPYVPg2hCXbldfqF00Ib4xdSOXnZEgRxamZCkag_UDDG2lSbXjIvaa1VMtBmslckET88jG8EnNjJzFjcqcmbzjRt0gazaqg176jCAGtwTCLLmNYSfeGOZWQgJjBjYuEnwqkNbz7sOVWfFaBZH74HMjqZzC1dT2kAQyVEMxtNbWTtUpt0RruB06yHMyu8n-MUrS-4PlplPTi7uEkxCVVCxG6Ycuel7aayP0_XKe6LTS1ai9PHSJ2eKDwanJPWnhSRegNPYY31Gtu9SpLFgT0KFcvXCnm5inGgywvQTC1WexFJY63wzOiHlhh-ne85nMpUnadM1IJfD-aSXUtlKOvFhBjreH&maxWidth=400\"}, {\"place_id\": \"ChIJ1VCT3-4VrjsRt0fy7d0eZJk\", \"name\": \"Nineleaps Pasta street Building\", \"formatted_address\": \"1st floor, 751, 80 Feet Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"corporate_office\", \"point_of_interest\", \"establishment\"], \"rating\": 4.4, \"user_rating_count\": 49, \"price_display\": \"\", \"open_now\": true, \"phone\": \"\", \"website\": \"http://www.nineleaps.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=11052993324002723767&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9327699, \"longitude\": 77.6309868, \"photo_url\": \"/api/photo?name=places%2FChIJ1VCT3-4VrjsRt0fy7d0eZJk%2Fphotos%2FAVoNoXR-_mFLLCOsRfox_zXxmlUO2gUV0JJuOCNlgAKpgoCTDdsC-iXpVoaUfviZ9LhODs5R2ei_Qca7DQf5Ed-6r-oqlCOVbIHvJ9t2tapFIzwjqC2rZDB8kO0qNk5D4GB6WChiAvaFvevVCMYhiNKBVdeNli3W8nYnP9XCGttkGd-c0iaMwHadSY5zi3o60DoqFEVz4olXbGgrsb9EAHQDwyK0SPRUPSIVQiuw7ocvjeJRW3JTQ-Ngc_zZsDPnebxKBGWVwyWeLWChkeSUXWa7OLAw070w_Fi8dY1frFQOTJo_0V45Et695peJUgtZ2C7ofyd6pm2TJZGTjHyKxnc8n5FqL7Vq9RcZ37ZNjdfnHBt4--2_J_zWaMUG-o6PwHiXqLw3S7B3QyVTaJpr4CIn_mg4jSEEpK5QUD8JjPKWbPsh_3A&maxWidth=400\"}, {\"place_id\": \"ChIJuf5upEkVrjsRRyieAsaJl5U\", \"name\": \"Si Nonna's - The Original Sourdough Pizza | Koramangala | Bengaluru\", \"formatted_address\": \"No.64, Ground Floor, Evantha Praha, KHB Colony, 7th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"pizza_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.8, \"user_rating_count\": 1467, \"price_display\": \"\\u20b9400\\u20131600 per person\", \"open_now\": true, \"phone\": \"079777 78047\", \"website\": \"https://sinonnas.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=10779235716675020871&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.936716599999999, \"longitude\": 77.614919, \"photo_url\": \"/api/photo?name=places%2FChIJuf5upEkVrjsRRyieAsaJl5U%2Fphotos%2FAVoNoXSfrC1Rjd7XCTMDtmUUdE8cSPaAUrJRK6EjSq5WDgJkgm-GNp2lKa9obco5UFhp7HPJbTObuWv9g3H4Nco8nJq6UZC0ctGBofFhsHeYNfY7lhR-zb0mOhL-cXh7zYykKFnMn9gWysHqdBedq3JVrn_ASCydBr3hk_qMG9g_Vv_NPblH6u6GNoNu0oMjaRpVeF8IoZ6lVtD1GhbY0yB0NJHqzk0xksGJWotMNkQzUoP7EucWvQXLA-jf9V9RTcWRO45yc1G0rP-JDYuIDaJQ5i4l1asyWQJ7OYn1cqZ8TWsQddYDuIhUG7ScR08q8uBnkUMnLshOnOYZZ-PRccGc2H6-2tYAFTr4538YoS0LjTH0M3uQegw7b01PO3PQWXZC-X0T_tiywpIPkg2m3GAXdXd4X6t04mPjGmWn06FEieF9qW9X9dkaBHGF5Oq6SNOQ&maxWidth=400\"}, {\"place_id\": \"ChIJ0bsj8CYVrjsRqPkS_QcGWUY\", \"name\": \"ROMA Italian Deli\", \"formatted_address\": \"472, 17th C Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 3.8, \"user_rating_count\": 45, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"open_now\": true, \"phone\": \"098863 98589\", \"website\": \"http://www.romadeli.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=5069089486962620840&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.934037, \"longitude\": 77.619619, \"photo_url\": \"/api/photo?name=places%2FChIJ0bsj8CYVrjsRqPkS_QcGWUY%2Fphotos%2FAVoNoXRbo2yvLk81U6GYrMg3rXUiSypUNUAv2z9--JvKl9FKMKVdbn2sSjxGxQBt5Hj5ofBwQLV6HmGqLc9f4vA78JBGt1jf1upu3hdZcU9OfagET9uWWrDOxf7vH8KCwMWLE9KuUZthnxN9Imxi25v-oa4gtLGkTOo9263OtrJLVUeBF5t0tPukuUBeUboXqPY1H6F1TQz6LgWAQxiIbuSlRhBdEb_vYf1-HroNdIPBCoJ7ZfCDxIPQ1nPjk1XeUnQAmGhqow83cZTawg2yJMAL3svm3zSd_MxdYOJ400DnUMxGd0mtLFMcSwpa4g7FSYfSJ7DYNmBK4s8GlrMmx-yyiR0B5o9RjSGZwWbkDEIhbWz7y37x2fA0oRCAdTpXn9W0onIkYZ7IWO_ay22NYvo0sUUjqp7pOGMAePxqJFtEIMcDGg&maxWidth=400\"}, {\"place_id\": \"ChIJO8xaIwIVrjsRoJaH5hEOo5Y\", \"name\": \"Light of Italy\", \"formatted_address\": \"669, 13th cross, 27th Main Rd, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102, India\", \"types\": [\"italian_restaurant\", \"vegetarian_restaurant\", \"restaurant\", \"food\"], \"rating\": 4.7, \"user_rating_count\": 4249, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"090193 58401\", \"website\": \"https://lightofitaly.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=10854534996937905824&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.916069700000001, \"longitude\": 77.6510845, \"photo_url\": \"/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXS6zxOteioxHtvckp24V48POclSosVU_ffNb1fIMRS5pzqV6p6BHoedYnO8oeiYoJUfwZ8c4T4iaP6fuHNdt9HD4gXWpEET8yZo28nPWmFTZoN-giNHsl-gnvoFl8jFl1jvdU4rsa1Ow5waffkEPPHhz2TWRY4j80kKVEZ-LQiY_pahlj738w0HsY69kNdSs9-6QWC_jG5N_xa17IvNx4hHsFGVfuMAHBoQHXgIqBzPUh1KdoKFw8BhWNE6L7ohBchHGQ5J1aDcndOnFQBZcpEBx7vLw-y3OiIy0uM_WoG5qFeISuoXqKFSCgMCivjMCWHBC6YHrQzxaNhdf7SBs-GKYie2DhrbGgCCae9xVPkNuXjJrLMnAay1YKvYfGQxcybsdSaOBnjvgAh44QcaVy-mD7BmLIrmyGgNNwYLZkol6oEkXtbegzqe4SzvgVZ3&maxWidth=400\"}, {\"place_id\": \"ChIJpZQxg2cUrjsR1Oz7J8SoNCg\", \"name\": \"Nature's Basket\", \"formatted_address\": \"9, 17th A Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"supermarket\", \"grocery_store\", \"food_store\", \"store\"], \"rating\": 4.2, \"user_rating_count\": 2235, \"price_display\": \"\", \"open_now\": true, \"phone\": \"\", \"website\": \"http://www.naturesbasket.co.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=2897126020743949524&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.933645799999999, \"longitude\": 77.62285659999999, \"photo_url\": \"/api/photo?name=places%2FChIJpZQxg2cUrjsR1Oz7J8SoNCg%2Fphotos%2FAVoNoXQqPmg-G7M7uvkQK4P_rhNUbtolHSbqJtZpt0azGRehUvkMhl3FXxD--OPa4u7u12whtq9sgMItLjnY5A-dhFncqtbdUXEOo61EJ9raAr-gxGBn9-l9MgrslrV1G0Chfn0_oxU9h_jIFHGfwKrrAmlh4W9Am-Wqmtb5Jm7rzCOB92T_fIwlax7jnBqWQZMfD9paVBXp-UNIUTLGPJf2OIQJBNAcitFxo8FHMURdodiUosFCiFv5faA-SHpycvKes3zVrHcxIGKKTMYgjc7VqzcD-dtmHX4Yc4qzMr7_9hM611YVlD8fO55l20qc79J6UuyGRNo1PJ-XR9YyllO9z1_-cToUWHfrcgofaixcqD_ZExhIiuvPPux39p2zCmx3Makc_hoRo485nD_xnoK9lNCDf0moBhSTkpKVMcZqhfCGWzI&maxWidth=400\"}, {\"place_id\": \"ChIJvfmZRsoVrjsR6YDTaOKjOSA\", \"name\": \"Mad Doh Sourdough Pizzeria & Bakes\", \"formatted_address\": \"Ground Floor, No.8/1, situated at, New Diagonal Rd, III Block, Jayanagar, Bengaluru, Karnataka 560011, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.4, \"user_rating_count\": 55, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"090713 49991\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=2322067275702829289&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.933085700000001, \"longitude\": 77.5832542, \"photo_url\": \"/api/photo?name=places%2FChIJvfmZRsoVrjsR6YDTaOKjOSA%2Fphotos%2FAVoNoXS6SrdYsarznhlSFwfC2G2ApZfHKK1eITEN6bdLMuFQslMqy2ctEAS7VteXL3rcEhCEZKytbwTytdQwem9gp_JRyUsgX__s4M3-2msBiyANL77vH0Q7dBPCbJdDnp35CBn1Y20xxoa0UoaP-hX36iEuwh2GnM4hS0kMCBk7uRR9jvBNK2kRxY_10XO3xBJO53UjKu0Kvn2U7TsUGKxaCPrn9gJ4vHS7QRkiuwoJKhH4Ki338tnXtWGvmDs80VHapaLypB9HzOwPzQq7TDD8oVtD7CyErWlPAjtBxAdA3pFsC4mqGjqx96LC-0U3dHG5XBLbx9dlDXT3CFdDFUPAbp46v-jkTd1VJK7aDEsmCEfoV4--X3t8VGXKobM1TturEVUDtFS0mBAbfXLpHsr5L2Tc7xTBoL8EImbEZfTAQ_e7wCJZMOFDgboXUi9qaf4w&maxWidth=400\"}, {\"place_id\": \"ChIJDSnLCi4ZrjsRqFp9D8IcVpY\", \"name\": \"Dal Moro's Bengaluru | Fresh Pasta To Go\", \"formatted_address\": \"3rd Floor, Phoenix Mall Of Asia 239/240, Byatarayanapura, Yelahanka, Hobli, Bellary Rd, Indra Nagar, Park View Layout, Yelahanka, Bengaluru, Karnataka 560092, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.7, \"user_rating_count\": 1091, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"098807 28899\", \"website\": \"https://www.dalmoros.it/\", \"google_maps_uri\": \"https://maps.google.com/?cid=10832877573495413416&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 13.070593599999999, \"longitude\": 77.5912093, \"photo_url\": \"/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXTCI9VZxze5LAjdVcmqi6-V3srE6zeQKfXDdbgIcHz19ivrNWLkKzmcUG49rXIzGbY0jqsYlVWOR8TEE9r1lGOc2mrdVFGUPXkV04la-QUlwSmIO9F-waCPkNpQh_iGKugRa_VuFWTrtnyOBi7emBfXC0xLvfak4LAlJRQOBg7aI_Im17sdIVO2mnY1yEfp-Ie12PbZlAWE1YYoMr46BjcbZcl0XmvCDrE97AIzZ866jt_T5OLavc8AQGuWk-zuuIk694D3Srk5lUhGMdMOXJOkU3S-Bvi0Xa4yuPzK0FO2U3lJ73XvqpHGfr6bkKwzlrba9IUlB-AEisrCD2o4WvSVVY60R63je8Ew8-q1RAjruI6APl_INiiJaIKnDVlwPerzl7drwpfQJcUXRKLJ5GotqbgbHtGxNbY1LEmQ0IDBhQtyOohJNWY4Moybpw&maxWidth=400\"}, {\"place_id\": \"ChIJ7VssrhwUrjsRsUVHewyWzbM\", \"name\": \"Pasta Street - Indiranagar\", \"formatted_address\": \"2022, 100 Feet Rd, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"italian_restaurant\", \"wine_bar\", \"pizza_restaurant\", \"european_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 8083, \"price_display\": \"\\u20b9600\\u20131600 per person\", \"open_now\": true, \"phone\": \"099725 80776\", \"website\": \"http://www.pastastreet.co.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=12956176683366827441&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.967053, \"longitude\": 77.64171639999999, \"photo_url\": \"/api/photo?name=places%2FChIJ7VssrhwUrjsRsUVHewyWzbM%2Fphotos%2FAVoNoXSAsn--BXylT8SzLYhkFaUis8CcbeNdaRH2WzX4oOWt8KGLOgZWn6cNuwiz9ngU1wCu7zpT9_Tf5bbGc4X3jYEX-DlnlyLsuhA8aT6LW8xEz1swhp_EVFyjr6dGwW-KxqMqYuhJongv7C2klfr9PfLGLpXuGNgE-rQPIDsFidTqfw6QY66FCmXL9irAy2wzqc3uzcNL2hnkhe_KIURvzKjXSCOYUGvAvGKBAz8t811rB0tSTEBz8AvYTMzAduh4R_XMz3JLl9jSAEg1jfhBVoAsTd75tiFEITGqVoiGqHkr4qTVD_hpgINzLtfrj9i7cbA03IGzVhGWJOa_oOS2AuE_5CFKQlZWIYWulLDhHXir9y9VYFRNn_SQjKNK2RyMN9S2Q69TrX4FzT3irjI-rHYaVBjcS9psXDiWtWsLbnk&maxWidth=400\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "0a731ac1-b11c-4f62-92da-e4e63a039b36",
+    "is_error": false,
+    "llm_text": "{\"query\": \"fresh spinach and ricotta ravioli handmade pasta\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJEfXy3cIVrjsRFKH0ilntLN4\", \"name\": \"Pasta Street Koramangala\", \"formatted_address\": \"Ground floor, 751, 80 Feet Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"italian_restaurant\", \"wine_bar\", \"pizza_restaurant\", \"european_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 4616, \"price_display\": \"\\u20b9600\\u20131600 per person\", \"open_now\": true, \"phone\": \"072592 32851\", \"latitude\": 12.932819, \"longitude\": 77.6310416}, {\"place_id\": \"ChIJwTjQW0EUrjsRIRf9d3YjyK4\", \"name\": \"Chianti, Koramangala\", \"formatted_address\": \"No 12,, 5th Block, Koramangala, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"italian_restaurant\", \"fine_dining_restaurant\", \"dessert_restaurant\", \"pizza_restaurant\"], \"rating\": 4.5, \"user_rating_count\": 6561, \"price_display\": \"\", \"open_now\": true, \"phone\": \"080 4113 2021\", \"latitude\": 12.933465, \"longitude\": 77.6219085}, {\"place_id\": \"ChIJ1VCT3-4VrjsRt0fy7d0eZJk\", \"name\": \"Nineleaps Pasta street Building\", \"formatted_address\": \"1st floor, 751, 80 Feet Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"corporate_office\", \"point_of_interest\", \"establishment\"], \"rating\": 4.4, \"user_rating_count\": 49, \"price_display\": \"\", \"open_now\": true, \"phone\": \"\", \"latitude\": 12.9327699, \"longitude\": 77.6309868}, {\"place_id\": \"ChIJuf5upEkVrjsRRyieAsaJl5U\", \"name\": \"Si Nonna's - The Original Sourdough Pizza | Koramangala | Bengaluru\", \"formatted_address\": \"No.64, Ground Floor, Evantha Praha, KHB Colony, 7th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"pizza_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.8, \"user_rating_count\": 1467, \"price_display\": \"\\u20b9400\\u20131600 per person\", \"open_now\": true, \"phone\": \"079777 78047\", \"latitude\": 12.936716599999999, \"longitude\": 77.614919}, {\"place_id\": \"ChIJ0bsj8CYVrjsRqPkS_QcGWUY\", \"name\": \"ROMA Italian Deli\", \"formatted_address\": \"472, 17th C Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 3.8, \"user_rating_count\": 45, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"open_now\": true, \"phone\": \"098863 98589\", \"latitude\": 12.934037, \"longitude\": 77.619619}, {\"place_id\": \"ChIJO8xaIwIVrjsRoJaH5hEOo5Y\", \"name\": \"Light of Italy\", \"formatted_address\": \"669, 13th cross, 27th Main Rd, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102, India\", \"types\": [\"italian_restaurant\", \"vegetarian_restaurant\", \"restaurant\", \"food\"], \"rating\": 4.7, \"user_rating_count\": 4249, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"090193 58401\", \"latitude\": 12.916069700000001, \"longitude\": 77.6510845}, {\"place_id\": \"ChIJpZQxg2cUrjsR1Oz7J8SoNCg\", \"name\": \"Nature's Basket\", \"formatted_address\": \"9, 17th A Main Rd, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"supermarket\", \"grocery_store\", \"food_store\", \"store\"], \"rating\": 4.2, \"user_rating_count\": 2235, \"price_display\": \"\", \"open_now\": true, \"phone\": \"\", \"latitude\": 12.933645799999999, \"longitude\": 77.62285659999999}, {\"place_id\": \"ChIJvfmZRsoVrjsR6YDTaOKjOSA\", \"name\": \"Mad Doh Sourdough Pizzeria & Bakes\", \"formatted_address\": \"Ground Floor, No.8/1, situated at, New Diagonal Rd, III Block, Jayanagar, Bengaluru, Karnataka 560011, India\", \"types\": [\"italian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.4, \"user_rating_count\": 55, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"090713 49991\", \"latitude\": 12.933085700000001, \"longitude\": 77.5832542}, {\"place_id\": \"ChIJDSnLCi4ZrjsRqFp9D8IcVpY\", \"name\": \"Dal Moro's Bengaluru | Fresh Pasta To Go\", \"formatted_address\": \"3rd Floor, Phoenix Mall Of Asia 239/240, Byatarayanapura, Yelahanka, Hobli, Bellary Rd, Indra Nagar, Park View Layout, Yelahanka, Bengaluru, Karnataka 560092, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.7, \"user_rating_count\": 1091, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"098807 28899\", \"latitude\": 13.070593599999999, \"longitude\": 77.5912093}, {\"place_id\": \"ChIJ7VssrhwUrjsRsUVHewyWzbM\", \"name\": \"Pasta Street - Indiranagar\", \"formatted_address\": \"2022, 100 Feet Rd, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"italian_restaurant\", \"wine_bar\", \"pizza_restaurant\", \"european_restaurant\"], \"rating\": 4.4, \"user_rating_count\": 8083, \"price_display\": \"\\u20b9600\\u20131600 per person\", \"open_now\": true, \"phone\": \"099725 80776\", \"latitude\": 12.967053, \"longitude\": 77.64171639999999}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 2",
+    "ts": 1787565373565,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "25,011 / 100,000 tokens (threshold)",
+    "token_count": 25011,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565373568
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Pulling opening hours and details for the top four candidates now.",
+    "step_id": 2,
+    "names": [
+      "PlaceDetails"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceDetails",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565386992,
+    "detail": "ChIJDSnLCi4ZrjsRqFp9D8IcVpY"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJDSnLCi4ZrjsRqFp9D8IcVpY"
+    },
+    "tool_use_id": "942be2a7-440f-48f0-a9b2-372a6763101f"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565386993,
+    "detail": "ChIJO8xaIwIVrjsRoJaH5hEOo5Y"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJO8xaIwIVrjsRoJaH5hEOo5Y"
+    },
+    "tool_use_id": "a4478218-7457-4ca0-a4f7-40690dd8355c"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565386994,
+    "detail": "ChIJwTjQW0EUrjsRIRf9d3YjyK4"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJwTjQW0EUrjsRIRf9d3YjyK4"
+    },
+    "tool_use_id": "f43db705-4a6e-4020-932a-b9872cdea7b2"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565386995,
+    "detail": "ChIJEfXy3cIVrjsRFKH0ilntLN4"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJEfXy3cIVrjsRFKH0ilntLN4"
+    },
+    "tool_use_id": "8bf35f24-3ea3-4a5e-ba73-a58601acf1d2"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 27,146 · out: 867 · cached: 24,800 · reasoning: 452",
+    "ts": 1787565386997,
+    "detail": "step 2"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 27146,
+    "output_tokens": 867,
+    "reasoning_tokens": 452,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24800,
+    "text": "Tokens — in: 27,146 (cache: 24,800) · out: 867 (reasoning: ~452)"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 4 tools in parallel",
+    "ts": 1787565386998,
+    "detail": "PlaceDetails, PlaceDetails, PlaceDetails, PlaceDetails"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 4,
+    "names": [
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565387403,
+    "detail": "5778 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJDSnLCi4ZrjsRqFp9D8IcVpY\", \"name\": \"Dal Moro's Bengaluru | Fresh Pasta To Go\", \"formatted_address\": \"3rd Floor, Phoenix Mall Of Asia 239/240, Byatarayanapura, Yelahanka, Hobli, Bellary Rd, Indra Nagar, Park View Layout, Yelahanka, Bengaluru, Karnataka 560092, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.7, \"user_rating_count\": 1091, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"phone\": \"098807 28899\", \"website\": \"https://www.dalmoros.it/\", \"google_maps_uri\": \"https://maps.google.com/?cid=10832877573495413416&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Tuesday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Wednesday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Thursday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Friday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Saturday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Sunday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Rachana H Bharadwaj\", \"rating\": 5, \"text\": \"We had gone to the mall in the afternoon and were hungry .. wanted to try something from the foodthopia so had the Alfredo veg here.. and it was too good.. just right quantity and overall liked it.\", \"published\": \"a month ago\"}, {\"author\": \"Selshia\", \"rating\": 1, \"text\": \"Pathetic! A big zero for hygiene and their pasta was unevenly cooked, undercooked one side and overcooked on the other. I spotted hair and\\u2026 The taste was also really nauseating! \\ud83e\\udd74 I wonder how they\\u2019ve got so many good ratings. For the price you pay, there are many better options elsewhere!  They are pretty sure that we would not be able to finish it there, hence the carton to take away! Really really disappointed.\", \"published\": \"5 months ago\"}, {\"author\": \"Shakahari Journals\", \"rating\": 4, \"text\": \"Tried Fettuccine Alfredo pasta here and it was great. Actually wanted to get Dolce E Pepe pasta I saw on the earlier menu photos but it was removed from the menu!\", \"published\": \"4 months ago\"}, {\"author\": \"Neha Nagendra\", \"rating\": 2, \"text\": \"Huge letdown, I took Mama Rosa with Fusili. The pasta was unevenly cooked, the sauce was too salty and didn't taste anything like tomatoes and cheese. The chicken toppings weren't fresh either and was bland. Couldn't even finish the dish. Spent 450 on it but was not worth the money.\", \"published\": \"5 months ago\"}, {\"author\": \"Anirban S (an1rb6n)\", \"rating\": 5, \"text\": \"Yeah, this place does not need a review. It should get an award or something. The moment we tested the Mutton Bolognese pasta we melted with the pasta \\ud83d\\ude02\\nIt was perfectly hot, perfectly seasoned, well cooked. We took Linguine pasta since you don't want too thick a pasta.\\nThe service was fast and prompt. This is a make your pasta shop, so you get to customise a lot. There are only 2 observation probably we have. If you're adding too much toppings (I mean sometime it's a good thing to try to get all the add ons \\ud83d\\ude02) ask the toppings ina seperate box. Else you're pasta quantity is lesser and the box is not that big. Secondly there is not box size variation. So for 2 proje end up ordering 2 boxes. But 1 box is good for 1 & 1/2 people. So that is something we would look forward to future.\\nBut frankly in a food court this outshines most of the other places selling fast food. This is the number 1 place to go for a gourmet level fast food.\", \"published\": \"10 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXQWe8SvHY3J_v19jMkgb9FuQf94BDmeo4xgGgokfby1Wt_vZUghAgfdEjZCnvAKKfVKB7SMipK6iJO7UW5CS3a_Kq5vPaC-P0dfx0nOGB3poO1ykjQj19c6pY1x85uaMVDt9tpfK-yWxmGGsUcXo_3hvrKGdgspOABoRpQk1ULSjMJmkwjQzagBnpCZ4rLtAInZNceEwX5POpe1W2kvD_4oopQsHqptvxaqq2tvI2pSsOyEhIHU0WePqj-W-3bEcVkxRdXe0gxg3vEyN6tC05JWHdVIWY07-YUaIa3TvhHdX86csm0ZvvABB-l9TD-n8CH2Bia9Zjt-kxGYr3imOkqX3HNTEose03VH6_OmeAKbdl1f6-SwboHyhYyXwfHIzhFPH4bY_DLZmjDDR9ocan2iqGYAXErBpvYeq-WxiPcUBnFm02O2jy9U95q1_w&maxWidth=600\", \"/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXQc8q1Q0gHiOM1k7yhZwCbibFdrFie0SIqETxPgi8hK330q9IY5fvzPBYY4pgJVoCRUyWPrL6K2ntLeNDrw-O7FNM9prlVB_F1BDndPVeVzuaAhzXEwTSfBEaa8tq6HnAsfcvTG9DGAl32rr6dK4-CLi1jXaPKoVm70Z5_NSYrxQE4MFcsoSGqRMiKG72vexwQ0vyLg75bw3IfNphH4DfUvaaqAGqS8NtoNe_hcZAFEgFbGyQjGzgHFewj9I9u8VbkoJ1eeJszvsMZ7xZYU7lz-0oUgwmJh8SPNRqw7u27SgfM380xRU2figc84DaA3-hxWXQfXuEgZ5QVdcKbwF8lG3lYn3O6DQRTMH8Gt_C-LCh-UF31TEeY19bi8JwnZYo0zukTbKkgf83VqxNr0HxWmYoF6hJWpbkCrxjZrmRwi2q7G2u1JNfmhFuCFluN3&maxWidth=600\", \"/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXTtq6DUM1xrinBU4NFyiq8Pc9kkI-yWI7uT24LrMpQ-wPr19uly6d_xJT3BlbYoTYY8wLmzXoxaa65wMgwYLVFnZg6LKjXCSxSRg6DfdWmglHcoYVSF4UXJdK_Blkoqu55FvSFGvnjjCWjwd3yAm_aen-iCvUv5AD1HNU7UXD8k-NY9FT_F5mabKLmXEFMRpzIpzo7tGiZZIJRrxUnAlxV-M9DjclRa-WfOdwseTI4LH3f1A8_TFTnq4SF-akLpkwmkTpck4wCERa6WrwqK_iEsmuEMX7--0RxS52jarqNU68i5Edqm3ZCFVV78eqU86YJROpf7OWCgFzUy6XkqhgkUatS-ERS9E3pTOpK1yyO-DyrpKGRA8x6XTV-gmkmNbOiZxp4R6bGjlOgM90rX9L1z25QNERiFCks9kenOo4e02VpZt6UK8f3XpRg8CuME&maxWidth=600\", \"/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXQj6suOwtrkJU8HuWQVk9n3EURZiSDCKOHYDswhiyb-jUGaR1yiPifaZl50RGR7TVAsuvoeMcTqlI_tECS-XY2K6zQUfSfJdlU0AWbns-pvA7PkhKjyVVB5RvChkIhtBOOlXphiDnX5480WWQRGckozNIjltWzR4p2bg_EOE5zefqOinN7BjYJXiUzXtyIqmln6OUw6p--iPJJ5svIiz-b8GmuNozOmL5Qn1gAnw_cllDUq4_d5JOc39SFwf1U7QSQ7r2ERtIQ2qlLOTLdA-ga064eP90GVNoIayyf4ryIaZeIHJ1hteOmLfDpujnftLk6raMyLoiNrZ1gROY_u8rj6up28C4b_fKP5unr0Bxd36q8oSmkKip6PwCnrNUzXqcPtVvCAZZ4RMXjftXlj9rimNAsFYH-UJYzXK1Yy7J6pXAuDwG-o6Y0ePlCDHv13&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "6b615518-21d9-4cde-a88f-dc03402e3e17",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJDSnLCi4ZrjsRqFp9D8IcVpY\", \"name\": \"Dal Moro's Bengaluru | Fresh Pasta To Go\", \"formatted_address\": \"3rd Floor, Phoenix Mall Of Asia 239/240, Byatarayanapura, Yelahanka, Hobli, Bellary Rd, Indra Nagar, Park View Layout, Yelahanka, Bengaluru, Karnataka 560092, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.7, \"website\": \"https://www.dalmoros.it/\", \"open_now\": true, \"opening_hours\": [\"Monday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Tuesday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Wednesday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Thursday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Friday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Saturday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\", \"Sunday: 10:00\\u202fAM\\u2009\\u2013\\u200910:00\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"We had gone to the mall in the afternoon and were hungry .. wanted to try something from the foodthopia so had the Alfredo veg here.. and it was too good.. just right quantity and overall liked it.\", \"published\": \"a month ago\"}, {\"rating\": 1, \"text\": \"Pathetic! A big zero for hygiene and their pasta was unevenly cooked, undercooked one side and overcooked on the other. I spotted hair and\\u2026 The taste was also really nauseating! \\ud83e\\udd74 I wonder how they\\u2019ve got so many good ratings. For the price you pay, there are many better options elsewhere!  They are pretty sure that we would not be able to finish it there, hence the carton to take away! Really really disappointed.\", \"published\": \"5 months ago\"}, {\"rating\": 4, \"text\": \"Tried Fettuccine Alfredo pasta here and it was great. Actually wanted to get Dolce E Pepe pasta I saw on the earlier menu photos but it was removed from the menu!\", \"published\": \"4 months ago\"}, {\"rating\": 2, \"text\": \"Huge letdown, I took Mama Rosa with Fusili. The pasta was unevenly cooked, the sauce was too salty and didn't taste anything like tomatoes and cheese. The chicken toppings weren't fresh either and was bland. Couldn't even finish the dish. Spent 450 on it but was not worth the money.\", \"published\": \"5 months ago\"}, {\"rating\": 5, \"text\": \"Yeah, this place does not need a review. It should get an award or something. The moment we tested the Mutton Bolognese pasta we melted with the pasta \\ud83d\\ude02\\nIt was perfectly hot, perfectly seasoned, well cooked. We took Linguine pasta since you don't want too thick a pasta.\\nThe service was fast and prompt. This is a make your pasta shop, so you get to customise a lot. There are only 2 observation probably we have. If you're adding too much toppings (I mean sometime it's a good thing to try to get all the add ons \\ud83d\\ude02) ask the toppings ina seperate box. Else you're pasta quantity is lesser and the box is not that big. Secondly there is not box size variation. So for 2 proje end up ordering 2 boxes. But 1 box is good for 1 & 1/2 people. So that is something we would look forward to future.\\nBut frankly in a food court this outshines most of the other places selling fast food. This is the number 1 place to go for a gourmet level fast food.\", \"published\": \"10 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565387408,
+    "detail": "7689 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJO8xaIwIVrjsRoJaH5hEOo5Y\", \"name\": \"Light of Italy\", \"formatted_address\": \"669, 13th cross, 27th Main Rd, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102, India\", \"types\": [\"italian_restaurant\", \"vegetarian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.7, \"user_rating_count\": 4249, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"phone\": \"090193 58401\", \"website\": \"https://lightofitaly.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=10854534996937905824&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Tuesday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Wednesday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Thursday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Friday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Saturday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Sunday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"aaranya origins\", \"rating\": 5, \"text\": \"Light Of Italy has become our go to Italian cuisine. As soon you enter the restaurant, you are warmly greeted, courteous staffs, no rush to choose the menu, clearly explains what the dishes mean. To start with the menu, it\\u2019s pure VEG and they have recently introduced the vegan options as well the unlimited dining options. The dishes right from the appetisers to the desserts everything is well crafted to perfection. Your taste buds will feel each of the flavour in the dish. It\\u2019ll feel like PEACE \\u270c\\ud83c\\udffb. Next the staffs, they are very courteous and they always keep a watch on our table to make sure we get the dishes on time. The ambiance is very cozy and you have different seating arrangements based on the pax size and occasion. With friends you get a secluded area, a date you have candle light dinner arrangements, a family, you get a comfortable sofa and chairs.\\nThe cost is according to the dish and in my personal opinion, it\\u2019s not overpriced.\\nA total value for money restaurant.\\nOverall, I\\u2019ll come again. Until then good luck.\", \"published\": \"a month ago\"}, {\"author\": \"Rashmita Panigrahi\", \"rating\": 5, \"text\": \"We recently visited \\\"Light of Italy\\\" and were thoroughly impressed by the authentic flavors. If you're in HSR and craving Italian, this is the place. The Ravioli in Red Sauce is delicious and the Chef\\u2019s Special Pizza is a must-try. Their Cold Coffee and Anjeer Milkshake were the perfect accompaniments. Just a small suggestion to the kitchen: the Chef\\u2019s Special Salad felt a little heavy on the oil, but aside from that, every dish was fantastic. Definitely a must-visit in HSR for a cozy Italian meal.\\nWill be back for more!\", \"published\": \"3 months ago\"}, {\"author\": \"shubham sadavat\", \"rating\": 5, \"text\": \"The culinary experience was truly delightful, a symphony of flavors that captivated the palate from the very first bite. Each dish was meticulously prepared, showcasing a remarkable attention to detail and a clear passion for gastronomic excellence. Beyond the exquisite food, the ambiance of the establishment was equally impressive. The decor was thoughtfully designed, creating an inviting and aesthetically pleasing atmosphere that enhanced the overall dining experience. Every element, from the lighting to the furnishings, contributed to a sense of sophisticated comfort. Our server, Asash, played an instrumental role in making our visit so memorable. Their service was not merely efficient but also exceptionally attentive and genuinely warm. Asash anticipated our needs with a graceful professionalism, ensuring that every aspect of our meal was seamlessly executed and thoroughly enjoyable. The combination of superb cuisine, captivating decor, and outstanding service truly set this experience apart.\", \"published\": \"2 months ago\"}, {\"author\": \"Anupam Jain\", \"rating\": 4, \"text\": \"The pizza was genuinely good. A massive plus is that they offer a \\\"half 'n half\\\" option, allowing you to customize both sides with the toppings of your choice. This is fantastic for sharing or if you are simply feeling indecisive.\\n\\u200bBeyond the food, the ambience of the cafe is lovely. It has a great atmosphere that makes for a pleasant dining experience. Another huge bonus is the availability of free street parking nearby, which takes a lot of the stress out of visiting.\\n\\u200bHowever, the meal hit a roadblock with the Chef\\u2019s Special Garlic Bread. The bread completely lacked that essential crunch and was not crispy at all.\\n\\u200bOverall, Light of Italy Cafe is well worth a visit for its excellent pizzas and welcoming environment. Just skip the garlic bread until they figure out how to get it properly toasted.\", \"published\": \"2 months ago\"}, {\"author\": \"Sandesh Sawant\", \"rating\": 5, \"text\": \"I recently visited Light of Italy for a date night, and it was a fantastic experience. The ambience is perfect for a romantic evening, with a warm, intimate atmosphere that feels truly special at night. We absolutely loved the pasta and the delicious dessert, all of which were offered at very decent, fair prices.\\n\\nA huge thank you to Ehsaas for his exceptional service throughout the meal. He was incredibly attentive and welcoming, ensuring we had a wonderful time. His hospitality added a personal touch that made our night memorable, and we are already looking forward to our next visit!\", \"published\": \"a month ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXTfz65OV19PQsQuzuB1dg7BrAmFisAP7CVTYT7FD2znR7sh_GDU184EdX7-u2Bg4w3O2MxXAICKCgMdZc52xANk_UAaG40SCyoShbpL_NltS8uXxdHyloZUiz-7vvpjg5_uESIemZ29EL8i6Idgjn_3ihDckEAt6t1d8ipLP1Na2R1DzPmc2M9HfApOuT7gzLiFJycaM8u9L56pO5owV-Syn5G8JdT35gRAhjnVJ_faVtaq-OxN08uvGrwBy7sa3jkrw65JD15xvO_g7KWXyTj7cuYe_cY4I6LZlI9D13F_yVE-elat-mNv2d4BX2Sxzq11B71_TVwCEzF323-piaD9fr6ibgp--5kOxcrIvGh-oOS_0AfmZyCbyzCzo88r6yv5rSVdieZWWzPmYclwSQWg6NazR6y7i7Ta6jQO_LlRvzyrBl8sABEPlnmklN-c&maxWidth=600\", \"/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXTXrlT00Bc9LyzmUN4V13ogKcqUY5JxSZ1RNP7iqFkD4rJ8bPcr8Rl998S4L1gJIlAEZl1CnV5JNIYBbD4IsNos6IsELVwucYX-137DIvNedL_WoPnFDpnEBF-lysWH3EkpgS2zaFk8Bu2HM8MqwLRiTpKXPC9r1Ig5SH7vlmb8fe-Ads8pUnF-ViGNoCqmH-qdecmzlO1h_bALaJqUnA5XPzu_QKESrAUp1wLbuu2r6T2IfeuNEAJYm4KxgFfh0MgGKEO9fVTZmpPDKAnJHXz8xWrt1qtlHOdhO-rL---GoNw5ukpVeqnx6T4G3mgdD5tvr3OQIL8qEQxHHqQsxFIyWfnjQ3nFx0_y133Vqba9vwEua3pgnoRlkiIh2E_54bHVtCzG2mjKSHdxNk8B4Ddli1hfCpLY599z31ZZYmsoUoVXEIoMqHCb4D0ksg&maxWidth=600\", \"/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXQLMw6qt24N6xFVqx5M0istDPGadi3t26JdIalzsFjlF5_s3EbaY-tvsqUFZqd9gYzCfKOFdpBjim5Kgk52L-KMBm0ROYaJGxflIkb55HYGt56KsJWOJc8bH75sxI3ZWiWzEWPjKDlNuPaLenOUCnH1U4pdSh0vs6jGA9OzyvntKz3XT3mRXTPhTE7YoPNMiEPsN9DfgceiNM0FWfxKDvBIGyN_8lJG-4JAHHR7W-mkhTVLEY0512srQTJzg3WWGfCeSVoN4_aszjb_WvBm1wjJJtV2QC8AW8SmFHEBqNATW_-RMpmIZSB-_A9vOtHk9481irgTjKhSolvWlfL2S_JiD-nK6EjkxHsm4mdTTSRHRlnrajsRn-LGRqkjx8egTNznZfYV4fAq98Ng7sG2dKBIih1NN_WxlscnDIEbwzs&maxWidth=600\", \"/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXRxhp5CTqBF-Cyg9ZjZW_DxaSS7MwNCKi5WNzKusCFfjimAsxMgj96f2yv4yqdtRr1979WucbwnLDkB0WDSU15ITSliFPFiAA8lpcmk6Z-4Y3VzYDNLhQN1WxF6-NBC6Oz_zK-tDxM5CRZn4xP7qT5wkrWWSkMoEUxV9rGkDxQQHSLYk7S8WnHraV3ChhCYpDZBZ44ItMPTTN-DXlU1Q8I1gtPQ9u2Aj93HjSSW57ODcJQUaJvZLQkAABG_xxglqQm7jQHIOYu2Uc3jkyBjJO63WwcKR0I9ZsAjAKfNS75oGZnsEfNXqBKOW1890F9NSl9IPmlEwwr4a_LothPx2GQg1ZB6HBlzI8_Xq1JD0D7LB2ynhDavIa-K7RRmcEtmv6jDRLaJuvPkSUawYlGr1V3iCX5z1X7DRyxlgyOmKbGSmic&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "99194831-0a60-43d3-8960-cabb5c5a2489",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJO8xaIwIVrjsRoJaH5hEOo5Y\", \"name\": \"Light of Italy\", \"formatted_address\": \"669, 13th cross, 27th Main Rd, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102, India\", \"types\": [\"italian_restaurant\", \"vegetarian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.7, \"website\": \"https://lightofitaly.com/\", \"open_now\": true, \"opening_hours\": [\"Monday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Tuesday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Wednesday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Thursday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Friday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Saturday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Sunday: 11:00\\u202fAM\\u2009\\u2013\\u200912:30\\u202fAM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"Light Of Italy has become our go to Italian cuisine. As soon you enter the restaurant, you are warmly greeted, courteous staffs, no rush to choose the menu, clearly explains what the dishes mean. To start with the menu, it\\u2019s pure VEG and they have recently introduced the vegan options as well the unlimited dining options. The dishes right from the appetisers to the desserts everything is well crafted to perfection. Your taste buds will feel each of the flavour in the dish. It\\u2019ll feel like PEACE \\u270c\\ud83c\\udffb. Next the staffs, they are very courteous and they always keep a watch on our table to make sure we get the dishes on time. The ambiance is very cozy and you have different seating arrangements based on the pax size and occasion. With friends you get a secluded area, a date you have candle light dinner arrangements, a family, you get a comfortable sofa and chairs.\\nThe cost is according to the dish and in my personal opinion, it\\u2019s not overpriced.\\nA total value for money restaurant.\\nOverall, I\\u2019ll come again. Until then good luck.\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"We recently visited \\\"Light of Italy\\\" and were thoroughly impressed by the authentic flavors. If you're in HSR and craving Italian, this is the place. The Ravioli in Red Sauce is delicious and the Chef\\u2019s Special Pizza is a must-try. Their Cold Coffee and Anjeer Milkshake were the perfect accompaniments. Just a small suggestion to the kitchen: the Chef\\u2019s Special Salad felt a little heavy on the oil, but aside from that, every dish was fantastic. Definitely a must-visit in HSR for a cozy Italian meal.\\nWill be back for more!\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"The culinary experience was truly delightful, a symphony of flavors that captivated the palate from the very first bite. Each dish was meticulously prepared, showcasing a remarkable attention to detail and a clear passion for gastronomic excellence. Beyond the exquisite food, the ambiance of the establishment was equally impressive. The decor was thoughtfully designed, creating an inviting and aesthetically pleasing atmosphere that enhanced the overall dining experience. Every element, from the lighting to the furnishings, contributed to a sense of sophisticated comfort. Our server, Asash, played an instrumental role in making our visit so memorable. Their service was not merely efficient but also exceptionally attentive and genuinely warm. Asash anticipated our needs with a graceful professionalism, ensuring that every aspect of our meal was seamlessly executed and thoroughly enjoyable. The combination of superb cuisine, captivating decor, and outstanding service truly set this experience apart.\", \"published\": \"2 months ago\"}, {\"rating\": 4, \"text\": \"The pizza was genuinely good. A massive plus is that they offer a \\\"half 'n half\\\" option, allowing you to customize both sides with the toppings of your choice. This is fantastic for sharing or if you are simply feeling indecisive.\\n\\u200bBeyond the food, the ambience of the cafe is lovely. It has a great atmosphere that makes for a pleasant dining experience. Another huge bonus is the availability of free street parking nearby, which takes a lot of the stress out of visiting.\\n\\u200bHowever, the meal hit a roadblock with the Chef\\u2019s Special Garlic Bread. The bread completely lacked that essential crunch and was not crispy at all.\\n\\u200bOverall, Light of Italy Cafe is well worth a visit for its excellent pizzas and welcoming environment. Just skip the garlic bread until they figure out how to get it properly toasted.\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"I recently visited Light of Italy for a date night, and it was a fantastic experience. The ambience is perfect for a romantic evening, with a warm, intimate atmosphere that feels truly special at night. We absolutely loved the pasta and the delicious dessert, all of which were offered at very decent, fair prices.\\n\\nA huge thank you to Ehsaas for his exceptional service throughout the meal. He was incredibly attentive and welcoming, ensuring we had a wonderful time. His hospitality added a personal touch that made our night memorable, and we are already looking forward to our next visit!\", \"published\": \"a month ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565387410,
+    "detail": "6416 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJwTjQW0EUrjsRIRf9d3YjyK4\", \"name\": \"Chianti, Koramangala\", \"formatted_address\": \"No 12,, 5th Block, Koramangala, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"italian_restaurant\", \"fine_dining_restaurant\", \"pizza_restaurant\", \"dessert_restaurant\", \"restaurant\", \"food\"], \"rating\": 4.5, \"user_rating_count\": 6561, \"price_display\": \"\", \"phone\": \"080 4113 2021\", \"website\": \"http://chiantiristorante.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=12594355349667780385&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:30\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:30\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"Warm, classically furnished eatery offering Italian dishes in an old-school dining room.\", \"reviews\": [{\"author\": \"Ashwini Das\", \"rating\": 5, \"text\": \"Chianti has been a place I 've always loved to go to . There is something in the environment they create that you end up loving it . The staff is very courteous , helpful and always there.\\n\\nFood as usual was yummy , the mushroom garlic bread , aubergine and Ravioli is still lingering in my taste buds.\\n\\nIf you love Italian , then this is the place to be . Thier menu is great with a wide variety and the ingredients are super fresh . And oh yes , there are some yummy breads you get on the house which is not worth missing\", \"published\": \"2 months ago\"}, {\"author\": \"Isha Gupta (isha)\", \"rating\": 5, \"text\": \"The food was great. Really good ambience and I love their ragu and pomodoro sauce. Giving a star less only because the salt was a little more than I\\u2019d like.\\nThe menu is nicely done, with a lot of meat options which (non pasta/pizza) which is something I liked.\\nWe started off with a little on the house bruschetta making session which was sweet!\", \"published\": \"6 months ago\"}, {\"author\": \"ARNAV SINGH\", \"rating\": 5, \"text\": \"Chianti is a fantastic place if you\\u2019re looking for authentic Italian cuisine. The ambiance is warm and inviting, making it a great choice for a relaxed lunch or dinner.\\n\\nThe pastas are incredibly creamy, rich, and full of flavor, while the pizzas are equally impressive with fresh ingredients and a perfectly baked crust. Overall, a wonderful dining experience and definitely one of the best places in Bangalore for Italian food.\", \"published\": \"2 months ago\"}, {\"author\": \"Paramita Santra\", \"rating\": 5, \"text\": \"Loved the food. Every single dish was so well presented and delicious. Every single detail complement each other. None of the elements were extra or just for garnish. You can literally wipe the plate clean like we did. They also offered fresh baked breads for us to try when we waited for our food and also had a little DIY food which we tried making ourselves.\\n\\nThe staff was very attentive and constantly took care of plates, breads, and even asked us if everything is to our likings. It\\u2019s gives you a ambience of an authentic Italian restaurant with wine. I highly recommend it and I might just visit until I taste everything on the menu lol.\", \"published\": \"4 months ago\"}, {\"author\": \"Tashi Dhondup\", \"rating\": 5, \"text\": \"Had a wonderful dining experience here. The food was absolutely delicious, we especially loved the chicken dish and the pasta, both were cooked perfectly and full of flavour. The service was spot on and truly elevated the overall experience. When you get amazing food paired with excellent service, there\\u2019s nothing like it.\\n\\nA special mention to Shant, our server, who was extremely hospitable, friendly, and made us feel very comfortable throughout. He was attentive, helpful, and ensured everything was taken care of smoothly. Highly recommended, and we will definitely be back.\", \"published\": \"7 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXRm-J96ZKytrKtzY01GJEOmGVBedaznc1VyKsEwV4PaoKbjEo9P3qtuieCIMpLgAWvkmbZPzsBj8C-2eURVsviZpeImPxvQtd-pGfKgLoTZvyAROhwUPD0rpl7KcuYFiwvtnLmOvkikFHpVyqdWp2JO5QV7HymeVT0xp1TMcWMqtsOJYYkvJZJBA9QcHdBJ6HMH0M7T3_KXtJVOJ97XxANMRb7ZQmDXybvQIBM56EX7YuIT4acIQIXETFnq3T-9X8U2vngNR1tB79MuYlxMHR4FvBmAplW0aOVoVHYgGw1GL-xkIWijbvPkRM_5X6buS-oNFsItEKt5V31JUEgjusDDNWlALcq_RA4c6a-Y5IBbqK8VUYkblSXJusyzOWP79KULqQEzcDPm6XszVJrd-0itOozN3cJRmcdlSdIvtDaCpF9CvuztKGh26LcTeNv9&maxWidth=600\", \"/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXQvSUnGJU-yintMw9Mhs-a8cUwRIubp0XMFUfLANrYxY_ETJFN1dj_xtQ_CiOfEVofgKgFBvcw6GApmMzoHT2E7AGyqLnlttpwe-EvwItGVtjqtUY41jQ1kAas4-Rbzq_js1bFYPrnJHqhcK91Nszztq1ErTiI37HH__qqe3wkinyYUT_gRfBK5aKpfS2ZgVF5Tfy6fnOTwGjvhjU8K2rwQwQC3PQ3w1yu2kQ0RXvtvk_Y9ER3-51hOfYh9vQAbclVNkc3p4YtngsgxpSQKGDnAoHBGb8r8IVPyKmSa3uyTt8SYxgL8_UI4Vo7PTuNAIq6tmkHmZkp_8i-HIiLOP2by963MkcpunaBZ358k8voCjSj_88pwII3PvCqEaygIZw5rUt-XPYkNZ6p15uuymHQ7jOEfm64HzH29GDH7qV6DYEwcY4P5g1fPr9uqqQ&maxWidth=600\", \"/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXSGWnJSRCq7HGIjBE6YXhSjIwRfumjtUArAAUQSA7EcRafzWXvRhMpV2kAcrQxV-qJ1Tn82UUIk245-6y0Lc6zaCJxpRw8BfkC-AY9ttcT76622l-2iBQsPCsnp1TTXTMmi5pll7liWVrZsmSZEDN3SLpWkjafQbc80Wu-p9sE3MFPXJD8N6CP33ySgG91E75RYnSVqYVDZ2ZfAMbJhGr_gLOSA7tioPUHS1G6F2DngOIJJm6_0YZdHvA_60JIvVItfcttPHC10n6sRAN_z2Zw47aEVlprAa_4pvN3tL_CaQ4gF4bmYIXaLfHz2IKbVHGgBY1lC4-DZXvYA27wTVEUIzvkHF9J61k5JQ96Gr2kZ88Ev7G71fVNfLvQJx3Gat7VV8W0xk5XstWUXSUc0lUaCrjf67JwXZFm6B-KmKIO-Yg&maxWidth=600\", \"/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXTP8jEN-__Yq4_qKqFzMTZpmgr6Xcu5q7k97M0iM5_AmI-YSBbcVMdsMRiJ7G-pC0iIVTXwrmRn1GDd7Pl8rQgiPkr91jsk7IqYCnFNGO4ua1ijBcffwnW4hrBUISwHcrJGafoaRU0MSbyNaEVciqmg2K8s3Ofj4c3XDJohnRXFGyi6W-w3m433s41JrRDQdhmIg9ymr757kMKZ9D393I5VF_i3PbQ0DaC_APt5nJmnkHm6aBwa7eByGOFq47iLiem03j9L8B4iJgFYzFh1PX0ijSlqwKh5YWa472kaBtO1gfRlIX65XdGxudZRjHujt-toKQ0v_rHwXcyo5luoo49ON7nxl01j4Bf0IC4MkhxrfA9gAtUgnSoOZD_1x3e-hppMhOTY6GyG65ksbAtiomFfa6ZpEYAQrX2jPSH-UYs2JUx6HGSmnFPEg3P9QNZk&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "1d59ea91-18a8-419c-a8b9-3804fb6d65e9",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJwTjQW0EUrjsRIRf9d3YjyK4\", \"name\": \"Chianti, Koramangala\", \"formatted_address\": \"No 12,, 5th Block, Koramangala, KHB Colony, 5th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"italian_restaurant\", \"fine_dining_restaurant\", \"pizza_restaurant\", \"dessert_restaurant\", \"restaurant\", \"food\"], \"rating\": 4.5, \"website\": \"http://chiantiristorante.in/\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200910:30\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:30\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:30\\u202fPM\"], \"editorial_summary\": \"Warm, classically furnished eatery offering Italian dishes in an old-school dining room.\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"Chianti has been a place I 've always loved to go to . There is something in the environment they create that you end up loving it . The staff is very courteous , helpful and always there.\\n\\nFood as usual was yummy , the mushroom garlic bread , aubergine and Ravioli is still lingering in my taste buds.\\n\\nIf you love Italian , then this is the place to be . Thier menu is great with a wide variety and the ingredients are super fresh . And oh yes , there are some yummy breads you get on the house which is not worth missing\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"The food was great. Really good ambience and I love their ragu and pomodoro sauce. Giving a star less only because the salt was a little more than I\\u2019d like.\\nThe menu is nicely done, with a lot of meat options which (non pasta/pizza) which is something I liked.\\nWe started off with a little on the house bruschetta making session which was sweet!\", \"published\": \"6 months ago\"}, {\"rating\": 5, \"text\": \"Chianti is a fantastic place if you\\u2019re looking for authentic Italian cuisine. The ambiance is warm and inviting, making it a great choice for a relaxed lunch or dinner.\\n\\nThe pastas are incredibly creamy, rich, and full of flavor, while the pizzas are equally impressive with fresh ingredients and a perfectly baked crust. Overall, a wonderful dining experience and definitely one of the best places in Bangalore for Italian food.\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"Loved the food. Every single dish was so well presented and delicious. Every single detail complement each other. None of the elements were extra or just for garnish. You can literally wipe the plate clean like we did. They also offered fresh baked breads for us to try when we waited for our food and also had a little DIY food which we tried making ourselves.\\n\\nThe staff was very attentive and constantly took care of plates, breads, and even asked us if everything is to our likings. It\\u2019s gives you a ambience of an authentic Italian restaurant with wine. I highly recommend it and I might just visit until I taste everything on the menu lol.\", \"published\": \"4 months ago\"}, {\"rating\": 5, \"text\": \"Had a wonderful dining experience here. The food was absolutely delicious, we especially loved the chicken dish and the pasta, both were cooked perfectly and full of flavour. The service was spot on and truly elevated the overall experience. When you get amazing food paired with excellent service, there\\u2019s nothing like it.\\n\\nA special mention to Shant, our server, who was extremely hospitable, friendly, and made us feel very comfortable throughout. He was attentive, helpful, and ensured everything was taken care of smoothly. Highly recommended, and we will definitely be back.\", \"published\": \"7 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565387414,
+    "detail": "6887 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJEfXy3cIVrjsRFKH0ilntLN4\", \"name\": \"Pasta Street Koramangala\", \"formatted_address\": \"Ground floor, 751, 80 Feet Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"italian_restaurant\", \"wine_bar\", \"bar\", \"pizza_restaurant\", \"european_restaurant\", \"restaurant\"], \"rating\": 4.4, \"user_rating_count\": 4616, \"price_display\": \"\\u20b9600\\u20131600 per person\", \"phone\": \"072592 32851\", \"website\": \"http://www.pastastreet.co.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=16009431744234430740&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Shashank Ananthoju\", \"rating\": 4, \"text\": \"I've visited Pasta Street in Koramangala twice now, and both visits were enjoyable. On my first visit, we tried the Arrabbiata Salad and Roma Chilli Garlic Pasta, and both were flavorful and well prepared.\\n\\nOn my second visit, I tried the Crema Monte, and it was just as good. The pasta was creamy, satisfying, and cooked perfectly.\\n\\nOverall, it's a nice place if you're craving Italian food. The quality has been consistent across both visits, and I'd definitely come back to try more from their menu.\", \"published\": \"2 months ago\"}, {\"author\": \"Kumar Ankit\", \"rating\": 5, \"text\": \"If you\\u2019re looking for a slice of Italy tucked into Bangalore\\u2019s buzzing food scene, Pasta Street Koramangala delivers a dining experience that\\u2019s both comforting and quietly refined.\\nFrom the moment you step in, the ambience sets the tone\\u2014warm lighting, rustic wooden accents, and a laid-back European caf\\u00e9 vibe that invites you to slow down. It\\u2019s the kind of place where conversations linger as long as the food does.\\nThe menu is a celebration of authentic Italian flavors without feeling overwhelming. What stands out immediately is their commitment to freshness\\u2014especially with their pasta, which is often made in-house. Each dish feels thoughtfully crafted rather than mass-produced. The sauces strike a beautiful balance: rich but not heavy, flavorful yet not overpowering.\\nThe pasta, of course, is the star. Whether you go for a creamy Alfredo or a tangy tomato-based option, the texture is perfectly al dente, and the ingredients shine through with clarity. Their wood-fired pizzas deserve a mention too\\u2014thin crust, slightly charred edges, and a topping combination that feels both classic and satisfying.\\nService here complements the experience well\\u2014attentive without being intrusive, and genuinely warm. It adds to the overall charm of the place.\\nWhat makes Pasta Street truly stand out is consistency. It doesn\\u2019t try to reinvent Italian cuisine\\u2014it respects it. And in doing so, it creates a space you\\u2019d want to return to, whether for a casual lunch, a date night, or a quiet solo meal.\\nVerdict: A reliable go-to for quality Italian food in Koramangala, where good food meets great ambience.\", \"published\": \"4 months ago\"}, {\"author\": \"Vindhya Gowda\", \"rating\": 5, \"text\": \"Pasta Street, as the name suggests, serves some really tasty pastas and the quality of food is consistently good. My all-time favorite is the chicken white sauce pasta\\u2014it\\u2019s absolutely delicious. The drinks are great too, and the chicken wings are lip-smacking.\\n\\nThe pastas are quite addictive, and they have an open kitchen, which makes the place feel clean and well-maintained. Service is good and efficient. It is a bit on the expensive side, but definitely worth it for the quality and taste.\", \"published\": \"3 months ago\"}, {\"author\": \"Hema malini\", \"rating\": 5, \"text\": \"The pasta here is simply excellent. I tried one with the combination of white red and pesto. Have not had anything like this and loved it!\\n\\nWe also tried the rose sangria and it was mindblowing and super refreshing!\\n\\nThe dessert selection was not that great but plays a good supporting cast.\\n\\nAll in all, a good place for really really good pasta. Lives up to the hype.\", \"published\": \"5 months ago\"}, {\"author\": \"Josef Mathew\", \"rating\": 4, \"text\": \"I really liked this place! The service and ambience were top notch. The food was really good with the fettuccine pasta, veggie salad and garlic bread being my favorites. Tomato soup and pizza seemed very average but overall, good place to try italian cuisine.\", \"published\": \"4 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXSYEP3mdn0Po8x8hUxnGHvf9LDVHgoE-JhHlqlznODeqFJZb0QQkuzXG2JabHoNJet6O2eHNZyN3Hu69BA8dIDeiEMWe7mrvE5bNifo6Y8gd7_AG2zEbpkoj0-GWRLrhwDIyLvNpl4uQ3soiX3wU6xfMUR06feoVG2natEPD4NXzGfg63_fIFAyKVukkII2K0FlMHqYVhkF6s7nCrszR8Tl4iUuGUKcagB7XkeUZzqSE498sEYWpvO0aSRCdX20EPLus0EWUAIv7uugzPzcrdC8Zx-MXfQT1iu1M9Gc07ORHwcPHLcgayY-EZDQhF1HCOBNWFxxjym6hpSBwEFDr7t0Jqouugz-X9-xe4Lk2iXKB6-_ilI8jNfN4lemDm163-5U-pn-drS1jAsGgyWcbrMxTS8Qvm8VvoHytMVPxP2WMQ&maxWidth=600\", \"/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXTvx3NaoZbPpeAsqKcKEBood2FbTeFM8TFKSjCd60gxaIHNnTM71SP7vf9tHixYJOl6udeSR4jtESkCulTjfSnAjQG6B7T39iNo-culcYrA21k8lwDldvAIsBRRvrwPlAKDrJ5duPd31MPiAOV-v_NDQbgvTKWze7wo0VrI1rWPVBlylf5-PEA0_lFCFyat4fJxAi1aXMyLSv5EBHaiNFaPia3ag-PqQc5QuInqxkASnbQpmmANQRG7qWvlYFJg-WqFuOc6AgiKftNB930tCzQezZw7NquZrUGy9Msf87OrXFZsrjvl-EpTAWSrMNL4F679WcnSCijnaHOascfjkTAKkkg1Q2T9iMYlcSVKIKqNtLegmNd5BsgFQ3G6KrTyu_cdql-EeW6UvDbW-vckU1Ra1umT3ksr5hBClw0&maxWidth=600\", \"/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXR5zR_JNoWL0yO_YOUKUod8ZgzA5TZOcrQwZur65Wv4mRhUr6ro-y4QmSWCxip03LCja1kFkyvp7iQ-ANVGX7UvHpbY-4iqSWk-RZLCmj0VBCZL7hMdtwrbeG7czs9E0HXimG0LLsZOh8c7FXJt0mS-EceyoJ2Vb4xUIbRr-kMhJrhkFA8bZxWiD1apzhqXnO1PlLnkwuB01br8lUomQogu0HY8xB6gC-aiifHILtZ0as8Ybir8JM2hjKWZy3SliJKUpjUFUdsuQHS9Br4IBwD3UKwzFJ5DVprlqLssTMul19WojQ8hc6DWkFA1jdIZ_tNUf7oUlJ7wAxQ67707wW9jXQKL-_3C32NWb8q6NJvKgMKWdUqFAd9ux71kGOZT7-CWzN_L4OAkgl8KBjwB6kDuMsKeYQHmxldUSK-ispoynbWqZtaee_Xwxqxy07QJ&maxWidth=600\", \"/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXRn0VVuLY6rqbEncJDUjuQarJhw9IYEf6zICRjctNYcmhSTUge-68XI4jMrbCJaOqvGimU5vn4XASkdj4p7cLnjz251Mtq-IV0KxlEkjd1sYhVegZwuIEQBgaozYmH1WZmhH4Ya2Fbcj111gIehlTH1VIEatbtg7egBee9-UfDvl3ili9Ljg2ahw7G_KYz5V69GLllkIrZL5SnwVi0V8SzkdhABPzBaZI9kBJM2PteR7m62o2wW2DvYp0fXgVNdgxHxOtxCVRkqbU-m-Lr20e2XuaDF0kpDmlZUHGTk-WWwdYg-rSpk8vYoIkCHLNx-bGnUVcvz04momLgD_hA8cEK9HPtRT-_Y4O9Jx-3shqPse1w6ujUvzfRHIX2KdB7DJKz9DpZ4BHmM7mzEmCkmnCLmpoV8VUavPn5rgT_bgS6fguzmQfVGj0IZxiI0FBtX&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "fc0600d2-bd31-45b9-9f54-95750114b785",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJEfXy3cIVrjsRFKH0ilntLN4\", \"name\": \"Pasta Street Koramangala\", \"formatted_address\": \"Ground floor, 751, 80 Feet Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"italian_restaurant\", \"wine_bar\", \"bar\", \"pizza_restaurant\", \"european_restaurant\", \"restaurant\"], \"rating\": 4.4, \"website\": \"http://www.pastastreet.co.in/\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"I've visited Pasta Street in Koramangala twice now, and both visits were enjoyable. On my first visit, we tried the Arrabbiata Salad and Roma Chilli Garlic Pasta, and both were flavorful and well prepared.\\n\\nOn my second visit, I tried the Crema Monte, and it was just as good. The pasta was creamy, satisfying, and cooked perfectly.\\n\\nOverall, it's a nice place if you're craving Italian food. The quality has been consistent across both visits, and I'd definitely come back to try more from their menu.\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"If you\\u2019re looking for a slice of Italy tucked into Bangalore\\u2019s buzzing food scene, Pasta Street Koramangala delivers a dining experience that\\u2019s both comforting and quietly refined.\\nFrom the moment you step in, the ambience sets the tone\\u2014warm lighting, rustic wooden accents, and a laid-back European caf\\u00e9 vibe that invites you to slow down. It\\u2019s the kind of place where conversations linger as long as the food does.\\nThe menu is a celebration of authentic Italian flavors without feeling overwhelming. What stands out immediately is their commitment to freshness\\u2014especially with their pasta, which is often made in-house. Each dish feels thoughtfully crafted rather than mass-produced. The sauces strike a beautiful balance: rich but not heavy, flavorful yet not overpowering.\\nThe pasta, of course, is the star. Whether you go for a creamy Alfredo or a tangy tomato-based option, the texture is perfectly al dente, and the ingredients shine through with clarity. Their wood-fired pizzas deserve a mention too\\u2014thin crust, slightly charred edges, and a topping combination that feels both classic and satisfying.\\nService here complements the experience well\\u2014attentive without being intrusive, and genuinely warm. It adds to the overall charm of the place.\\nWhat makes Pasta Street truly stand out is consistency. It doesn\\u2019t try to reinvent Italian cuisine\\u2014it respects it. And in doing so, it creates a space you\\u2019d want to return to, whether for a casual lunch, a date night, or a quiet solo meal.\\nVerdict: A reliable go-to for quality Italian food in Koramangala, where good food meets great ambience.\", \"published\": \"4 months ago\"}, {\"rating\": 5, \"text\": \"Pasta Street, as the name suggests, serves some really tasty pastas and the quality of food is consistently good. My all-time favorite is the chicken white sauce pasta\\u2014it\\u2019s absolutely delicious. The drinks are great too, and the chicken wings are lip-smacking.\\n\\nThe pastas are quite addictive, and they have an open kitchen, which makes the place feel clean and well-maintained. Service is good and efficient. It is a bit on the expensive side, but definitely worth it for the quality and taste.\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"The pasta here is simply excellent. I tried one with the combination of white red and pesto. Have not had anything like this and loved it!\\n\\nWe also tried the rose sangria and it was mindblowing and super refreshing!\\n\\nThe dessert selection was not that great but plays a good supporting cast.\\n\\nAll in all, a good place for really really good pasta. Lives up to the hype.\", \"published\": \"5 months ago\"}, {\"rating\": 4, \"text\": \"I really liked this place! The service and ambience were top notch. The food was really good with the fettuccine pasta, veggie salad and garlic bread being my favorites. Tomato soup and pizza seemed very average but overall, good place to try italian cuisine.\", \"published\": \"4 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 3",
+    "ts": 1787565387419,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "52,157 / 100,000 tokens (threshold)",
+    "token_count": 52157,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565387422
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 32,668 · out: 1,615 · cached: 25,600 · reasoning: 450",
+    "ts": 1787565410545,
+    "detail": "step 3"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 32668,
+    "output_tokens": 1615,
+    "reasoning_tokens": 450,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 25600,
+    "text": "Tokens — in: 32,668 (cache: 25,600) · out: 1,615 (reasoning: ~450)"
+  },
+  {
+    "type": "text_final",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "Since you're after plump, hand-folded spinach and ricotta ravioli made fresh, these are Bengaluru's highest-rated Italian spots that actually deliver on that promise — ranked by rating, with the fresh-pasta makers up top.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "Dal Moro's, Phoenix Mall of Asia (Yelahanka)",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Dal Moro's",
+                  "query": "Dal Moro's fresh pasta ravioli",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXTCI9VZxze5LAjdVcmqi6-V3srE6zeQKfXDdbgIcHz19ivrNWLkKzmcUG49rXIzGbY0jqsYlVWOR8TEE9r1lGOc2mrdVFGUPXkV04la-QUlwSmIO9F-waCPkNpQh_iGKugRa_VuFWTrtnyOBi7emBfXC0xLvfak4LAlJRQOBg7aI_Im17sdIVO2mnY1yEfp-Ie12PbZlAWE1YYoMr46BjcbZcl0XmvCDrE97AIzZ866jt_T5OLavc8AQGuWk-zuuIk694D3Srk5lUhGMdMOXJOkU3S-Bvi0Xa4yuPzK0FO2U3lJ73XvqpHGfr6bkKwzlrba9IUlB-AEisrCD2o4WvSVVY60R63je8Ew8-q1RAjruI6APl_INiiJaIKnDVlwPerzl7drwpfQJcUXRKLJ5GotqbgbHtGxNbY1LEmQ0IDBhQtyOohJNWY4Moybpw&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "alt": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "place_id": "ChIJDSnLCi4ZrjsRqFp9D8IcVpY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXQWe8SvHY3J_v19jMkgb9FuQf94BDmeo4xgGgokfby1Wt_vZUghAgfdEjZCnvAKKfVKB7SMipK6iJO7UW5CS3a_Kq5vPaC-P0dfx0nOGB3poO1ykjQj19c6pY1x85uaMVDt9tpfK-yWxmGGsUcXo_3hvrKGdgspOABoRpQk1ULSjMJmkwjQzagBnpCZ4rLtAInZNceEwX5POpe1W2kvD_4oopQsHqptvxaqq2tvI2pSsOyEhIHU0WePqj-W-3bEcVkxRdXe0gxg3vEyN6tC05JWHdVIWY07-YUaIa3TvhHdX86csm0ZvvABB-l9TD-n8CH2Bia9Zjt-kxGYr3imOkqX3HNTEose03VH6_OmeAKbdl1f6-SwboHyhYyXwfHIzhFPH4bY_DLZmjDDR9ocan2iqGYAXErBpvYeq-WxiPcUBnFm02O2jy9U95q1_w&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "alt": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "place_id": "ChIJDSnLCi4ZrjsRqFp9D8IcVpY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXQc8q1Q0gHiOM1k7yhZwCbibFdrFie0SIqETxPgi8hK330q9IY5fvzPBYY4pgJVoCRUyWPrL6K2ntLeNDrw-O7FNM9prlVB_F1BDndPVeVzuaAhzXEwTSfBEaa8tq6HnAsfcvTG9DGAl32rr6dK4-CLi1jXaPKoVm70Z5_NSYrxQE4MFcsoSGqRMiKG72vexwQ0vyLg75bw3IfNphH4DfUvaaqAGqS8NtoNe_hcZAFEgFbGyQjGzgHFewj9I9u8VbkoJ1eeJszvsMZ7xZYU7lz-0oUgwmJh8SPNRqw7u27SgfM380xRU2figc84DaA3-hxWXQfXuEgZ5QVdcKbwF8lG3lYn3O6DQRTMH8Gt_C-LCh-UF31TEeY19bi8JwnZYo0zukTbKkgf83VqxNr0HxWmYoF6hJWpbkCrxjZrmRwi2q7G2u1JNfmhFuCFluN3&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "alt": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "place_id": "ChIJDSnLCi4ZrjsRqFp9D8IcVpY"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.7★ · 1091 reviews",
+                "price": "₹200–400 per person",
+                "why": "Fresh-pasta shop — you build your own ravioli from made-to-order dough, the closest thing to hand-folded daily.",
+                "hours": "Open daily 10 AM – 10 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=10832877573495413416&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "098807 28899",
+                  "tel": "tel:09880728899"
+                }
+              },
+              {
+                "title": "Light of Italy, HSR Layout",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Light of Italy",
+                  "query": "Light of Italy ravioli",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXS6zxOteioxHtvckp24V48POclSosVU_ffNb1fIMRS5pzqV6p6BHoedYnO8oeiYoJUfwZ8c4T4iaP6fuHNdt9HD4gXWpEET8yZo28nPWmFTZoN-giNHsl-gnvoFl8jFl1jvdU4rsa1Ow5waffkEPPHhz2TWRY4j80kKVEZ-LQiY_pahlj738w0HsY69kNdSs9-6QWC_jG5N_xa17IvNx4hHsFGVfuMAHBoQHXgIqBzPUh1KdoKFw8BhWNE6L7ohBchHGQ5J1aDcndOnFQBZcpEBx7vLw-y3OiIy0uM_WoG5qFeISuoXqKFSCgMCivjMCWHBC6YHrQzxaNhdf7SBs-GKYie2DhrbGgCCae9xVPkNuXjJrLMnAay1YKvYfGQxcybsdSaOBnjvgAh44QcaVy-mD7BmLIrmyGgNNwYLZkol6oEkXtbegzqe4SzvgVZ3&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Light of Italy",
+                      "alt": "Light of Italy",
+                      "place_id": "ChIJO8xaIwIVrjsRoJaH5hEOo5Y"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXTfz65OV19PQsQuzuB1dg7BrAmFisAP7CVTYT7FD2znR7sh_GDU184EdX7-u2Bg4w3O2MxXAICKCgMdZc52xANk_UAaG40SCyoShbpL_NltS8uXxdHyloZUiz-7vvpjg5_uESIemZ29EL8i6Idgjn_3ihDckEAt6t1d8ipLP1Na2R1DzPmc2M9HfApOuT7gzLiFJycaM8u9L56pO5owV-Syn5G8JdT35gRAhjnVJ_faVtaq-OxN08uvGrwBy7sa3jkrw65JD15xvO_g7KWXyTj7cuYe_cY4I6LZlI9D13F_yVE-elat-mNv2d4BX2Sxzq11B71_TVwCEzF323-piaD9fr6ibgp--5kOxcrIvGh-oOS_0AfmZyCbyzCzo88r6yv5rSVdieZWWzPmYclwSQWg6NazR6y7i7Ta6jQO_LlRvzyrBl8sABEPlnmklN-c&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Light of Italy",
+                      "alt": "Light of Italy",
+                      "place_id": "ChIJO8xaIwIVrjsRoJaH5hEOo5Y"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXTXrlT00Bc9LyzmUN4V13ogKcqUY5JxSZ1RNP7iqFkD4rJ8bPcr8Rl998S4L1gJIlAEZl1CnV5JNIYBbD4IsNos6IsELVwucYX-137DIvNedL_WoPnFDpnEBF-lysWH3EkpgS2zaFk8Bu2HM8MqwLRiTpKXPC9r1Ig5SH7vlmb8fe-Ads8pUnF-ViGNoCqmH-qdecmzlO1h_bALaJqUnA5XPzu_QKESrAUp1wLbuu2r6T2IfeuNEAJYm4KxgFfh0MgGKEO9fVTZmpPDKAnJHXz8xWrt1qtlHOdhO-rL---GoNw5ukpVeqnx6T4G3mgdD5tvr3OQIL8qEQxHHqQsxFIyWfnjQ3nFx0_y133Vqba9vwEua3pgnoRlkiIh2E_54bHVtCzG2mjKSHdxNk8B4Ddli1hfCpLY599z31ZZYmsoUoVXEIoMqHCb4D0ksg&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Light of Italy",
+                      "alt": "Light of Italy",
+                      "place_id": "ChIJO8xaIwIVrjsRoJaH5hEOo5Y"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Best Value",
+                "rating": "4.7★ · 4249 reviews",
+                "price": "₹400–1400 per person",
+                "why": "Pure-veg Italian with a well-reviewed ravioli in red sauce; cozy, date-worthy, and open late.",
+                "hours": "Open daily 11 AM – 12:30 AM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=10854534996937905824&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "090193 58401",
+                  "tel": "tel:09019358401"
+                }
+              },
+              {
+                "title": "Chianti, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Chianti",
+                  "query": "Chianti restaurant ravioli",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXQFvLIjXLBsCYjuclStRJmUbBTRYJlS6PzkYi1K-7SItgY_SxxogkE99pk18vhDGWwN6iKIokejnTtVgCMPoneOXvnrBEzK8nKelgcPYVPg2hCXbldfqF00Ib4xdSOXnZEgRxamZCkag_UDDG2lSbXjIvaa1VMtBmslckET88jG8EnNjJzFjcqcmbzjRt0gazaqg176jCAGtwTCLLmNYSfeGOZWQgJjBjYuEnwqkNbz7sOVWfFaBZH74HMjqZzC1dT2kAQyVEMxtNbWTtUpt0RruB06yHMyu8n-MUrS-4PlplPTi7uEkxCVVCxG6Ycuel7aayP0_XKe6LTS1ai9PHSJ2eKDwanJPWnhSRegNPYY31Gtu9SpLFgT0KFcvXCnm5inGgywvQTC1WexFJY63wzOiHlhh-ne85nMpUnadM1IJfD-aSXUtlKOvFhBjreH&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Chianti, Koramangala",
+                      "alt": "Chianti, Koramangala",
+                      "place_id": "ChIJwTjQW0EUrjsRIRf9d3YjyK4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXRm-J96ZKytrKtzY01GJEOmGVBedaznc1VyKsEwV4PaoKbjEo9P3qtuieCIMpLgAWvkmbZPzsBj8C-2eURVsviZpeImPxvQtd-pGfKgLoTZvyAROhwUPD0rpl7KcuYFiwvtnLmOvkikFHpVyqdWp2JO5QV7HymeVT0xp1TMcWMqtsOJYYkvJZJBA9QcHdBJ6HMH0M7T3_KXtJVOJ97XxANMRb7ZQmDXybvQIBM56EX7YuIT4acIQIXETFnq3T-9X8U2vngNR1tB79MuYlxMHR4FvBmAplW0aOVoVHYgGw1GL-xkIWijbvPkRM_5X6buS-oNFsItEKt5V31JUEgjusDDNWlALcq_RA4c6a-Y5IBbqK8VUYkblSXJusyzOWP79KULqQEzcDPm6XszVJrd-0itOozN3cJRmcdlSdIvtDaCpF9CvuztKGh26LcTeNv9&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Chianti, Koramangala",
+                      "alt": "Chianti, Koramangala",
+                      "place_id": "ChIJwTjQW0EUrjsRIRf9d3YjyK4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXQvSUnGJU-yintMw9Mhs-a8cUwRIubp0XMFUfLANrYxY_ETJFN1dj_xtQ_CiOfEVofgKgFBvcw6GApmMzoHT2E7AGyqLnlttpwe-EvwItGVtjqtUY41jQ1kAas4-Rbzq_js1bFYPrnJHqhcK91Nszztq1ErTiI37HH__qqe3wkinyYUT_gRfBK5aKpfS2ZgVF5Tfy6fnOTwGjvhjU8K2rwQwQC3PQ3w1yu2kQ0RXvtvk_Y9ER3-51hOfYh9vQAbclVNkc3p4YtngsgxpSQKGDnAoHBGb8r8IVPyKmSa3uyTt8SYxgL8_UI4Vo7PTuNAIq6tmkHmZkp_8i-HIiLOP2by963MkcpunaBZ358k8voCjSj_88pwII3PvCqEaygIZw5rUt-XPYkNZ6p15uuymHQ7jOEfm64HzH29GDH7qV6DYEwcY4P5g1fPr9uqqQ&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Chianti, Koramangala",
+                      "alt": "Chianti, Koramangala",
+                      "place_id": "ChIJwTjQW0EUrjsRIRf9d3YjyK4"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Crowd Favourite",
+                "rating": "4.5★ · 6561 reviews",
+                "price": null,
+                "why": "Classic fine-dining Italian with a signature aubergine ravioli and super-fresh ingredients per reviews.",
+                "hours": "Lunch 12–3:30 PM, dinner 6:30–10:30 PM (till 11:30 PM Fri–Sun)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=12594355349667780385&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "080 4113 2021",
+                  "tel": "tel:08041132021"
+                }
+              },
+              {
+                "title": "Pasta Street, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Pasta Street",
+                  "query": "Pasta Street Koramangala fresh pasta",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXQbVnbxHVl2__PfJ2shhxsWVjk3GPsGUvvR1Pv00hH8sqwaLac2NRvl_ifbiEKNBGPWlsFeLEb8uWtlBCzaUbakVv8oVn4PB4xTQ5HmRkw-k35l6H4Q1TT-FS8UUqd5egUHMxEh_41l4IzwaunVBPZlb52TA8m6S-iJ8b0oCXeBqhSiSgsS_lnS5VCABput30aiNW3Dg9CycyGA5E0Uhky93MQKQgtTKaoEoS2s8GEcc-6k7L4_Tv9afvcuJTOu7t6w-jbk2dF19DFoAr_VVR1VrPmOp5PgVRG-6gqEXEs_AwcFlYuPkIXrk1q9cbBFT2w6KH4IWKI4suOto6VVvwWY4btuPanrUolKzRPyoMirTrlxIr_q-cl19HK29YSYffgoKNEbp17gqZZENVaoi7y_EWjV1nVs6JIVES2CNEt4cA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Pasta Street Koramangala",
+                      "alt": "Pasta Street Koramangala",
+                      "place_id": "ChIJEfXy3cIVrjsRFKH0ilntLN4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXSYEP3mdn0Po8x8hUxnGHvf9LDVHgoE-JhHlqlznODeqFJZb0QQkuzXG2JabHoNJet6O2eHNZyN3Hu69BA8dIDeiEMWe7mrvE5bNifo6Y8gd7_AG2zEbpkoj0-GWRLrhwDIyLvNpl4uQ3soiX3wU6xfMUR06feoVG2natEPD4NXzGfg63_fIFAyKVukkII2K0FlMHqYVhkF6s7nCrszR8Tl4iUuGUKcagB7XkeUZzqSE498sEYWpvO0aSRCdX20EPLus0EWUAIv7uugzPzcrdC8Zx-MXfQT1iu1M9Gc07ORHwcPHLcgayY-EZDQhF1HCOBNWFxxjym6hpSBwEFDr7t0Jqouugz-X9-xe4Lk2iXKB6-_ilI8jNfN4lemDm163-5U-pn-drS1jAsGgyWcbrMxTS8Qvm8VvoHytMVPxP2WMQ&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Pasta Street Koramangala",
+                      "alt": "Pasta Street Koramangala",
+                      "place_id": "ChIJEfXy3cIVrjsRFKH0ilntLN4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXTvx3NaoZbPpeAsqKcKEBood2FbTeFM8TFKSjCd60gxaIHNnTM71SP7vf9tHixYJOl6udeSR4jtESkCulTjfSnAjQG6B7T39iNo-culcYrA21k8lwDldvAIsBRRvrwPlAKDrJ5duPd31MPiAOV-v_NDQbgvTKWze7wo0VrI1rWPVBlylf5-PEA0_lFCFyat4fJxAi1aXMyLSv5EBHaiNFaPia3ag-PqQc5QuInqxkASnbQpmmANQRG7qWvlYFJg-WqFuOc6AgiKftNB930tCzQezZw7NquZrUGy9Msf87OrXFZsrjvl-EpTAWSrMNL4F679WcnSCijnaHOascfjkTAKkkg1Q2T9iMYlcSVKIKqNtLegmNd5BsgFQ3G6KrTyu_cdql-EeW6UvDbW-vckU1Ra1umT3ksr5hBClw0&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Pasta Street Koramangala",
+                      "alt": "Pasta Street Koramangala",
+                      "place_id": "ChIJEfXy3cIVrjsRFKH0ilntLN4"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Fresh Pasta Maker",
+                "rating": "4.4★ · 4616 reviews",
+                "price": "₹600–1600 per person",
+                "why": "Reviews highlight pasta made in-house and perfectly al dente — a reliable go-to for quality fresh pasta.",
+                "hours": "Open daily 12 PM – 11 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=16009431744234430740&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "072592 32851",
+                  "tel": "tel:07259232851"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Reviews for Dal Moro's ravioli",
+          "Only pure veg ravioli spots",
+          "Directions to Light of Italy",
+          "Best pasta to pair with ravioli"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "text_replace",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "Since you're after plump, hand-folded spinach and ricotta ravioli made fresh, these are Bengaluru's highest-rated Italian spots that actually deliver on that promise — ranked by rating, with the fresh-pasta makers up top.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "Dal Moro's, Phoenix Mall of Asia (Yelahanka)",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Dal Moro's",
+                  "query": "Dal Moro's fresh pasta ravioli",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXTCI9VZxze5LAjdVcmqi6-V3srE6zeQKfXDdbgIcHz19ivrNWLkKzmcUG49rXIzGbY0jqsYlVWOR8TEE9r1lGOc2mrdVFGUPXkV04la-QUlwSmIO9F-waCPkNpQh_iGKugRa_VuFWTrtnyOBi7emBfXC0xLvfak4LAlJRQOBg7aI_Im17sdIVO2mnY1yEfp-Ie12PbZlAWE1YYoMr46BjcbZcl0XmvCDrE97AIzZ866jt_T5OLavc8AQGuWk-zuuIk694D3Srk5lUhGMdMOXJOkU3S-Bvi0Xa4yuPzK0FO2U3lJ73XvqpHGfr6bkKwzlrba9IUlB-AEisrCD2o4WvSVVY60R63je8Ew8-q1RAjruI6APl_INiiJaIKnDVlwPerzl7drwpfQJcUXRKLJ5GotqbgbHtGxNbY1LEmQ0IDBhQtyOohJNWY4Moybpw&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "alt": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "place_id": "ChIJDSnLCi4ZrjsRqFp9D8IcVpY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXQWe8SvHY3J_v19jMkgb9FuQf94BDmeo4xgGgokfby1Wt_vZUghAgfdEjZCnvAKKfVKB7SMipK6iJO7UW5CS3a_Kq5vPaC-P0dfx0nOGB3poO1ykjQj19c6pY1x85uaMVDt9tpfK-yWxmGGsUcXo_3hvrKGdgspOABoRpQk1ULSjMJmkwjQzagBnpCZ4rLtAInZNceEwX5POpe1W2kvD_4oopQsHqptvxaqq2tvI2pSsOyEhIHU0WePqj-W-3bEcVkxRdXe0gxg3vEyN6tC05JWHdVIWY07-YUaIa3TvhHdX86csm0ZvvABB-l9TD-n8CH2Bia9Zjt-kxGYr3imOkqX3HNTEose03VH6_OmeAKbdl1f6-SwboHyhYyXwfHIzhFPH4bY_DLZmjDDR9ocan2iqGYAXErBpvYeq-WxiPcUBnFm02O2jy9U95q1_w&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "alt": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "place_id": "ChIJDSnLCi4ZrjsRqFp9D8IcVpY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJDSnLCi4ZrjsRqFp9D8IcVpY%2Fphotos%2FAVoNoXQc8q1Q0gHiOM1k7yhZwCbibFdrFie0SIqETxPgi8hK330q9IY5fvzPBYY4pgJVoCRUyWPrL6K2ntLeNDrw-O7FNM9prlVB_F1BDndPVeVzuaAhzXEwTSfBEaa8tq6HnAsfcvTG9DGAl32rr6dK4-CLi1jXaPKoVm70Z5_NSYrxQE4MFcsoSGqRMiKG72vexwQ0vyLg75bw3IfNphH4DfUvaaqAGqS8NtoNe_hcZAFEgFbGyQjGzgHFewj9I9u8VbkoJ1eeJszvsMZ7xZYU7lz-0oUgwmJh8SPNRqw7u27SgfM380xRU2figc84DaA3-hxWXQfXuEgZ5QVdcKbwF8lG3lYn3O6DQRTMH8Gt_C-LCh-UF31TEeY19bi8JwnZYo0zukTbKkgf83VqxNr0HxWmYoF6hJWpbkCrxjZrmRwi2q7G2u1JNfmhFuCFluN3&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "alt": "Dal Moro's Bengaluru | Fresh Pasta To Go",
+                      "place_id": "ChIJDSnLCi4ZrjsRqFp9D8IcVpY"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.7★ · 1091 reviews",
+                "price": "₹200–400 per person",
+                "why": "Fresh-pasta shop — you build your own ravioli from made-to-order dough, the closest thing to hand-folded daily.",
+                "hours": "Open daily 10 AM – 10 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=10832877573495413416&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "098807 28899",
+                  "tel": "tel:09880728899"
+                }
+              },
+              {
+                "title": "Light of Italy, HSR Layout",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Light of Italy",
+                  "query": "Light of Italy ravioli",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXS6zxOteioxHtvckp24V48POclSosVU_ffNb1fIMRS5pzqV6p6BHoedYnO8oeiYoJUfwZ8c4T4iaP6fuHNdt9HD4gXWpEET8yZo28nPWmFTZoN-giNHsl-gnvoFl8jFl1jvdU4rsa1Ow5waffkEPPHhz2TWRY4j80kKVEZ-LQiY_pahlj738w0HsY69kNdSs9-6QWC_jG5N_xa17IvNx4hHsFGVfuMAHBoQHXgIqBzPUh1KdoKFw8BhWNE6L7ohBchHGQ5J1aDcndOnFQBZcpEBx7vLw-y3OiIy0uM_WoG5qFeISuoXqKFSCgMCivjMCWHBC6YHrQzxaNhdf7SBs-GKYie2DhrbGgCCae9xVPkNuXjJrLMnAay1YKvYfGQxcybsdSaOBnjvgAh44QcaVy-mD7BmLIrmyGgNNwYLZkol6oEkXtbegzqe4SzvgVZ3&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Light of Italy",
+                      "alt": "Light of Italy",
+                      "place_id": "ChIJO8xaIwIVrjsRoJaH5hEOo5Y"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXTfz65OV19PQsQuzuB1dg7BrAmFisAP7CVTYT7FD2znR7sh_GDU184EdX7-u2Bg4w3O2MxXAICKCgMdZc52xANk_UAaG40SCyoShbpL_NltS8uXxdHyloZUiz-7vvpjg5_uESIemZ29EL8i6Idgjn_3ihDckEAt6t1d8ipLP1Na2R1DzPmc2M9HfApOuT7gzLiFJycaM8u9L56pO5owV-Syn5G8JdT35gRAhjnVJ_faVtaq-OxN08uvGrwBy7sa3jkrw65JD15xvO_g7KWXyTj7cuYe_cY4I6LZlI9D13F_yVE-elat-mNv2d4BX2Sxzq11B71_TVwCEzF323-piaD9fr6ibgp--5kOxcrIvGh-oOS_0AfmZyCbyzCzo88r6yv5rSVdieZWWzPmYclwSQWg6NazR6y7i7Ta6jQO_LlRvzyrBl8sABEPlnmklN-c&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Light of Italy",
+                      "alt": "Light of Italy",
+                      "place_id": "ChIJO8xaIwIVrjsRoJaH5hEOo5Y"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJO8xaIwIVrjsRoJaH5hEOo5Y%2Fphotos%2FAVoNoXTXrlT00Bc9LyzmUN4V13ogKcqUY5JxSZ1RNP7iqFkD4rJ8bPcr8Rl998S4L1gJIlAEZl1CnV5JNIYBbD4IsNos6IsELVwucYX-137DIvNedL_WoPnFDpnEBF-lysWH3EkpgS2zaFk8Bu2HM8MqwLRiTpKXPC9r1Ig5SH7vlmb8fe-Ads8pUnF-ViGNoCqmH-qdecmzlO1h_bALaJqUnA5XPzu_QKESrAUp1wLbuu2r6T2IfeuNEAJYm4KxgFfh0MgGKEO9fVTZmpPDKAnJHXz8xWrt1qtlHOdhO-rL---GoNw5ukpVeqnx6T4G3mgdD5tvr3OQIL8qEQxHHqQsxFIyWfnjQ3nFx0_y133Vqba9vwEua3pgnoRlkiIh2E_54bHVtCzG2mjKSHdxNk8B4Ddli1hfCpLY599z31ZZYmsoUoVXEIoMqHCb4D0ksg&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Light of Italy",
+                      "alt": "Light of Italy",
+                      "place_id": "ChIJO8xaIwIVrjsRoJaH5hEOo5Y"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Best Value",
+                "rating": "4.7★ · 4249 reviews",
+                "price": "₹400–1400 per person",
+                "why": "Pure-veg Italian with a well-reviewed ravioli in red sauce; cozy, date-worthy, and open late.",
+                "hours": "Open daily 11 AM – 12:30 AM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=10854534996937905824&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "090193 58401",
+                  "tel": "tel:09019358401"
+                }
+              },
+              {
+                "title": "Chianti, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Chianti",
+                  "query": "Chianti restaurant ravioli",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXQFvLIjXLBsCYjuclStRJmUbBTRYJlS6PzkYi1K-7SItgY_SxxogkE99pk18vhDGWwN6iKIokejnTtVgCMPoneOXvnrBEzK8nKelgcPYVPg2hCXbldfqF00Ib4xdSOXnZEgRxamZCkag_UDDG2lSbXjIvaa1VMtBmslckET88jG8EnNjJzFjcqcmbzjRt0gazaqg176jCAGtwTCLLmNYSfeGOZWQgJjBjYuEnwqkNbz7sOVWfFaBZH74HMjqZzC1dT2kAQyVEMxtNbWTtUpt0RruB06yHMyu8n-MUrS-4PlplPTi7uEkxCVVCxG6Ycuel7aayP0_XKe6LTS1ai9PHSJ2eKDwanJPWnhSRegNPYY31Gtu9SpLFgT0KFcvXCnm5inGgywvQTC1WexFJY63wzOiHlhh-ne85nMpUnadM1IJfD-aSXUtlKOvFhBjreH&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Chianti, Koramangala",
+                      "alt": "Chianti, Koramangala",
+                      "place_id": "ChIJwTjQW0EUrjsRIRf9d3YjyK4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXRm-J96ZKytrKtzY01GJEOmGVBedaznc1VyKsEwV4PaoKbjEo9P3qtuieCIMpLgAWvkmbZPzsBj8C-2eURVsviZpeImPxvQtd-pGfKgLoTZvyAROhwUPD0rpl7KcuYFiwvtnLmOvkikFHpVyqdWp2JO5QV7HymeVT0xp1TMcWMqtsOJYYkvJZJBA9QcHdBJ6HMH0M7T3_KXtJVOJ97XxANMRb7ZQmDXybvQIBM56EX7YuIT4acIQIXETFnq3T-9X8U2vngNR1tB79MuYlxMHR4FvBmAplW0aOVoVHYgGw1GL-xkIWijbvPkRM_5X6buS-oNFsItEKt5V31JUEgjusDDNWlALcq_RA4c6a-Y5IBbqK8VUYkblSXJusyzOWP79KULqQEzcDPm6XszVJrd-0itOozN3cJRmcdlSdIvtDaCpF9CvuztKGh26LcTeNv9&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Chianti, Koramangala",
+                      "alt": "Chianti, Koramangala",
+                      "place_id": "ChIJwTjQW0EUrjsRIRf9d3YjyK4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJwTjQW0EUrjsRIRf9d3YjyK4%2Fphotos%2FAVoNoXQvSUnGJU-yintMw9Mhs-a8cUwRIubp0XMFUfLANrYxY_ETJFN1dj_xtQ_CiOfEVofgKgFBvcw6GApmMzoHT2E7AGyqLnlttpwe-EvwItGVtjqtUY41jQ1kAas4-Rbzq_js1bFYPrnJHqhcK91Nszztq1ErTiI37HH__qqe3wkinyYUT_gRfBK5aKpfS2ZgVF5Tfy6fnOTwGjvhjU8K2rwQwQC3PQ3w1yu2kQ0RXvtvk_Y9ER3-51hOfYh9vQAbclVNkc3p4YtngsgxpSQKGDnAoHBGb8r8IVPyKmSa3uyTt8SYxgL8_UI4Vo7PTuNAIq6tmkHmZkp_8i-HIiLOP2by963MkcpunaBZ358k8voCjSj_88pwII3PvCqEaygIZw5rUt-XPYkNZ6p15uuymHQ7jOEfm64HzH29GDH7qV6DYEwcY4P5g1fPr9uqqQ&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Chianti, Koramangala",
+                      "alt": "Chianti, Koramangala",
+                      "place_id": "ChIJwTjQW0EUrjsRIRf9d3YjyK4"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Crowd Favourite",
+                "rating": "4.5★ · 6561 reviews",
+                "price": null,
+                "why": "Classic fine-dining Italian with a signature aubergine ravioli and super-fresh ingredients per reviews.",
+                "hours": "Lunch 12–3:30 PM, dinner 6:30–10:30 PM (till 11:30 PM Fri–Sun)",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=12594355349667780385&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "080 4113 2021",
+                  "tel": "tel:08041132021"
+                }
+              },
+              {
+                "title": "Pasta Street, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Pasta Street",
+                  "query": "Pasta Street Koramangala fresh pasta",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXQbVnbxHVl2__PfJ2shhxsWVjk3GPsGUvvR1Pv00hH8sqwaLac2NRvl_ifbiEKNBGPWlsFeLEb8uWtlBCzaUbakVv8oVn4PB4xTQ5HmRkw-k35l6H4Q1TT-FS8UUqd5egUHMxEh_41l4IzwaunVBPZlb52TA8m6S-iJ8b0oCXeBqhSiSgsS_lnS5VCABput30aiNW3Dg9CycyGA5E0Uhky93MQKQgtTKaoEoS2s8GEcc-6k7L4_Tv9afvcuJTOu7t6w-jbk2dF19DFoAr_VVR1VrPmOp5PgVRG-6gqEXEs_AwcFlYuPkIXrk1q9cbBFT2w6KH4IWKI4suOto6VVvwWY4btuPanrUolKzRPyoMirTrlxIr_q-cl19HK29YSYffgoKNEbp17gqZZENVaoi7y_EWjV1nVs6JIVES2CNEt4cA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Pasta Street Koramangala",
+                      "alt": "Pasta Street Koramangala",
+                      "place_id": "ChIJEfXy3cIVrjsRFKH0ilntLN4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXSYEP3mdn0Po8x8hUxnGHvf9LDVHgoE-JhHlqlznODeqFJZb0QQkuzXG2JabHoNJet6O2eHNZyN3Hu69BA8dIDeiEMWe7mrvE5bNifo6Y8gd7_AG2zEbpkoj0-GWRLrhwDIyLvNpl4uQ3soiX3wU6xfMUR06feoVG2natEPD4NXzGfg63_fIFAyKVukkII2K0FlMHqYVhkF6s7nCrszR8Tl4iUuGUKcagB7XkeUZzqSE498sEYWpvO0aSRCdX20EPLus0EWUAIv7uugzPzcrdC8Zx-MXfQT1iu1M9Gc07ORHwcPHLcgayY-EZDQhF1HCOBNWFxxjym6hpSBwEFDr7t0Jqouugz-X9-xe4Lk2iXKB6-_ilI8jNfN4lemDm163-5U-pn-drS1jAsGgyWcbrMxTS8Qvm8VvoHytMVPxP2WMQ&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Pasta Street Koramangala",
+                      "alt": "Pasta Street Koramangala",
+                      "place_id": "ChIJEfXy3cIVrjsRFKH0ilntLN4"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJEfXy3cIVrjsRFKH0ilntLN4%2Fphotos%2FAVoNoXTvx3NaoZbPpeAsqKcKEBood2FbTeFM8TFKSjCd60gxaIHNnTM71SP7vf9tHixYJOl6udeSR4jtESkCulTjfSnAjQG6B7T39iNo-culcYrA21k8lwDldvAIsBRRvrwPlAKDrJ5duPd31MPiAOV-v_NDQbgvTKWze7wo0VrI1rWPVBlylf5-PEA0_lFCFyat4fJxAi1aXMyLSv5EBHaiNFaPia3ag-PqQc5QuInqxkASnbQpmmANQRG7qWvlYFJg-WqFuOc6AgiKftNB930tCzQezZw7NquZrUGy9Msf87OrXFZsrjvl-EpTAWSrMNL4F679WcnSCijnaHOascfjkTAKkkg1Q2T9iMYlcSVKIKqNtLegmNd5BsgFQ3G6KrTyu_cdql-EeW6UvDbW-vckU1Ra1umT3ksr5hBClw0&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Pasta Street Koramangala",
+                      "alt": "Pasta Street Koramangala",
+                      "place_id": "ChIJEfXy3cIVrjsRFKH0ilntLN4"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Fresh Pasta Maker",
+                "rating": "4.4★ · 4616 reviews",
+                "price": "₹600–1600 per person",
+                "why": "Reviews highlight pasta made in-house and perfectly al dente — a reliable go-to for quality fresh pasta.",
+                "hours": "Open daily 12 PM – 11 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=16009431744234430740&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "072592 32851",
+                  "tel": "tel:07259232851"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Reviews for Dal Moro's ravioli",
+          "Only pure veg ravioli spots",
+          "Directions to Light of Italy",
+          "Best pasta to pair with ravioli"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "completion"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_skills_used",
+    "label": "LLM used skills (1)",
+    "ts": 1787565410762,
+    "detail": "food"
+  },
+  {
+    "type": "turn_complete",
+    "turn_id": "9e2eaf74-8713-437f-8d5e-604e99cf90fb",
+    "input_tokens": 84825,
+    "output_tokens": 2781,
+    "reasoning_tokens": 902,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 50400,
+    "latency_ms": 46694,
+    "agent_steps": 3,
+    "tool_call_count": 5,
+    "skills_loaded": [
+      "default",
+      "food"
+    ]
+  },
+  {
+    "type": "[DONE]"
+  }
+]

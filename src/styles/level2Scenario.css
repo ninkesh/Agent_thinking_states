@@ -1124,6 +1124,28 @@
   cursor: pointer;
 }
 .att-l2-source-toggle-option--active { background: rgba(255, 255, 255, 0.12); color: var(--l2s-text); }
+.att-l2-capture-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  margin: 10px 0 8px;
+}
+.att-l2-capture-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--l2s-line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  background: transparent;
+  color: var(--l2s-muted);
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+.att-l2-capture-tab span { color: var(--l2s-faint); font-size: 10px; }
+.att-l2-capture-tab--active { background: rgba(255, 255, 255, 0.1); color: var(--l2s-text); }
 .att-l2-scenario-options { display: flex; flex-direction: column; gap: 2px; }
 .att-l2-scenario-option {
   display: flex;
@@ -1141,6 +1163,7 @@
 }
 .att-l2-scenario-option:hover { background: rgba(255, 255, 255, 0.05); }
 .att-l2-scenario-option--active { background: rgba(255, 255, 255, 0.1); color: var(--l2s-text); }
+.att-l2-scenario-option--gap { opacity: 0.58; }
 .att-l2-scenario-option-index { color: var(--l2s-faint); width: 12px; }
 .att-l2-scenario-option-label {
   flex: 1;
@@ -1150,6 +1173,26 @@
   white-space: nowrap;
 }
 .att-l2-scenario-option-count { flex: none; font-size: 10px; color: var(--l2s-faint); }
+.att-l2-capture-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--l2s-line);
+  color: var(--l2s-faint);
+  font-size: 10px;
+}
+.att-l2-capture-pagination button {
+  border: 1px solid var(--l2s-line);
+  border-radius: 7px;
+  padding: 4px 7px;
+  background: transparent;
+  color: var(--l2s-muted);
+  font: inherit;
+  cursor: pointer;
+}
+.att-l2-capture-pagination button:disabled { opacity: 0.35; cursor: default; }
 .att-l2-scenario-source {
   margin-top: 10px;
   padding-top: 8px;

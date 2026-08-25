@@ -1,0 +1,636 @@
+[
+  {
+    "type": "turn_started"
+  },
+  {
+    "type": "insight",
+    "subtype": "guardrail_passed",
+    "label": "Guardrail passed",
+    "ts": 1787565034919,
+    "detail": "nsfw check ✓"
+  },
+  {
+    "type": "insight",
+    "subtype": "query_enriched",
+    "label": "Enrichment skipped — no prior history",
+    "ts": 1787565034922
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_selected",
+    "label": "Skills selected (2)",
+    "ts": 1787565034922,
+    "detail": "local_experiences (0.80), food (0.79)"
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_loaded",
+    "label": "Skills loaded (3)",
+    "ts": 1787565034925,
+    "detail": "default, food, local_experiences"
+  },
+  {
+    "type": "insight",
+    "subtype": "context_built",
+    "label": "Context built",
+    "ts": 1787565034926,
+    "detail": "stm=no · 0 msgs"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_start",
+    "label": "LLM started",
+    "ts": 1787565035565
+  },
+  {
+    "type": "insight",
+    "subtype": "tools_loaded",
+    "label": "Tools loaded (12)",
+    "detail": "GetRoute, GetWeather, MemoryRead, MemoryWrite, NearbyPlaces, PlaceDetails, PlaceReviews, PlaceSearch, Task, TodoWrite, WebFetch, WebSearch",
+    "ts": 1787565035569
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "user_query"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "0 / 100,000 tokens (threshold)",
+    "token_count": 0,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565036968
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Searching for the top-rated matcha cafes in Bengaluru.",
+    "step_id": 1,
+    "names": [
+      "PlaceSearch"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceSearch",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787565038836,
+    "detail": "best matcha latte specialty cafes in Bengaluru"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "best matcha latte specialty cafes in Bengaluru",
+      "latitude": 12.9352,
+      "longitude": 77.6245,
+      "bias_radius_meters": 15000,
+      "max_results": 12
+    },
+    "tool_use_id": "b2c88fe6-a861-4dc9-9443-a60c95731875"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 28,761 · out: 669",
+    "ts": 1787565038842,
+    "detail": "step 1"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 28761,
+    "output_tokens": 669,
+    "reasoning_tokens": 0,
+    "reasoning_estimated": false,
+    "cache_read_tokens": 0,
+    "text": "Tokens — in: 28,761 · out: 669"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787565039751,
+    "detail": "11812 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"best matcha latte specialty cafes in Bengaluru\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJte-cIyIVrjsRmqBdb_c10Ns\", \"name\": \"Co,Ma - between Coffee and Matcha\", \"formatted_address\": \"186/6, 25th Cross Rd, Jayanagar 3rd Block, Jayanagar, Bengaluru, Karnataka 560011, India\", \"types\": [\"cafe\", \"coffee_shop\", \"food_store\", \"store\"], \"rating\": 4.7, \"user_rating_count\": 151, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"open_now\": true, \"phone\": \"\", \"website\": \"https://www.instagram.com/coma.blr?igsh=MWV6bnAxeXdieWt5OA==\", \"google_maps_uri\": \"https://maps.google.com/?cid=15839219226303635610&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9316968, \"longitude\": 77.5833273, \"photo_url\": \"/api/photo?name=places%2FChIJte-cIyIVrjsRmqBdb_c10Ns%2Fphotos%2FAVoNoXT-_IEh35XInfHhjEBviXSp8Jb055zTWWIvpBpKfy87gYVto6xYjGg50fbXDCi1jgKD5pyJ9hfApE1EQCRWaDYDLuVH-ND6J1PQdwUL8lz6kYLsfS4GpBdUXA8qVYNtTy5-1yLlXa-Cpp5hc4GN9n7iNtEqzzO-p3QyFmWtI7zTJyyhiSPEQ7M8D3FiUEnPgoAHDe0Gamoy2NwCUTfuM07v48_zRxH6Lx56kVqeSg4ExG3OmdHtZF5P-e6f6FRQoIWM4Psza3MLM28Ev1YsWDTH_758EI_DhoL75YLJgU-oTftwsXVKbm-OtplcjmT_P7WTS2_qvSiL8dvnNH7LvaNwMU_TlLdkCSTrWHHKeeR9wKdclrJFzbn68vhEhP7Qwi1ysJDqr1Yh2wqCxBXrSh7tKLT_gRA5VEu6qlnQI7A4jKnKyj1cDCsuMwmoHAp_&maxWidth=400\"}, {\"place_id\": \"ChIJhXNUstYXrjsR5go0eodkoQo\", \"name\": \"Midori Matcha Bar\", \"formatted_address\": \"38, 9TH MAIN, NGEF LANE, INDIRANAGAR 1ST STAGE, Binnamangala, Stage 1, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"cafe\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.8, \"user_rating_count\": 105, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=766003944663288550&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9780175, \"longitude\": 77.6395582, \"photo_url\": \"/api/photo?name=places%2FChIJhXNUstYXrjsR5go0eodkoQo%2Fphotos%2FAVoNoXTgc2m-TA2sZ9AQTzzKfMpMevWfLOAvWH2Dm1GMYowiBBs8AackBvzLUuBwyxMwQWhiAPXyFWYt9dzimuNNGEnarcAa27CNx3Nk6qrXEen6n1wHQyLAxXqSaQAnjgMoTQOMMUbOSshYitwv9p-W2PcYKV-VsFB-qNNeEkOzDJ6ZanApimBIQTP_PzN43V6CqYJ5NDEjRcEqb7NrhLsPlAVqfaxCIDxVFatqrLMu455mSUsc5qQWp4lQyNNC9JzewAO3DHz5kHcsp1pVnpIFzjlBo1SCKWz3uF9Vs2BMPWpPjwSHFMSl4CA8N3UW6NtrUHAUQ6qmSUaqjz5AxgIljCveRyc2YscnLlS3IaeeQ3qhpu5rWIHq6h2IyI3K9c2tQpsn74iB3hGANjKig0k7SpVVP5G_1KQxnX8wNwuSLoMrdC2XtF0Cq0AkxbR2zm4T&maxWidth=400\"}, {\"place_id\": \"ChIJFWyPP8UVrjsR52K_N_AhcfM\", \"name\": \"Isobel Coffee House\", \"formatted_address\": \"No. 1/3, 275, 9th A Main, 2nd Block, Jayanagar, Bengaluru, Karnataka 560011, India\", \"types\": [\"coffee_shop\", \"cafe\", \"food_store\", \"store\"], \"rating\": 4.5, \"user_rating_count\": 2606, \"price_display\": \"\\u20b9200\\u2013600 per person\", \"open_now\": true, \"phone\": \"095352 61414\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=17541839339195949799&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9394914, \"longitude\": 77.5846184, \"photo_url\": \"/api/photo?name=places%2FChIJFWyPP8UVrjsR52K_N_AhcfM%2Fphotos%2FAVoNoXSxdCUQ773BRRUEhnIbtoVWmI1Uy_OI2JWtqzoj49X34YnufkSQJf_DGbqQ6uhHk2WX6kPcvrYcKBGQ-WvYh4qh9RtJkS7kg2xjDUTLMTYCWVWTnEKdapyjtSRKS06a81QBucmS9BEBzz-I6dVRTDGgL26TD2VO7OBO67WLlf_7wuUyGT-Vz_Jmi54igCJ9JhSnRx36ksYcBUdzmHi6D8oXRcSAZh12ISM5ZmQ9aZUUSsMmg6yhsLoVdaAnMqME6V0IxLmnDKp5W3oQJSCSr9H5rT1qIJrLi4BIZ9Ba94KxOUx3qd6iXTt_D2gEuYN02Q8xoMQZUFFvUh3EttV2kjCJ66ymla4HaOdhso56oj4o0ez3xOWLhSIetn8T8kBsJlfgDOgN1pHYGJQu7xWomYZMtqJIQ4GW_ZQAJ-FXO4HpEQ&maxWidth=400\"}, {\"place_id\": \"ChIJXVbr_JUVrjsR_OBWWYZOeTE\", \"name\": \"Drip and Drop Coffee\", \"formatted_address\": \"289, 15th Cross Rd, opp. to Rameshwaram Cafe, 5th Phase, J P Nagar Phase 5, J. P. Nagar, Bengaluru, Karnataka 560078, India\", \"types\": [\"cafe\", \"coffee_shop\", \"food_store\", \"store\"], \"rating\": 4.8, \"user_rating_count\": 1275, \"price_display\": \"\\u20b9200\\u2013600 per person\", \"open_now\": true, \"phone\": \"095382 38355\", \"website\": \"https://www.instagram.com/dripanddropcoffee?igsh=NTc4MTIwNjQ2YQ==\", \"google_maps_uri\": \"https://maps.google.com/?cid=3564966918971908348&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9061899, \"longitude\": 77.59049619999999, \"photo_url\": \"/api/photo?name=places%2FChIJXVbr_JUVrjsR_OBWWYZOeTE%2Fphotos%2FAVoNoXSta2q488wgMqwLbs8qseWI9YzXwfEdE0G_Xp5GtOGBaYMw4uiWw0aug3u4a6EpeStd2olRjd4ZEqyqxtIgCTIcTaxNCZUXi88KMWCby3dwMvrh5_0FPf25to7xENVSr79ujlKuy3iViVbXqP2FZkeQiy4HfrU45MbA56NxrOrnQiGghNkdvA-apEDGOeoHERgJ_vMLs8vKl6OrQ5Cj-VOT8YaLk8mmXEvKFNvBOFNCPy-ltJytoEqOqmaHzXKNp-UzcJmahopWIAeSPiZ8gaoCrFLSdEhTy846azdaGiwvQXJB-nAB5bLDo_TWBXlbXutUP2MV4vCEda2_dtdE90Bw3Jj48_sg48LFC50r1_ivQ0EqPs573vE9b72RhoT9VHaONSLGHG3WiZnNkQo1mmxqxVtvJV5g2BPnw6ajXRmlog&maxWidth=400\"}, {\"place_id\": \"ChIJ2VsqjBIXrjsRGpcBeCjQ2io\", \"name\": \"Neon Market\", \"formatted_address\": \"3798, 7th Main Rd, Motappapalya, Indiranagar, Bengaluru, Karnataka 560008, India\", \"types\": [\"ramen_restaurant\", \"coffee_shop\", \"cafe\", \"bakery\"], \"rating\": 4.8, \"user_rating_count\": 9470, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"091643 96969\", \"website\": \"https://neon.market/\", \"google_maps_uri\": \"https://maps.google.com/?cid=3088009366746535706&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9727388, \"longitude\": 77.63979669999999, \"photo_url\": \"/api/photo?name=places%2FChIJ2VsqjBIXrjsRGpcBeCjQ2io%2Fphotos%2FAVoNoXR6oM3VnC_alQuqKC47Au7DTB_ZmmWikZ9rd_psowFafoumQU4oLahAhKUfJCfDwQPUev8FyxIuQZFayxDpMAyrAQl5fj_tBXIQZiLMpAX5WYWqI6oegFmHtJttG03DeQUESKuThW6rowZcmD1fIO6z_AqKifj7JQ_JC0TSrgZRbjKz9PM0BsR4p_-qB486MduWzpJf31MglPynslBrhgveSzbkDwK2yljjg_46UBTO2nSNJy5e935BDjLk1DM83lPxzBsrSh5KDmUXS9cFu-JXugoRFv_fwUtFjgvk6BbYUtmvke-IINYNSM9SItbxFD5We0OJXhRwxoiKQcLfLL0JcEhddSX3gjso0BFfWvtMoupczj5CHNzg3UHO0j4vnu60MzSmImPkdQP5MvbyVnaz3Tc8Kw6rct4kyTiXV8b0LH5vn9eFVQugqyLv0Z1v&maxWidth=400\"}, {\"place_id\": \"ChIJ4VinJNMVrjsRGsdRLScN-Po\", \"name\": \"HumbleBean Coffee & P\\u00e2tisserie\", \"formatted_address\": \"3165, 60 Feet, 12th Cross Rd, HAL 2nd Stage, Defence Colony, Indiranagar, Bengaluru, Karnataka 560008, India\", \"types\": [\"coffee_shop\", \"pastry_shop\", \"cafe\", \"dessert_shop\"], \"rating\": 4.4, \"user_rating_count\": 868, \"price_display\": \"\\u20b9200\\u20131000 per person\", \"open_now\": true, \"phone\": \"091641 00039\", \"website\": \"https://humblebean.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=18084218765621446426&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.969200599999999, \"longitude\": 77.6358218, \"photo_url\": \"/api/photo?name=places%2FChIJ4VinJNMVrjsRGsdRLScN-Po%2Fphotos%2FAVoNoXTuwGfmnWePPgDLYyfN-ub5dVwDdWo_dy4tE9pmoqTuTwity6JquwNfet9Xz2IHPnCcvE6VivTCYrs861eNvovzyt5pKdXwgaJEDBvxiBjMdal0_WTW3UKOG05x0NEMWpkt6Hr-DVyLPmeXy7eVpnNizkuHSyopib69UoLROasNKmoXjtXe7raWPta9m-hYspycPH_UqH1qoo66uokarRH1cvpMsHKneeUqIK6Hz9AYpfIFUPu8721RP_SoCt9LYWB9uOJFbxFx3BR-Bkpn_wKHDSk0LSaUL27P9g5hMGZ4drfa-klf-7kMzij2pAJsmflgcE1iIDQsWQRmhNw55ZucYgo1iUkIf5lWux1NzXnWFwApfsdj4ByrEAgMgjk4E9VGvkSZUsGPBGMf9NKCXu9srKiw7VOd_VDCk7Y4AyNg4Qo&maxWidth=400\"}, {\"place_id\": \"ChIJsW3_iR4XrjsRf1-R-pEtIa4\", \"name\": \"Purpose Matcha + Coffee House\", \"formatted_address\": \"18, Convent Rd, Richmond Rd, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560094, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.5, \"user_rating_count\": 68, \"price_display\": \"\\u20b9200\\u20131200 per person\", \"open_now\": true, \"phone\": \"063649 30992\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=12547360141828251519&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9687219, \"longitude\": 77.6027348, \"photo_url\": \"/api/photo?name=places%2FChIJsW3_iR4XrjsRf1-R-pEtIa4%2Fphotos%2FAVoNoXRH4eGzO7zMY6Qw-g1yRZT6nYccei3TPAxIoqylt_WYnzRIQlqrrkpMZCUdalKoUYI1eorNYOPak0AC7HWpdLjpO61F_0JoghU3SYJxwLRv_omfXfnTFswum91IZ4VeDDzZ1BcPhBDHFD4NlXgBO4R0wWUGl0yhGobxQ9O9D6MtsTCWU9q69zKZ06EL-1ZIaAvhGB51ADpshIy0nOFXPAk5OVyM0aAg7iHuE9fOAtckefcAi0bs05P4FCuc8QurUQuQn1mbjmas70m8-a3_y2bnkLClGyqCh85oHZJCPKKYzCWOf3B0zjSbAmSHag5khziSQbN1GmFVpyAqcS8Ypout4peihvs-fwqSBvydSnnYx3HPkIuxdgNySsJaGe4IbBiwN5e4xe3dyiecdSQT0eSYgr7ts2UK-Snbbgz-vbQrb6n4tlIeBpanM5tXTLPc&maxWidth=400\"}, {\"place_id\": \"ChIJww_JxmYXrjsRZZYQJuGoUMo\", \"name\": \"The Kind Roastery and Brew Room Indiranagar\", \"formatted_address\": \"2985, 12th Main Rd, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560008, India\", \"types\": [\"restaurant\", \"coffee_shop\", \"cafe\", \"food_store\"], \"rating\": 4.4, \"user_rating_count\": 1330, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"090350 45328\", \"website\": \"https://thekindindia.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=14578337678758024805&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9701071, \"longitude\": 77.6447307, \"photo_url\": \"/api/photo?name=places%2FChIJww_JxmYXrjsRZZYQJuGoUMo%2Fphotos%2FAVoNoXRx47wBMfmu_94dMUDta9q5mwsLWx6tICxpEQaxuxMpXUtC-2wlQPKeoFfaqL5ei_PE8quX--dEHom9C5Sb-28_6ZeCBHJWv6N2qSXzygjSm-KyX8HpuUzrvdVVhZeDC6pjFYoLrlWGYwu2ED0P0xUxna2pshj0n0VR45Xl3Z_H5m0y_vO_UkRhbXYPbM944A58qYOFH1cjuOA44cBLa6uWOyeQzHPTGDTTubI-kTi8b4M658lkOB4IcFJZbxpwPdo_kHF3HN2t1kZ5Rvl8Me2q5D-tUqhVCcA8RyUPsgUX3h_1lfP4_gNie4wbIFyheDiHHlnBBIiNe50I8HaLkVZofNEngFBZItYEkyL5p_BIZ-PfXxJj5tKPEMwj0K7ifP2IYQGVIT_5FqYJDYlzHDb0ocvyXHwAIy3BYWAV8K9wnA&maxWidth=400\"}, {\"place_id\": \"ChIJuY0bMowXrjsRqesQbwuu3NM\", \"name\": \"Open Door Coffee Co.\", \"formatted_address\": \"20, Evergreen Layout Main Rd, Kothanur, Bengaluru, Karnataka 560077, India\", \"types\": [\"coffee_shop\", \"cafe\", \"food_store\", \"store\"], \"rating\": 4.8, \"user_rating_count\": 2026, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"063634 27663\", \"website\": \"https://www.instagram.com/opendoorcoffeeco/\", \"google_maps_uri\": \"https://maps.google.com/?cid=15266268201010391977&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 13.0580006, \"longitude\": 77.6504703, \"photo_url\": \"/api/photo?name=places%2FChIJuY0bMowXrjsRqesQbwuu3NM%2Fphotos%2FAVoNoXTKHwuC0nryHkGkhLXikOa80pSra38DGGDKYYrYYHz7bvIkZOwG3To9BedLGC4EP6L9ipOLVN1ZK4-99HrkTcekgQs7-Knflp_o66_jPzY8wSCU_k--_DQhbqDAiZmbziM1nur8VyzPOo15kzEaJEMPwT3ae85tqAV2vsAcARL6Z0EfU0fMPOVN5-yJ0VfoZMg8h-sSZjskPxJclw0zPD5qaTGXIXAOH-1XBCKcOe0NSrfGaC-ea0zSzgszYUB-f-KMDXQUQHy-7lnsK36-GEHgBtZgHVPdOjBJld0XCUecMsRWZdoqCHZZ8H79fzS4jSpZRumtYneuPjfW2olkoUGCOvf6-K28eZtfGKl0oNi99AcKcN4VZOKA4eZmYQ-Je5h3NNfkDDhnpz-GK2diPzcjmmQD_FxqT1vg0Xe-jnx5BQ&maxWidth=400\"}, {\"place_id\": \"ChIJR3mWbXcVrjsRC9pJZEGkBLA\", \"name\": \"Ground Up Coffee & Roastery\", \"formatted_address\": \"265, T Mariappa Rd, 6th Block, 1st Block, Jayanagar, Bengaluru, Karnataka 560011, India\", \"types\": [\"cafe\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.4, \"user_rating_count\": 594, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"099450 36992\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=12683443051344550411&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9378405, \"longitude\": 77.5852908, \"photo_url\": \"/api/photo?name=places%2FChIJR3mWbXcVrjsRC9pJZEGkBLA%2Fphotos%2FAVoNoXQnVzaCNl8k83CqXkeyS5qV-VrksbXO_3X004pve_21JUFrgQu8vcb774JvXPbAIZ1sRyeLTL0J7sVA6RN5xKLYyZQSglR0J2bBsTDaFTTMvAzt-aUi0de0ArHnhXsB57B8XWtrBrF1dOeAFzgDhay-yXzYEJ-Q4FsSDyzUdxFF0zSc2hgrwBAP_RxWAZ54U4EwkGAna4Nab075zziXvOdIGgVtTp8uDJ_R547lGBh3g-F5PqxUZf8sHq5wkcIT77DMTPYmc0LClbr7X7KprNpXzgKChM4pNctekKdHKjOY8uK8AW0mViwxUobGZ7zdZ6nlrHQNyeqIh0mLgo3NzVTAdFDhF7MFT9DuZqTqU8sA-o6vu0UugSqo1Pl7nVr7HQHhq-35KbWy5IGJk-9EEErrpcbVMl9ongYM-qClGDhDUcvp&maxWidth=400\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "d2998fc7-3a7b-430a-b57a-dac2adb9efc8",
+    "is_error": false,
+    "llm_text": "{\"query\": \"best matcha latte specialty cafes in Bengaluru\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJte-cIyIVrjsRmqBdb_c10Ns\", \"name\": \"Co,Ma - between Coffee and Matcha\", \"formatted_address\": \"186/6, 25th Cross Rd, Jayanagar 3rd Block, Jayanagar, Bengaluru, Karnataka 560011, India\", \"types\": [\"cafe\", \"coffee_shop\", \"food_store\", \"store\"], \"rating\": 4.7, \"user_rating_count\": 151, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"open_now\": true, \"phone\": \"\", \"latitude\": 12.9316968, \"longitude\": 77.5833273}, {\"place_id\": \"ChIJhXNUstYXrjsR5go0eodkoQo\", \"name\": \"Midori Matcha Bar\", \"formatted_address\": \"38, 9TH MAIN, NGEF LANE, INDIRANAGAR 1ST STAGE, Binnamangala, Stage 1, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"cafe\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.8, \"user_rating_count\": 105, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"\", \"latitude\": 12.9780175, \"longitude\": 77.6395582}, {\"place_id\": \"ChIJFWyPP8UVrjsR52K_N_AhcfM\", \"name\": \"Isobel Coffee House\", \"formatted_address\": \"No. 1/3, 275, 9th A Main, 2nd Block, Jayanagar, Bengaluru, Karnataka 560011, India\", \"types\": [\"coffee_shop\", \"cafe\", \"food_store\", \"store\"], \"rating\": 4.5, \"user_rating_count\": 2606, \"price_display\": \"\\u20b9200\\u2013600 per person\", \"open_now\": true, \"phone\": \"095352 61414\", \"latitude\": 12.9394914, \"longitude\": 77.5846184}, {\"place_id\": \"ChIJXVbr_JUVrjsR_OBWWYZOeTE\", \"name\": \"Drip and Drop Coffee\", \"formatted_address\": \"289, 15th Cross Rd, opp. to Rameshwaram Cafe, 5th Phase, J P Nagar Phase 5, J. P. Nagar, Bengaluru, Karnataka 560078, India\", \"types\": [\"cafe\", \"coffee_shop\", \"food_store\", \"store\"], \"rating\": 4.8, \"user_rating_count\": 1275, \"price_display\": \"\\u20b9200\\u2013600 per person\", \"open_now\": true, \"phone\": \"095382 38355\", \"latitude\": 12.9061899, \"longitude\": 77.59049619999999}, {\"place_id\": \"ChIJ2VsqjBIXrjsRGpcBeCjQ2io\", \"name\": \"Neon Market\", \"formatted_address\": \"3798, 7th Main Rd, Motappapalya, Indiranagar, Bengaluru, Karnataka 560008, India\", \"types\": [\"ramen_restaurant\", \"coffee_shop\", \"cafe\", \"bakery\"], \"rating\": 4.8, \"user_rating_count\": 9470, \"price_display\": \"\\u20b9600\\u20131800 per person\", \"open_now\": true, \"phone\": \"091643 96969\", \"latitude\": 12.9727388, \"longitude\": 77.63979669999999}, {\"place_id\": \"ChIJ4VinJNMVrjsRGsdRLScN-Po\", \"name\": \"HumbleBean Coffee & P\\u00e2tisserie\", \"formatted_address\": \"3165, 60 Feet, 12th Cross Rd, HAL 2nd Stage, Defence Colony, Indiranagar, Bengaluru, Karnataka 560008, India\", \"types\": [\"coffee_shop\", \"pastry_shop\", \"cafe\", \"dessert_shop\"], \"rating\": 4.4, \"user_rating_count\": 868, \"price_display\": \"\\u20b9200\\u20131000 per person\", \"open_now\": true, \"phone\": \"091641 00039\", \"latitude\": 12.969200599999999, \"longitude\": 77.6358218}, {\"place_id\": \"ChIJsW3_iR4XrjsRf1-R-pEtIa4\", \"name\": \"Purpose Matcha + Coffee House\", \"formatted_address\": \"18, Convent Rd, Richmond Rd, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560094, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.5, \"user_rating_count\": 68, \"price_display\": \"\\u20b9200\\u20131200 per person\", \"open_now\": true, \"phone\": \"063649 30992\", \"latitude\": 12.9687219, \"longitude\": 77.6027348}, {\"place_id\": \"ChIJww_JxmYXrjsRZZYQJuGoUMo\", \"name\": \"The Kind Roastery and Brew Room Indiranagar\", \"formatted_address\": \"2985, 12th Main Rd, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560008, India\", \"types\": [\"restaurant\", \"coffee_shop\", \"cafe\", \"food_store\"], \"rating\": 4.4, \"user_rating_count\": 1330, \"price_display\": \"\\u20b9400\\u20131400 per person\", \"open_now\": true, \"phone\": \"090350 45328\", \"latitude\": 12.9701071, \"longitude\": 77.6447307}, {\"place_id\": \"ChIJuY0bMowXrjsRqesQbwuu3NM\", \"name\": \"Open Door Coffee Co.\", \"formatted_address\": \"20, Evergreen Layout Main Rd, Kothanur, Bengaluru, Karnataka 560077, India\", \"types\": [\"coffee_shop\", \"cafe\", \"food_store\", \"store\"], \"rating\": 4.8, \"user_rating_count\": 2026, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"063634 27663\", \"latitude\": 13.0580006, \"longitude\": 77.6504703}, {\"place_id\": \"ChIJR3mWbXcVrjsRC9pJZEGkBLA\", \"name\": \"Ground Up Coffee & Roastery\", \"formatted_address\": \"265, T Mariappa Rd, 6th Block, 1st Block, Jayanagar, Bengaluru, Karnataka 560011, India\", \"types\": [\"cafe\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.4, \"user_rating_count\": 594, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"099450 36992\", \"latitude\": 12.9378405, \"longitude\": 77.5852908}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 2",
+    "ts": 1787565039757,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "28,761 / 100,000 tokens (threshold)",
+    "token_count": 28761,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565039760
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Found three dedicated matcha bars — pulling their reviews to see what each is known for.",
+    "step_id": 2,
+    "names": [
+      "PlaceReviews"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceReviews",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceReviews",
+    "ts": 1787565049051,
+    "detail": "ChIJhXNUstYXrjsR5go0eodkoQo"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceReviews",
+    "input": {
+      "place_id": "ChIJhXNUstYXrjsR5go0eodkoQo"
+    },
+    "tool_use_id": "68e24950-3d48-4d86-aabe-ee4d303f7253"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceReviews",
+    "ts": 1787565049054,
+    "detail": "ChIJte-cIyIVrjsRmqBdb_c10Ns"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceReviews",
+    "input": {
+      "place_id": "ChIJte-cIyIVrjsRmqBdb_c10Ns"
+    },
+    "tool_use_id": "cb3fcb1a-886d-4ed1-bdcf-623b10090b38"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceReviews",
+    "ts": 1787565049060,
+    "detail": "ChIJsW3_iR4XrjsRf1-R-pEtIa4"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceReviews",
+    "input": {
+      "place_id": "ChIJsW3_iR4XrjsRf1-R-pEtIa4"
+    },
+    "tool_use_id": "2933791e-0d08-4a1c-a66e-99c015bd3cbc"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 30,924 · out: 465 · cached: 24,000 · reasoning: 272",
+    "ts": 1787565049062,
+    "detail": "step 2"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 30924,
+    "output_tokens": 465,
+    "reasoning_tokens": 272,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24000,
+    "text": "Tokens — in: 30,924 (cache: 24,000) · out: 465 (reasoning: ~272)"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 3 tools in parallel",
+    "ts": 1787565049065,
+    "detail": "PlaceReviews, PlaceReviews, PlaceReviews"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 3,
+    "names": [
+      "PlaceReviews",
+      "PlaceReviews",
+      "PlaceReviews"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceReviews",
+    "ts": 1787565049973,
+    "detail": "2993 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceReviews",
+    "text": "{\"place_id\": \"ChIJhXNUstYXrjsR5go0eodkoQo\", \"review_count\": 5, \"reviews\": [{\"author\": \"p. pat\", \"rating\": 4, \"text\": \"This is a small specialty matcha shop with only max 8 seats, so it can be hard to find a place to sit when it\\u2019s busy. The shop itself is really cute and has a cozy vibe.\\nThe drinks are quite pricey, though almost \\u20b9400 per cup and the portions are pretty small. The cup is tiny and you can finish it in just a few sips. There aren\\u2019t many dessert options either; from what I saw, they only had cookies and matcha ice cream.\\n\\nBUT the matcha is really good. It\\u2019s rich, flavorful, and clearly high quality, so matcha lovers will probably enjoy it.\\n\\nI\\u2019d give it around 4\\u20134.5 stars. Great matcha and a lovely atmosphere, but the shop is a bit too small and the prices are on the high side for the portion size. Still, it\\u2019s worth checking out if you\\u2019re a matcha fan.\\n\\nOne thing to keep in mind is that the seating is very limited. Because there are only about 8 seats, it doesn\\u2019t feel like the kind of place where you can stay for a long time, especially when other customers are waiting for a seat. You may feel a bit pressured to finish up and leave during busy hours.\", \"published\": \"2 months ago\"}, {\"author\": \"Rachna Shivale\", \"rating\": 5, \"text\": \"Completely in love with this place, their services, staff, overall vibes and most importantly their matchas! Ohh goodness how frothy, creamy and green the matcha is. Few more matchas will be added to the menu this week, and I was the first one to taste-test it! Grab it once you visit!\", \"published\": \"2 months ago\"}, {\"author\": \"Supriya Naidu\", \"rating\": 5, \"text\": \"The best matcha I\\u2019ve had in Bangalore! Intimate, adorable and just lovely! The matcha was high quality and the drinks were very well balanced. There\\u2019s a monsoon special menu now with fresh local fruits. I\\u2019m surely going back soon\", \"published\": \"a month ago\"}, {\"author\": \"Khushi Jana\", \"rating\": 5, \"text\": \"Highly recommend this place! Had the OG matcha and the Mango matcha. Both exceptionally good! You take a sip and you realize how high quality the matcha is! The very kind Miss and the other kind Mister who I am assuming is the owner, both were super sweet! They also guide anyone who is trying matcha for the first time, so you don\\u2019t have to stress over which one to get if you\\u2019re trying for the first time!\\nDefinitely returning here if I comeback to Bangalore in the future!\", \"published\": \"3 months ago\"}, {\"author\": \"Tanish Sanghvi\", \"rating\": 5, \"text\": \"This is my favourite cafe for matcha. The cafe and the menu is so thoughtfully made, the matcha is so good. Everything they use is completely organic, they have a few fruit flavours for the matcha as well, they also have sushi and the matcha ice cream was so creamy and rich. The cafe is like a 2 - minutes walk from the indiranagar metro station.\", \"published\": \"2 months ago\"}], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "7fa15d03-c053-4be9-b650-fb9c40789ad2",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJhXNUstYXrjsR5go0eodkoQo\", \"review_count\": 5, \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"This is a small specialty matcha shop with only max 8 seats, so it can be hard to find a place to sit when it\\u2019s busy. The shop itself is really cute and has a cozy vibe.\\nThe drinks are quite pricey, though almost \\u20b9400 per cup and the portions are pretty small. The cup is tiny and you can finish it in just a few sips. There aren\\u2019t many dessert options either; from what I saw, they only had cookies and matcha ice cream.\\n\\nBUT the matcha is really good. It\\u2019s rich, flavorful, and clearly high quality, so matcha lovers will probably enjoy it.\\n\\nI\\u2019d give it around 4\\u20134.5 stars. Great matcha and a lovely atmosphere, but the shop is a bit too small and the prices are on the high side for the portion size. Still, it\\u2019s worth checking out if you\\u2019re a matcha fan.\\n\\nOne thing to keep in mind is that the seating is very limited. Because there are only about 8 seats, it doesn\\u2019t feel like the kind of place where you can stay for a long time, especially when other customers are waiting for a seat. You may feel a bit pressured to finish up and leave during busy hours.\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"Completely in love with this place, their services, staff, overall vibes and most importantly their matchas! Ohh goodness how frothy, creamy and green the matcha is. Few more matchas will be added to the menu this week, and I was the first one to taste-test it! Grab it once you visit!\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"The best matcha I\\u2019ve had in Bangalore! Intimate, adorable and just lovely! The matcha was high quality and the drinks were very well balanced. There\\u2019s a monsoon special menu now with fresh local fruits. I\\u2019m surely going back soon\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"Highly recommend this place! Had the OG matcha and the Mango matcha. Both exceptionally good! You take a sip and you realize how high quality the matcha is! The very kind Miss and the other kind Mister who I am assuming is the owner, both were super sweet! They also guide anyone who is trying matcha for the first time, so you don\\u2019t have to stress over which one to get if you\\u2019re trying for the first time!\\nDefinitely returning here if I comeback to Bangalore in the future!\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"This is my favourite cafe for matcha. The cafe and the menu is so thoughtfully made, the matcha is so good. Everything they use is completely organic, they have a few fruit flavours for the matcha as well, they also have sushi and the matcha ice cream was so creamy and rich. The cafe is like a 2 - minutes walk from the indiranagar metro station.\", \"published\": \"2 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceReviews",
+    "ts": 1787565049976,
+    "detail": "1336 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceReviews",
+    "text": "{\"place_id\": \"ChIJte-cIyIVrjsRmqBdb_c10Ns\", \"review_count\": 5, \"reviews\": [{\"author\": \"Ritvika M\", \"rating\": 5, \"text\": \"A small aesthetic cafe with a nice cozy vibe. Tried the iced latte and iced mango matcha, and both were really good and refreshing. It\\u2019s a lovely spot to chill for a bit, though it can get quite hot during summer afternoons.\", \"published\": \"3 months ago\"}, {\"author\": \"Riche_ee\", \"rating\": 5, \"text\": \"Definitely a good cafe for a long run hope the attention for service stays the same and really good beans selected and cozy space on a prime location.\\nI hope you start introducing newer blends too\\ud83d\\ude4c\", \"published\": \"3 months ago\"}, {\"author\": \"Hosamane Savitha\", \"rating\": 5, \"text\": \"Simply amazing....one should not miss out on co,ma coffeehouse and ale experience is a whole new wave for vegetarian and Jain food\", \"published\": \"3 months ago\"}, {\"author\": \"chetan ps\", \"rating\": 5, \"text\": \"The coffee was really Great and the taste was also very great!\\nWe loved the ambiance. It is very neat and healing!\\nThank you!\\nHope you reach great heights!\", \"published\": \"2 months ago\"}, {\"author\": \"Lavyaa Bardia\", \"rating\": 5, \"text\": \"The coconut cloud is amazing. The vibe is really vibing. I had a good time working and chilling.\", \"published\": \"4 weeks ago\"}], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "e2394e87-f491-4128-bbfd-98398555feba",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJte-cIyIVrjsRmqBdb_c10Ns\", \"review_count\": 5, \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"A small aesthetic cafe with a nice cozy vibe. Tried the iced latte and iced mango matcha, and both were really good and refreshing. It\\u2019s a lovely spot to chill for a bit, though it can get quite hot during summer afternoons.\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Definitely a good cafe for a long run hope the attention for service stays the same and really good beans selected and cozy space on a prime location.\\nI hope you start introducing newer blends too\\ud83d\\ude4c\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Simply amazing....one should not miss out on co,ma coffeehouse and ale experience is a whole new wave for vegetarian and Jain food\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"The coffee was really Great and the taste was also very great!\\nWe loved the ambiance. It is very neat and healing!\\nThank you!\\nHope you reach great heights!\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"The coconut cloud is amazing. The vibe is really vibing. I had a good time working and chilling.\", \"published\": \"4 weeks ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceReviews",
+    "ts": 1787565049978,
+    "detail": "2838 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceReviews",
+    "text": "{\"place_id\": \"ChIJsW3_iR4XrjsRf1-R-pEtIa4\", \"review_count\": 5, \"reviews\": [{\"author\": \"Snigdha Bhowmik\", \"rating\": 5, \"text\": \"Had the loveliest Friday brunch at Purpose Matcha+ Coffee House with a girlfriend, and it easily turned into one of our new favourite spots in the city. We tried a few dishes from their newly launched All Day Breakfast menu and everything was delicious. As a bacon fanatic, the Flapjacks and Bacon was the perfect comfort meal. The pancakes were light and fluffy, the eggs were cooked perfectly, and the bacon was absolutely worth it.\\n\\nWe also consider ourselves self-appointed matcha connoisseurs, so naturally we had to test the basics with their OG Matcha Latte and Matcha Cloud. The quality of the matcha genuinely stood out and felt far superior to many of the usual spots around the city. The Matcha Cloud, especially, was incredibly refreshing and perfect for the Bangalore heat.\\n\\nThe space itself is huge with plenty of seating, making it ideal for everything from peaceful work-from-cafe sessions to relaxed catch-ups with friends. The interiors are super aesthetic too, with lots of cozy corners and photo-worthy spots if you\\u2019re looking to click a few pictures while you\\u2019re there. They also have card games, books, and even a small loungewear section, which makes the whole experience feel much more thoughtful than just your average caf\\u00e9 visit.\\n\\nHighly recommended visiting this wonderful place and can\\u2019t wait to go in again! 10/10\", \"published\": \"3 months ago\"}, {\"author\": \"DEEPTI RANI\", \"rating\": 5, \"text\": \"Love the vibe of the place. I\\u2019m a matcha person and their special summer matchas are too good to be true, even the food is amazing. Highly recommended.\", \"published\": \"4 months ago\"}, {\"author\": \"Natasha Sinha\", \"rating\": 5, \"text\": \"Absolutely loved the place, matcha, food & overall vibes! Super cute spot to come grab a beverage, eat some yummy food, play board games and even work out of! \\ud83d\\udc69\\ud83c\\udffb\\u200d\\ud83d\\udcbb\\ud83c\\udf75\\ud83e\\udd50\\ud83c\\udf73\", \"published\": \"3 months ago\"}, {\"author\": \"Sundka Amber\", \"rating\": 5, \"text\": \"Absolutely loved my experience at PURPOSE Matcha. The space has such a calm, minimal, and elevated vibe perfect for slowing down and enjoying a mindful cup of matcha. Every drink felt thoughtfully crafted, with authentic flavours and great quality ingredients of matcha and the bites\\nCan\\u2019t wait to visit again.\", \"published\": \"2 months ago\"}, {\"author\": \"Piya\", \"rating\": 5, \"text\": \"Vibe, food, coffee - everything on point! I tried the chicken gyoza, kaya French toast and the Vietnamese iced coffee - all were fab. They also have coloring books and color pencils - such a refreshing experience! Definitely coming back for more.\", \"published\": \"2 months ago\"}], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "ec2a387e-8e04-49df-9bc4-729aea8b8efa",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJsW3_iR4XrjsRf1-R-pEtIa4\", \"review_count\": 5, \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"Had the loveliest Friday brunch at Purpose Matcha+ Coffee House with a girlfriend, and it easily turned into one of our new favourite spots in the city. We tried a few dishes from their newly launched All Day Breakfast menu and everything was delicious. As a bacon fanatic, the Flapjacks and Bacon was the perfect comfort meal. The pancakes were light and fluffy, the eggs were cooked perfectly, and the bacon was absolutely worth it.\\n\\nWe also consider ourselves self-appointed matcha connoisseurs, so naturally we had to test the basics with their OG Matcha Latte and Matcha Cloud. The quality of the matcha genuinely stood out and felt far superior to many of the usual spots around the city. The Matcha Cloud, especially, was incredibly refreshing and perfect for the Bangalore heat.\\n\\nThe space itself is huge with plenty of seating, making it ideal for everything from peaceful work-from-cafe sessions to relaxed catch-ups with friends. The interiors are super aesthetic too, with lots of cozy corners and photo-worthy spots if you\\u2019re looking to click a few pictures while you\\u2019re there. They also have card games, books, and even a small loungewear section, which makes the whole experience feel much more thoughtful than just your average caf\\u00e9 visit.\\n\\nHighly recommended visiting this wonderful place and can\\u2019t wait to go in again! 10/10\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Love the vibe of the place. I\\u2019m a matcha person and their special summer matchas are too good to be true, even the food is amazing. Highly recommended.\", \"published\": \"4 months ago\"}, {\"rating\": 5, \"text\": \"Absolutely loved the place, matcha, food & overall vibes! Super cute spot to come grab a beverage, eat some yummy food, play board games and even work out of! \\ud83d\\udc69\\ud83c\\udffb\\u200d\\ud83d\\udcbb\\ud83c\\udf75\\ud83e\\udd50\\ud83c\\udf73\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Absolutely loved my experience at PURPOSE Matcha. The space has such a calm, minimal, and elevated vibe perfect for slowing down and enjoying a mindful cup of matcha. Every drink felt thoughtfully crafted, with authentic flavours and great quality ingredients of matcha and the bites\\nCan\\u2019t wait to visit again.\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"Vibe, food, coffee - everything on point! I tried the chicken gyoza, kaya French toast and the Vietnamese iced coffee - all were fab. They also have coloring books and color pencils - such a refreshing experience! Definitely coming back for more.\", \"published\": \"2 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 3",
+    "ts": 1787565049983,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "59,685 / 100,000 tokens (threshold)",
+    "token_count": 59685,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565049990
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 33,000 · out: 1,263 · cached: 29,600 · reasoning: 465",
+    "ts": 1787565068984,
+    "detail": "step 3"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 33000,
+    "output_tokens": 1263,
+    "reasoning_tokens": 465,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 29600,
+    "text": "Tokens — in: 33,000 (cache: 29,600) · out: 1,263 (reasoning: ~465)"
+  },
+  {
+    "type": "text_final",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "Since you're in Bengaluru and after premium matcha, here are the city's three dedicated matcha bars — each with a different vibe, from a tiny Indiranagar counter to a big brunch-ready space. All open now.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "Midori Matcha Bar, Indiranagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Midori Matcha Bar",
+                  "query": "midori matcha bar indiranagar matcha latte",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJhXNUstYXrjsR5go0eodkoQo%2Fphotos%2FAVoNoXTgc2m-TA2sZ9AQTzzKfMpMevWfLOAvWH2Dm1GMYowiBBs8AackBvzLUuBwyxMwQWhiAPXyFWYt9dzimuNNGEnarcAa27CNx3Nk6qrXEen6n1wHQyLAxXqSaQAnjgMoTQOMMUbOSshYitwv9p-W2PcYKV-VsFB-qNNeEkOzDJ6ZanApimBIQTP_PzN43V6CqYJ5NDEjRcEqb7NrhLsPlAVqfaxCIDxVFatqrLMu455mSUsc5qQWp4lQyNNC9JzewAO3DHz5kHcsp1pVnpIFzjlBo1SCKWz3uF9Vs2BMPWpPjwSHFMSl4CA8N3UW6NtrUHAUQ6qmSUaqjz5AxgIljCveRyc2YscnLlS3IaeeQ3qhpu5rWIHq6h2IyI3K9c2tQpsn74iB3hGANjKig0k7SpVVP5G_1KQxnX8wNwuSLoMrdC2XtF0Cq0AkxbR2zm4T&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Midori Matcha Bar",
+                      "alt": "Midori Matcha Bar",
+                      "place_id": "ChIJhXNUstYXrjsR5go0eodkoQo"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.8★ · 105 reviews",
+                "price": "₹200–400 per person",
+                "why": "Tiny 8-seat bar with rich, organic ceremonial matcha and creamy matcha ice cream.",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=766003944663288550&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": null
+              },
+              {
+                "title": "Co,Ma - between Coffee and Matcha, Jayanagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Co,Ma",
+                  "query": "coma coffee and matcha jayanagar cafe matcha",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJte-cIyIVrjsRmqBdb_c10Ns%2Fphotos%2FAVoNoXT-_IEh35XInfHhjEBviXSp8Jb055zTWWIvpBpKfy87gYVto6xYjGg50fbXDCi1jgKD5pyJ9hfApE1EQCRWaDYDLuVH-ND6J1PQdwUL8lz6kYLsfS4GpBdUXA8qVYNtTy5-1yLlXa-Cpp5hc4GN9n7iNtEqzzO-p3QyFmWtI7zTJyyhiSPEQ7M8D3FiUEnPgoAHDe0Gamoy2NwCUTfuM07v48_zRxH6Lx56kVqeSg4ExG3OmdHtZF5P-e6f6FRQoIWM4Psza3MLM28Ev1YsWDTH_758EI_DhoL75YLJgU-oTftwsXVKbm-OtplcjmT_P7WTS2_qvSiL8dvnNH7LvaNwMU_TlLdkCSTrWHHKeeR9wKdclrJFzbn68vhEhP7Qwi1ysJDqr1Yh2wqCxBXrSh7tKLT_gRA5VEu6qlnQI7A4jKnKyj1cDCsuMwmoHAp_&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Co,Ma - between Coffee and Matcha",
+                      "alt": "Co,Ma - between Coffee and Matcha",
+                      "place_id": "ChIJte-cIyIVrjsRmqBdb_c10Ns"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Cozy Vibe",
+                "rating": "4.7★ · 151 reviews",
+                "price": "₹400–600 per person",
+                "why": "Chill Jayanagar spot where coffee meets matcha; iced mango matcha and coconut cloud stand out.",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=15839219226303635610&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": null
+              },
+              {
+                "title": "Purpose Matcha + Coffee House, Shanthala Nagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Purpose Matcha",
+                  "query": "purpose matcha coffee house shanthala nagar matcha cloud",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJsW3_iR4XrjsRf1-R-pEtIa4%2Fphotos%2FAVoNoXRH4eGzO7zMY6Qw-g1yRZT6nYccei3TPAxIoqylt_WYnzRIQlqrrkpMZCUdalKoUYI1eorNYOPak0AC7HWpdLjpO61F_0JoghU3SYJxwLRv_omfXfnTFswum91IZ4VeDDzZ1BcPhBDHFD4NlXgBO4R0wWUGl0yhGobxQ9O9D6MtsTCWU9q69zKZ06EL-1ZIaAvhGB51ADpshIy0nOFXPAk5OVyM0aAg7iHuE9fOAtckefcAi0bs05P4FCuc8QurUQuQn1mbjmas70m8-a3_y2bnkLClGyqCh85oHZJCPKKYzCWOf3B0zjSbAmSHag5khziSQbN1GmFVpyAqcS8Ypout4peihvs-fwqSBvydSnnYx3HPkIuxdgNySsJaGe4IbBiwN5e4xe3dyiecdSQT0eSYgr7ts2UK-Snbbgz-vbQrb6n4tlIeBpanM5tXTLPc&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Purpose Matcha + Coffee House",
+                      "alt": "Purpose Matcha + Coffee House",
+                      "place_id": "ChIJsW3_iR4XrjsRf1-R-pEtIa4"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Best for Staying",
+                "rating": "4.5★ · 68 reviews",
+                "price": "₹200–1200 per person",
+                "why": "Big aesthetic space with standout OG matcha latte, matcha cloud, brunch and board games.",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=12547360141828251519&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "063649 30992",
+                  "tel": "tel:06364930992"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Reviews for Midori Matcha Bar",
+          "Matcha spots in Indiranagar",
+          "Best matcha ice cream in Bengaluru",
+          "Cozy cafes for working in Jayanagar"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "text_replace",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "Since you're in Bengaluru and after premium matcha, here are the city's three dedicated matcha bars — each with a different vibe, from a tiny Indiranagar counter to a big brunch-ready space. All open now.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "Midori Matcha Bar, Indiranagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Midori Matcha Bar",
+                  "query": "midori matcha bar indiranagar matcha latte",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJhXNUstYXrjsR5go0eodkoQo%2Fphotos%2FAVoNoXTgc2m-TA2sZ9AQTzzKfMpMevWfLOAvWH2Dm1GMYowiBBs8AackBvzLUuBwyxMwQWhiAPXyFWYt9dzimuNNGEnarcAa27CNx3Nk6qrXEen6n1wHQyLAxXqSaQAnjgMoTQOMMUbOSshYitwv9p-W2PcYKV-VsFB-qNNeEkOzDJ6ZanApimBIQTP_PzN43V6CqYJ5NDEjRcEqb7NrhLsPlAVqfaxCIDxVFatqrLMu455mSUsc5qQWp4lQyNNC9JzewAO3DHz5kHcsp1pVnpIFzjlBo1SCKWz3uF9Vs2BMPWpPjwSHFMSl4CA8N3UW6NtrUHAUQ6qmSUaqjz5AxgIljCveRyc2YscnLlS3IaeeQ3qhpu5rWIHq6h2IyI3K9c2tQpsn74iB3hGANjKig0k7SpVVP5G_1KQxnX8wNwuSLoMrdC2XtF0Cq0AkxbR2zm4T&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Midori Matcha Bar",
+                      "alt": "Midori Matcha Bar",
+                      "place_id": "ChIJhXNUstYXrjsR5go0eodkoQo"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.8★ · 105 reviews",
+                "price": "₹200–400 per person",
+                "why": "Tiny 8-seat bar with rich, organic ceremonial matcha and creamy matcha ice cream.",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=766003944663288550&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": null
+              },
+              {
+                "title": "Co,Ma - between Coffee and Matcha, Jayanagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Co,Ma",
+                  "query": "coma coffee and matcha jayanagar cafe matcha",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJte-cIyIVrjsRmqBdb_c10Ns%2Fphotos%2FAVoNoXT-_IEh35XInfHhjEBviXSp8Jb055zTWWIvpBpKfy87gYVto6xYjGg50fbXDCi1jgKD5pyJ9hfApE1EQCRWaDYDLuVH-ND6J1PQdwUL8lz6kYLsfS4GpBdUXA8qVYNtTy5-1yLlXa-Cpp5hc4GN9n7iNtEqzzO-p3QyFmWtI7zTJyyhiSPEQ7M8D3FiUEnPgoAHDe0Gamoy2NwCUTfuM07v48_zRxH6Lx56kVqeSg4ExG3OmdHtZF5P-e6f6FRQoIWM4Psza3MLM28Ev1YsWDTH_758EI_DhoL75YLJgU-oTftwsXVKbm-OtplcjmT_P7WTS2_qvSiL8dvnNH7LvaNwMU_TlLdkCSTrWHHKeeR9wKdclrJFzbn68vhEhP7Qwi1ysJDqr1Yh2wqCxBXrSh7tKLT_gRA5VEu6qlnQI7A4jKnKyj1cDCsuMwmoHAp_&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Co,Ma - between Coffee and Matcha",
+                      "alt": "Co,Ma - between Coffee and Matcha",
+                      "place_id": "ChIJte-cIyIVrjsRmqBdb_c10Ns"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Cozy Vibe",
+                "rating": "4.7★ · 151 reviews",
+                "price": "₹400–600 per person",
+                "why": "Chill Jayanagar spot where coffee meets matcha; iced mango matcha and coconut cloud stand out.",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=15839219226303635610&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": null
+              },
+              {
+                "title": "Purpose Matcha + Coffee House, Shanthala Nagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Purpose Matcha",
+                  "query": "purpose matcha coffee house shanthala nagar matcha cloud",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJsW3_iR4XrjsRf1-R-pEtIa4%2Fphotos%2FAVoNoXRH4eGzO7zMY6Qw-g1yRZT6nYccei3TPAxIoqylt_WYnzRIQlqrrkpMZCUdalKoUYI1eorNYOPak0AC7HWpdLjpO61F_0JoghU3SYJxwLRv_omfXfnTFswum91IZ4VeDDzZ1BcPhBDHFD4NlXgBO4R0wWUGl0yhGobxQ9O9D6MtsTCWU9q69zKZ06EL-1ZIaAvhGB51ADpshIy0nOFXPAk5OVyM0aAg7iHuE9fOAtckefcAi0bs05P4FCuc8QurUQuQn1mbjmas70m8-a3_y2bnkLClGyqCh85oHZJCPKKYzCWOf3B0zjSbAmSHag5khziSQbN1GmFVpyAqcS8Ypout4peihvs-fwqSBvydSnnYx3HPkIuxdgNySsJaGe4IbBiwN5e4xe3dyiecdSQT0eSYgr7ts2UK-Snbbgz-vbQrb6n4tlIeBpanM5tXTLPc&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Purpose Matcha + Coffee House",
+                      "alt": "Purpose Matcha + Coffee House",
+                      "place_id": "ChIJsW3_iR4XrjsRf1-R-pEtIa4"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Best for Staying",
+                "rating": "4.5★ · 68 reviews",
+                "price": "₹200–1200 per person",
+                "why": "Big aesthetic space with standout OG matcha latte, matcha cloud, brunch and board games.",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=12547360141828251519&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "063649 30992",
+                  "tel": "tel:06364930992"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Reviews for Midori Matcha Bar",
+          "Matcha spots in Indiranagar",
+          "Best matcha ice cream in Bengaluru",
+          "Cozy cafes for working in Jayanagar"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "completion"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_skills_used",
+    "label": "LLM used skills (1)",
+    "ts": 1787565069280,
+    "detail": "food"
+  },
+  {
+    "type": "turn_complete",
+    "turn_id": "9f1ce67a-c091-4adc-85ae-c01128f65030",
+    "input_tokens": 92685,
+    "output_tokens": 2397,
+    "reasoning_tokens": 737,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 53600,
+    "latency_ms": 38700,
+    "agent_steps": 3,
+    "tool_call_count": 4,
+    "skills_loaded": [
+      "default",
+      "food",
+      "local_experiences"
+    ]
+  },
+  {
+    "type": "[DONE]"
+  }
+]

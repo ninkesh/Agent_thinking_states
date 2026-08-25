@@ -1,0 +1,1324 @@
+[
+  {
+    "type": "turn_started"
+  },
+  {
+    "type": "insight",
+    "subtype": "guardrail_passed",
+    "label": "Guardrail passed",
+    "ts": 1787565416625,
+    "detail": "nsfw check ✓"
+  },
+  {
+    "type": "insight",
+    "subtype": "query_enriched",
+    "label": "Enrichment skipped — no prior history",
+    "ts": 1787565416627
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_selected",
+    "label": "Skills selected (1)",
+    "ts": 1787565416627,
+    "detail": "travel (0.83)"
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_loaded",
+    "label": "Skills loaded (2)",
+    "ts": 1787565416630,
+    "detail": "default, travel"
+  },
+  {
+    "type": "insight",
+    "subtype": "context_built",
+    "label": "Context built",
+    "ts": 1787565416631,
+    "detail": "stm=no · 0 msgs"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_start",
+    "label": "LLM started",
+    "ts": 1787565417230
+  },
+  {
+    "type": "insight",
+    "subtype": "tools_loaded",
+    "label": "Tools loaded (13)",
+    "detail": "GetRoute, GetWeather, MemoryRead, MemoryWrite, NearbyPlaces, PlaceAutocomplete, PlaceDetails, PlaceSearch, ProductSearch, Task, TodoWrite, WebFetch, WebSearch",
+    "ts": 1787565417234
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "user_query"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "0 / 100,000 tokens (threshold)",
+    "token_count": 0,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565418749
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Resolving Jaldapara National Park's coordinates before gathering the full trip data.",
+    "step_id": 1,
+    "names": [
+      "PlaceSearch"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceSearch",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787565431646,
+    "detail": "Jaldapara National Park West Bengal"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "Jaldapara National Park West Bengal",
+      "max_results": 5
+    },
+    "tool_use_id": "8934aacc-2bd9-4bcc-8f28-b498266db88d"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 25,318 · out: 796 · cached: 24,000 · reasoning: 711",
+    "ts": 1787565431651,
+    "detail": "step 1"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 25318,
+    "output_tokens": 796,
+    "reasoning_tokens": 711,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24000,
+    "text": "Tokens — in: 25,318 (cache: 24,000) · out: 796 (reasoning: ~711)"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787565433563,
+    "detail": "2325 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"Jaldapara National Park West Bengal\", \"total_results\": 2, \"places\": [{\"place_id\": \"ChIJbSOmN9ew4zkRGljdcskySBA\", \"name\": \"Jaldapara National Park\", \"formatted_address\": \"Jaldapara, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"national_park\", \"park\", \"point_of_interest\", \"establishment\"], \"rating\": 4.4, \"user_rating_count\": 4099, \"price_display\": \"\", \"open_now\": null, \"phone\": \"093546 70476\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=1173243543726938138&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.6905136, \"longitude\": 89.2805351, \"photo_url\": \"/api/photo?name=places%2FChIJbSOmN9ew4zkRGljdcskySBA%2Fphotos%2FAVoNoXQje63Vr_V2sOz0GAoHOM07pvBVoYNut4nr8lCETlswZm06vgPFtzdP3N2bm46rKY_4za93fXaRZRC4xSvbX98gNJgQhZrY5QfRDvUUPuFFXmzS8EJvgi6_ZMR75lh2Zw9v0nCiJ23_UFSl5vi3j9q3f302AcGAQXK8Gz-r73kdS7LndFxkALnKfGtrcq46GzieLd3I0OdK7ploX9AZ3UlRacN9pa6Tj3loYzNifMtzB1DlN5hVpnG6HQg4Eb6zIsZe4vtKdF1VoHq7qslEkRJAI8iB2bDcFv2qr0UQJLFvUaygWgTamxrci0EaqKiJY6NnwH4Y0OWfOw1A7DTiGfkTenaowBQlal1TZKq2sqAyHegsDnfFwM5hy5PUJ5gHjEclU6X99MkvJ3xIlGIvPEJVAknzs3OjHFh5FKMTVQlyGA&maxWidth=400\"}, {\"place_id\": \"ChIJ5Tfoeh2x4zkRuOLJGSvT13E\", \"name\": \"Jaldapara National Park Gate\", \"formatted_address\": \"M7RH+CRG, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"tourist_attraction\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"user_rating_count\": 92, \"price_display\": \"\", \"open_now\": null, \"phone\": \"\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=8203257428348363448&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.690556599999997, \"longitude\": 89.2803828, \"photo_url\": \"/api/photo?name=places%2FChIJ5Tfoeh2x4zkRuOLJGSvT13E%2Fphotos%2FAVoNoXS1BIgKmElbMiy0WCq2ZlonCjVEhHnjUqvlklSDTr0zb7Unsor4p0FPq0FT9HfEUASv47yppSG-5IxhXqTSTYIQ7j_FHPKeckc3aJLcAKFpwfEqK1QDzZbg0aiLmt4yBwkR00YVQNFmOCgzKPFfIwhFxhSgBRPjMW2j_3HZWSupQqUi8xYuRQ1c9WvCHuV78aYCcVpTWKt_7pfPb_M1-gzJfNqh5L35boRKX-q4wH5rIVKJBz7RuLltJ_qocvaTFWzQjC_Alot6yPXwG1BKCamLFk1mSRCSNqv7cWFwyxJOg_ROWRYlbuIlD_HZjce-ghlJOrOGA_4tD1-dQrp65aCZu-oKAH_kgjTdczNtAyvPnVDrkQdn8xgwEudl0oSP-DEyHI5082c8fyRkNg5DFg33avs32Ize50ubcJJWPiAb7CzI&maxWidth=400\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "d7504ca1-172f-4ffe-99fc-3c480c26dd89",
+    "is_error": false,
+    "llm_text": "{\"query\": \"Jaldapara National Park West Bengal\", \"total_results\": 2, \"places\": [{\"place_id\": \"ChIJbSOmN9ew4zkRGljdcskySBA\", \"name\": \"Jaldapara National Park\", \"formatted_address\": \"Jaldapara, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"national_park\", \"park\", \"point_of_interest\", \"establishment\"], \"rating\": 4.4, \"user_rating_count\": 4099, \"price_display\": \"\", \"open_now\": null, \"phone\": \"093546 70476\", \"latitude\": 26.6905136, \"longitude\": 89.2805351}, {\"place_id\": \"ChIJ5Tfoeh2x4zkRuOLJGSvT13E\", \"name\": \"Jaldapara National Park Gate\", \"formatted_address\": \"M7RH+CRG, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"tourist_attraction\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"user_rating_count\": 92, \"price_display\": \"\", \"open_now\": null, \"phone\": \"\", \"latitude\": 26.690556599999997, \"longitude\": 89.2803828}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 2",
+    "ts": 1787565433567,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "25,318 / 100,000 tokens (threshold)",
+    "token_count": 25318,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565433570
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Now gathering weather, drive route, stays, and safari details for Jaldapara in parallel.",
+    "step_id": 2,
+    "names": [
+      "GetWeather",
+      "GetRoute",
+      "PlaceSearch",
+      "WebSearch"
+    ],
+    "tools": [
+      {
+        "tool_name": "GetWeather",
+        "user_facing_tool_label": "Checking weather",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/Weather.png"
+      },
+      {
+        "tool_name": "GetRoute",
+        "user_facing_tool_label": "Mapping route",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapTrifold.png"
+      },
+      {
+        "tool_name": "PlaceSearch",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      },
+      {
+        "tool_name": "WebSearch",
+        "user_facing_tool_label": "Searching...",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MagnifyingGlass.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → GetWeather",
+    "ts": 1787565444447,
+    "detail": "daily"
+  },
+  {
+    "type": "tool_use",
+    "name": "GetWeather",
+    "input": {
+      "latitude": 26.6905,
+      "longitude": 89.2805,
+      "mode": "daily",
+      "days": 5
+    },
+    "tool_use_id": "977bcc2b-e0b4-4fad-a124-8e468779ca06"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → GetRoute",
+    "ts": 1787565444448,
+    "detail": "Bengaluru"
+  },
+  {
+    "type": "tool_use",
+    "name": "GetRoute",
+    "input": {
+      "origin": "Bengaluru",
+      "destination": "Jaldapara National Park",
+      "travel_mode": "DRIVE"
+    },
+    "tool_use_id": "1ab54964-e205-4e5d-aa57-a5ccfd9a895e"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787565444449,
+    "detail": "hotels resorts lodges Jaldapara West Bengal"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "hotels resorts lodges Jaldapara West Bengal",
+      "min_rating": 3.5,
+      "max_results": 8
+    },
+    "tool_use_id": "73f68877-2917-4687-af16-901354c28e47"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787565444449,
+    "detail": "restaurants Jaldapara Madarihat West Bengal"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "restaurants Jaldapara Madarihat West Bengal",
+      "min_rating": 3.5,
+      "max_results": 5
+    },
+    "tool_use_id": "f0f0ddb5-c1ca-4418-877e-b23b7de574d7"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → WebSearch",
+    "ts": 1787565444450,
+    "detail": "Jaldapara National Park safari timings fees rhino sighting 2025 best time to vis"
+  },
+  {
+    "type": "tool_use",
+    "name": "WebSearch",
+    "input": {
+      "query": "Jaldapara National Park safari timings fees rhino sighting 2025 best time to visit"
+    },
+    "tool_use_id": "75a823cd-c2d1-4663-b13b-8ee83fea06a9"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 25,752 · out: 455 · cached: 24,000 · reasoning: 111",
+    "ts": 1787565444451,
+    "detail": "step 2"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 25752,
+    "output_tokens": 455,
+    "reasoning_tokens": 111,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24000,
+    "text": "Tokens — in: 25,752 (cache: 24,000) · out: 455 (reasoning: ~111)"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 5 tools in parallel",
+    "ts": 1787565444452,
+    "detail": "GetWeather, GetRoute, PlaceSearch, PlaceSearch, WebSearch"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 5,
+    "names": [
+      "GetWeather",
+      "GetRoute",
+      "PlaceSearch",
+      "PlaceSearch",
+      "WebSearch"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: GetWeather",
+    "ts": 1787565446265,
+    "detail": "1755 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "GetWeather",
+    "text": "{\"mode\": \"daily\", \"latitude\": 26.6905, \"longitude\": 89.2805, \"days_returned\": 5, \"forecast\": [{\"date\": \"2026-08-24\", \"condition_day\": \"Scattered thunderstorms\", \"condition_night\": \"Rain\", \"temp_max_c\": 31.7, \"temp_min_c\": 26.4, \"humidity_pct\": null, \"precipitation_probability_pct\": null, \"precipitation_type\": \"\", \"uv_index\": null, \"sunrise\": \"2026-08-23T23:38:46.918347102Z\", \"sunset\": \"2026-08-24T12:31:28.656990606Z\"}, {\"date\": \"2026-08-25\", \"condition_day\": \"Light rain\", \"condition_night\": \"Rain\", \"temp_max_c\": 31.3, \"temp_min_c\": 26.1, \"humidity_pct\": null, \"precipitation_probability_pct\": null, \"precipitation_type\": \"\", \"uv_index\": null, \"sunrise\": \"2026-08-24T23:39:14.209997644Z\", \"sunset\": \"2026-08-25T12:30:28.687074620Z\"}, {\"date\": \"2026-08-26\", \"condition_day\": \"Light rain\", \"condition_night\": \"Light rain\", \"temp_max_c\": 31.1, \"temp_min_c\": 26.3, \"humidity_pct\": null, \"precipitation_probability_pct\": null, \"precipitation_type\": \"\", \"uv_index\": null, \"sunrise\": \"2026-08-25T23:39:41.329706499Z\", \"sunset\": \"2026-08-26T12:29:28.085046648Z\"}, {\"date\": \"2026-08-27\", \"condition_day\": \"Scattered thunderstorms\", \"condition_night\": \"Light rain\", \"temp_max_c\": 32.7, \"temp_min_c\": 26.8, \"humidity_pct\": null, \"precipitation_probability_pct\": null, \"precipitation_type\": \"\", \"uv_index\": null, \"sunrise\": \"2026-08-26T23:40:08.281910133Z\", \"sunset\": \"2026-08-27T12:28:26.875551860Z\"}, {\"date\": \"2026-08-28\", \"condition_day\": \"Light rain\", \"condition_night\": \"Rain showers\", \"temp_max_c\": 32.6, \"temp_min_c\": 26.6, \"humidity_pct\": null, \"precipitation_probability_pct\": null, \"precipitation_type\": \"\", \"uv_index\": null, \"sunrise\": \"2026-08-27T23:40:35.071631938Z\", \"sunset\": \"2026-08-28T12:27:25.083334687Z\"}], \"source\": \"google_weather_api_v1\"}",
+    "tool_use_id": "66632fb3-3bc7-4c05-aec0-6187b6737dbd",
+    "is_error": false,
+    "llm_text": "{\"mode\": \"daily\", \"latitude\": 26.6905, \"longitude\": 89.2805, \"days_returned\": 5, \"forecast\": [{\"date\": \"2026-08-24\", \"condition_day\": \"Scattered thunderstorms\", \"condition_night\": \"Rain\", \"temp_max_c\": 31.7, \"temp_min_c\": 26.4, \"humidity_pct\": null, \"precipitation_probability_pct\": null, \"precipitation_type\": \"\", \"uv_index\": null, \"sunrise\": \"2026-08-23T23:38:46.918347102Z\", \"sunset\": \"2026-08-24T12:31:28.656990606Z\"}, {\"date\": \"2026-08-25\", \"condition_day\": \"Light rain\", \"condition_night\": \"Rain\", \"temp_max_c\": 31.3, \"temp_min_c\": 26.1, \"humidity_pct\": null, \"precipitation_probability_pct\": null, \"precipitation_type\": \"\", \"uv_index\": null, \"sunrise\": \"2026-08-24T23:39:14.209997644Z\", \"sunset\": \"2026-08-25T12:30:28.687074620Z\"}, {\"date\": \"2026-08-26\", \"condition_day\": \"Light rain\", \"condition_night\": \"Light rain\", \"temp_max_c\": 31.1, \"temp_min_c\": 26.3, \"humidity_pct\": null, \"precipitation_probability_pct\": null, \"precipitation_type\": \"\", \"uv_index\": null, \"sunrise\": \"2026-08-25T23:39:41.329706499Z\", \"sunset\": \"2026-08-26T12:29:28.085046648Z\"}, {\"date\": \"2026-08-27\", \"condition_day\": \"Scattered thunderstorms\", \"condition_night\": \"Light rain\", \"temp_max_c\": 32.7, \"temp_min_c\": 26.8, \"humidity_pct\": null, \"precipitation_probability_pct\": null, \"precipitation_type\": \"\", \"uv_index\": null, \"sunrise\": \"2026-08-26T23:40:08.281910133Z\", \"sunset\": \"2026-08-27T12:28:26.875551860Z\"}, {\"date\": \"2026-08-28\", \"condition_day\": \"Light rain\", \"condition_night\": \"Rain showers\", \"temp_max_c\": 32.6, \"temp_min_c\": 26.6, \"humidity_pct\": null, \"precipitation_probability_pct\": null, \"precipitation_type\": \"\", \"uv_index\": null, \"sunrise\": \"2026-08-27T23:40:35.071631938Z\", \"sunset\": \"2026-08-28T12:27:25.083334687Z\"}], \"source\": \"google_weather_api_v1\"}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: GetRoute",
+    "ts": 1787565446268,
+    "detail": "646 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "GetRoute",
+    "text": "{\"origin\": \"Bengaluru\", \"destination\": \"Jaldapara National Park\", \"travel_mode\": \"DRIVE\", \"waypoints\": [], \"total_routes\": 1, \"distance_meters\": 2576344, \"distance_text\": \"2,576 km\", \"duration_seconds\": 169995, \"duration_text\": \"1 day 23 hours\", \"routes\": [{\"distance_meters\": 2576344, \"distance_text\": \"2,576 km\", \"duration_seconds\": 169995, \"duration_text\": \"1 day 23 hours\", \"duration_in_traffic_text\": \"1 day 22 hours\", \"legs\": [{\"distance_meters\": 2576344, \"duration_seconds\": 169995, \"start_lat\": 12.962865899999999, \"start_lng\": 77.5775189, \"end_lat\": 26.690498299999998, \"end_lng\": 89.28040759999999}]}], \"source\": \"google_routes_api_v2\"}",
+    "tool_use_id": "d1d0dd28-a00e-4347-bd82-50748649eda7",
+    "is_error": false,
+    "llm_text": "{\"origin\": \"Bengaluru\", \"destination\": \"Jaldapara National Park\", \"travel_mode\": \"DRIVE\", \"waypoints\": [], \"total_routes\": 1, \"distance_meters\": 2576344, \"duration_seconds\": 169995, \"routes\": [{\"distance_meters\": 2576344, \"duration_seconds\": 169995, \"duration_in_traffic_text\": \"1 day 22 hours\", \"legs\": [{\"distance_meters\": 2576344, \"duration_seconds\": 169995, \"start_lat\": 12.962865899999999, \"start_lng\": 77.5775189, \"end_lat\": 26.690498299999998, \"end_lng\": 89.28040759999999}]}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787565446271,
+    "detail": "9148 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"hotels resorts lodges Jaldapara West Bengal\", \"total_results\": 8, \"places\": [{\"place_id\": \"ChIJ8c9k_ZC94zkRmfC-Us9Kzug\", \"name\": \"The Jungle Book Resort\", \"formatted_address\": \"Madhya Madarihat, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"resort_hotel\", \"hotel\", \"lodging\", \"point_of_interest\"], \"rating\": 4.1, \"user_rating_count\": 732, \"price_display\": \"\", \"open_now\": true, \"phone\": \"099322 74179\", \"website\": \"https://www.thejunglebookresort.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=16775427916308607129&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.6870542, \"longitude\": 89.27712799999999, \"photo_url\": \"/api/photo?name=places%2FChIJ8c9k_ZC94zkRmfC-Us9Kzug%2Fphotos%2FAVoNoXRXJi3U6wfGaYZD6-a7Q0zPqyTRrD7U8ZC8ivRXDybeqmqEQM4DsrvVGmQDkRypUV-tBROhKrDu5-zPDAnXO-_5nPEsD_euJEnPh4w3iqhCuHotIgSQ9UtbVpP27ftW6NaCUNEXA0-7Cb3y_hpkk3k877HSoP9fkGmGnsk2Jm_L5PYxefmXK8iDvLofRimnLqXYtzJM9T_LB6-TPZmrS5_oamGcrD8IIZWioG17m4zP-K9QKlG-SQKGICNSqOSaX1_avXjtl1xROl2vyhVr1gO8BXjLZFtBRU9ad-3W3toVVKC0pH1p6bR_6ItBEqpKqi8hzTI9onlVacNTfoEw6e4URELTnjYUvFSovAyduEVsgM_o36z4wmZjhvt4xi_HvaAh8VWY06lr-XHy53cwcmuF9kUFEfyyL9u113P6sP00rE4&maxWidth=400\"}, {\"place_id\": \"ChIJL-e6Zu-w4zkRjhLn9eJFzkI\", \"name\": \"JALDAPARA FOREST TOURIST LODGE\", \"formatted_address\": \"12 MILE, KALIBARI, Madhya Madarihat, West Bengal 735220, India\", \"types\": [\"hotel\", \"lodging\", \"point_of_interest\", \"establishment\"], \"rating\": 4.3, \"user_rating_count\": 12, \"price_display\": \"\", \"open_now\": null, \"phone\": \"084206 40820\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=4813861892796125838&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.669390999999997, \"longitude\": 89.274885, \"photo_url\": \"/api/photo?name=places%2FChIJL-e6Zu-w4zkRjhLn9eJFzkI%2Fphotos%2FAVoNoXQfH6HBeKLMZuFmN2FjfucCQE1PNgeiO-cyqi1i2POkxlD3_jU-SQ3l57lm22ZNbq27M_uO6D6Oz5NZ06zdf_9Kw84BkW1rsakDOUlyvYVbtt92OMBnU0UHW3HEfQtadfxWxU0_VUwI3GZ78V7qejAPwn5gqtSryGrcv_mjg4Y6Y0NkaVvkvPnAYoUN07BWZ1NYPQPt4ZcPUDH6QppAlTpnaG8YY_AeMVhUnnAGGyloZPNGpO4Z2pxDfXNhblOAbE4mcKEwBBgx4daP6fF4jvYl5xEdoszrpCMKcd6N36pL5hh8oJL4OogZg3IEIrtoSbsGfwTXlB4rmv3FnNHmFPwqp8B5lC1wmhUO3yMyUSjoijErwQnsS6KMEl1dug0yohcn403eBdnAdSW4ettcwFgpuSQFpCxPUiy8lm6UpO5camRceAA3FsEGK2vwq3pD&maxWidth=400\"}, {\"place_id\": \"ChIJA4mOkSqx4zkRSRQ7gEXGpIA\", \"name\": \"Jaldapara Tourist Lodge, WBTDCL\", \"formatted_address\": \"Madhya Madarihat, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"lodging\", \"point_of_interest\", \"establishment\"], \"rating\": 4.3, \"user_rating_count\": 2596, \"price_display\": \"\", \"open_now\": null, \"phone\": \"074308 09428\", \"website\": \"http://www.wbtdcl.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=9269751934841721929&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.6956358, \"longitude\": 89.2856164, \"photo_url\": \"/api/photo?name=places%2FChIJA4mOkSqx4zkRSRQ7gEXGpIA%2Fphotos%2FAVoNoXTj1jgkAyVMDgl2cdJrV5LWZMVRt24dfG7Q8jqyhEW_uDet_Zkrs6XAcFydn5NPaxgeT9LsdF1WGHzuWipA1Ks93QS277scPzZOAH5b144CK99Yt7D7bpT_1m4sxaWw0xjdy_qYh-x7LvTm6g0lIctbBKc_ORDqnFfcR3FDDHEQhsTpfwmetWTIwj8Zmv8Z_SjGmdj37S9GZkRMcT6-deWP5jWLCYXPEAdrpneeKhS2pFopeQSfNuJ6EbQ6rIKZ7tDvm8njCZlSb5H96DnxDu5wNH_Wiol8PoxhzKg_H6fQajRu7pjd99MW0eaUDUeC1SfDoMxBkhnrmdh9JrIIV8XJtkzzs9YGq0Nt2DWgCd4KVPSX4jbp2Ga6vcR80JKchiP7BDeS-FllDbyQh2q0UF_atpteYcCOi3d548F1PETzzwdd&maxWidth=400\"}, {\"place_id\": \"ChIJZb-7cC-x4zkR3jjll4NLQBs\", \"name\": \"SUMARU JUNGLE RESORT\", \"formatted_address\": \"M7Q8+R88, NH-31D, Madhya Madarihat, Khairbari Forest, West Bengal 735220, India\", \"types\": [\"resort_hotel\", \"hotel\", \"lodging\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 230, \"price_display\": \"\", \"open_now\": true, \"phone\": \"\", \"website\": \"https://www.sumaruresort.co.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=1963652466094717150&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.689528199999998, \"longitude\": 89.26582119999999, \"photo_url\": \"/api/photo?name=places%2FChIJZb-7cC-x4zkR3jjll4NLQBs%2Fphotos%2FAVoNoXSDEF5JprtUB3zW2PXv1gvS42zZ4shc12DOn-6EQO1356rHHowXnPgJR5EAuICVscg74L2TqeosllFKM1KpYeWAyAbm8Ye4omFol-iu4vaaaZac6XNODtAVvlPBM1vXo7jtkPPMW9NepTp4_8-YCr4NrjQAu7bIYMYTITEnkxP0Bj4m3VV3c38R127UubS3VE7MpZ9nMQsVGiAhLnFXrWj8dJ7q3_Yn8-JljUzhtXsMoOn6nuYllQyl8S-4wc3IEYoy1GqWCEc7nncfyOO5-52qf2i5Vq74Ls6O4m5VIA2Zw3U5_1tyWe2XlKlQ00TbA3d9pLEDtdpq5qVR35It61NGdYysd2Z4P2y1Wn6rk5c5DokMQfBiKyLHjiR02olWjh1ODfz83gn9lNZ82Dex8PS3ptUs9lRHZZOTPNPt4vG_XWwc&maxWidth=400\"}, {\"place_id\": \"ChIJuTt_Kt2x4zkRO51_gKHOza8\", \"name\": \"Babusona Homestay\", \"formatted_address\": \"Near Foot Ball Ground, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"private_guest_room\", \"lodging\", \"point_of_interest\", \"establishment\"], \"rating\": 4.1, \"user_rating_count\": 181, \"price_display\": \"\", \"open_now\": true, \"phone\": \"098326 03787\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=12668008519903976763&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.6907467, \"longitude\": 89.2770147, \"photo_url\": \"/api/photo?name=places%2FChIJuTt_Kt2x4zkRO51_gKHOza8%2Fphotos%2FAVoNoXT8E7vVj6jtupWkHBtFL5pg_-ZMD0FuyzyXJq8_yqAayxpn00DuppWBRBL31pO-svm3y5NZjJ3_ECoEk6Y5t6rlLGQiQo0RerWHq2FkjOm5_cRbRpl9rmggHrbVfefkpk8V-uztSJuBcuqgHwO2v0PwUyJdn-kN8r088LxmVc0vV0c4o2qg_v9CJnF2lt27hngtRr0YzYXU2jxeas5u8tbOLV5WoNz8vEl8RHQurfszBJ0vrUatvbk1No4wMOzqTzZxTXJBapAm59LybFgu19qvDTWv0m91A-SvWkXDKTbnZctrz9hl_S6u_546nr_vrJ9bWY1xG_WbnhifYEGHb9ykGsG29vRj3UHNXCreqfkaGRoyMzJ961f_7JH0EkGxHnjHI4cnqXrbBKdNmr3DbPSa-j8wJ4Yty31pbuP3yb7nb2y5&maxWidth=400\"}, {\"place_id\": \"ChIJx-YrijX14zkRO1H_K_K1ias\", \"name\": \"Bonpahari Resort\", \"formatted_address\": \"Kayat Para , Mahakal More, Batabari Farm, Dakshin Dhupjhora, Gorumara National Forest, Murti, Dakshin Dhupjhora, West Bengal 735206, India\", \"types\": [\"resort_hotel\", \"cottage\", \"family_restaurant\", \"garden\"], \"rating\": 4.6, \"user_rating_count\": 236, \"price_display\": \"\", \"open_now\": null, \"phone\": \"097494 64630\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=12360610704019902779&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.8105667, \"longitude\": 88.813991, \"photo_url\": \"/api/photo?name=places%2FChIJx-YrijX14zkRO1H_K_K1ias%2Fphotos%2FAVoNoXQQ7k-rbpiJTCgojXE6brEkHfZbrMZgOqiQPIZjNZKXuuOtdKINY-sZutpL-uVmw_tVuX_LDOdRNWTS5K4aOC5x0TthuUSjqnassxLo2GM9cOPpd6sxqusB9Q2LGZVW6nEwFiYjyAyA6AShsiHFTFry3Vui0WdgE_wCUJNMq39onQTHuteYmGWSpuEqOoQ1nXb0GN03QndoJRdlt7REvh0YYjDaW0hLZoFmWgiDRkwlod_usHWZDqvFejAT51G3F_JLxBj8bDYfVY58VT7YdVw687a5Ewe_CwYpb65arDHS8YCaYoVmlkJFBvvl-kOAv3GGt6HD5gxiD8Y9HD1uKOb7I-gj3btfFilUa_87_bXXtWUSxaQ5kl0hPx3eTSBjUZzMl5GWlKR3Rxe_clcOvEM-88S13xyRdGbIUMS0peCK8Q&maxWidth=400\"}, {\"place_id\": \"ChIJiRXBb5W34zkRJxc3dbS9t6w\", \"name\": \"Day Night Resort Jaldapara\", \"formatted_address\": \"Subash Nagar, Madhya Madarihat, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"resort_hotel\", \"hotel\", \"lodging\", \"point_of_interest\"], \"rating\": 3.9, \"user_rating_count\": 12, \"price_display\": \"\", \"open_now\": null, \"phone\": \"\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=12445624678019962663&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.705466899999998, \"longitude\": 89.2848327, \"photo_url\": \"/api/photo?name=places%2FChIJiRXBb5W34zkRJxc3dbS9t6w%2Fphotos%2FAVoNoXT9_yGw2o6EZwbyokP2fy6SQK1d1aZPYVSkbZRg4HWl3Zm_X1YjBlbVsv65eT06vNCsq4Ij5xUPI50d2Bw72u0JMdC-aqH_DyDCZh2utq2QurZb3WkQnLeOFl9L8kDsIK4FeHi67SA2wj-hFHC1PZJUrCiJie2U0qDN5V-aLf9zMjduYy3vXL0ygLsIfT8nYi6Le7FJ_hk28KddnUBDGnQUQ2db09zDl_UbTHZaY-4UkPqcfdM6qTrziuQ0L1VOLk6s68FW02jJdPQOlXJsxwIPTCC8WEnp1QPfr1KX4MWjeN5wRJaWjnyIa1Ca8OSArpLvWKUvy3y1zMpYEO24VIrIFgNo0i6YwmbbatI89UyxPtIcPrS9Ll8yPyTxEeD4SZ9d9eo94EqIfNjoTT7ZPmaAjM0WaBkVfgAZljIHXw3MXlFCD0OEhvC7IgFBZWHu&maxWidth=400\"}, {\"place_id\": \"ChIJDySHxib14zkRQjGfEgmUcAQ\", \"name\": \"The Riverwood Forest Retreat- Dooars (fully vaccinated staff)\", \"formatted_address\": \"New Jalpaiguri, Metteli, Dakshin Dhupjhora, West Bengal 735206, India\", \"types\": [\"hotel\", \"resort_hotel\", \"lodging\", \"point_of_interest\"], \"rating\": 4.4, \"user_rating_count\": 340, \"price_display\": \"\", \"open_now\": true, \"phone\": \"095936 77148\", \"website\": \"https://www.waxpolhotels.com/the-riverwood-forest-retreat-dooars/\", \"google_maps_uri\": \"https://maps.google.com/?cid=319918340231344450&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.8082584, \"longitude\": 88.82229009999999, \"photo_url\": \"/api/photo?name=places%2FChIJDySHxib14zkRQjGfEgmUcAQ%2Fphotos%2FAVoNoXSNmCr7zNx7aoVOva0dbCrFkJ34Ymba4OcUa2CjuIqWpBTpe3gCLjmtMB10VHK1SEavbZTtsqdlrCK_7Hl_S1w1bo50TV6ivKdh9e5yayoc9gtHiPWDRP31kryoeRzfSKPpvRIU7QEYL3Yv81nIZ9jm0SknX5V8m95qU4r4Iev70LSp9C1z0dYfhrYeuZiDtlDY5tByDWkOMLBRt1GdP8_0E06OqKmAYJa9wdtu6N4AqGC-UqlhtSCf4F85tcHzmoTdHMltnFUYImmGVhhJ-dfR3mQbOBHtK2-wCyiNI3tOrcIpNK2VcNEERDdBP38vg6VdJkm1QcVbTcWrhqDfnI69oemPm5Jne2YNIvw3WI9VsdQNrKl-66gVviA42XsnJlPLEgH1gff8hnVKFqX4P4GxQxSAQ2b9plzQNTUeQ3Q85g&maxWidth=400\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "5880a002-022d-499e-8a58-42a3cceecf95",
+    "is_error": false,
+    "llm_text": "{\"query\": \"hotels resorts lodges Jaldapara West Bengal\", \"total_results\": 8, \"places\": [{\"place_id\": \"ChIJ8c9k_ZC94zkRmfC-Us9Kzug\", \"name\": \"The Jungle Book Resort\", \"formatted_address\": \"Madhya Madarihat, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"resort_hotel\", \"hotel\", \"lodging\", \"point_of_interest\"], \"rating\": 4.1, \"user_rating_count\": 732, \"price_display\": \"\", \"open_now\": true, \"phone\": \"099322 74179\", \"latitude\": 26.6870542, \"longitude\": 89.27712799999999}, {\"place_id\": \"ChIJL-e6Zu-w4zkRjhLn9eJFzkI\", \"name\": \"JALDAPARA FOREST TOURIST LODGE\", \"formatted_address\": \"12 MILE, KALIBARI, Madhya Madarihat, West Bengal 735220, India\", \"types\": [\"hotel\", \"lodging\", \"point_of_interest\", \"establishment\"], \"rating\": 4.3, \"user_rating_count\": 12, \"price_display\": \"\", \"open_now\": null, \"phone\": \"084206 40820\", \"latitude\": 26.669390999999997, \"longitude\": 89.274885}, {\"place_id\": \"ChIJA4mOkSqx4zkRSRQ7gEXGpIA\", \"name\": \"Jaldapara Tourist Lodge, WBTDCL\", \"formatted_address\": \"Madhya Madarihat, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"lodging\", \"point_of_interest\", \"establishment\"], \"rating\": 4.3, \"user_rating_count\": 2596, \"price_display\": \"\", \"open_now\": null, \"phone\": \"074308 09428\", \"latitude\": 26.6956358, \"longitude\": 89.2856164}, {\"place_id\": \"ChIJZb-7cC-x4zkR3jjll4NLQBs\", \"name\": \"SUMARU JUNGLE RESORT\", \"formatted_address\": \"M7Q8+R88, NH-31D, Madhya Madarihat, Khairbari Forest, West Bengal 735220, India\", \"types\": [\"resort_hotel\", \"hotel\", \"lodging\", \"point_of_interest\"], \"rating\": 4.5, \"user_rating_count\": 230, \"price_display\": \"\", \"open_now\": true, \"phone\": \"\", \"latitude\": 26.689528199999998, \"longitude\": 89.26582119999999}, {\"place_id\": \"ChIJuTt_Kt2x4zkRO51_gKHOza8\", \"name\": \"Babusona Homestay\", \"formatted_address\": \"Near Foot Ball Ground, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"private_guest_room\", \"lodging\", \"point_of_interest\", \"establishment\"], \"rating\": 4.1, \"user_rating_count\": 181, \"price_display\": \"\", \"open_now\": true, \"phone\": \"098326 03787\", \"latitude\": 26.6907467, \"longitude\": 89.2770147}, {\"place_id\": \"ChIJx-YrijX14zkRO1H_K_K1ias\", \"name\": \"Bonpahari Resort\", \"formatted_address\": \"Kayat Para , Mahakal More, Batabari Farm, Dakshin Dhupjhora, Gorumara National Forest, Murti, Dakshin Dhupjhora, West Bengal 735206, India\", \"types\": [\"resort_hotel\", \"cottage\", \"family_restaurant\", \"garden\"], \"rating\": 4.6, \"user_rating_count\": 236, \"price_display\": \"\", \"open_now\": null, \"phone\": \"097494 64630\", \"latitude\": 26.8105667, \"longitude\": 88.813991}, {\"place_id\": \"ChIJiRXBb5W34zkRJxc3dbS9t6w\", \"name\": \"Day Night Resort Jaldapara\", \"formatted_address\": \"Subash Nagar, Madhya Madarihat, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"resort_hotel\", \"hotel\", \"lodging\", \"point_of_interest\"], \"rating\": 3.9, \"user_rating_count\": 12, \"price_display\": \"\", \"open_now\": null, \"phone\": \"\", \"latitude\": 26.705466899999998, \"longitude\": 89.2848327}, {\"place_id\": \"ChIJDySHxib14zkRQjGfEgmUcAQ\", \"name\": \"The Riverwood Forest Retreat- Dooars (fully vaccinated staff)\", \"formatted_address\": \"New Jalpaiguri, Metteli, Dakshin Dhupjhora, West Bengal 735206, India\", \"types\": [\"hotel\", \"resort_hotel\", \"lodging\", \"point_of_interest\"], \"rating\": 4.4, \"user_rating_count\": 340, \"price_display\": \"\", \"open_now\": true, \"phone\": \"095936 77148\", \"latitude\": 26.8082584, \"longitude\": 88.82229009999999}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787565446273,
+    "detail": "5819 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"restaurants Jaldapara Madarihat West Bengal\", \"total_results\": 5, \"places\": [{\"place_id\": \"ChIJU2MB3_m34zkRmL6U7WC5mTc\", \"name\": \"Aranya Family Restaurant\", \"formatted_address\": \"NH 317, near Reliance Petrol pump, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"family_restaurant\", \"cafe\", \"restaurant\", \"food\"], \"rating\": 4.1, \"user_rating_count\": 201, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"097332 67517\", \"website\": \"https://jaldaparajunglecampofficial.blogspot.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=4006437169476714136&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.7038068, \"longitude\": 89.28428749999999, \"photo_url\": \"/api/photo?name=places%2FChIJU2MB3_m34zkRmL6U7WC5mTc%2Fphotos%2FAVoNoXQdqexxNfIKbPYeFoHwuOE2_DA90f7PPjFBQeASTXj3vQmKFtcaOJ9E0PesrQYyiny_jrZRFgTkFc0tI5FD5qap4eskvjKPRx1yJRoD9kPanYuz1Karo6WnqktpQXj1zFaZzyma_089iYD9KiL1fm0jiBXjUdh81s_3fv67DjAWtpvXHlVHcoLvUFgZ64xTosJDFu9Zlu-vHIRBl9mIHsXlepjAsXzIzjlkFgF3btGy4x0W8rVWA_XvJMT64hzKQYDf18OJhP9qLSGOduFuDdKRLfx_An9nNnhKQrozXYxGSs6Uz23htl-qxvIcb9rGWlaxgbnK_xZb1b31PGgWFXRQOztyDtrrSAILr5FRBpoYTLC4TsbrHCSKTrpx3B5s03fvcR7gb_3vlyUAGYAHai4Io2oBCHmAJ9tvUINKZak&maxWidth=400\"}, {\"place_id\": \"ChIJIcix_yK34zkRIRCzoaKdSMI\", \"name\": \"Authentic Masala House (Pure Veg)\", \"formatted_address\": \"Totopara Rd, More, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"vegetarian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.9, \"user_rating_count\": 72, \"price_display\": \"\\u20b91\\u2013200 per person\", \"open_now\": true, \"phone\": \"081674 51139\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=13999612763504316449&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.6994746, \"longitude\": 89.2831657, \"photo_url\": \"/api/photo?name=places%2FChIJIcix_yK34zkRIRCzoaKdSMI%2Fphotos%2FAVoNoXSeChmh8zgE52r_MTYSz0HO3wVHNtZtox5fNvaXYW7NSIluqoNAnjk5ratQogaWUj0VGzmI9X7y_AgJUsI9fCFYm1x2F4R3TiKbhttVaaSMrWtkWfGZGTvrT6eNCMwqquHFd1kojrYzwmYlfFsQ5hyEuEBOQ8lN2GTI38lQ51tqD9RqAXi4XMiFXFnntOBzF4rp679HsE2ty_F00qc3j_nU7rbmjSQKE_FCqcL3HqlL_JMmQ37qW4Lr5stutNTyWuCyl-X03UVfnch0xxiMGfRpK201IExkq8x-CZTrU-2KZaVbdnVfjGyylLaTJRMm0fbVX4XGp6tQS-eM4E6b9O-NHceLO4u5GWT6rNBBjGnwSS-kKJoT3hl5yYFy3_P1c_DZ-gCpkNoEwok_X_Fdmd7ChiHl5WGXnj_k5LPNkfinATqDbw9ASZxTM9zo&maxWidth=400\"}, {\"place_id\": \"ChIJAfbpL9C74zkRS_fhFwvpbsc\", \"name\": \"Red Chilli Family Restaurant\", \"formatted_address\": \"Asian highway 48, chakamari, Madhya Madarihat, Madhya Chhekamari, West Bengal 735213, India\", \"types\": [\"family_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 3.9, \"user_rating_count\": 919, \"price_display\": \"\\u20b9200\\u2013600 per person\", \"open_now\": true, \"phone\": \"070010 37546\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=14370679694840428363&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.686615999999997, \"longitude\": 89.23871249999999, \"photo_url\": \"/api/photo?name=places%2FChIJAfbpL9C74zkRS_fhFwvpbsc%2Fphotos%2FAVoNoXSQngw5_itVBO07PoVeJaS5wEBVlrcbOgb-wJDna6aVWEAo4jXGbfp0f9Iirsk37kLEBbwVhSNXYsUXjTjr_VqYzT07o3luxCvRdLydGKb7IXrfblYI5c8ejy45Nf8w_XatYv_P59jBgNpniGHJNXiqOs9b4uNunCsqIxWSb_d5dGd6NMgdNvyP1nB8nRh4U3Ek4OzPd83546GHeRBNJAapbmA8boBvFsyhIiHsEG9ECLQKJM6pcq1tgmWIGnMUcDZsstyvp_U90gBigm1_G0zr9VO-BZ-QrTCv0lF8kBZ9qjr--o3X0JX4TSVywFyslFpAbmzK8BTxSzemP4IK3cwVWT3rTH1ZxT6FZCvAMxpr6Jq9_nShVS9cFvrLIISs-14qk17BqOyNfXHirfdpC_mseR0bpIUtcjVvC5HELRCrFw&maxWidth=400\"}, {\"place_id\": \"ChIJyRhDQu6x4zkRvR9BcQVAXc0\", \"name\": \"Hotel highway Inn Jaldapara\", \"formatted_address\": \"M7RJ+H86, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"indian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 5, \"user_rating_count\": 3, \"price_display\": \"\", \"open_now\": null, \"phone\": \"093394 59964\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=14798054342728425405&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.6914068, \"longitude\": 89.2807576, \"photo_url\": \"/api/photo?name=places%2FChIJyRhDQu6x4zkRvR9BcQVAXc0%2Fphotos%2FAVoNoXT0QZ-n2Wy0A2RKFTWk9k2zeZMA3g0MNc1gYdaCN3oFGK0w1fDi96wBNbBjQNZAKJnyVmPSi-conyO4EmD0zPtSiFsqMmmTQdIvpTgfu9_GNK3qfZ3tzpwq7FZkFj3ro_kf5fulGg2R0vYsPnm1sjKJuzLkk8vyGo_XK-jmzPW_knaXNF659rz3TzJH8zmLlq8iB8IiHX1Cojr0xvkz9S8mdNpRx9M84pooRU9q0UjzBTRYWMF4K8DsdbsyjK5p3jv893i_BC0H2TZV7Ap6UkGq_WQU5B247NSYazIEJwNSq2k7uH237qIaujsfFiAAfh3VMZ0xKeZes0rCRc_qtVfRhX04So4rg5shHVjSmhULHzlyXm9m5AQQdnYL2SdHQba21p284Qer1cEvdo8wDKWBseu_5JeiLWkgWAvTII21HA&maxWidth=400\"}, {\"place_id\": \"ChIJq6qqqsGw4zkR4g_VOHjS73Y\", \"name\": \"Madarihat Rhino Resort\", \"formatted_address\": \"M7H9+X6X, Madhya Madarihat, West Bengal 735220, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 3.9, \"user_rating_count\": 36, \"price_display\": \"\\u20b91\\u2013200 per person\", \"open_now\": true, \"phone\": \"078721 52722\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=8570300029700739042&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 26.6799882, \"longitude\": 89.26810189999999, \"photo_url\": \"/api/photo?name=places%2FChIJq6qqqsGw4zkR4g_VOHjS73Y%2Fphotos%2FAVoNoXTOR23zWe6zNF0EQdX2rHUmu-ABh9ZSyAdv8rSyob4-JSyqBZW3wmMZE235_ZKV1YSeqAS8iKQ7sZqga4AEanH6KGxLl3xUZgXp7iU1sNQl4irDDuGCWn7JJMVeU4YklVUtiik49kUO4lTXCY9E_bDnHkIgxpc37i58BfcccPXt__Aol5k4eXxJwPj0ijN_pb0b9YroU-a3hnOz3tEal_StTIYBJCOqpj95w571sW3DGB4HAltUZHfQrmziX5wHfb7p4tMjJ7n0DQRM8i0wJUT77_5HV8mJ_b4-hfetOhLyNP78TFe4nJKBgnqj8kU9IZbn2OMcVBB-yQjRVF-LyAD68iaDiaFY_gdSkjnyWSd20rAZPhWtRJcbiV7Si1-3nRn48SC_DVuKEHxQfsxHzgLbrZWVfKKYSq4edsgUUhRInw&maxWidth=400\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "98395a45-c89d-4734-870a-0c9c0db5c184",
+    "is_error": false,
+    "llm_text": "{\"query\": \"restaurants Jaldapara Madarihat West Bengal\", \"total_results\": 5, \"places\": [{\"place_id\": \"ChIJU2MB3_m34zkRmL6U7WC5mTc\", \"name\": \"Aranya Family Restaurant\", \"formatted_address\": \"NH 317, near Reliance Petrol pump, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"family_restaurant\", \"cafe\", \"restaurant\", \"food\"], \"rating\": 4.1, \"user_rating_count\": 201, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"097332 67517\", \"latitude\": 26.7038068, \"longitude\": 89.28428749999999}, {\"place_id\": \"ChIJIcix_yK34zkRIRCzoaKdSMI\", \"name\": \"Authentic Masala House (Pure Veg)\", \"formatted_address\": \"Totopara Rd, More, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"vegetarian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.9, \"user_rating_count\": 72, \"price_display\": \"\\u20b91\\u2013200 per person\", \"open_now\": true, \"phone\": \"081674 51139\", \"latitude\": 26.6994746, \"longitude\": 89.2831657}, {\"place_id\": \"ChIJAfbpL9C74zkRS_fhFwvpbsc\", \"name\": \"Red Chilli Family Restaurant\", \"formatted_address\": \"Asian highway 48, chakamari, Madhya Madarihat, Madhya Chhekamari, West Bengal 735213, India\", \"types\": [\"family_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 3.9, \"user_rating_count\": 919, \"price_display\": \"\\u20b9200\\u2013600 per person\", \"open_now\": true, \"phone\": \"070010 37546\", \"latitude\": 26.686615999999997, \"longitude\": 89.23871249999999}, {\"place_id\": \"ChIJyRhDQu6x4zkRvR9BcQVAXc0\", \"name\": \"Hotel highway Inn Jaldapara\", \"formatted_address\": \"M7RJ+H86, Uttar Madarihat, West Bengal 735220, India\", \"types\": [\"indian_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 5, \"user_rating_count\": 3, \"price_display\": \"\", \"open_now\": null, \"phone\": \"093394 59964\", \"latitude\": 26.6914068, \"longitude\": 89.2807576}, {\"place_id\": \"ChIJq6qqqsGw4zkR4g_VOHjS73Y\", \"name\": \"Madarihat Rhino Resort\", \"formatted_address\": \"M7H9+X6X, Madhya Madarihat, West Bengal 735220, India\", \"types\": [\"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 3.9, \"user_rating_count\": 36, \"price_display\": \"\\u20b91\\u2013200 per person\", \"open_now\": true, \"phone\": \"078721 52722\", \"latitude\": 26.6799882, \"longitude\": 89.26810189999999}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: WebSearch",
+    "ts": 1787565446276,
+    "detail": "28831 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "WebSearch",
+    "text": "Search results for 'Jaldapara National Park safari timings fees rhino sighting 2025 best time to visit':\n\n1. Free but limited passes to forests: New system to prevent overcrowding\n   https://www.telegraphindia.com/west-bengal/free-but-limited-passes-to-forests-new-system-to-prevent-overcrowding/cid/2080026\n   ## Located in Madarihat, Jaldapara is the largest habitat of one-horned rhinos in the district\n...\nijit Sinha,\n...\nban Choudh\n...\n28.\n...\n5, 11:48 AM\n...\nOfficials of the Jaldapara wildlife division of the state forest department have started issuing a \"specific\" number of passes to all those intending to visit the Jaldapara National Park in Alipurduar to stop the unbridled entry of tourists in the reserve forest area.\n...\nLocated in Madarihat, Jaldapara is the largest habitat of one-horned rhinos in the district. It also has a population of elephants, gaurs (Indian bison), leopards, deer, and some other animals and many bird species.\n...\nThe department has stopped collecting entry fees and vehicle charges from tourists entering any reserve forest area in Bengal after a recent reprimand from chief minister Mamata Banerjee.\n...\n“We have stopped selling entry tickets and also not taking any charge from vehicles. Because of this new decision, there was an apprehension that anybody could hire a vehicle and enter the wildlife habitats. To prevent overcrowding, we have decided to issue passes to ensure that only a specific number of vehicles enter the national park area for safari,” said a forester.\n...\nOn Sunday, the division issued a circular saying that car safari will be allowed six days a week (barring Thursday) in four different schedules from 6am to 5pm. In each trip, 36 persons will be allowed and each vehicle (usually, Maruti Gypsy vehicles are used for safari) can carry a maximum of six tourists.\n...\n“Anybody who wants to avail of the safari will have to collect the free passes while furnishing identity proofs. After the passes are issued, the visitor can hire the car and get a guide,” the forester added.\n...\nFor the car safari, passes will be issued an hour ahead of the safari time. “A person can collect a maximum of six passes by furnishing the identity proofs of all,” said a source.\n...\nThose planning to go on an elephant safari can collect the passes for their vehicles (to reach a specified area where pet elephants would carry them) a day before their safari.\n...\n“They will have to shell out₹1,000 per person like earlier for the elephant safari. This fund is used for pet elephant management,” a forest official said.\n...\nIn Jaldapara, three trips of elephant safari are conducted from 6.30 am to 9.30 pm. While eight persons can travel on each of the first two trips, only four can travel during the third trip.\n\n2. Wildlife Wing :: Directorate of Forests Govt. of West Bengal\n   https://www.wildbengal.com/jaldapara-np.php\n   General Info: Area: 216 km Altitude: 61 meters Best Season: October to May, particularly March and April, when new grass is growing Closed: 15 June to 14 September\n...\nThe forest is mainly savannah covered with tall elephant grasses. The main attraction of the National Park is Asiatic one-horned rhinoceros. The national park holds the maximum number of rhinos population in India after Kajiranga National Park in Assam. The other animals consists of Royal Bengal Tigers, elephants, deers, sambhar, barking deer, spotted deer and hog deer, wild pig, bisons. Jaldapara is a paradise for bird watchers. It is one of the very few places in India, where the Bengal Florican is sighted. The other birds to be found here are the Crested Eagle, Pallas's Fishing Eagle and shikra, besides Jungle fowl, peafowl, patridges, Bengal Florican and lesser Pied Hornbill. Python, monitor lizards, krates, cobras, geckos and about 8 species of fresh water turtles have also found national park here.\n...\nAn adventurous elephant ride in the morning will take you deep inside the grassland for the real excitement. The sights of rhino in a muddy pond, the herd of elephants or the running deer are the thrilling experiences in Jaldapara.\n...\nChilapata\n...\nit has now\n...\n. However digging up\n...\nthe past might destroy the present ecological balance of the forest. It is wise to leave it to the competent authorities to decide whether we should compromise the present and the future to gather the wisdom of the past. The\n...\nalso consits of\n...\n. The fluid that comes out is blood like in\n...\n. They are\n...\noutside the broken gate of the old fort. According to the locals of that area these\n...\nare 100-200 years old and\n...\nnot found anywhere in the world. These trees are only a few in number are yet to be given a botanical name. Car\n...\nin the park is also available\n\n3. Jaldapara National Park - Alipurduar, West Bengal - WILDLIFE NAVIGATOR\n   https://wildlifenavigator.com/jaldapara-national-park/\n   Jaldapara holds a special place in India’s\n...\nstory as one of the few protected areas\n...\nto the preservation of the Indian one-horned\n...\n, a species that once teetered on the brink of extinction.\n...\nrhinos, the park is home to elephants, leopards, swamp deer, and over 250 species of birds, making it a paradise\n...\n## Best Time to Visit\n...\nThe ideal time to visit Jaldapara is during the winter months from November to March. During this period:\n...\n- Summer (March to May): Temperatures range from 20°C to 35°C. Grasslands are lush, but midday can be hot for safari activities.\n- Monsoon (June to September): Heavy rainfall rejuvenates the forests and rivers but can make safaris challenging due to muddy paths.\n- Winter (October to February): Cool and dry, with temperatures between 8°C and 25°C, making it the most comfortable time for wildlife viewing.\n...\nVisiting during the monsoon offers a different charm, with lush greenery and flowing rivers, but some areas may remain inaccessible due to heavy rains.\n...\nExperiencing the wildlife of Jaldapara National Park is best done through guided safaris and nature-based activities, which allow visitors to safely observe animals in their natural habitat while minimising disturbance.\n...\n- Timings: Morning safaris (6:30 AM – 10:30 AM) and afternoon safaris (2:30 PM – 5:30 PM) are available.\n- Routes: Safaris typically cover the grasslands, riverbanks, and forest patches, where rhinos, elephants, and deer are frequently sighted.\n- Tips: Early morning safaris offer the best wildlife sightings, cooler temperatures, and softer light for photography.\n...\n- Park Rules: Always follow instructions from forest officials and guides. Avoid venturing into restricted zones.\n- Wildlife Safety: Maintain a safe distance from animals. Never feed or provoke wildlife.\n- Noise and Disturbance: Keep noise to a minimum; loud sounds can disturb animals and birds.\n- Eco-Friendly Practices: Avoid plastic and disposable items. Carry reusable water bottles and dispose of waste responsibly.\n- Clothing and Gear: Wear neutral-colored clothing to blend in, sturdy shoes for safari walks, and binoculars/camera for wildlife viewing.\n- Timing: Early mornings and late afternoons are best for sightings. Avoid safaris during the hottest part of the day.\n\n4. Jaldapara National Park: Explore Indian One-horned Rhinoceros | Travel Entice\n   https://travelentice.com/jaldapara-national-park/\n   the Torsa\n...\naldapara National\n...\nemerges as a prime\n...\nfor tourists exploring the Dooars\n...\nof northern West Bengal. Boasting a diverse array of flora and fauna, this wildlife sanctuary is famed for providing a safe haven\n...\n-horned rhinoceros. In addition to this iconic species, the\n...\nis home to a variety of wildlife including deer, peacocks, porcupines, monkeys, mongooses, martens, Indian bison, and more.\n...\nEmbarking on Jungle safari at Jadapara Wildlife Sanctuary is one of the most demanding activities for the Dooars tourists. Here, you can immerse yourself in two types of safaris firsthand:\n...\n1. Jeep safari\n2. Elephant safari\n3. bird watching safari\n...\nThe last one (bird watching) is quite popular among wildlife photographers. If you are a bird-watching and photography enthusiast, you must pay the entry fees, obtain permission from the forest authority, and enlist the services of a knowledgeable bird-watching guide. This allows for a captivating day spent capturing images of the diverse bird species inhabiting Jaldapara National Park. In the section below, you’ll discover a concise list of some of the special bird species found within the park.\n...\nThe Jeep safari offers a quicker exploration covering a broader area, although it may not venture deep into the grasslands or bring you up close to the rhinos. Nonetheless, it provides a satisfying experience of encountering roadside wildlife and observing rhinos in the grassland and salt lick area.\n...\nRent: INR 4500/Jeep\n...\n| Shifts | Timings (Nov-March) | Timings (April-October) |\n| --- | --- | --- |\n| 1st Shift | 6 AM to 7:30 AM | 5:30 AM to 7 AM |\n| 2nd Shift | 7:30 AM to 9 AM | 7 AM to 8:30 AM |\n| 3rd Shift | 3 PM to 4:30 PM | 3:30 PM to 5 PM |\n...\n(Safari Timing Varies as Season Changes)\n...\nEmbarking on an adventurous elephant ride in the morning session promises an exhilarating journey deep into the grasslands, offering thrilling encounters. Witnessing rhinos in muddy ponds, herds of elephants, and the graceful sprint of deer are among the captivating experiences awaiting you in Jaldapara.\n...\n| Shift | Timings | Rent |\n| --- | --- | --- |\n| 1st shift | 5:30 AM To 6:30 AM | INR 1450 / – per Seat |\n| 2nd shift | 6:30 AM To 7:30 AM | INR 1450 / – per Seat |\n| 3rd shift | 7:30 AM To 8:30 AM | INR 1450 / – per Seat |\n...\n(Safari Timing Varies as Season Changes)\n...\nNote: Jaldapara National Park remains closed on every Thursday. Also, the park remains closed from June 15th to September 15th, coinciding with the breeding season of many wildlife species.\n...\nJaldapara National Park unfolds as vast grasslands rather than traditional forests, boasting approximately 240 species of grass across its expanse. During your safari at Jaldapara, your vision spans across expansive landscapes teeming with wildlife. You may expect sightings of peacocks, various bird species, and a diverse array of deer such as Sambar, hog deer, barking deer, and spotted deer. Keep a keen eye out for the Indian one-horned rhinoceros, often spotted in specific areas like salt licks, muddy lands, and hidden within the grasslands.\n...\na larger area\n...\n, providing opportunities to spot deer and peacocks freely roaming, even along the roads\n...\nAlso you may have glimpses of rhinos can be caught at salt licks and amidst tall roadside tall grasses\n...\nIndian One-horned Rhinoceros, sambhar, barking deer, spotted deer, hog deer, Monkeys, wild pigs, Gour (Indian bison), and elephants.\n...\n## Best Time to visit Jaldapara National Park\n...\nYou can visit Jaldapara anytime between September and April; however, November-March is the best time to visit Jaldapara. During monsoon season Jaldapara remains exclusively green and beautiful, though you are not allowed to enjoy safari.\n\n5. Jaldapara Jeep Safari - Timings, Charges, Online Booking, Start, End, Dat\n   https://gotirupati.com/jaldapara-jeep-safari/\n   National Park Opening Dates: 16Sep – 14Jun\n...\nPark Remains closed during Monsoon ie. from 15Jun – 15Sep.\n...\nBest Time to Visit: Feb-May.\n...\nSafari Duration: 2 hours.\n...\nSeating Capacity: 6 (\n...\nists) +\n...\nGuide + 1 Driver.\n...\n## Jaldapara Jeep Safari Timings\n...\nSeason: Apr to Oct\n...\n| Trip | Jeep Safari Timings |\n| --- | --- |\n| Trip 1 | 5:30 am – 7:00 am |\n| Trip 2 | 7:30 am – 9:00 am |\n| Trip 3 | 1:30 pm – 3:00 pm |\n| Trip 4 | 3:30 pm – 5:00 pm |\n...\nWinter Season: Nov to Mar\n...\n| Trip | Jeep Safari Timings |\n| --- | --- |\n| Trip 1 | 6:00 am – 7:30 am |\n| Trip 2 | 8:00 am – 9:30 am |\n| Trip 3 | 1:00 pm – 2:30 pm |\n| Trip 4 | 3:00 pm – 4:30 pm |\n...\n#### Jaldapara Jeep Safari Charges\n...\n| S.No | Entry | Ticket Cost |\n| --- | --- | --- |\n| 1 | Indian Adult | Rs.60/ Person |\n| 2 | Foreigner Adult | Rs.200/ Person |\n| 3 | Vehicle Entry fee | Rs.350 |\n| 4 | Video Camera Charges | Rs.300 |\n| 7 | Guide Charges | Rs.100/ Elephant |\n| 8 | Still Camera | Rs.25 |\n| 9 | Vehicle Hire Charges (Gypsy) | Rs.1800/ person |\n\n6. Jaldapara Wildlife Sanctuary Kolkata (Timings, History, Entry Fee, Images, Location & Information) - Kolkata Tourism\n   https://kolkatatourism.travel/jaldapara-wildlife-sanctuary-kolkata\n   ### Jaldapara Wildlife Sanctuary Kolkata Car Safari Charges\n...\n- 60 Entry fee (per person)\n- 250 Vehicle Entry fee (per Trip)\n- 200 for Video Camera\n- 250 Guide Charges\n- 800 Vehicle Hire Charge (Gypsy)\n...\n### Jaldapara Wildlife Sanctuary\n...\n- 60 Entry fee (per person)\n...\n250\n...\n200\n...\n60 Entry fee (per person)\n...\n250\n...\nJaldap\n...\n### Jaldapara Wildlife Sanctuary\n...\n### Jaldapara Wildlife Sanctuary Kolkata Timings\n...\n| Day | Timing |\n| --- | --- |\n| Monday | 12:00 am – 12:00 am |\n| Tuesday | 12:00 am – 12:00 am |\n| Wednesday | 12:00 am – 12:00 am |\n| Thursday | 12:00 am – 12:00 am |\n| Friday | 12:00 am – 12:00 am |\n| Saturday | 12:00 am – 12:00 am |\n| Sunday | 12:00 am – 12:00 am |\n...\nEstablished in the year 1941 as a wildlife\n...\nJaldapara National Park is a beautiful destination located at the foothills of Eastern Himalayas, by the banks of Torsha River. It is situated in the new district of Alipurduar in West Bengal, India. The\n...\npark falls in the Dooars region, which is not only famous for its tea gardens but also boasts of having dense jungles that are home to many endangered species of animals like tigers, rhinoceros, elephants, etc.\n...\nThe park has rich vegetation providing a perfect setting for a myriad of flora and fauna. It is a bird watchers paradise and is best known for its number of Asiatic One- Horned Rhinos. The population of one- horned rhinos is marked to be around 160 and is at a steady increase.\n...\nThere are jeep as well as elephant safaris arranged. The elephant safaris are organised early morning through the exquisite grasslands and is the best and most recommended way to explore the wildlife of the national park.\n...\nThe major attraction of Jaldapara National Park is its population of one- horned rhino. Out of the very few areas where the one- horned rhino is found, Jaldapara has the largest rhino population only after Kaziranga in Assam. The grass wetland of the national park makes it a favourable natural habitat for survival of the rhinos.\n...\n### Best Time to visit Jaldapara National Park\n...\nJaldapara National Park remains open between September 15 to June 15 and the best time to visit is between October to March. The park remains closed during monsoon months. The weather of the national park remains warm and humid all year around.\n...\n### Jaldapara National Park Safari Timings, Entry Fees and Timings\n...\nJaldapara National Park Jeep Safari Timings: 1st Shift: November to March- 6:00AM to 7:30AM | April to October- 5:30AM to 7:00AM 2nd Shift: November to March- 7:30AM to 9:00AM | April to October- 7:00AM to 8:30AM 3rd Shift: November to March- 3:00PM to 4:30PM | April to October- 3:30PM to 5:00PM\n...\nJaldapara National Park Elephant Safari Timings: 1st Shift: 5:30AM to 6:30AM 2nd Shift: 6:30AM to 7:30AM 3rd Shift: 7:30AM to 8:30AM\n...\nDay Safari: 9:00 AM to 2:00 PM\n...\nJaldapara National Park Entry Fees and Other Charges For Indian Nationals- INR 100 per head For Foreign Nationals- INR 200 per head Car entry fees- INR 300 per vehicle Elephant safari – For Indian Nationals: INR 800 per head, For Foreign nationals: INR 1000 per head Jeep Safari – INR 450 per person Guide – INR 250 Still Camera – INR 50 Video Camera – INR 500\n\n7. Jaldapara Safari Booking: 7 Secrets That Actually Work 2026\n   https://expresswall99.com/jaldapara-safari-booking/\n   Here’s the big deal: Jaldapara holds India’s second-largest population of the Asiatic one-horned rhinoceros — over 160 rhinos — right after Kaziranga in Assam.\n...\n- Morning only — zero evening slots available\n- Maximum 4 people per elephant\n- Duration: approximately 1 hour per slot\n- Operated by the Forest Department with trained elephants and expert mahouts\n- Starts at Hollong Tourist Lodge, deep inside the forest (about 7 km from the main gate)\n- Guests staying at Hollong Lodge get first preference — outside visitors fill remaining slots\n...\n⚠️ Heads Up: Online\n...\nt always available\n...\nTickets are frequently sold\n...\nduring peak season\n...\n- Morning and evening slots available\n- Seats 6 tourists + 1 guide + 1 driver per jeep\n- Duration: 2 hours\n- Starting gates: Madarihat Hollong Gate, Salkumar Gate, Chilapata Gate, NEC Complex\n- Can be booked online via WBSFDA (jeep/car safari has reliable online availability)\n- Excellent for wildlife photography — more stable than an elephant, wider field of view\n...\n## Jaldapara Safari Entry Fee & Full Charges — 2026\n...\n| Charge Type | Indian Nationals | Foreign Nationals |\n| --- | --- | --- |\n| Entry Fee (per person) | ₹100 | ₹200 |\n| Jeep Safari (per person) | ₹450 | ₹450+ |\n| Elephant Safari (per person) | ₹800 – ₹1,200* | ₹1,000+ |\n| Car Entry Fee (per vehicle) | ₹300 | ₹300 |\n| Guide Charge | ₹250 | ₹250 |\n| Still Camera | ₹50 | ₹50 |\n| Video Camera | ₹500 | ₹500 |\n...\n*Elephant safari cost can reach approximately ₹4,800 per elephant (₹1,200 × 4 persons). Rates vary by operator and season — verify on the official portal.\n...\n## Jaldapara Safari Timings & Slots (Summer vs Winter)\n...\n### 🐘 Elephant Safari Timings\n...\n| Slot | Summer (Apr–Oct) | Winter (Nov–Mar) |\n| --- | --- | --- |\n| Slot 1 | 5:30 AM – 6:30 AM | 6:30 AM – 7:30 AM |\n| Slot 2 | 6:30 AM – 7:30 AM | 7:30 AM – 8:30 AM |\n| Slot 3 | 7:30 AM – 8:30 AM | 8:30 AM – 9:30 AM |\n...\nMorning only. No exceptions.\n...\n### 🚙 Jeep Safari Timings\n...\n| Slot | Summer (Apr–Oct) | Winter (Nov–Mar) |\n| --- | --- | --- |\n| Morning Slot 1 | 5:30 AM – 7:00 AM | 6:00 AM – 7:30 AM |\n| Morning Slot 2 | 7:00 AM – 8:30 AM | 7:30 AM – 9:00 AM |\n| Evening Slot | 3:30 PM – 5:00 PM | 3:00 PM – 4:30 PM |\n...\n🗓️ Important: Jaldapara National Park closes every year from 15th June to 15th September — monsoon season and breeding season. No safaris during this window. Plan your dates around this.\n...\n1. Book jeep safari 2–3 weeks ahead during October–January. These months are the peak season. Weekends sell out fast — I’ve seen slots go 3 weeks before the date. Don’t wait.\n...\n5. Ar\n...\nID verification, guide assignment, vehicle check —\n...\nat the main gate\n...\nBeing late means losing your\n...\n. No exceptions, no refunds.\n...\n6. Visit February–May for the best animal sightings. The tall elephant grass dies back, animals gather at water pools, and rhino sightings are almost guaranteed. This window is massively underrated compared to the December–January rush.\n...\n## Best Time to Visit Jaldapara for Safari\n...\nThe park is open from 15th September to 15th June each year. But not every month gives you the same experience.\n...\n| Period | Why Visit | Crowd Level |\n| --- | --- | --- |\n| October – November | Fresh opening, lush greenery, fewer crowds | Medium |\n| December – January | Cool weather, high animal activity, festive season | High |\n| February – March | Best rhino sightings, grass drops, clear skies | Medium |\n| April – May | Dry season, animals at water bodies, easiest sightings | Low–Medium |\n| June 1–15 | Last chance before closure, hot but quiet | Low |\n| June 16 – Sep 15 | ❌ Park CLOSED (monsoon & breeding season) | — |\n...\nMy honest recommendation: February to April is the sweet spot.\n...\nGrass visibility is at its best, temperatures are comfortable, and rhino encounters are almost a given.\n...\n### a. What is the entry\n...\nEntry fee for Indian nationals is ₹100 per person and ₹200 per person for foreign nationals. Car entry is ₹300 per vehicle. These are charged separately from safari fees — the jeep safari costs around ₹450 per person, and the elephant safari is approximately ₹800–₹1,200 per person for Indians. A guide fee of ₹250 also applies. Always verify the latest rates on the official WBSFDA portal before visiting, as fees are periodically revised.\n...\nThe elephant safari is the experience Jaldapara is genuinely famous for — nothing beats drifting through the grassland on an elephant at dawn with a one-horned rhino in front of you. That said, the jeep safari is more flexible (morning + evening), covers more ground, and is far easier to book reliably online. My advice: aim for the elephant safari if slots are open, and always lock in a jeep safari as your anchor experience.\n...\n### c. What time is the Jaldapara National Park safari?\n...\nElephant safari runs in three morning slots: 5:30–6:30 AM, 6:30–7:30 AM, and 7:30–8:30 AM (summer timings — shifts about 1 hour later in winter). Jeep safari has two morning slots and one evening slot (3:30 PM in summer, 3:00 PM in winter). Arrive at least 1 hour before your slot to clear the main gate formalities on time.\n\n8. Jaldapara National Park West Bengal | Indian Rhino Safari, Wildlife & Travel Guide ~ Wildlife India\n   https://indiwildlife.blogspot.com/2025/10/jaldapara-national-park-west-bengal.html\n   Jaldapara National Park is Located in the Alipurduar district of West Bengal, Jaldapara National Park is one of India’s most celebrated wildlife sanctuaries. Nestled in the lush foothills of the Eastern Himalayas, it’s famed for its population of the Great Indian One-Horned Rhinoceros, making it one of the top destinations for wildlife enthusiasts in Eastern India.\n...\nBest Known For: Indian one-horned rhinoceros, elephant safaris, and grassland biodiversity\n...\nThe main highlight of Jaldapara is its Elephant and Jeep Safaris, offering visitors a close-up view of wildlife in their natural surroundings.\n...\nElephant Safari: Conducted in the early morning from Hollong and Madarihat.\n...\nJeep Safari: Operates from Madarihat, Chilapata, and Hollong Range.\n...\n### Safari Timings\n...\nMorning Safari: 5:30 AM – 9:00 AM\n...\nEvening Safari: 3:00 PM – 6:00 PM\n...\n## Best Time to Visit\n...\nThe ideal time to explore Jaldapara National Park is between October and May, when the weather is dry and wildlife sightings are frequent.\n...\nWinter (Nov–Feb): Pleasant weather and good visibility.\n...\nSummer (Mar–May): Hot but excellent for rhino and elephant spotting.\n...\nMonsoon (Jun–Sep): Park remains closed due to heavy rains.\n...\n## Entry Fees & Permits\n...\nEntry Fee: ₹100 (Indians), ₹400 (foreigners)\n...\nSafari Charges: ₹800–₹1,200 per person (depending on safari type)\n...\nCamera Fee: ₹100 (still), ₹300 (video)\n...\nTimings: 6:00 AM – 6:00 PM\n...\nQ1. What is Jaldapara National Park famous for? It is renowned for its Indian one-horned rhinoceros, thriving in vast grasslands similar to Kaziranga.\n...\nQ2. Can I enjoy an elephant safari in Jaldapara? Yes, elephant safaris are one of the top attractions, offering a safe and thrilling way to view rhinos up close.\n...\nQ3. When is Jaldapara National Park open for tourists? The park remains open from October to May and closed during the monsoon season.\n\n9. Jaldapara National Park: A Complete Travel Guide - National Parks of India\n   https://nationalparktravel.in/all-national-parks/west-bengal-6-national-parks/jaldapara-national-park-a-complete-travel-guide/\n   Located in the Dooars region of West Bengal, Jaldapara National Park is a wildlife sanctuary renowned for its rich biodiversity and enchanting landscapes. Established in 1941 as a wildlife sanctuary and later declared a national park in 2012, it is one of the most significant protected areas in India for the conservation of the one-horned rhinoceros. Spread over an area of 216.51 square kilometers, the park is nestled at the foothills of the Eastern Himalayas and is surrounded by the scenic Torsa River.\n...\nThis article will provide all the essential details for your visit, including opening hours, ticket fees, attractions, and nearby places to explore.\n...\nThe park is primarily famous for its population of Indian one-horned rhinoceros, the second-largest in the country after Kaziranga. It is also home to:\n...\nJeep Safari\n...\nExplore the grasslands and dense forests of the park through a thrilling jeep safari, which is the best way to spot wildlife, especially the iconic rhinoceros and elephants.\n...\n### Timings and Days of Operation\n...\n- Morning: 6:00 AM to 9:00 AM\n- Evening: 3:00 PM to 5:00 PM\n...\n### Ticket Fees\n...\nEntry Fee:\n...\n- ₹100 for Indian citizens\n- ₹200 for foreign nationals\n...\nvary based on official regulations.\n...\n1. Camera Fee: ₹100 for still cameras, ₹300 for video cameras\n2. Online Booking Visitors can book safaris and entry tickets through the West Bengal Forest Department’s official website.\n3. Offline Booking Tickets can also be booked in person at the Madarihat Forest Range Office, located near the park’s entrance.\n4. Tour Operators Several licensed tour operators offer comprehensive packages, including safaris, accommodations, and guided tours.\n...\nPro Tip: Elephant safaris are in high demand, so book well in advance, especially during the peak season (October to March).\n...\n### Best Time to Visit\n...\nThe ideal time to visit Jaldapara is from October to May, when the weather is pleasant, and wildlife sightings are more frequent. Avoid visiting during the monsoon season, as the park remains closed.\n...\n- Biodiversity Hotspot: Jaldapara is part of the Terai-Duar\n...\nand grasslands ecoregion, making it a unique ecosystem in India.\n- Endangered Species: The park plays a critical role in conserving the one-horned rhinoceros, an endangered species.\n\n10. Jeep Safari In Jaldapara | Wildlife Tours in West Bengal\n   https://expresswall99.com/jeep-safari-in-jaldapara/\n   Jeep Safari in Jaldapara National Park offers the thrilling opportunity to spot one-horned rhinos and diverse wildlife up close in their natural habitat.\n...\nThese 2-hour guided tours cost between ₹800-₹1500 per vehicle (accommodating 4-6 people) and operate daily during morning (6-8 AM) and afternoon (3-5 PM) slots.\n...\nAdvance booking through the West Bengal Forest Department is essential, especially during peak season (October-March).\n...\nA standard jeep safari lasts approximately 2 hours—enough time to explore a significant portion of the park without exhaustion setting in.\n...\nThe Forest Department strictly regulates two daily safari slots: morning (6:00-8:00 AM) and afternoon (3:00-5:00 PM).\n...\nThe undisputed star of\n...\napara is the greater\n...\n, with approximately 250 individuals calling this\n...\n## Best Times to Visit for Jeep Safari In Jaldapara\n...\nThe ideal time for Jaldapara jeep safaris spans from October to March when the weather is pleasant and wildlife viewing opportunities are at their peak.\n...\nDuring these months, temperatures range from 10°C to 25°C, making safari drives comfortable.\n...\nWinter months (November to February) offer particularly good conditions as reduced water sources concentrate animals around remaining waterholes, increasing your chances of multiple sightings.\n...\nThe post-monsoon period (September-October) transforms Jaldapara into a lush green paradise with fewer tourists, though occasionally rain might disrupt safari plans.\n...\nSummer (April-June) brings clearer visibility as vegetation thins out, but afternoon heat can make animals less active.\n...\nWinter (Nov-Feb): Excellent all-around wildlife viewing, especially for rhinos and birds\n...\nSummer (Mar-Jun): Better visibility through thinned vegetation, but animals retreat during hot afternoons\n...\nMonsoon (Jul-Sep): Lush landscapes and fewer\n...\n, but some\n...\nPost-monsoon (Oct): Vibrant greenery with increasing wildlife activity\n...\nDuring peak season, I’d recommend booking at least 2-3 months in advance to avoid disappointment.\n...\nSafari costs typically range from ₹800 to ₹1500 per vehicle (accommodating 4-6 people), plus entry fees of approximately ₹200 per person for Indian nationals and ₹400 for foreign tourists.\n...\nMy tip? Book the morning safari for your first day and the afternoon safari for your second day to maximize wildlife viewing opportunities across different light conditions and animal activity patterns.\n...\nWhat’s the success rate for spotting rhinos?\n...\nDuring peak season (October-March), the chance of seeing rhinos is about 70-80% per safari. Going on multiple safaris increases your odds. During my three-day visit, I saw rhinos on three out of four safaris.\n...\nThere are no toilets inside the park. I suggest using the facilities at the entry point before boarding your jeep. The safari lasts about two hours, which is manageable for most visitors.\n...\nReady for your own adventure? Book your jeep safari\n...\nespecially during the busy winter months. Whether you’re a\n...\n, nature lover, or looking for a unique vacation, Jaldapara’s forests are eager to share their secrets from the comfort of a safari jeep.",
+    "tool_use_id": "5c888ea6-3fe2-4a6f-a4de-4ac537e12cd0",
+    "is_error": false,
+    "llm_text": "Search results for 'Jaldapara National Park safari timings fees rhino sighting 2025 best time to visit':\n\n1. Free but limited passes to forests: New system to prevent overcrowding\n   https://www.telegraphindia.com/west-bengal/free-but-limited-passes-to-forests-new-system-to-prevent-overcrowding/cid/2080026\n   ## Located in Madarihat, Jaldapara is the largest habitat of one-horned rhinos in the district\n...\nijit Sinha,\n...\nban Choudh\n...\n28.\n...\n5, 11:48 AM\n...\nOfficials of the Jaldapara wildlife division of the state forest department have started issuing a \"specific\" number of passes to all those intending to visit the Jaldapara National Park in Alipurduar to stop the unbridled entry of tourists in the reserve forest area.\n...\nLocated in Madarihat, Jaldapara is the largest habitat of one-horned rhinos in the district. It also has a population of elephants, gaurs (Indian bison), leopards, deer, and some other animals and many bird species.\n...\nThe department has stopped collecting entry fees and vehicle charges from tourists entering any reserve forest area in Bengal after a recent reprimand from chief minister Mamata Banerjee.\n...\n“We have stopped selling entry tickets and also not taking any charge from vehicles. Because of this new decision, there was an apprehension that anybody could hire a vehicle and enter the wildlife habitats. To prevent overcrowding, we have decided to issue passes to ensure that only a specific number of vehicles enter the national park area for safari,” said a forester.\n...\nOn Sunday, the division issued a circular saying that car safari will be allowed six days a week (barring Thursday) in four different schedules from 6am to 5pm. In each trip, 36 persons will be allowed and each vehicle (usually, Maruti Gypsy vehicles are used for safari) can carry a maximum of six tourists.\n...\n“Anybody who wants to avail of the safari will have to collect the free passes while furnishing identity proofs. After the passes are issued, the visitor can hire the car and get a guide,” the forester added.\n...\nFor the car safari, passes will be issued an hour ahead of the safari time. “A person can collect a maximum of six passes by furnishing the identity proofs of all,” said a source.\n...\nThose planning to go on an elephant safari can collect the passes for their vehicles (to reach a specified area where pet elephants would carry them) a day before their safari.\n...\n“They will have to shell out₹1,000 per person like earlier for the elephant safari. This fund is used for pet elephant management,” a forest official said.\n...\nIn Jaldapara, three trips of elephant safari are conducted from 6.30 am to 9.30 pm. While eight persons can travel on each of the first two trips, only four can travel during the third trip.\n\n2. Wildlife Wing :: Directorate of Forests Govt. of West Bengal\n   https://www.wildbengal.com/jaldapara-np.php\n   General Info: Area: 216 km Altitude: 61 meters Best Season: October to May, particularly March and April, when new grass is growing Closed: 15 June to 14 September\n...\nThe forest is mainly savannah covered with tall elephant grasses. The main attraction of the National Park is Asiatic one-horned rhinoceros. The national park holds the maximum number of rhinos population in India after Kajiranga National Park in Assam. The other animals consists of Royal Bengal Tigers, elephants, deers, sambhar, barking deer, spotted deer and hog deer, wild pig, bisons. Jaldapara is a paradise for bird watchers. It is one of the very few places in India, where the Bengal Florican is sighted. The other birds to be found here are the Crested Eagle, Pallas's Fishing Eagle and shikra, besides Jungle fowl, peafowl, patridges, Bengal Florican and lesser Pied Hornbill. Python, monitor lizards, krates, cobras, geckos and about 8 species of fresh water turtles have also found national park here.\n...\nAn adventurous elephant ride in the morning will take you deep inside the grassland for the real excitement. The sights of rhino in a muddy pond, the herd of elephants or the running deer are the thrilling experiences in Jaldapara.\n...\nChilapata\n...\nit has now\n...\n. However digging up\n...\nthe past might destroy the present ecological balance of the forest. It is wise to leave it to the competent authorities to decide whether we should compromise the present and the future to gather the wisdom of the past. The\n...\nalso consits of\n...\n. The fluid that comes out is blood like in\n...\n. They are\n...\noutside the broken gate of the old fort. According to the locals of that area these\n...\nare 100-200 years old and\n...\nnot found anywhere in the world. These trees are only a few in number are yet to be given a botanical name. Car\n...\nin the park is also available\n\n3. Jaldapara National Park - Alipurduar, West Bengal - WILDLIFE NAVIGATOR\n   https://wildlifenavigator.com/jaldapara-national-park/\n   Jaldapara holds a special place in India’s\n...\nstory as one of the few protected areas\n...\nto the preservation of the Indian one-horned\n...\n, a species that once teetered on the brink of extinction.\n...\nrhinos, the park is home to elephants, leopards, swamp deer, and over 250 species of birds, making it a paradise\n...\n## Best Time to Visit\n...\nThe ideal time to visit Jaldapara is during the winter months from November to March. During this period:\n...\n- Summer (March to May): Temperatures range from 20°C to 35°C. Grasslands are lush, but midday can be hot for safari activities.\n- Monsoon (June to September): Heavy rainfall rejuvenates the forests and rivers but can make safaris challenging due to muddy paths.\n- Winter (October to February): Cool and dry, with temperatures between 8°C and 25°C, making it the most comfortable time for wildlife viewing.\n...\nVisiting during the monsoon offers a different charm, with lush greenery and flowing rivers, but some areas may remain inaccessible due to heavy rains.\n...\nExperiencing the wildlife of Jaldapara National Park is best done through guided safaris and nature-based activities, which allow visitors to safely observe animals in their natural habitat while minimising disturbance.\n...\n- Timings: Morning safaris (6:30 AM – 10:30 AM) and afternoon safaris (2:30 PM – 5:30 PM) are available.\n- Routes: Safaris typically cover the grasslands, riverbanks, and forest patches, where rhinos, elephants, and deer are frequently sighted.\n- Tips: Early morning safaris offer the best wildlife sightings, cooler temperatures, and softer light for photography.\n...\n- Park Rules: Always follow instructions from forest officials and guides. Avoid venturing into restricted zones.\n- Wildlife Safety: Maintain a safe distance from animals. Never feed or provoke wildlife.\n- Noise and Disturbance: Keep noise to a minimum; loud sounds can disturb animals and birds.\n- Eco-Friendly Practices: Avoid plastic and disposable items. Carry reusable water bottles and dispose of waste responsibly.\n- Clothing and Gear: Wear neutral-colored clothing to blend in, sturdy shoes for safari walks, and binoculars/camera for wildlife viewing.\n- Timing: Early mornings and late afternoons are best for sightings. Avoid safaris during the hottest part of the day.\n\n4. Jaldapara National Park: Explore Indian One-horned Rhinoceros | Travel Entice\n   https://travelentice.com/jaldapara-national-park/\n   the Torsa\n...\naldapara National\n...\nemerges as a prime\n...\nfor tourists exploring the Dooars\n...\nof northern West Bengal. Boasting a diverse array of flora and fauna, this wildlife sanctuary is famed for providing a safe haven\n...\n-horned rhinoceros. In addition to this iconic species, the\n...\nis home to a variety of wildlife including deer, peacocks, porcupines, monkeys, mongooses, martens, Indian bison, and more.\n...\nEmbarking on Jungle safari at Jadapara Wildlife Sanctuary is one of the most demanding activities for the Dooars tourists. Here, you can immerse yourself in two types of safaris firsthand:\n...\n1. Jeep safari\n2. Elephant safari\n3. bird watching safari\n...\nThe last one (bird watching) is quite popular among wildlife photographers. If you are a bird-watching and photography enthusiast, you must pay the entry fees, obtain permission from the forest authority, and enlist the services of a knowledgeable bird-watching guide. This allows for a captivating day spent capturing images of the diverse bird species inhabiting Jaldapara National Park. In the section below, you’ll discover a concise list of some of the special bird species found within the park.\n...\nThe Jeep safari offers a quicker exploration covering a broader area, although it may not venture deep into the grasslands or bring you up close to the rhinos. Nonetheless, it provides a satisfying experience of encountering roadside wildlife and observing rhinos in the grassland and salt lick area.\n...\nRent: INR 4500/Jeep\n...\n| Shifts | Timings (Nov-March) | Timings (April-October) |\n| --- | --- | --- |\n| 1st Shift | 6 AM to 7:30 AM | 5:30 AM to 7 AM |\n| 2nd Shift | 7:30 AM to 9 AM | 7 AM to 8:30 AM |\n| 3rd Shift | 3 PM to 4:30 PM | 3:30 PM to 5 PM |\n...\n(Safari Timing Varies as Season Changes)\n...\nEmbarking on an adventurous elephant ride in the morning session promises an exhilarating journey deep into the grasslands, offering thrilling encounters. Witnessing rhinos in muddy ponds, herds of elephants, and the graceful sprint of deer are among the captivating experiences awaiting you in Jaldapara.\n...\n| Shift | Timings | Rent |\n| --- | --- | --- |\n| 1st shift | 5:30 AM To 6:30 AM | INR 1450 / – per Seat |\n| 2nd shift | 6:30 AM To 7:30 AM | INR 1450 / – per Seat |\n| 3rd shift | 7:30 AM To 8:30 AM | INR 1450 / – per Seat |\n...\n(Safari Timing Varies as Season Changes)\n...\nNote: Jaldapara National Park remains closed on every Thursday. Also, the park remains closed from June 15th to September 15th, coinciding with the breeding season of many wildlife species.\n...\nJaldapara National Park unfolds as vast grasslands rather than traditional forests, boasting approximately 240 species of grass across its expanse. During your safari at Jaldapara, your vision spans across expansive landscapes teeming with wildlife. You may expect sightings of peacocks, various bird species, and a diverse array of deer such as Sambar, hog deer, barking deer, and spotted deer. Keep a keen eye out for the Indian one-horned rhinoceros, often spotted in specific areas like salt licks, muddy lands, and hidden within the grasslands.\n...\na larger area\n...\n, providing opportunities to spot deer and peacocks freely roaming, even along the roads\n...\nAlso you may have glimpses of rhinos can be caught at salt licks and amidst tall roadside tall grasses\n...\nIndian One-horned Rhinoceros, sambhar, barking deer, spotted deer, hog deer, Monkeys, wild pigs, Gour (Indian bison), and elephants.\n...\n## Best Time to visit Jaldapara National Park\n...\nYou can visit Jaldapara anytime between September and April; however, November-March is the best time to visit Jaldapara. During monsoon season Jaldapara remains exclusively green and beautiful, though you are not allowed to enjoy safari.\n\n5. Jaldapara Jeep Safari - Timings, Charges, Online Booking, Start, End, Dat\n   https://gotirupati.com/jaldapara-jeep-safari/\n   National Park Opening Dates: 16Sep – 14Jun\n...\nPark Remains closed during Monsoon ie. from 15Jun – 15Sep.\n...\nBest Time to Visit: Feb-May.\n...\nSafari Duration: 2 hours.\n...\nSeating Capacity: 6 (\n...\nists) +\n...\nGuide + 1 Driver.\n...\n## Jaldapara Jeep Safari Timings\n...\nSeason: Apr to Oct\n...\n| Trip | Jeep Safari Timings |\n| --- | --- |\n| Trip 1 | 5:30 am – 7:00 am |\n| Trip 2 | 7:30 am – 9:00 am |\n| Trip 3 | 1:30 pm – 3:00 pm |\n| Trip 4 | 3:30 pm – 5:00 pm |\n...\nWinter Season: Nov to Mar\n...\n| Trip | Jeep Safari Timings |\n| --- | --- |\n| Trip 1 | 6:00 am – 7:30 am |\n| Trip 2 | 8:00 am – 9:30 am |\n| Trip 3 | 1:00 pm – 2:30 pm |\n| Trip 4 | 3:00 pm – 4:30 pm |\n...\n#### Jaldapara Jeep Safari Charges\n...\n| S.No | Entry | Ticket Cost |\n| --- | --- | --- |\n| 1 | Indian Adult | Rs.60/ Person |\n| 2 | Foreigner Adult | Rs.200/ Person |\n| 3 | Vehicle Entry fee | Rs.350 |\n| 4 | Video Camera Charges | Rs.300 |\n| 7 | Guide Charges | Rs.100/ Elephant |\n| 8 | Still Camera | Rs.25 |\n| 9 | Vehicle Hire Charges (Gypsy) | Rs.1800/ person |\n\n6. Jaldapara Wildlife Sanctuary Kolkata (Timings, History, Entry Fee, Images, Location & Information) - Kolkata Tourism\n   https://kolkatatourism.travel/jaldapara-wildlife-sanctuary-kolkata\n   ### Jaldapara Wildlife Sanctuary Kolkata Car Safari Charges\n...\n- 60 Entry fee (per person)\n- 250 Vehicle Entry fee (per Trip)\n- 200 for Video Camera\n- 250 Guide Charges\n- 800 Vehicle Hire Charge (Gypsy)\n...\n### Jaldapara Wildlife Sanctuary\n...\n- 60 Entry fee (per person)\n...\n250\n...\n200\n...\n60 Entry fee (per person)\n...\n250\n...\nJaldap\n...\n### Jaldapara Wildlife Sanctuary\n...\n### Jaldapara Wildlife Sanctuary Kolkata Timings\n...\n| Day | Timing |\n| --- | --- |\n| Monday | 12:00 am – 12:00 am |\n| Tuesday | 12:00 am – 12:00 am |\n| Wednesday | 12:00 am – 12:00 am |\n| Thursday | 12:00 am – 12:00 am |\n| Friday | 12:00 am – 12:00 am |\n| Saturday | 12:00 am – 12:00 am |\n| Sunday | 12:00 am – 12:00 am |\n...\nEstablished in the year 1941 as a wildlife\n...\nJaldapara National Park is a beautiful destination located at the foothills of Eastern Himalayas, by the banks of Torsha River. It is situated in the new district of Alipurduar in West Bengal, India. The\n...\npark falls in the Dooars region, which is not only famous for its tea gardens but also boasts of having dense jungles that are home to many endangered species of animals like tigers, rhinoceros, elephants, etc.\n...\nThe park has rich vegetation providing a perfect setting for a myriad of flora and fauna. It is a bird watchers paradise and is best known for its number of Asiatic One- Horned Rhinos. The population of one- horned rhinos is marked to be around 160 and is at a steady increase.\n...\nThere are jeep as well as elephant safaris arranged. The elephant safaris are organised early morning through the exquisite grasslands and is the best and most recommended way to explore the wildlife of the national park.\n...\nThe major attraction of Jaldapara National Park is its population of one- horned rhino. Out of the very few areas where the one- horned rhino is found, Jaldapara has the largest rhino population only after Kaziranga in Assam. The grass wetland of the national park makes it a favourable natural habitat for survival of the rhinos.\n...\n### Best Time to visit Jaldapara National Park\n...\nJaldapara National Park remains open between September 15 to June 15 and the best time to visit is between October to March. The park remains closed during monsoon months. The weather of the national park remains warm and humid all year around.\n...\n### Jaldapara National Park Safari Timings, Entry Fees and Timings\n...\nJaldapara National Park Jeep Safari Timings: 1st Shift: November to March- 6:00AM to 7:30AM | April to October- 5:30AM to 7:00AM 2nd Shift: November to March- 7:30AM to 9:00AM | April to October- 7:00AM to 8:30AM 3rd Shift: November to March- 3:00PM to 4:30PM | April to October- 3:30PM to 5:00PM\n...\nJaldapara National Park Elephant Safari Timings: 1st Shift: 5:30AM to 6:30AM 2nd Shift: 6:30AM to 7:30AM 3rd Shift: 7:30AM to 8:30AM\n...\nDay Safari: 9:00 AM to 2:00 PM\n...\nJaldapara National Park Entry Fees and Other Charges For Indian Nationals- INR 100 per head For Foreign Nationals- INR 200 per head Car entry fees- INR 300 per vehicle Elephant safari – For Indian Nationals: INR 800 per head, For Foreign nationals: INR 1000 per head Jeep Safari – INR 450 per person Guide – INR 250 Still Camera – INR 50 Video Camera – INR 500\n\n7. Jaldapara Safari Booking: 7 Secrets That Actually Work 2026\n   https://expresswall99.com/jaldapara-safari-booking/\n   Here’s the big deal: Jaldapara holds India’s second-largest population of the Asiatic one-horned rhinoceros — over 160 rhinos — right after Kaziranga in Assam.\n...\n- Morning only — zero evening slots available\n- Maximum 4 people per elephant\n- Duration: approximately 1 hour per slot\n- Operated by the Forest Department with trained elephants and expert mahouts\n- Starts at Hollong Tourist Lodge, deep inside the forest (about 7 km from the main gate)\n- Guests staying at Hollong Lodge get first preference — outside visitors fill remaining slots\n...\n⚠️ Heads Up: Online\n...\nt always available\n...\nTickets are frequently sold\n...\nduring peak season\n...\n- Morning and evening slots available\n- Seats 6 tourists + 1 guide + 1 driver per jeep\n- Duration: 2 hours\n- Starting gates: Madarihat Hollong Gate, Salkumar Gate, Chilapata Gate, NEC Complex\n- Can be booked online via WBSFDA (jeep/car safari has reliable online availability)\n- Excellent for wildlife photography — more stable than an elephant, wider field of view\n...\n## Jaldapara Safari Entry Fee & Full Charges — 2026\n...\n| Charge Type | Indian Nationals | Foreign Nationals |\n| --- | --- | --- |\n| Entry Fee (per person) | ₹100 | ₹200 |\n| Jeep Safari (per person) | ₹450 | ₹450+ |\n| Elephant Safari (per person) | ₹800 – ₹1,200* | ₹1,000+ |\n| Car Entry Fee (per vehicle) | ₹300 | ₹300 |\n| Guide Charge | ₹250 | ₹250 |\n| Still Camera | ₹50 | ₹50 |\n| Video Camera | ₹500 | ₹500 |\n...\n*Elephant safari cost can reach approximately ₹4,800 per elephant (₹1,200 × 4 persons). Rates vary by operator and season — verify on the official portal.\n...\n## Jaldapara Safari Timings & Slots (Summer vs Winter)\n...\n### 🐘 Elephant Safari Timings\n...\n| Slot | Summer (Apr–Oct) | Winter (Nov–Mar) |\n| --- | --- | --- |\n| Slot 1 | 5:30 AM – 6:30 AM | 6:30 AM – 7:30 AM |\n| Slot 2 | 6:30 AM – 7:30 AM | 7:30 AM – 8:30 AM |\n| Slot 3 | 7:30 AM – 8:30 AM | 8:30 AM – 9:30 AM |\n...\nMorning only. No exceptions.\n...\n### 🚙 Jeep Safari Timings\n...\n| Slot | Summer (Apr–Oct) | Winter (Nov–Mar) |\n| --- | --- | --- |\n| Morning Slot 1 | 5:30 AM – 7:00 AM | 6:00 AM – 7:30 AM |\n| Morning Slot 2 | 7:00 AM – 8:30 AM | 7:30 AM – 9:00 AM |\n| Evening Slot | 3:30 PM – 5:00 PM | 3:00 PM – 4:30 PM |\n...\n🗓️ Important: Jaldapara National Park closes every year from 15th June to 15th September — monsoon season and breeding season. No safaris during this window. Plan your dates around this.\n...\n1. Book jeep safari 2–3 weeks ahead during October–January. These months are the peak season. Weekends sell out fast — I’ve seen slots go 3 weeks before the date. Don’t wait.\n...\n5. Ar\n...\nID verification, guide assignment, vehicle check —\n...\nat the main gate\n...\nBeing late means losing your\n...\n. No exceptions, no refunds.\n...\n6. Visit February–May for the best animal sightings. The tall elephant grass dies back, animals gather at water pools, and rhino sightings are almost guaranteed. This window is massively underrated compared to the December–January rush.\n...\n## Best Time to Visit Jaldapara for Safari\n...\nThe park is open from 15th September to 15th June each year. But not every month gives you the same experience.\n...\n| Period | Why Visit | Crowd Level |\n| --- | --- | --- |\n| October – November | Fresh opening, lush greenery, fewer crowds | Medium |\n| December – January | Cool weather, high animal activity, festive season | High |\n| February – March | Best rhino sightings, grass drops, clear skies | Medium |\n| April – May | Dry season, animals at water bodies, easiest sightings | Low–Medium |\n| June 1–15 | Last chance before closure, hot but quiet | Low |\n| June 16 – Sep 15 | ❌ Park CLOSED (monsoon & breeding season) | — |\n...\nMy honest recommendation: February to April is the sweet spot.\n...\nGrass visibility is at its best, temperatures are comfortable, and rhino encounters are almost a given.\n...\n### a. What is the entry\n...\nEntry fee for Indian nationals is ₹100 per person and ₹200 per person for foreign nationals. Car entry is ₹300 per vehicle. These are charged separately from safari fees — the jeep safari costs around ₹450 per person, and the elephant safari is approximately ₹800–₹1,200 per person for Indians. A guide fee of ₹250 also applies. Always verify the latest rates on the official WBSFDA portal before visiting, as fees are periodically revised.\n...\nThe elephant safari is the experience Jaldapara is genuinely famous for — nothing beats drifting through the grassland on an elephant at dawn with a one-horned rhino in front of you. That said, the jeep safari is more flexible (morning + evening), covers more ground, and is far easier to book reliably online. My advice: aim for the elephant safari if slots are open, and always lock in a jeep safari as your anchor experience.\n...\n### c. What time is the Jaldapara National Park safari?\n...\nElephant safari runs in three morning slots: 5:30–6:30 AM, 6:30–7:30 AM, and 7:30–8:30 AM (summer timings — shifts about 1 hour later in winter). Jeep safari has two morning slots and one evening slot (3:30 PM in summer, 3:00 PM in winter). Arrive at least 1 hour before your slot to clear the main gate formalities on time.\n\n8. Jaldapara National Park West Bengal | Indian Rhino Safari, Wildlife & Travel Guide ~ Wildlife India\n   https://indiwildlife.blogspot.com/2025/10/jaldapara-national-park-west-bengal.html\n   Jaldapara National Park is Located in the Alipurduar district of West Bengal, Jaldapara National Park is one of India’s most celebrated wildlife sanctuaries. Nestled in the lush foothills of the Eastern Himalayas, it’s famed for its population of the Great Indian One-Horned Rhinoceros, making it one of the top destinations for wildlife enthusiasts in Eastern India.\n...\nBest Known For: Indian one-horned rhinoceros, elephant safaris, and grassland biodiversity\n...\nThe main highlight of Jaldapara is its Elephant and Jeep Safaris, offering visitors a close-up view of wildlife in their natural surroundings.\n...\nElephant Safari: Conducted in the early morning from Hollong and Madarihat.\n...\nJeep Safari: Operates from Madarihat, Chilapata, and Hollong Range.\n...\n### Safari Timings\n...\nMorning Safari: 5:30 AM – 9:00 AM\n...\nEvening Safari: 3:00 PM – 6:00 PM\n...\n## Best Time to Visit\n...\nThe ideal time to explore Jaldapara National Park is between October and May, when the weather is dry and wildlife sightings are frequent.\n...\nWinter (Nov–Feb): Pleasant weather and good visibility.\n...\nSummer (Mar–May): Hot but excellent for rhino and elephant spotting.\n...\nMonsoon (Jun–Sep): Park remains closed due to heavy rains.\n...\n## Entry Fees & Permits\n...\nEntry Fee: ₹100 (Indians), ₹400 (foreigners)\n...\nSafari Charges: ₹800–₹1,200 per person (depending on safari type)\n...\nCamera Fee: ₹100 (still), ₹300 (video)\n...\nTimings: 6:00 AM – 6:00 PM\n...\nQ1. What is Jaldapara National Park famous for? It is renowned for its Indian one-horned rhinoceros, thriving in vast grasslands similar to Kaziranga.\n...\nQ2. Can I enjoy an elephant safari in Jaldapara? Yes, elephant safaris are one of the top attractions, offering a safe and thrilling way to view rhinos up close.\n...\nQ3. When is Jaldapara National Park open for tourists? The park remains open from October to May and closed during the monsoon season.\n\n9. Jaldapara National Park: A Complete Travel Guide - National Parks of India\n   https://nationalparktravel.in/all-national-parks/west-bengal-6-national-parks/jaldapara-national-park-a-complete-travel-guide/\n   Located in the Dooars region of West Bengal, Jaldapara National Park is a wildlife sanctuary renowned for its rich biodiversity and enchanting landscapes. Established in 1941 as a wildlife sanctuary and later declared a national park in 2012, it is one of the most significant protected areas in India for the conservation of the one-horned rhinoceros. Spread over an area of 216.51 square kilometers, the park is nestled at the foothills of the Eastern Himalayas and is surrounded by the scenic Torsa River.\n...\nThis article will provide all the essential details for your visit, including opening hours, ticket fees, attractions, and nearby places to explore.\n...\nThe park is primarily famous for its population of Indian one-horned rhinoceros, the second-largest in the country after Kaziranga. It is also home to:\n...\nJeep Safari\n...\nExplore the grasslands and dense forests of the park through a thrilling jeep safari, which is the best way to spot wildlife, especially the iconic rhinoceros and elephants.\n...\n### Timings and Days of Operation\n...\n- Morning: 6:00 AM to 9:00 AM\n- Evening: 3:00 PM to 5:00 PM\n...\n### Ticket Fees\n...\nEntry Fee:\n...\n- ₹100 for Indian citizens\n- ₹200 for foreign nationals\n...\nvary based on official regulations.\n...\n1. Camera Fee: ₹100 for still cameras, ₹300 for video cameras\n2. Online Booking Visitors can book safaris and entry tickets through the West Bengal Forest Department’s official website.\n3. Offline Booking Tickets can also be booked in person at the Madarihat Forest Range Office, located near the park’s entrance.\n4. Tour Operators Several licensed tour operators offer comprehensive packages, including safaris, accommodations, and guided tours.\n...\nPro Tip: Elephant safaris are in high demand, so book well in advance, especially during the peak season (October to March).\n...\n### Best Time to Visit\n...\nThe ideal time to visit Jaldapara is from October to May, when the weather is pleasant, and wildlife sightings are more frequent. Avoid visiting during the monsoon season, as the park remains closed.\n...\n- Biodiversity Hotspot: Jaldapara is part of the Terai-Duar\n...\nand grasslands ecoregion, making it a unique ecosystem in India.\n- Endangered Species: The park plays a critical role in conserving the one-horned rhinoceros, an endangered species.\n\n10. Jeep Safari In Jaldapara | Wildlife Tours in West Bengal\n   https://expresswall99.com/jeep-safari-in-jaldapara/\n   Jeep Safari in Jaldapara National Park offers the thrilling opportunity to spot one-horned rhinos and diverse wildlife up close in their natural habitat.\n...\nThese 2-hour guided tours cost between ₹800-₹1500 per vehicle (accommodating 4-6 people) and operate daily during morning (6-8 AM) and afternoon (3-5 PM) slots.\n...\nAdvance booking through the West Bengal Forest Department is essential, especially during peak season (October-March).\n...\nA standard jeep safari lasts approximately 2 hours—enough time to explore a significant portion of the park without exhaustion setting in.\n...\nThe Forest Department strictly regulates two daily safari slots: morning (6:00-8:00 AM) and afternoon (3:00-5:00 PM).\n...\nThe undisputed star of\n...\napara is the greater\n...\n, with approximately 250 individuals calling this\n...\n## Best Times to Visit for Jeep Safari In Jaldapara\n...\nThe ideal time for Jaldapara jeep safaris spans from October to March when the weather is pleasant and wildlife viewing opportunities are at their peak.\n...\nDuring these months, temperatures range from 10°C to 25°C, making safari drives comfortable.\n...\nWinter months (November to February) offer particularly good conditions as reduced water sources concentrate animals around remaining waterholes, increasing your chances of multiple sightings.\n...\nThe post-monsoon period (September-October) transforms Jaldapara into a lush green paradise with fewer tourists, though occasionally rain might disrupt safari plans.\n...\nSummer (April-June) brings clearer visibility as vegetation thins out, but afternoon heat can make animals less active.\n...\nWinter (Nov-Feb): Excellent all-around wildlife viewing, especially for rhinos and birds\n...\nSummer (Mar-Jun): Better visibility through thinned vegetation, but animals retreat during hot afternoons\n...\nMonsoon (Jul-Sep): Lush landscapes and fewer\n...\n, but some\n...\nPost-monsoon (Oct): Vibrant greenery with increasing wildlife activity\n...\nDuring peak season, I’d recommend booking at least 2-3 months in advance to avoid disappointment.\n...\nSafari costs typically range from ₹800 to ₹1500 per vehicle (accommodating 4-6 people), plus entry fees of approximately ₹200 per person for Indian nationals and ₹400 for foreign tourists.\n...\nMy tip? Book the morning safari for your first day and the afternoon safari for your second day to maximize wildlife viewing opportunities across different light conditions and animal activity patterns.\n...\nWhat’s the success rate for spotting rhinos?\n...\nDuring peak season (October-March), the chance of seeing rhinos is about 70-80% per safari. Going on multiple safaris increases your odds. During my three-day visit, I saw rhinos on three out of four safaris.\n...\nThere are no toilets inside the park. I suggest using the facilities at the entry point before boarding your jeep. The safari lasts about two hours, which is manageable for most visitors.\n...\nReady for your own adventure? Book your jeep safari\n...\nespecially during the busy winter months. Whether you’re a\n...\n, nature lover, or looking for a unique vacation, Jaldapara’s forests are eager to share their secrets from the comfort of a safari jeep.",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 3",
+    "ts": 1787565446281,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "51,070 / 100,000 tokens (threshold)",
+    "token_count": 51070,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565446284
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Fetching safari details and best-time-to-visit info from the top search result.",
+    "step_id": 3,
+    "names": [
+      "WebFetch",
+      "WebSearch"
+    ],
+    "tools": [
+      {
+        "tool_name": "WebFetch",
+        "user_facing_tool_label": "Searching...",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MagnifyingGlass.png"
+      },
+      {
+        "tool_name": "WebSearch",
+        "user_facing_tool_label": "Searching...",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MagnifyingGlass.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → WebFetch",
+    "ts": 1787565460178,
+    "detail": "https://www.telegraphindia.com/west-bengal/free-but-limited-…"
+  },
+  {
+    "type": "tool_use",
+    "name": "WebFetch",
+    "input": {
+      "url": "https://www.telegraphindia.com/west-bengal/free-but-limited-passes-to-forests-new-system-to-prevent-overcrowding/cid/2080026",
+      "prompt": "Extract all details about Jaldapara National Park safari timings, entry fees, vehicle charges, pass system, rhino population, best time to visit, and any rules for visitors."
+    },
+    "tool_use_id": "1108475f-69d1-4511-af83-f66d5428fb21"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → WebSearch",
+    "ts": 1787565460181,
+    "detail": "Jaldapara National Park safari timing morning evening entry fee per vehicle 2024"
+  },
+  {
+    "type": "tool_use",
+    "name": "WebSearch",
+    "input": {
+      "query": "Jaldapara National Park safari timing morning evening entry fee per vehicle 2024 2025 rhino population count"
+    },
+    "tool_use_id": "5d60caaf-f6fe-430b-b9d6-2f9e1fdc017f"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 29,871 · out: 936 · cached: 24,800 · reasoning: 463",
+    "ts": 1787565460184,
+    "detail": "step 3"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 29871,
+    "output_tokens": 936,
+    "reasoning_tokens": 463,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24800,
+    "text": "Tokens — in: 29,871 (cache: 24,800) · out: 936 (reasoning: ~463)"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 2 tools in parallel",
+    "ts": 1787565460185,
+    "detail": "WebFetch, WebSearch"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 2,
+    "names": [
+      "WebFetch",
+      "WebSearch"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_error",
+    "label": "Tool error: WebFetch (permission_denied)",
+    "ts": 1787565461095,
+    "detail": "[error] fetching https://www.telegraphindia.com/west-bengal/free-but-limited-pas"
+  },
+  {
+    "type": "tool_degraded",
+    "tool": "WebFetch",
+    "category": "permission_denied",
+    "message": "I couldn't reach that data source right now — pulling this together another way.",
+    "ts": 1787565461095
+  },
+  {
+    "type": "tool_result",
+    "name": "WebFetch",
+    "text": "[error] fetching https://www.telegraphindia.com/west-bengal/free-but-limited-passes-to-forests-new-system-to-prevent-overcrowding/cid/2080026: HTTP Error 403: Forbidden",
+    "tool_use_id": "c6acafaa-c5fb-40d9-99fb-7ec4090ef012",
+    "is_error": true,
+    "llm_text": "[error] fetching https://www.telegraphindia.com/west-bengal/free-but-limited-passes-to-forests-new-system-to-prevent-overcrowding/cid/2080026: HTTP Error 403: Forbidden",
+    "error_reason": "permission_denied"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: WebSearch",
+    "ts": 1787565461098,
+    "detail": "18050 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "WebSearch",
+    "text": "Search results for 'Jaldapara National Park safari timing morning evening entry fee per vehicle 2024 2025 rhino population count':\n\n1. Free but limited passes to forests: New system to prevent overcrowding\n   https://www.telegraphindia.com/west-bengal/free-but-limited-passes-to-forests-new-system-to-prevent-overcrowding/cid/2080026\n   * [Home](https://www.telegraphindia.com/)\n* [West Bengal](https://www.telegraphindia.com/west-bengal)\n...\n* Free but limited passes to forests: New system to prevent overcrowding\n...\n# Free but limited passes to forests: New system to prevent overcrowding\n...\n## Located in Madarihat, Jaldapara is the largest habitat of one-horned rhinos in the district\n...\n**Avijit Sinha, Anirban Choudhury**Published 28.01.25, 11:48 AM\n...\nOfficials of the Jaldapara wildlife division of the state forest department have started issuing a \"specific\" number of passes to all those intending to visit the Jaldapara National Park in Alipurduar to stop the unbridled entry of tourists in the reserve forest area.\n...\nLocated in Madarihat, Jaldapara is the largest habitat of one-horned rhinos in the district. It also has a population of elephants, gaurs (Indian bison), leopards, deer, and some other animals and many bird species.\n...\nThe department has stopped collecting entry fees and vehicle charges from tourists entering any reserve forest area in Bengal after a recent reprimand from chief minister Mamata Banerjee.\n...\n“We have stopped selling entry tickets and also not taking any charge from vehicles. Because of this new decision, there was an apprehension that anybody could hire a vehicle and enter the wildlife habitats. To prevent overcrowding, we have decided to issue passes to ensure that only a specific number of vehicles enter the national park area for safari,” said a forester.\n...\nOn Sunday, the division issued a circular saying that car safari will be allowed six days a week (barring Thursday) in four different schedules from 6am to 5pm. In each trip, 36 persons will be allowed and each vehicle (usually, Maruti Gypsy vehicles are used for safari) can carry a maximum of six tourists.\n...\n“Anybody who wants to avail of the safari will have to collect the free passes while furnishing identity proofs. After the passes are issued, the visitor can hire the car and get a guide,” the forester added.\n...\nFor the car safari, passes will be issued an hour ahead of the safari time. “A person can collect a maximum of six passes by furnishing the identity proofs of all,” said a source.\n...\nThose planning to go on an elephant safari can collect the passes for their\n...\n(to reach a specified area where pet elephants would carry them) a day before their safari.\n...\n“They will have to shell out₹1,000 per person like earlier for the elephant safari. This fund is used for pet elephant management,” a forest official said.\n...\nIn Jaldapara, three trips of elephant safari are conducted from 6.30 am to 9.30 pm. While eight persons can travel on each of the first two trips, only four can travel during the third trip.\n\n2. Conserving rhinos in Jaldapara\n   https://tehelka.com/conserving-rhinos-in-jaldapara/\n   From only 14 rhinos in 1985, which was an all-time low, there are 292 animals now in this national park in West Bengal’s Alipurduar district. A report by**Deepanwita Gita Niyogi**\n...\nit took a\n...\nfully came into\n...\n216.\n...\nAt his office inside the Jaldapara National Park, Novojit De, assistant wildlife warden, talked about the turnaround of the rhino population. From only 14 rhinos in 1985, the lowest count ever, there are now 292 animals in Jaldapara as per the 2022 rhino census report. The turnaround happened due to several interventions.\n...\nDuring the safari time in Jaldapara which stretched for about two hours, apart from the two rhinos, elephants, deer and peacocks were also spotted. As the vehicle sped along, staff quarters and watchtowers, locally called tongs, were seen. The guide explained that there is always a person on duty atop these watchtowers.\n...\nAt a temporary watchtower resembling a machan set up on a tree where the vehicle halted for a while, Matiyas Kharia, a resident of Purba Madarihat village informed that he has been working in Jaldapara since 2014. “Many of us carry out foot patrolling and also do night duty on a rotational basis,” said Kharia whose tong is made of Sal tree wood. Apart from this one, there were other watchtowers seen along the stretch. Kharia is usually on duty from 12 pm to 6 pm. After he leaves, the night guard comes.\n...\nSharma is from Meghnadsaha Nagar which is a forest village close by. In the last leg of the journey, the guide showed the Hollong tourist lodge built during the 1970s. Situated about six kilometres from the main gate, it offers remarkable sightings due to a salt lick where animals frequent in the evening. At Hollong, a herd of elephants kept visitors spellbound for about 10 minutes.\n\n3. Jaldapara, Gorumara forest divisions start rhino census | Kolkata News - The Times of India\n   https://timesofindia.indiatimes.com/city/kolkata/jaldapara-gorumara-forest-divisions-start-rhino-census/articleshow/118739493.cms\n   Jalpaiguri: Jaldapara and Gorumara forest divisions kicked off a census on Wednesday, for a count of the one-horned rhinoceros in the two national parks. The exercise will take place over two days (March 5 and 6), with a repeat survey for accuracy.As many as 70 kunki elephants have been deployed for field observations in Jaldapara National Park, which has been divided into 65 enumeration blocks, with 65 observation lines and 110 fixed points, including 21 watchtower locations. Thirteen NGOs from the state are also participating in this exercise. A total of 193 teams of 400 persons started the counting on Wednesday.Gorumara National Park has been divided into 59 enumeration blocks with four persons for each block, taking the number of census workers to 236. The wildlife division there has deployed eight kunki elephants.The census aims to track rhino population trends, sex ratio and age classification. It will also help in habitat monitoring, poaching threat asse-ssment and conservation pl-anning. Past records show an increase in rhino numbers, growing from 14 in 1985 to 292 in 2022 in Jaldapara. In 2022, Gorumara had 55 rhinos.\n...\n\"We can't deny the rhino's role in tourism and conservation of the forest. Jaldapara's rhino population attracts over one lakh visitors annually. Rhino safaris support the local economy, benefiting 53 villages and nearby towns,\" said Jaldapara DFO Parveen Kaswan.\n\n4. Check Alipurduar Safari Timings, Zone Fees & Permit Rules 2026\n   https://india-guide.in/destinations/alipurduar/timings/\n   | Attraction | Hours | Entry | Best Time | Duration |\n| --- | --- | --- | --- | --- |\n| Buxa Tiger Reserve | 6am-10am, 2pm-5pm (safari timings) | rupees 150 (Indians), rupees 600 (foreigners) + jeep charges | Early morning safari | 4-6 hours (for one safari) |\n...\n| Jaldapara National Park | 6am-8am, 2pm-4pm (safari timings) | rupees 150 (Indians), rupees 600 (foreigners) + jeep/elephant charges | Early morning for best animal sightings | 3-4 hours (for one safari) |\n...\n### Jaldapara National Park\n...\nEarly morning for best animal sightings\n...\n### Jaldapara National Park\n...\nA must-visit for rhino sightings. Elephant safaris are popular but check ethical considerations. Skip if you dislike early mornings or prefer less crowded parks.\n...\nJaldapara National Park\n\n5. Jeep Safari In Jaldapara | Wildlife Tours in West Bengal\n   https://expresswall99.com/jeep-safari-in-jaldapara/\n   These 2-hour guided tours cost between ₹800-₹1500 per vehicle (accommodating 4-6 people) and operate daily during morning (6-8 AM) and afternoon (3-5 PM) slots.\n...\nJaldapara wasn’t always a national park though. Originally established as a wildlife sanctuary in 1941 to protect the endangered one-horned rhinoceros, it was elevated to national park status in 2012. Today, it boasts the second-largest rhino population in India, after Kaziranga.\n...\nThe Forest Department strictly regulates two daily safari slots: morning (6:00-8:00 AM) and afternoon (3:00-5:00 PM).\n...\nThe undisputed star of Jaldapara is the greater one-horned rhinoceros, with approximately 250 individuals calling this park home.\n...\nThe ideal time for Jaldapara jeep safaris spans from October to March when the weather is pleasant and wildlife viewing opportunities are at their peak.\n...\nSafari costs typically range from ₹800 to ₹1500 per vehicle (accommodating 4-6 people), plus entry fees of approximately ₹200 per person for Indian nationals and ₹400 for foreign tourists.\n...\nWhen booking, you’ll need to specify your preferred safari slot (morning or afternoon) and provide identification details for all participants.\n...\nBook the morning safari\n...\nday and the afternoon safari\n...\nlight conditions and\n...\napara National\n...\n240\n...\nprimary goal is\n...\nsightings, Jaldapara edges ahead\n...\nDuring peak season (October-March), the chance of seeing rhinos is about 70-80% per safari. Going on multiple safaris increases your odds. During my three-day visit, I saw rhinos on three out of four safaris.\n\n6. Jaldapara Forest Safari from Salkumar Gate Guide\n   https://sampanstay.com/destination/forest-safari/\n   Visitors can experience both elephant safaris and jeep safaris from this gate. Each offers a different way to explore the forest and spot wildlife such as Indian bison, wild elephants, deer, peacocks, leopards, and the iconic one-horned rhinoceros.\n...\nElephant safaris at Jaldapara are the most iconic way to enter the forest. From Gate Number 2, safaris operate in the early morning hours when animal sightings are at their best.Timing: Three slots available every morning 530 AM to 630 AM 630 AM to 730 AM 730 AM to 830 AM Duration: 1 hour Group Size: Up to 4 guests per elephant Safari Route: Dense forest, salt licks, and grasslands Booking: Currently available only through offline booking at the gate counter Safari Cost: Approx INR 1450 per person A total of 8 elephants are available for the safari from this gate, with more expected to be added soon due to high demand.\n...\nIf you prefer speed and coverage, the jeep safari is the best option. It takes you deeper into the forest with trained forest guides. Safari Timings: Morning and afternoon slots Winter Timings: 600 AM to 730 AM 800 AM to 930 AM 100 PM to 230 PM 300 PM to 430 PM Summer Timings: 530 AM to 700 AM 730 AM to 900 AM 130 PM to 300 PM 330 PM to 500 PM Duration: 1.5 to 2 hours Capacity: 6 guests per jeep plus a guide Booking: Available both online and offline, depending on availability and timing Safari Cost: Approx INR 1800 per jeep plus forest entry fees, guide fees, and vehicle charges\n...\n- Park Closure: 15 June to 15 September (Monsoon)\n- Weekly Holiday: Usually closed on Thursdays\n- Arrival Time: Reach at least 45 minutes before your slot\n- Carry: Valid ID, permits, water bottle, hat, insect repellent\n- Safety: Follow instructions of guides and mahouts at all time.\n\n7. Jaldapara Wildlife Sanctuary Kolkata (Timings, History, Entry Fee, Images, Location & Information) - Kolkata Tourism\n   https://kolkatatourism.travel/jaldapara-wildlife-sanctuary-kolkata\n   ### Jaldapara Wildlife Sanctuary Kolkata Car Safari Charges\n...\n- 60 Entry fee (per person)\n- 250 Vehicle Entry fee (per Trip)\n- 200 for Video Camera\n- 250 Guide Charges\n- 800 Vehicle Hire Charge (Gypsy)\n...\nfee (per person)\n...\nara Wildlife Sanctuary\n...\n| --- |\n...\nThe park has rich vegetation providing a perfect setting for a myriad of flora and fauna. It is a bird watchers paradise and is best known for its number of Asiatic One- Horned Rhinos. The population of one- horned rhinos is marked to be around 160 and is at a steady increase.\n...\nThere are jeep as well as elephant safaris arranged. The elephant safaris are organised early morning through the exquisite grasslands and is the best and most recommended way to explore the wildlife of the national park.\n...\nThe jeep safaris are arranged during mornings as well as evenings. There has been a rise in the number of watch towers where jeep safaris take place in recent years due to boost in tourist footfall. The only condition of jeep safaris is that tourists must travel in forest department approved jeeps and every jeep has to be accompanied by a guide.\n...\nWay before in the 1800s, the area was a tribal settlement of Toto and Mech (Bodo)\n...\n. The place was known as\n...\nTotapara’ during the time. Jaldapara Wildlife Sanctuary was established in 1941 in pursuit of protecting the great variety of flora and fauna\n...\nwas threatened to be on the edge of extinction.\n...\nThe major attraction of Jaldapara National Park is its population of one- horned rhino. Out of the very few areas where the one- horned rhino is found, Jaldapara has the largest rhino population only after Kaziranga in Assam. The grass wetland of the national park makes it a favourable natural habitat for survival of the rhinos.\n...\nJaldapara National Park remains\n...\nbetween September 1\n...\nto June 15 and the best\n...\nto visit is\n...\nOctober to March. The park remains closed during monsoon months. The weather of the national park remains warm and humid all year around.\n...\n### Jaldapara National Park Safari Timings, Entry Fees and Timings\n...\nJaldapara National Park Jeep Safari Timings: 1st Shift: November to March- 6:00AM to 7:30AM | April to October- 5:30AM to 7:00AM 2nd Shift: November to March- 7:30AM to 9:00AM | April to October- 7:00AM to 8:30AM 3rd Shift: November to March- 3:00PM to 4:30PM | April to October- 3:30PM to 5:00PM\n...\nJaldapara National Park Elephant Safari Timings: 1st Shift: 5:30AM to 6:30AM 2nd Shift: 6:30AM to 7:30AM 3rd Shift: 7:30AM to 8:30AM\n...\nDay Safari: 9:00 AM to 2:00 PM\n...\nJaldapara National Park Entry Fees and Other Charges For Indian Nationals- INR 100 per head For Foreign Nationals- INR 200 per head Car entry fees- INR 300 per vehicle Elephant safari – For Indian Nationals: INR 800 per head, For Foreign nationals: INR 1000 per head Jeep Safari – INR 450 per person Guide – INR 250 Still Camera – INR 50 Video Camera – INR 500\n\n8. Rhino census to be conducted in Jaldapara, Gorumara & Chapramari\n   https://www.millenniumpost.in/bengal/rhino-census-to-be-conducted-in-jaldapara-gorumara-chapramari-600804\n   Jalpaiguri: The Forest department will conduct a rhino census in Jaldapara National Park (Alipurduar), Gorumara National Park and Chapramari Wildlife Sanctuary (Jalpaiguri) on March 5 and 6. The census will be carried out using a combination of foot surveys, elephant-back monitoring and trap cameras. Additionally, outside the Jalpaiguri Wildlife Division, the census will extend to several forest areas under the Jalpaiguri Forest Division.\n...\nTraining for forest personnel was conducted at Dhupjhora Elephant Camp in Gorumara on Sunday. The census will cover each block of 3-4 sq km within the forest, including areas with watchtowers and water bodies. Officials estimate that approximately 10 per cent of the region’s rhino population roams in Diana, Nathua and Ramshai within the Jalpaiguri Forest Division, where the survey will also take place.\n...\nDue to the census, all tourist jeep safaris and forest tours on March 5 and 6 will be suspended to prevent disturbances to the rhinos. Entry into the forests will be strictly prohibited on these days.\n...\nThe last rhino census in 2021 recorded 292 rhinos within Jaldapara’s 216.51 sq km area and 55 rhinos in Gorumara’s 88 sq km range, reflecting successful conservation efforts. However, experts have raised concerns over the nearly equal male-to-female ratio, as an ideal ratio for maintaining social balance would be three females for every male.\n\n9. Jaldapara Jungle Safari Charge including GST | North Bengal Tourism Blog\n   https://northbengaltourism.com/blog/jaldapara-jungle-safari-charges-with-gst/\n   Jaldapara National Park, abode of one horned Rhinoceros is a famous forest of Dooars. Above all, Jaldapara houses the 2nd largest collection of Asiatic Rhino in India. As a result Jaldapara attract travelers from around the globe.\n...\nIn the meantime, the new GST (The Goods and Service Tax) has been implement in all the services and products. Therefore there has been a change in the previous tariff rates of Jungle Safari in Jaldapara.\n...\n## Here are the new charges for Jaldapara Jungle Safari:\n...\n### Jaldapara Jeep Safari\n...\n- Individual Entry Fees- Rs. 100\n- Guide Charge- Rs. 250\n- Gypsy Fare- Rs. 1000\n- Car Entry Fee – RS. 300\n...\n- Elephant Safari Charges- Rs. 800\n- Individual Entry Fees- Rs. 100\n- Car Entry Fee- Rs. 300\n...\nEvery year Jaldapara remains close from 15th June to 15th September.\n\n10. Wildlife Sanctuary | Offline hurdle to forest entry, tourists raise issue over absence of online booking - Telegraph India\n   https://www.telegraphindia.com/west-bengal/offline-hurdle-to-forest-entry-tourists-raise-issue-over-absence-of-online-booking/cid/2091815\n   “This made the department stop collecting entry fees from visitors. As of now, free entry passes are issued. But unlike the earlier arrangement when tourists could buy the entry ticket online, the passes are issued only in offline mode,” said Sanjoy Das, who is associated with the Jaldapara Tourism Development Welfare Society.\n...\nHe pointed out that tourists had to stand in queues to collect the entry passes for Jaldapara and Gorumara national parks, which are in Alipurduar and Jalpaiguri districts, respectively. In Jaldapara, around 300 visitors can avail a car safari every day, while another 72 can enjoy an elephant safari. On the other hand, in Gorumara, around 1,000 visitors can go on a car safari.\n...\nForesters have, however, expressed helplessness. “We issue a specific number of tickets for the car and elephant safaris. If the number of visitors is more, we have nothing to do. We all have to wait for the commencement of online booking,” said Parveen Kaswan, the divisional forest officer of the Jaldapara wildlife division.",
+    "tool_use_id": "55cdcb67-714b-435f-8ef5-6091bdb642c2",
+    "is_error": false,
+    "llm_text": "Search results for 'Jaldapara National Park safari timing morning evening entry fee per vehicle 2024 2025 rhino population count':\n\n1. Free but limited passes to forests: New system to prevent overcrowding\n   https://www.telegraphindia.com/west-bengal/free-but-limited-passes-to-forests-new-system-to-prevent-overcrowding/cid/2080026\n   * [Home](https://www.telegraphindia.com/)\n* [West Bengal](https://www.telegraphindia.com/west-bengal)\n...\n* Free but limited passes to forests: New system to prevent overcrowding\n...\n# Free but limited passes to forests: New system to prevent overcrowding\n...\n## Located in Madarihat, Jaldapara is the largest habitat of one-horned rhinos in the district\n...\n**Avijit Sinha, Anirban Choudhury**Published 28.01.25, 11:48 AM\n...\nOfficials of the Jaldapara wildlife division of the state forest department have started issuing a \"specific\" number of passes to all those intending to visit the Jaldapara National Park in Alipurduar to stop the unbridled entry of tourists in the reserve forest area.\n...\nLocated in Madarihat, Jaldapara is the largest habitat of one-horned rhinos in the district. It also has a population of elephants, gaurs (Indian bison), leopards, deer, and some other animals and many bird species.\n...\nThe department has stopped collecting entry fees and vehicle charges from tourists entering any reserve forest area in Bengal after a recent reprimand from chief minister Mamata Banerjee.\n...\n“We have stopped selling entry tickets and also not taking any charge from vehicles. Because of this new decision, there was an apprehension that anybody could hire a vehicle and enter the wildlife habitats. To prevent overcrowding, we have decided to issue passes to ensure that only a specific number of vehicles enter the national park area for safari,” said a forester.\n...\nOn Sunday, the division issued a circular saying that car safari will be allowed six days a week (barring Thursday) in four different schedules from 6am to 5pm. In each trip, 36 persons will be allowed and each vehicle (usually, Maruti Gypsy vehicles are used for safari) can carry a maximum of six tourists.\n...\n“Anybody who wants to avail of the safari will have to collect the free passes while furnishing identity proofs. After the passes are issued, the visitor can hire the car and get a guide,” the forester added.\n...\nFor the car safari, passes will be issued an hour ahead of the safari time. “A person can collect a maximum of six passes by furnishing the identity proofs of all,” said a source.\n...\nThose planning to go on an elephant safari can collect the passes for their\n...\n(to reach a specified area where pet elephants would carry them) a day before their safari.\n...\n“They will have to shell out₹1,000 per person like earlier for the elephant safari. This fund is used for pet elephant management,” a forest official said.\n...\nIn Jaldapara, three trips of elephant safari are conducted from 6.30 am to 9.30 pm. While eight persons can travel on each of the first two trips, only four can travel during the third trip.\n\n2. Conserving rhinos in Jaldapara\n   https://tehelka.com/conserving-rhinos-in-jaldapara/\n   From only 14 rhinos in 1985, which was an all-time low, there are 292 animals now in this national park in West Bengal’s Alipurduar district. A report by**Deepanwita Gita Niyogi**\n...\nit took a\n...\nfully came into\n...\n216.\n...\nAt his office inside the Jaldapara National Park, Novojit De, assistant wildlife warden, talked about the turnaround of the rhino population. From only 14 rhinos in 1985, the lowest count ever, there are now 292 animals in Jaldapara as per the 2022 rhino census report. The turnaround happened due to several interventions.\n...\nDuring the safari time in Jaldapara which stretched for about two hours, apart from the two rhinos, elephants, deer and peacocks were also spotted. As the vehicle sped along, staff quarters and watchtowers, locally called tongs, were seen. The guide explained that there is always a person on duty atop these watchtowers.\n...\nAt a temporary watchtower resembling a machan set up on a tree where the vehicle halted for a while, Matiyas Kharia, a resident of Purba Madarihat village informed that he has been working in Jaldapara since 2014. “Many of us carry out foot patrolling and also do night duty on a rotational basis,” said Kharia whose tong is made of Sal tree wood. Apart from this one, there were other watchtowers seen along the stretch. Kharia is usually on duty from 12 pm to 6 pm. After he leaves, the night guard comes.\n...\nSharma is from Meghnadsaha Nagar which is a forest village close by. In the last leg of the journey, the guide showed the Hollong tourist lodge built during the 1970s. Situated about six kilometres from the main gate, it offers remarkable sightings due to a salt lick where animals frequent in the evening. At Hollong, a herd of elephants kept visitors spellbound for about 10 minutes.\n\n3. Jaldapara, Gorumara forest divisions start rhino census | Kolkata News - The Times of India\n   https://timesofindia.indiatimes.com/city/kolkata/jaldapara-gorumara-forest-divisions-start-rhino-census/articleshow/118739493.cms\n   Jalpaiguri: Jaldapara and Gorumara forest divisions kicked off a census on Wednesday, for a count of the one-horned rhinoceros in the two national parks. The exercise will take place over two days (March 5 and 6), with a repeat survey for accuracy.As many as 70 kunki elephants have been deployed for field observations in Jaldapara National Park, which has been divided into 65 enumeration blocks, with 65 observation lines and 110 fixed points, including 21 watchtower locations. Thirteen NGOs from the state are also participating in this exercise. A total of 193 teams of 400 persons started the counting on Wednesday.Gorumara National Park has been divided into 59 enumeration blocks with four persons for each block, taking the number of census workers to 236. The wildlife division there has deployed eight kunki elephants.The census aims to track rhino population trends, sex ratio and age classification. It will also help in habitat monitoring, poaching threat asse-ssment and conservation pl-anning. Past records show an increase in rhino numbers, growing from 14 in 1985 to 292 in 2022 in Jaldapara. In 2022, Gorumara had 55 rhinos.\n...\n\"We can't deny the rhino's role in tourism and conservation of the forest. Jaldapara's rhino population attracts over one lakh visitors annually. Rhino safaris support the local economy, benefiting 53 villages and nearby towns,\" said Jaldapara DFO Parveen Kaswan.\n\n4. Check Alipurduar Safari Timings, Zone Fees & Permit Rules 2026\n   https://india-guide.in/destinations/alipurduar/timings/\n   | Attraction | Hours | Entry | Best Time | Duration |\n| --- | --- | --- | --- | --- |\n| Buxa Tiger Reserve | 6am-10am, 2pm-5pm (safari timings) | rupees 150 (Indians), rupees 600 (foreigners) + jeep charges | Early morning safari | 4-6 hours (for one safari) |\n...\n| Jaldapara National Park | 6am-8am, 2pm-4pm (safari timings) | rupees 150 (Indians), rupees 600 (foreigners) + jeep/elephant charges | Early morning for best animal sightings | 3-4 hours (for one safari) |\n...\n### Jaldapara National Park\n...\nEarly morning for best animal sightings\n...\n### Jaldapara National Park\n...\nA must-visit for rhino sightings. Elephant safaris are popular but check ethical considerations. Skip if you dislike early mornings or prefer less crowded parks.\n...\nJaldapara National Park\n\n5. Jeep Safari In Jaldapara | Wildlife Tours in West Bengal\n   https://expresswall99.com/jeep-safari-in-jaldapara/\n   These 2-hour guided tours cost between ₹800-₹1500 per vehicle (accommodating 4-6 people) and operate daily during morning (6-8 AM) and afternoon (3-5 PM) slots.\n...\nJaldapara wasn’t always a national park though. Originally established as a wildlife sanctuary in 1941 to protect the endangered one-horned rhinoceros, it was elevated to national park status in 2012. Today, it boasts the second-largest rhino population in India, after Kaziranga.\n...\nThe Forest Department strictly regulates two daily safari slots: morning (6:00-8:00 AM) and afternoon (3:00-5:00 PM).\n...\nThe undisputed star of Jaldapara is the greater one-horned rhinoceros, with approximately 250 individuals calling this park home.\n...\nThe ideal time for Jaldapara jeep safaris spans from October to March when the weather is pleasant and wildlife viewing opportunities are at their peak.\n...\nSafari costs typically range from ₹800 to ₹1500 per vehicle (accommodating 4-6 people), plus entry fees of approximately ₹200 per person for Indian nationals and ₹400 for foreign tourists.\n...\nWhen booking, you’ll need to specify your preferred safari slot (morning or afternoon) and provide identification details for all participants.\n...\nBook the morning safari\n...\nday and the afternoon safari\n...\nlight conditions and\n...\napara National\n...\n240\n...\nprimary goal is\n...\nsightings, Jaldapara edges ahead\n...\nDuring peak season (October-March), the chance of seeing rhinos is about 70-80% per safari. Going on multiple safaris increases your odds. During my three-day visit, I saw rhinos on three out of four safaris.\n\n6. Jaldapara Forest Safari from Salkumar Gate Guide\n   https://sampanstay.com/destination/forest-safari/\n   Visitors can experience both elephant safaris and jeep safaris from this gate. Each offers a different way to explore the forest and spot wildlife such as Indian bison, wild elephants, deer, peacocks, leopards, and the iconic one-horned rhinoceros.\n...\nElephant safaris at Jaldapara are the most iconic way to enter the forest. From Gate Number 2, safaris operate in the early morning hours when animal sightings are at their best.Timing: Three slots available every morning 530 AM to 630 AM 630 AM to 730 AM 730 AM to 830 AM Duration: 1 hour Group Size: Up to 4 guests per elephant Safari Route: Dense forest, salt licks, and grasslands Booking: Currently available only through offline booking at the gate counter Safari Cost: Approx INR 1450 per person A total of 8 elephants are available for the safari from this gate, with more expected to be added soon due to high demand.\n...\nIf you prefer speed and coverage, the jeep safari is the best option. It takes you deeper into the forest with trained forest guides. Safari Timings: Morning and afternoon slots Winter Timings: 600 AM to 730 AM 800 AM to 930 AM 100 PM to 230 PM 300 PM to 430 PM Summer Timings: 530 AM to 700 AM 730 AM to 900 AM 130 PM to 300 PM 330 PM to 500 PM Duration: 1.5 to 2 hours Capacity: 6 guests per jeep plus a guide Booking: Available both online and offline, depending on availability and timing Safari Cost: Approx INR 1800 per jeep plus forest entry fees, guide fees, and vehicle charges\n...\n- Park Closure: 15 June to 15 September (Monsoon)\n- Weekly Holiday: Usually closed on Thursdays\n- Arrival Time: Reach at least 45 minutes before your slot\n- Carry: Valid ID, permits, water bottle, hat, insect repellent\n- Safety: Follow instructions of guides and mahouts at all time.\n\n7. Jaldapara Wildlife Sanctuary Kolkata (Timings, History, Entry Fee, Images, Location & Information) - Kolkata Tourism\n   https://kolkatatourism.travel/jaldapara-wildlife-sanctuary-kolkata\n   ### Jaldapara Wildlife Sanctuary Kolkata Car Safari Charges\n...\n- 60 Entry fee (per person)\n- 250 Vehicle Entry fee (per Trip)\n- 200 for Video Camera\n- 250 Guide Charges\n- 800 Vehicle Hire Charge (Gypsy)\n...\nfee (per person)\n...\nara Wildlife Sanctuary\n...\n| --- |\n...\nThe park has rich vegetation providing a perfect setting for a myriad of flora and fauna. It is a bird watchers paradise and is best known for its number of Asiatic One- Horned Rhinos. The population of one- horned rhinos is marked to be around 160 and is at a steady increase.\n...\nThere are jeep as well as elephant safaris arranged. The elephant safaris are organised early morning through the exquisite grasslands and is the best and most recommended way to explore the wildlife of the national park.\n...\nThe jeep safaris are arranged during mornings as well as evenings. There has been a rise in the number of watch towers where jeep safaris take place in recent years due to boost in tourist footfall. The only condition of jeep safaris is that tourists must travel in forest department approved jeeps and every jeep has to be accompanied by a guide.\n...\nWay before in the 1800s, the area was a tribal settlement of Toto and Mech (Bodo)\n...\n. The place was known as\n...\nTotapara’ during the time. Jaldapara Wildlife Sanctuary was established in 1941 in pursuit of protecting the great variety of flora and fauna\n...\nwas threatened to be on the edge of extinction.\n...\nThe major attraction of Jaldapara National Park is its population of one- horned rhino. Out of the very few areas where the one- horned rhino is found, Jaldapara has the largest rhino population only after Kaziranga in Assam. The grass wetland of the national park makes it a favourable natural habitat for survival of the rhinos.\n...\nJaldapara National Park remains\n...\nbetween September 1\n...\nto June 15 and the best\n...\nto visit is\n...\nOctober to March. The park remains closed during monsoon months. The weather of the national park remains warm and humid all year around.\n...\n### Jaldapara National Park Safari Timings, Entry Fees and Timings\n...\nJaldapara National Park Jeep Safari Timings: 1st Shift: November to March- 6:00AM to 7:30AM | April to October- 5:30AM to 7:00AM 2nd Shift: November to March- 7:30AM to 9:00AM | April to October- 7:00AM to 8:30AM 3rd Shift: November to March- 3:00PM to 4:30PM | April to October- 3:30PM to 5:00PM\n...\nJaldapara National Park Elephant Safari Timings: 1st Shift: 5:30AM to 6:30AM 2nd Shift: 6:30AM to 7:30AM 3rd Shift: 7:30AM to 8:30AM\n...\nDay Safari: 9:00 AM to 2:00 PM\n...\nJaldapara National Park Entry Fees and Other Charges For Indian Nationals- INR 100 per head For Foreign Nationals- INR 200 per head Car entry fees- INR 300 per vehicle Elephant safari – For Indian Nationals: INR 800 per head, For Foreign nationals: INR 1000 per head Jeep Safari – INR 450 per person Guide – INR 250 Still Camera – INR 50 Video Camera – INR 500\n\n8. Rhino census to be conducted in Jaldapara, Gorumara & Chapramari\n   https://www.millenniumpost.in/bengal/rhino-census-to-be-conducted-in-jaldapara-gorumara-chapramari-600804\n   Jalpaiguri: The Forest department will conduct a rhino census in Jaldapara National Park (Alipurduar), Gorumara National Park and Chapramari Wildlife Sanctuary (Jalpaiguri) on March 5 and 6. The census will be carried out using a combination of foot surveys, elephant-back monitoring and trap cameras. Additionally, outside the Jalpaiguri Wildlife Division, the census will extend to several forest areas under the Jalpaiguri Forest Division.\n...\nTraining for forest personnel was conducted at Dhupjhora Elephant Camp in Gorumara on Sunday. The census will cover each block of 3-4 sq km within the forest, including areas with watchtowers and water bodies. Officials estimate that approximately 10 per cent of the region’s rhino population roams in Diana, Nathua and Ramshai within the Jalpaiguri Forest Division, where the survey will also take place.\n...\nDue to the census, all tourist jeep safaris and forest tours on March 5 and 6 will be suspended to prevent disturbances to the rhinos. Entry into the forests will be strictly prohibited on these days.\n...\nThe last rhino census in 2021 recorded 292 rhinos within Jaldapara’s 216.51 sq km area and 55 rhinos in Gorumara’s 88 sq km range, reflecting successful conservation efforts. However, experts have raised concerns over the nearly equal male-to-female ratio, as an ideal ratio for maintaining social balance would be three females for every male.\n\n9. Jaldapara Jungle Safari Charge including GST | North Bengal Tourism Blog\n   https://northbengaltourism.com/blog/jaldapara-jungle-safari-charges-with-gst/\n   Jaldapara National Park, abode of one horned Rhinoceros is a famous forest of Dooars. Above all, Jaldapara houses the 2nd largest collection of Asiatic Rhino in India. As a result Jaldapara attract travelers from around the globe.\n...\nIn the meantime, the new GST (The Goods and Service Tax) has been implement in all the services and products. Therefore there has been a change in the previous tariff rates of Jungle Safari in Jaldapara.\n...\n## Here are the new charges for Jaldapara Jungle Safari:\n...\n### Jaldapara Jeep Safari\n...\n- Individual Entry Fees- Rs. 100\n- Guide Charge- Rs. 250\n- Gypsy Fare- Rs. 1000\n- Car Entry Fee – RS. 300\n...\n- Elephant Safari Charges- Rs. 800\n- Individual Entry Fees- Rs. 100\n- Car Entry Fee- Rs. 300\n...\nEvery year Jaldapara remains close from 15th June to 15th September.\n\n10. Wildlife Sanctuary | Offline hurdle to forest entry, tourists raise issue over absence of online booking - Telegraph India\n   https://www.telegraphindia.com/west-bengal/offline-hurdle-to-forest-entry-tourists-raise-issue-over-absence-of-online-booking/cid/2091815\n   “This made the department stop collecting entry fees from visitors. As of now, free entry passes are issued. But unlike the earlier arrangement when tourists could buy the entry ticket online, the passes are issued only in offline mode,” said Sanjoy Das, who is associated with the Jaldapara Tourism Development Welfare Society.\n...\nHe pointed out that tourists had to stand in queues to collect the entry passes for Jaldapara and Gorumara national parks, which are in Alipurduar and Jalpaiguri districts, respectively. In Jaldapara, around 300 visitors can avail a car safari every day, while another 72 can enjoy an elephant safari. On the other hand, in Gorumara, around 1,000 visitors can go on a car safari.\n...\nForesters have, however, expressed helplessness. “We issue a specific number of tickets for the car and elephant safaris. If the number of visitors is more, we have nothing to do. We all have to wait for the commencement of online booking,” said Parveen Kaswan, the divisional forest officer of the Jaldapara wildlife division.",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 4",
+    "ts": 1787565461102,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "80,941 / 100,000 tokens (threshold)",
+    "token_count": 80941,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565461104
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 30,552 · out: 4,795 · cached: 28,800 · reasoning: 2,414",
+    "ts": 1787565522183,
+    "detail": "step 4"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 30552,
+    "output_tokens": 4795,
+    "reasoning_tokens": 2414,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 28800,
+    "text": "Tokens — in: 30,552 (cache: 28,800) · out: 4,795 (reasoning: ~2,414)"
+  },
+  {
+    "type": "text_final",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "Jaldapara is one of India's best one-horned rhino destinations, sitting in the Dooars' tall elephant grass — best visited October to June (peak December to February) when the grass is shorter and sightings are easiest. From Bengaluru, fly to Bagdogra (IXB) or New Jalpaiguri (NJP) and drive about 2.5 to 3 hours to the park; a 3-day, 2-night trip runs roughly ₹8,000 to ₹15,000 per person including stay, safari and food.",
+        "sections": [
+          {
+            "title": "Attractions",
+            "cards": [
+              {
+                "title": "Jaldapara National Park",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Jaldapara National Park",
+                  "query": "Jaldapara National Park rhino",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJbSOmN9ew4zkRGljdcskySBA%2Fphotos%2FAVoNoXQje63Vr_V2sOz0GAoHOM07pvBVoYNut4nr8lCETlswZm06vgPFtzdP3N2bm46rKY_4za93fXaRZRC4xSvbX98gNJgQhZrY5QfRDvUUPuFFXmzS8EJvgi6_ZMR75lh2Zw9v0nCiJ23_UFSl5vi3j9q3f302AcGAQXK8Gz-r73kdS7LndFxkALnKfGtrcq46GzieLd3I0OdK7ploX9AZ3UlRacN9pa6Tj3loYzNifMtzB1DlN5hVpnG6HQg4Eb6zIsZe4vtKdF1VoHq7qslEkRJAI8iB2bDcFv2qr0UQJLFvUaygWgTamxrci0EaqKiJY6NnwH4Y0OWfOw1A7DTiGfkTenaowBQlal1TZKq2sqAyHegsDnfFwM5hy5PUJ5gHjEclU6X99MkvJ3xIlGIvPEJVAknzs3OjHFh5FKMTVQlyGA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Jaldapara National Park",
+                      "alt": "Jaldapara National Park",
+                      "place_id": "ChIJbSOmN9ew4zkRGljdcskySBA"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Must Visit",
+                "rating": "4.4★ (4099 Reviews)",
+                "price": null,
+                "why": "India's densest one-horned rhino habitat, roaming through tall elephant grass",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=1173243543726938138&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "093546 70476",
+                  "tel": "tel:09354670476"
+                }
+              },
+              {
+                "title": "Jaldapara National Park Gate",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Jaldapara National Park Gate",
+                  "query": "Jaldapara National Park Gate",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ5Tfoeh2x4zkRuOLJGSvT13E%2Fphotos%2FAVoNoXS1BIgKmElbMiy0WCq2ZlonCjVEhHnjUqvlklSDTr0zb7Unsor4p0FPq0FT9HfEUASv47yppSG-5IxhXqTSTYIQ7j_FHPKeckc3aJLcAKFpwfEqK1QDzZbg0aiLmt4yBwkR00YVQNFmOCgzKPFfIwhFxhSgBRPjMW2j_3HZWSupQqUi8xYuRQ1c9WvCHuV78aYCcVpTWKt_7pfPb_M1-gzJfNqh5L35boRKX-q4wH5rIVKJBz7RuLltJ_qocvaTFWzQjC_Alot6yPXwG1BKCamLFk1mSRCSNqv7cWFwyxJOg_ROWRYlbuIlD_HZjce-ghlJOrOGA_4tD1-dQrp65aCZu-oKAH_kgjTdczNtAyvPnVDrkQdn8xgwEudl0oSP-DEyHI5082c8fyRkNg5DFg33avs32Ize50ubcJJWPiAb7CzI&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Jaldapara National Park Gate",
+                      "alt": "Jaldapara National Park Gate",
+                      "place_id": "ChIJ5Tfoeh2x4zkRuOLJGSvT13E"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Entry Point",
+                "rating": "4.6★ (92 Reviews)",
+                "price": null,
+                "why": "Main gate where you collect your capped safari pass before entering",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=8203257428348363448&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": null
+              }
+            ]
+          },
+          {
+            "title": "Activities",
+            "cards": [
+              {
+                "title": "Jeep Safari (Morning & Evening)",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Jeep Safari",
+                  "query": "Jaldapara jeep safari elephant grass",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJbSOmN9ew4zkRGljdcskySBA%2Fphotos%2FAVoNoXQje63Vr_V2sOz0GAoHOM07pvBVoYNut4nr8lCETlswZm06vgPFtzdP3N2bm46rKY_4za93fXaRZRC4xSvbX98gNJgQhZrY5QfRDvUUPuFFXmzS8EJvgi6_ZMR75lh2Zw9v0nCiJ23_UFSl5vi3j9q3f302AcGAQXK8Gz-r73kdS7LndFxkALnKfGtrcq46GzieLd3I0OdK7ploX9AZ3UlRacN9pa6Tj3loYzNifMtzB1DlN5hVpnG6HQg4Eb6zIsZe4vtKdF1VoHq7qslEkRJAI8iB2bDcFv2qr0UQJLFvUaygWgTamxrci0EaqKiJY6NnwH4Y0OWfOw1A7DTiGfkTenaowBQlal1TZKq2sqAyHegsDnfFwM5hy5PUJ5gHjEclU6X99MkvJ3xIlGIvPEJVAknzs3OjHFh5FKMTVQlyGA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Jaldapara National Park",
+                      "alt": "Jaldapara National Park",
+                      "place_id": "ChIJbSOmN9ew4zkRGljdcskySBA"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Experience",
+                "rating": "4.4★ (4099 Reviews)",
+                "price": null,
+                "why": "6 to 10 am and 4 to 7 pm drives when rhinos, elephants and leopards are most active",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=1173243543726938138&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "093546 70476",
+                  "tel": "tel:09354670476"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Where to Stay",
+            "cards": [
+              {
+                "title": "Sumaru Jungle Resort",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Sumaru Jungle Resort",
+                  "query": "Sumaru Jungle Resort Jaldapara",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJZb-7cC-x4zkR3jjll4NLQBs%2Fphotos%2FAVoNoXSDEF5JprtUB3zW2PXv1gvS42zZ4shc12DOn-6EQO1356rHHowXnPgJR5EAuICVscg74L2TqeosllFKM1KpYeWAyAbm8Ye4omFol-iu4vaaaZac6XNODtAVvlPBM1vXo7jtkPPMW9NepTp4_8-YCr4NrjQAu7bIYMYTITEnkxP0Bj4m3VV3c38R127UubS3VE7MpZ9nMQsVGiAhLnFXrWj8dJ7q3_Yn8-JljUzhtXsMoOn6nuYllQyl8S-4wc3IEYoy1GqWCEc7nncfyOO5-52qf2i5Vq74Ls6O4m5VIA2Zw3U5_1tyWe2XlKlQ00TbA3d9pLEDtdpq5qVR35It61NGdYysd2Z4P2y1Wn6rk5c5DokMQfBiKyLHjiR02olWjh1ODfz83gn9lNZ82Dex8PS3ptUs9lRHZZOTPNPt4vG_XWwc&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "SUMARU JUNGLE RESORT",
+                      "alt": "SUMARU JUNGLE RESORT",
+                      "place_id": "ChIJZb-7cC-x4zkR3jjll4NLQBs"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.5★ (230 Reviews)",
+                "price": null,
+                "why": "Highest-rated jungle resort on NH-31D, quiet and close to the park",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=1963652466094717150&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": null
+              },
+              {
+                "title": "The Jungle Book Resort",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_5",
+                  "title": "The Jungle Book Resort",
+                  "query": "The Jungle Book Resort Jaldapara",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ8c9k_ZC94zkRmfC-Us9Kzug%2Fphotos%2FAVoNoXRXJi3U6wfGaYZD6-a7Q0zPqyTRrD7U8ZC8ivRXDybeqmqEQM4DsrvVGmQDkRypUV-tBROhKrDu5-zPDAnXO-_5nPEsD_euJEnPh4w3iqhCuHotIgSQ9UtbVpP27ftW6NaCUNEXA0-7Cb3y_hpkk3k877HSoP9fkGmGnsk2Jm_L5PYxefmXK8iDvLofRimnLqXYtzJM9T_LB6-TPZmrS5_oamGcrD8IIZWioG17m4zP-K9QKlG-SQKGICNSqOSaX1_avXjtl1xROl2vyhVr1gO8BXjLZFtBRU9ad-3W3toVVKC0pH1p6bR_6ItBEqpKqi8hzTI9onlVacNTfoEw6e4URELTnjYUvFSovAyduEVsgM_o36z4wmZjhvt4xi_HvaAh8VWY06lr-XHy53cwcmuF9kUFEfyyL9u113P6sP00rE4&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "The Jungle Book Resort",
+                      "alt": "The Jungle Book Resort",
+                      "place_id": "ChIJ8c9k_ZC94zkRmfC-Us9Kzug"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Cozy",
+                "rating": "4.1★ (732 Reviews)",
+                "price": null,
+                "why": "Most-reviewed stay in Madarihat, a reliable mid-range pick",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=16775427916308607129&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "099322 74179",
+                  "tel": "tel:09932274179"
+                }
+              },
+              {
+                "title": "Jaldapara Tourist Lodge, WBTDCL",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_6",
+                  "title": "Jaldapara Tourist Lodge",
+                  "query": "Jaldapara Tourist Lodge WBTDCL",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJA4mOkSqx4zkRSRQ7gEXGpIA%2Fphotos%2FAVoNoXTj1jgkAyVMDgl2cdJrV5LWZMVRt24dfG7Q8jqyhEW_uDet_Zkrs6XAcFydn5NPaxgeT9LsdF1WGHzuWipA1Ks93QS277scPzZOAH5b144CK99Yt7D7bpT_1m4sxaWw0xjdy_qYh-x7LvTm6g0lIctbBKc_ORDqnFfcR3FDDHEQhsTpfwmetWTIwj8Zmv8Z_SjGmdj37S9GZkRMcT6-deWP5jWLCYXPEAdrpneeKhS2pFopeQSfNuJ6EbQ6rIKZ7tDvm8njCZlSb5H96DnxDu5wNH_Wiol8PoxhzKg_H6fQajRu7pjd99MW0eaUDUeC1SfDoMxBkhnrmdh9JrIIV8XJtkzzs9YGq0Nt2DWgCd4KVPSX4jbp2Ga6vcR80JKchiP7BDeS-FllDbyQh2q0UF_atpteYcCOi3d548F1PETzzwdd&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Jaldapara Tourist Lodge, WBTDCL",
+                      "alt": "Jaldapara Tourist Lodge, WBTDCL",
+                      "place_id": "ChIJA4mOkSqx4zkRSRQ7gEXGpIA"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Best Value",
+                "rating": "4.3★ (2596 Reviews)",
+                "price": null,
+                "why": "Government-run lodge, the budget-friendly option with the most reviews",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=9269751934841721929&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "074308 09428",
+                  "tel": "tel:07430809428"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Where to Eat",
+            "cards": [
+              {
+                "title": "Authentic Masala House (Pure Veg)",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_7",
+                  "title": "Authentic Masala House",
+                  "query": "Authentic Masala House Jaldapara",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJIcix_yK34zkRIRCzoaKdSMI%2Fphotos%2FAVoNoXSeChmh8zgE52r_MTYSz0HO3wVHNtZtox5fNvaXYW7NSIluqoNAnjk5ratQogaWUj0VGzmI9X7y_AgJUsI9fCFYm1x2F4R3TiKbhttVaaSMrWtkWfGZGTvrT6eNCMwqquHFd1kojrYzwmYlfFsQ5hyEuEBOQ8lN2GTI38lQ51tqD9RqAXi4XMiFXFnntOBzF4rp679HsE2ty_F00qc3j_nU7rbmjSQKE_FCqcL3HqlL_JMmQ37qW4Lr5stutNTyWuCyl-X03UVfnch0xxiMGfRpK201IExkq8x-CZTrU-2KZaVbdnVfjGyylLaTJRMm0fbVX4XGp6tQS-eM4E6b9O-NHceLO4u5GWT6rNBBjGnwSS-kKJoT3hl5yYFy3_P1c_DZ-gCpkNoEwok_X_Fdmd7ChiHl5WGXnj_k5LPNkfinATqDbw9ASZxTM9zo&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Authentic Masala House (Pure Veg)",
+                      "alt": "Authentic Masala House (Pure Veg)",
+                      "place_id": "ChIJIcix_yK34zkRIRCzoaKdSMI"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Local Favourite",
+                "rating": "4.9★ (72 Reviews)",
+                "price": "₹1–200 per person",
+                "why": "Top-rated pure-veg spot, cheap and filling after a long safari",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=13999612763504316449&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "081674 51139",
+                  "tel": "tel:08167451139"
+                }
+              },
+              {
+                "title": "Aranya Family Restaurant",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_8",
+                  "title": "Aranya Family Restaurant",
+                  "query": "Aranya Family Restaurant Jaldapara",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJU2MB3_m34zkRmL6U7WC5mTc%2Fphotos%2FAVoNoXQdqexxNfIKbPYeFoHwuOE2_DA90f7PPjFBQeASTXj3vQmKFtcaOJ9E0PesrQYyiny_jrZRFgTkFc0tI5FD5qap4eskvjKPRx1yJRoD9kPanYuz1Karo6WnqktpQXj1zFaZzyma_089iYD9KiL1fm0jiBXjUdh81s_3fv67DjAWtpvXHlVHcoLvUFgZ64xTosJDFu9Zlu-vHIRBl9mIHsXlepjAsXzIzjlkFgF3btGy4x0W8rVWA_XvJMT64hzKQYDf18OJhP9qLSGOduFuDdKRLfx_An9nNnhKQrozXYxGSs6Uz23htl-qxvIcb9rGWlaxgbnK_xZb1b31PGgWFXRQOztyDtrrSAILr5FRBpoYTLC4TsbrHCSKTrpx3B5s03fvcR7gb_3vlyUAGYAHai4Io2oBCHmAJ9tvUINKZak&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Aranya Family Restaurant",
+                      "alt": "Aranya Family Restaurant",
+                      "place_id": "ChIJU2MB3_m34zkRmL6U7WC5mTc"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Family Pick",
+                "rating": "4.1★ (201 Reviews)",
+                "price": "₹200–400 per person",
+                "why": "Popular family restaurant on NH 317 near the petrol pump",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=4006437169476714136&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "097332 67517",
+                  "tel": "tel:09733267517"
+                }
+              },
+              {
+                "title": "Red Chilli Family Restaurant",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_9",
+                  "title": "Red Chilli Family Restaurant",
+                  "query": "Red Chilli Family Restaurant Jaldapara",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJAfbpL9C74zkRS_fhFwvpbsc%2Fphotos%2FAVoNoXSQngw5_itVBO07PoVeJaS5wEBVlrcbOgb-wJDna6aVWEAo4jXGbfp0f9Iirsk37kLEBbwVhSNXYsUXjTjr_VqYzT07o3luxCvRdLydGKb7IXrfblYI5c8ejy45Nf8w_XatYv_P59jBgNpniGHJNXiqOs9b4uNunCsqIxWSb_d5dGd6NMgdNvyP1nB8nRh4U3Ek4OzPd83546GHeRBNJAapbmA8boBvFsyhIiHsEG9ECLQKJM6pcq1tgmWIGnMUcDZsstyvp_U90gBigm1_G0zr9VO-BZ-QrTCv0lF8kBZ9qjr--o3X0JX4TSVywFyslFpAbmzK8BTxSzemP4IK3cwVWT3rTH1ZxT6FZCvAMxpr6Jq9_nShVS9cFvrLIISs-14qk17BqOyNfXHirfdpC_mseR0bpIUtcjVvC5HELRCrFw&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Red Chilli Family Restaurant",
+                      "alt": "Red Chilli Family Restaurant",
+                      "place_id": "ChIJAfbpL9C74zkRS_fhFwvpbsc"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Casual",
+                "rating": "3.9★ (919 Reviews)",
+                "price": "₹200–600 per person",
+                "why": "Most-reviewed eatery in the area, good for a relaxed meal",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=14370679694840428363&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "070010 37546",
+                  "tel": "tel:07001037546"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": "Book your safari pass and stay early — entry is now free but passes are capped to prevent overcrowding, so secure a morning slot (6 to 10 am) for the best rhino sightings and carry a light rain jacket if you travel in the monsoon."
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Best time to visit Jaldapara",
+          "How to reach Jaldapara from Kolkata",
+          "Day-by-day 3-day Jaldapara plan",
+          "What to pack for a Dooars safari"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "text_replace",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "Jaldapara is one of India's best one-horned rhino destinations, sitting in the Dooars' tall elephant grass — best visited October to June (peak December to February) when the grass is shorter and sightings are easiest. From Bengaluru, fly to Bagdogra (IXB) or New Jalpaiguri (NJP) and drive about 2.5 to 3 hours to the park; a 3-day, 2-night trip runs roughly ₹8,000 to ₹15,000 per person including stay, safari and food.",
+        "sections": [
+          {
+            "title": "Attractions",
+            "cards": [
+              {
+                "title": "Jaldapara National Park",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Jaldapara National Park",
+                  "query": "Jaldapara National Park rhino",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJbSOmN9ew4zkRGljdcskySBA%2Fphotos%2FAVoNoXQje63Vr_V2sOz0GAoHOM07pvBVoYNut4nr8lCETlswZm06vgPFtzdP3N2bm46rKY_4za93fXaRZRC4xSvbX98gNJgQhZrY5QfRDvUUPuFFXmzS8EJvgi6_ZMR75lh2Zw9v0nCiJ23_UFSl5vi3j9q3f302AcGAQXK8Gz-r73kdS7LndFxkALnKfGtrcq46GzieLd3I0OdK7ploX9AZ3UlRacN9pa6Tj3loYzNifMtzB1DlN5hVpnG6HQg4Eb6zIsZe4vtKdF1VoHq7qslEkRJAI8iB2bDcFv2qr0UQJLFvUaygWgTamxrci0EaqKiJY6NnwH4Y0OWfOw1A7DTiGfkTenaowBQlal1TZKq2sqAyHegsDnfFwM5hy5PUJ5gHjEclU6X99MkvJ3xIlGIvPEJVAknzs3OjHFh5FKMTVQlyGA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Jaldapara National Park",
+                      "alt": "Jaldapara National Park",
+                      "place_id": "ChIJbSOmN9ew4zkRGljdcskySBA"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Must Visit",
+                "rating": "4.4★ (4099 Reviews)",
+                "price": null,
+                "why": "India's densest one-horned rhino habitat, roaming through tall elephant grass",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=1173243543726938138&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "093546 70476",
+                  "tel": "tel:09354670476"
+                }
+              },
+              {
+                "title": "Jaldapara National Park Gate",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Jaldapara National Park Gate",
+                  "query": "Jaldapara National Park Gate",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ5Tfoeh2x4zkRuOLJGSvT13E%2Fphotos%2FAVoNoXS1BIgKmElbMiy0WCq2ZlonCjVEhHnjUqvlklSDTr0zb7Unsor4p0FPq0FT9HfEUASv47yppSG-5IxhXqTSTYIQ7j_FHPKeckc3aJLcAKFpwfEqK1QDzZbg0aiLmt4yBwkR00YVQNFmOCgzKPFfIwhFxhSgBRPjMW2j_3HZWSupQqUi8xYuRQ1c9WvCHuV78aYCcVpTWKt_7pfPb_M1-gzJfNqh5L35boRKX-q4wH5rIVKJBz7RuLltJ_qocvaTFWzQjC_Alot6yPXwG1BKCamLFk1mSRCSNqv7cWFwyxJOg_ROWRYlbuIlD_HZjce-ghlJOrOGA_4tD1-dQrp65aCZu-oKAH_kgjTdczNtAyvPnVDrkQdn8xgwEudl0oSP-DEyHI5082c8fyRkNg5DFg33avs32Ize50ubcJJWPiAb7CzI&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Jaldapara National Park Gate",
+                      "alt": "Jaldapara National Park Gate",
+                      "place_id": "ChIJ5Tfoeh2x4zkRuOLJGSvT13E"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Entry Point",
+                "rating": "4.6★ (92 Reviews)",
+                "price": null,
+                "why": "Main gate where you collect your capped safari pass before entering",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=8203257428348363448&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": null
+              }
+            ]
+          },
+          {
+            "title": "Activities",
+            "cards": [
+              {
+                "title": "Jeep Safari (Morning & Evening)",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Jeep Safari",
+                  "query": "Jaldapara jeep safari elephant grass",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJbSOmN9ew4zkRGljdcskySBA%2Fphotos%2FAVoNoXQje63Vr_V2sOz0GAoHOM07pvBVoYNut4nr8lCETlswZm06vgPFtzdP3N2bm46rKY_4za93fXaRZRC4xSvbX98gNJgQhZrY5QfRDvUUPuFFXmzS8EJvgi6_ZMR75lh2Zw9v0nCiJ23_UFSl5vi3j9q3f302AcGAQXK8Gz-r73kdS7LndFxkALnKfGtrcq46GzieLd3I0OdK7ploX9AZ3UlRacN9pa6Tj3loYzNifMtzB1DlN5hVpnG6HQg4Eb6zIsZe4vtKdF1VoHq7qslEkRJAI8iB2bDcFv2qr0UQJLFvUaygWgTamxrci0EaqKiJY6NnwH4Y0OWfOw1A7DTiGfkTenaowBQlal1TZKq2sqAyHegsDnfFwM5hy5PUJ5gHjEclU6X99MkvJ3xIlGIvPEJVAknzs3OjHFh5FKMTVQlyGA&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Jaldapara National Park",
+                      "alt": "Jaldapara National Park",
+                      "place_id": "ChIJbSOmN9ew4zkRGljdcskySBA"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Experience",
+                "rating": "4.4★ (4099 Reviews)",
+                "price": null,
+                "why": "6 to 10 am and 4 to 7 pm drives when rhinos, elephants and leopards are most active",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=1173243543726938138&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "093546 70476",
+                  "tel": "tel:09354670476"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Where to Stay",
+            "cards": [
+              {
+                "title": "Sumaru Jungle Resort",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Sumaru Jungle Resort",
+                  "query": "Sumaru Jungle Resort Jaldapara",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJZb-7cC-x4zkR3jjll4NLQBs%2Fphotos%2FAVoNoXSDEF5JprtUB3zW2PXv1gvS42zZ4shc12DOn-6EQO1356rHHowXnPgJR5EAuICVscg74L2TqeosllFKM1KpYeWAyAbm8Ye4omFol-iu4vaaaZac6XNODtAVvlPBM1vXo7jtkPPMW9NepTp4_8-YCr4NrjQAu7bIYMYTITEnkxP0Bj4m3VV3c38R127UubS3VE7MpZ9nMQsVGiAhLnFXrWj8dJ7q3_Yn8-JljUzhtXsMoOn6nuYllQyl8S-4wc3IEYoy1GqWCEc7nncfyOO5-52qf2i5Vq74Ls6O4m5VIA2Zw3U5_1tyWe2XlKlQ00TbA3d9pLEDtdpq5qVR35It61NGdYysd2Z4P2y1Wn6rk5c5DokMQfBiKyLHjiR02olWjh1ODfz83gn9lNZ82Dex8PS3ptUs9lRHZZOTPNPt4vG_XWwc&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "SUMARU JUNGLE RESORT",
+                      "alt": "SUMARU JUNGLE RESORT",
+                      "place_id": "ChIJZb-7cC-x4zkR3jjll4NLQBs"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.5★ (230 Reviews)",
+                "price": null,
+                "why": "Highest-rated jungle resort on NH-31D, quiet and close to the park",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=1963652466094717150&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": null
+              },
+              {
+                "title": "The Jungle Book Resort",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_5",
+                  "title": "The Jungle Book Resort",
+                  "query": "The Jungle Book Resort Jaldapara",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ8c9k_ZC94zkRmfC-Us9Kzug%2Fphotos%2FAVoNoXRXJi3U6wfGaYZD6-a7Q0zPqyTRrD7U8ZC8ivRXDybeqmqEQM4DsrvVGmQDkRypUV-tBROhKrDu5-zPDAnXO-_5nPEsD_euJEnPh4w3iqhCuHotIgSQ9UtbVpP27ftW6NaCUNEXA0-7Cb3y_hpkk3k877HSoP9fkGmGnsk2Jm_L5PYxefmXK8iDvLofRimnLqXYtzJM9T_LB6-TPZmrS5_oamGcrD8IIZWioG17m4zP-K9QKlG-SQKGICNSqOSaX1_avXjtl1xROl2vyhVr1gO8BXjLZFtBRU9ad-3W3toVVKC0pH1p6bR_6ItBEqpKqi8hzTI9onlVacNTfoEw6e4URELTnjYUvFSovAyduEVsgM_o36z4wmZjhvt4xi_HvaAh8VWY06lr-XHy53cwcmuF9kUFEfyyL9u113P6sP00rE4&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "The Jungle Book Resort",
+                      "alt": "The Jungle Book Resort",
+                      "place_id": "ChIJ8c9k_ZC94zkRmfC-Us9Kzug"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Cozy",
+                "rating": "4.1★ (732 Reviews)",
+                "price": null,
+                "why": "Most-reviewed stay in Madarihat, a reliable mid-range pick",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=16775427916308607129&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "099322 74179",
+                  "tel": "tel:09932274179"
+                }
+              },
+              {
+                "title": "Jaldapara Tourist Lodge, WBTDCL",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_6",
+                  "title": "Jaldapara Tourist Lodge",
+                  "query": "Jaldapara Tourist Lodge WBTDCL",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJA4mOkSqx4zkRSRQ7gEXGpIA%2Fphotos%2FAVoNoXTj1jgkAyVMDgl2cdJrV5LWZMVRt24dfG7Q8jqyhEW_uDet_Zkrs6XAcFydn5NPaxgeT9LsdF1WGHzuWipA1Ks93QS277scPzZOAH5b144CK99Yt7D7bpT_1m4sxaWw0xjdy_qYh-x7LvTm6g0lIctbBKc_ORDqnFfcR3FDDHEQhsTpfwmetWTIwj8Zmv8Z_SjGmdj37S9GZkRMcT6-deWP5jWLCYXPEAdrpneeKhS2pFopeQSfNuJ6EbQ6rIKZ7tDvm8njCZlSb5H96DnxDu5wNH_Wiol8PoxhzKg_H6fQajRu7pjd99MW0eaUDUeC1SfDoMxBkhnrmdh9JrIIV8XJtkzzs9YGq0Nt2DWgCd4KVPSX4jbp2Ga6vcR80JKchiP7BDeS-FllDbyQh2q0UF_atpteYcCOi3d548F1PETzzwdd&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Jaldapara Tourist Lodge, WBTDCL",
+                      "alt": "Jaldapara Tourist Lodge, WBTDCL",
+                      "place_id": "ChIJA4mOkSqx4zkRSRQ7gEXGpIA"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Best Value",
+                "rating": "4.3★ (2596 Reviews)",
+                "price": null,
+                "why": "Government-run lodge, the budget-friendly option with the most reviews",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=9269751934841721929&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "074308 09428",
+                  "tel": "tel:07430809428"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Where to Eat",
+            "cards": [
+              {
+                "title": "Authentic Masala House (Pure Veg)",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_7",
+                  "title": "Authentic Masala House",
+                  "query": "Authentic Masala House Jaldapara",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJIcix_yK34zkRIRCzoaKdSMI%2Fphotos%2FAVoNoXSeChmh8zgE52r_MTYSz0HO3wVHNtZtox5fNvaXYW7NSIluqoNAnjk5ratQogaWUj0VGzmI9X7y_AgJUsI9fCFYm1x2F4R3TiKbhttVaaSMrWtkWfGZGTvrT6eNCMwqquHFd1kojrYzwmYlfFsQ5hyEuEBOQ8lN2GTI38lQ51tqD9RqAXi4XMiFXFnntOBzF4rp679HsE2ty_F00qc3j_nU7rbmjSQKE_FCqcL3HqlL_JMmQ37qW4Lr5stutNTyWuCyl-X03UVfnch0xxiMGfRpK201IExkq8x-CZTrU-2KZaVbdnVfjGyylLaTJRMm0fbVX4XGp6tQS-eM4E6b9O-NHceLO4u5GWT6rNBBjGnwSS-kKJoT3hl5yYFy3_P1c_DZ-gCpkNoEwok_X_Fdmd7ChiHl5WGXnj_k5LPNkfinATqDbw9ASZxTM9zo&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Authentic Masala House (Pure Veg)",
+                      "alt": "Authentic Masala House (Pure Veg)",
+                      "place_id": "ChIJIcix_yK34zkRIRCzoaKdSMI"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Local Favourite",
+                "rating": "4.9★ (72 Reviews)",
+                "price": "₹1–200 per person",
+                "why": "Top-rated pure-veg spot, cheap and filling after a long safari",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=13999612763504316449&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "081674 51139",
+                  "tel": "tel:08167451139"
+                }
+              },
+              {
+                "title": "Aranya Family Restaurant",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_8",
+                  "title": "Aranya Family Restaurant",
+                  "query": "Aranya Family Restaurant Jaldapara",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJU2MB3_m34zkRmL6U7WC5mTc%2Fphotos%2FAVoNoXQdqexxNfIKbPYeFoHwuOE2_DA90f7PPjFBQeASTXj3vQmKFtcaOJ9E0PesrQYyiny_jrZRFgTkFc0tI5FD5qap4eskvjKPRx1yJRoD9kPanYuz1Karo6WnqktpQXj1zFaZzyma_089iYD9KiL1fm0jiBXjUdh81s_3fv67DjAWtpvXHlVHcoLvUFgZ64xTosJDFu9Zlu-vHIRBl9mIHsXlepjAsXzIzjlkFgF3btGy4x0W8rVWA_XvJMT64hzKQYDf18OJhP9qLSGOduFuDdKRLfx_An9nNnhKQrozXYxGSs6Uz23htl-qxvIcb9rGWlaxgbnK_xZb1b31PGgWFXRQOztyDtrrSAILr5FRBpoYTLC4TsbrHCSKTrpx3B5s03fvcR7gb_3vlyUAGYAHai4Io2oBCHmAJ9tvUINKZak&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Aranya Family Restaurant",
+                      "alt": "Aranya Family Restaurant",
+                      "place_id": "ChIJU2MB3_m34zkRmL6U7WC5mTc"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Family Pick",
+                "rating": "4.1★ (201 Reviews)",
+                "price": "₹200–400 per person",
+                "why": "Popular family restaurant on NH 317 near the petrol pump",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=4006437169476714136&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "097332 67517",
+                  "tel": "tel:09733267517"
+                }
+              },
+              {
+                "title": "Red Chilli Family Restaurant",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_9",
+                  "title": "Red Chilli Family Restaurant",
+                  "query": "Red Chilli Family Restaurant Jaldapara",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJAfbpL9C74zkRS_fhFwvpbsc%2Fphotos%2FAVoNoXSQngw5_itVBO07PoVeJaS5wEBVlrcbOgb-wJDna6aVWEAo4jXGbfp0f9Iirsk37kLEBbwVhSNXYsUXjTjr_VqYzT07o3luxCvRdLydGKb7IXrfblYI5c8ejy45Nf8w_XatYv_P59jBgNpniGHJNXiqOs9b4uNunCsqIxWSb_d5dGd6NMgdNvyP1nB8nRh4U3Ek4OzPd83546GHeRBNJAapbmA8boBvFsyhIiHsEG9ECLQKJM6pcq1tgmWIGnMUcDZsstyvp_U90gBigm1_G0zr9VO-BZ-QrTCv0lF8kBZ9qjr--o3X0JX4TSVywFyslFpAbmzK8BTxSzemP4IK3cwVWT3rTH1ZxT6FZCvAMxpr6Jq9_nShVS9cFvrLIISs-14qk17BqOyNfXHirfdpC_mseR0bpIUtcjVvC5HELRCrFw&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Red Chilli Family Restaurant",
+                      "alt": "Red Chilli Family Restaurant",
+                      "place_id": "ChIJAfbpL9C74zkRS_fhFwvpbsc"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Casual",
+                "rating": "3.9★ (919 Reviews)",
+                "price": "₹200–600 per person",
+                "why": "Most-reviewed eatery in the area, good for a relaxed meal",
+                "hours": null,
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=14370679694840428363&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+                },
+                "phone": {
+                  "num": "070010 37546",
+                  "tel": "tel:07001037546"
+                }
+              }
+            ]
+          }
+        ],
+        "conclusion": "Book your safari pass and stay early — entry is now free but passes are capped to prevent overcrowding, so secure a morning slot (6 to 10 am) for the best rhino sightings and carry a light rain jacket if you travel in the monsoon."
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Best time to visit Jaldapara",
+          "How to reach Jaldapara from Kolkata",
+          "Day-by-day 3-day Jaldapara plan",
+          "What to pack for a Dooars safari"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "completion"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_skills_used",
+    "label": "LLM used skills (1)",
+    "ts": 1787565522577,
+    "detail": "travel"
+  },
+  {
+    "type": "turn_complete",
+    "turn_id": "865174b0-14bb-4247-8bb3-70390b618a9e",
+    "input_tokens": 111493,
+    "output_tokens": 6982,
+    "reasoning_tokens": 3699,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 101600,
+    "latency_ms": 110293,
+    "agent_steps": 4,
+    "tool_call_count": 8,
+    "skills_loaded": [
+      "default",
+      "travel"
+    ]
+  },
+  {
+    "type": "[DONE]"
+  }
+]

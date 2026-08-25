@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { Level2ScenarioRegistry } from './registry';
+import { HARNESS_STREAM_CAPTURES, Level2ScenarioRegistry } from './registry';
 import { SCENARIO_ARCHETYPES } from '../types/archetype';
 
 /* Registry behaviour that the demo depends on, exercised against the FIXTURE
@@ -62,6 +62,14 @@ describe('scenario registry', () => {
       expect(row.fixtureCount).toBeGreaterThanOrEqual(3);
       expect(row.realTraceCount).toBeGreaterThanOrEqual(0);
     }
+  });
+
+  it('indexes the reviewed and Tests capture collections without hiding mapping gaps', () => {
+    expect(HARNESS_STREAM_CAPTURES.filter((capture) => capture.collection === 'reviewed')).toHaveLength(10);
+    expect(HARNESS_STREAM_CAPTURES.filter((capture) => capture.collection === 'tests')).toHaveLength(20);
+    expect(HARNESS_STREAM_CAPTURES.filter((capture) => capture.unavailableReason)).toHaveLength(4);
+    expect(registry.selectHarnessStreamExample('test-q01')?.scenario.source).toBe('harness_stream');
+    expect(registry.selectHarnessStreamExample('test-q03')).toBeUndefined();
   });
 
   it('falls back instead of throwing when Phoenix fails', async () => {

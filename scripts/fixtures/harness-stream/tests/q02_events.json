@@ -1,0 +1,904 @@
+[
+  {
+    "type": "turn_started"
+  },
+  {
+    "type": "insight",
+    "subtype": "guardrail_passed",
+    "label": "Guardrail passed",
+    "ts": 1787564984620,
+    "detail": "nsfw check ✓"
+  },
+  {
+    "type": "insight",
+    "subtype": "query_enriched",
+    "label": "Enrichment skipped — no prior history",
+    "ts": 1787564984623
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_selected",
+    "label": "Skills selected (1)",
+    "ts": 1787564984623,
+    "detail": "food (0.81)"
+  },
+  {
+    "type": "insight",
+    "subtype": "skills_loaded",
+    "label": "Skills loaded (2)",
+    "ts": 1787564984626,
+    "detail": "default, food"
+  },
+  {
+    "type": "insight",
+    "subtype": "context_built",
+    "label": "Context built",
+    "ts": 1787564984627,
+    "detail": "stm=no · 0 msgs"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_start",
+    "label": "LLM started",
+    "ts": 1787564985749
+  },
+  {
+    "type": "insight",
+    "subtype": "tools_loaded",
+    "label": "Tools loaded (12)",
+    "detail": "GetRoute, GetWeather, MemoryRead, MemoryWrite, NearbyPlaces, PlaceDetails, PlaceReviews, PlaceSearch, Task, TodoWrite, WebFetch, WebSearch",
+    "ts": 1787564985754
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "user_query"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "0 / 100,000 tokens (threshold)",
+    "token_count": 0,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787564987555
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Searching for top-rated Chinese restaurants in Bengaluru that serve Mapo Paneer.",
+    "step_id": 1,
+    "names": [
+      "PlaceSearch"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceSearch",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceSearch",
+    "ts": 1787564989367,
+    "detail": "Chinese restaurants serving Mapo Paneer in Bengaluru"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceSearch",
+    "input": {
+      "query": "Chinese restaurants serving Mapo Paneer in Bengaluru",
+      "latitude": 12.9352,
+      "longitude": 77.6245,
+      "bias_radius_meters": 8000,
+      "place_type_filter": "restaurant",
+      "max_results": 12
+    },
+    "tool_use_id": "6ffa8fd4-b6b7-4c4b-ada5-3879854f0a43"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 25,013 · out: 323",
+    "ts": 1787564989370,
+    "detail": "step 1"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 25013,
+    "output_tokens": 323,
+    "reasoning_tokens": 0,
+    "reasoning_estimated": false,
+    "cache_read_tokens": 0,
+    "text": "Tokens — in: 25,013 · out: 323"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceSearch",
+    "ts": 1787564990179,
+    "detail": "12113 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceSearch",
+    "text": "{\"query\": \"Chinese restaurants serving Mapo Paneer in Bengaluru\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJn7sDhoQUrjsRqJ_IaUnSDJU\", \"name\": \"Fortune (formerly Luo Han ) Authentic Chinese vegetarian kitchen\", \"formatted_address\": \"403, 1st B Cross Rd, behind Chai Chowk, KHB Colony, 7th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 3.7, \"user_rating_count\": 1247, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"099861 92288\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=10740190424120991656&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.936248, \"longitude\": 77.6144546, \"photo_url\": \"/api/photo?name=places%2FChIJn7sDhoQUrjsRqJ_IaUnSDJU%2Fphotos%2FAVoNoXT5jz0AqvaJzagjx2BrHP08ZiX1__wGHJ5-H1lapiYSplKbfcsNlVMipFum-QbjRtGRTyB99mui0NiIV2yeLbo7cKMVgTrXRcVz0vAZUuQHqxEGp1XOi1jgl4Jx0XQ_2TXN1LdZ-oWxf2NkOx6Esd3XuNuILxmkEn0Bvh1DBFhMWWHP2mEU0s5Zh-cOjV3Evv3uHbKrSifvhMabkg5QHRooFkKm-MAbU3S5PTHtnnnm_tVIEPvCjX1pnUvJVUWGVdssGK_ZhoVVyIlN9pL5n2XuZqAs2EAyxrwRD0wu1e2JJ3bdEjqMC7mG6eUH_4sWvNnhbPjti81XElCSywUlHdlP5RgFV6oX10_Ts4qdM2VosQnLePJo7frFqcdzFjFWwaBAo2UYhVVvEyNIn81Rv-K-4bw4Eu0nv-1TiLOnCeI&maxWidth=400\"}, {\"place_id\": \"ChIJya3qua0XrjsRlaPDV2L8b-k\", \"name\": \"Shang Palace\", \"formatted_address\": \"Level 3, Shangri-La, 56-6B, Palace Rd, Abshot Layout, Vasanth Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 280, \"price_display\": \"\\u20b92000+ per person\", \"open_now\": true, \"phone\": \"080 4512 6440\", \"website\": \"https://www.shangri-la.com/bengaluru/shangrila/dining/restaurants/shang-palace/\", \"google_maps_uri\": \"https://maps.google.com/?cid=16820940632561525653&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9918905, \"longitude\": 77.5881298, \"photo_url\": \"/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXQRRssHBAu_3erH-XBwcqW4Sqa4oS0lqjWnZ-3hxYl_a-GbCWaB9LR4kdNG8RtYTH28Q-C5mxBdcYh2Ez5CihAaK8GRdhVCPjGNSovVMNZvx_QT8oNsh9QBe3u88jC0KCcD4NFbpZZ4klWQ_tBQImOxtjBaGXadn_6DEGrvcvXaI8k-UEeS5z3yQ__Hjsg06MME98hWkh-6bLNWw8_RJ7rXxFQSkAUaSO_VoOayS3ZELw5SpLyuC0Cp29RQzy4CEdvSm-rZbBoAdHGaB2YjcTR4J8B4DiFUNSL7sATG8Aefzj7T76Z6zq7pfQR4vMQFEancr5xQuS31pFqMAb8t3Gkpk2L56ialXUiUyzHFAaR8UnADqL_kiJxr2gvYfSh5P3-RxxU_2Fc8klxbzTCYxjnuK-Uto9imzmUX_IlDm1uojuce&maxWidth=400\"}, {\"place_id\": \"ChIJC2_iseoVrjsRLoS8232p9Y0\", \"name\": \"Ho Chia\", \"formatted_address\": \"Green Leaf Layout, 9/10, 4th Cross Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"meal_takeaway\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.7, \"user_rating_count\": 15, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"open_now\": true, \"phone\": \"\", \"website\": \"http://www.instagram.com/hochia_foods\", \"google_maps_uri\": \"https://maps.google.com/?cid=10229268486664520750&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9354284, \"longitude\": 77.62966759999999, \"photo_url\": \"/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXR2j4Jj63aEyfF6yUqQbw4Vvn1m02I1mIp8Ajw8l_F9utdcUT7Yk0I3Ud2OKNbxAy_npCO36tZl_SAXAahiMSrjVOUnasBFRf5IgHIhCP_gL5-hY99qGPEcZ7yp8kAAhJ6V9T5U7A6IlMaJLoGnFLfU-99MBgOWwO4pSkUQiQt7N7zdU-MgJIDqYN2Q_G_JVLTQzS9mMt-COsWdrqhgdGA_QMPZGIn-oBnkMiOkMlZjRj75d4ilqUVtwxNpRdvWQ9jh6VPQuZa_Lq6pX4dxKjwHQJVQPyKS2Q2H9_4luYZeMkQ_QaRJyDpmkGZQB5WAS9x_U1EUrwIlY2c6R_3BNudnZ5i12WHm0M_IveKLw5rLazLAmbBnzrSct3SjBQawwqnDO6tfGm5rIF7b6edW0FlWFEHRBEaenyUEun9nygjdY_LzcuXk6v03RLT2G-nz&maxWidth=400\"}, {\"place_id\": \"ChIJo9U2AIcUrjsRYQmWHyc9288\", \"name\": \"Sichuan Chinese RestoBar\", \"formatted_address\": \"WJCW+C3R Petrol Pump, 1552, 19th Main Rd, opposite Agara, Sector 2, Agara Village, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102, India\", \"types\": [\"chinese_restaurant\", \"bar\", \"restaurant\", \"food\"], \"rating\": 4.1, \"user_rating_count\": 2762, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"097403 23755\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=14977632223993661793&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.921172499999999, \"longitude\": 77.6451773, \"photo_url\": \"/api/photo?name=places%2FChIJo9U2AIcUrjsRYQmWHyc9288%2Fphotos%2FAVoNoXSbSYpn8_P8ojvSm48o-Fx_EtmdVLLYtHD5OCUw7b_tfXMWz0OBpl_Jv0ReqgyOTH6B9YIILL7ZeQVHgV6iAwMnIDEKH65wAP2bAqr1A_Rdxy8kTgG18Rr1lyngaFs__R2o9UfGt7muQaDm7oeERl4E5WSzhieuYN1aQDNr1p397tNCz7pbPaoNgCW4RORvO51bTtzo1Q2OhBfNVZSH8NlDEeIVe6D3zZKZJ4fVXMwJ8kwar4sI8xbBOEQrS6gCfB5W-LFtad1szmY9mpCnyVpsPqL9N0B-x0mr-wS9mK9COpGTk9tmZqFIlg0DodB2jrnoueK-LCE_6rl3blxR_M0Sv-wc0f94Nhqe3e9XxVUDb_ujyDPsHkEFw2DZbmYfrEYxc7Kp5IMSaXwG872dQViuFPGpQ85QbNNr27ScC4tVkFCwXk9nxxXcC1yJiA&maxWidth=400\"}, {\"place_id\": \"ChIJ11JdgKQWrjsRAzzO_nAbisY\", \"name\": \"Bangalore Mandarin\", \"formatted_address\": \"2nd floor, 196, Paramahansa Yogananda Rd, Stage 2, Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"chinese_restaurant\", \"noodle_shop\", \"restaurant\", \"food\"], \"rating\": 4.2, \"user_rating_count\": 2658, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": true, \"phone\": \"080 4116 1732\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=14306277338421017603&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.977816599999999, \"longitude\": 77.6364452, \"photo_url\": \"/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXQtxODzd72LwygnxnEhbIMcxrsdege1XUPp03RhuAVSDvZc8q-VVBHRGNPkIRzOQPUUpn8XfbZdCwApkhkQOBzmkr136eSTm9GiTbayhJCBc98VNTbtq7_Bwsl5D2E5RhbD3WsGpYzDg1Oz1crDzzXIypoXoj3D8eUMwWiETnAXgK91nWB_xjwJkCI8uh3zDtBm0DwSEmlSE1YkPRkvtIgHtCjYCMoJcSHmQGq1TYmEhPeiyGNFuuPjpxMi7RXePecDK89e_Im0JxL5ycvkOIKh2iHxB92YLZgeE-KJ2bfHnl81n8O_mAqtRO-sur8ZDOqjOYNaGaCUq35nU1vtjJT5b0CRuWbVd9EOBSD01fX_wZyFBBet5iYI7DK3UBs8ZZTjPTYfioRtZcnS1_OZZYqJn3XJiaSV-ixdFEwzO9jjpg&maxWidth=400\"}, {\"place_id\": \"ChIJUeCMkXEVrjsRHPU2bkXYUvQ\", \"name\": \"Taichin\", \"formatted_address\": \"92/2, 13th C Main Rd, HAL 2nd Stage, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560008, India\", \"types\": [\"chinese_restaurant\", \"dumpling_restaurant\", \"restaurant\", \"food\"], \"rating\": 4.6, \"user_rating_count\": 127, \"price_display\": \"\\u20b91\\u2013200 per person\", \"open_now\": true, \"phone\": \"082176 77476\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=17605371686058128668&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.965252999999999, \"longitude\": 77.64276509999999, \"photo_url\": \"/api/photo?name=places%2FChIJUeCMkXEVrjsRHPU2bkXYUvQ%2Fphotos%2FAVoNoXSm2461I4ah-d9tayNsrMn3vekE6Mwo5mgkgfGMj14nwgKvGd1PRKDheI5YqzR-7IiVcqqGOxhTA5NT4l9iMKcQNSfh8uxtdQmaVzzq6Log9-f10Bm6n97N_F2FqHVC8MxlTjai6ET0fITbsb9sBywQksLtjRLi23LzcTq9MYJP9LrIHHZ2gqhX8g8bHZGh6uN-CSeRbu2T0aQ0_jt8lW_iEBkQ6IqVhDnJU95Ju5uHmQOtHD7OO9hl_F01EI4pNWQv532RiDTvFqdQsQ74L8-7ilGVmfmto-o_wk8MHEgMChMMG0nDIMu07VZPX-0LLPj043MpPcqp7NmnhwjJWZ2Kf4CPfgzVmfj3vLMTKqba2HovK1kZXKTJeIylGnWD0BpNtkWt5ezFfEqGS9YqLkeXZ4wE76FJDHLvFIJKQqQthA&maxWidth=400\"}, {\"place_id\": \"ChIJl7x7M2EUrjsRQY-kuhlj1CM\", \"name\": \"Golden China\", \"formatted_address\": \"970, Cauvery Colony, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.4, \"user_rating_count\": 654, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"098864 75660\", \"website\": \"https://www.facebook.com/Golden-China-103294827719926\", \"google_maps_uri\": \"https://maps.google.com/?cid=2581797448546815809&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9290624, \"longitude\": 77.6347681, \"photo_url\": \"/api/photo?name=places%2FChIJl7x7M2EUrjsRQY-kuhlj1CM%2Fphotos%2FAVoNoXRzfIyXhTam1-Qh0WVaOGdF2JtyW7wM73YFbpl7X-RuKFPo6_9Uby15XN89gof_mPkfZhAVyjMJlMrI3gEbhkey23PbngeZJQqO2i3CBGNoNcDj2ZR0ODa2QDTMbd-8hdSBcmF-pBW40gTXh9Bmj_NPAPhlAQ7LaDLamwO-MmNqqfYPS-xFEqOwm67JV4Nwo1kXk-zfEjl6DmTYVVa-L7QCBGCKti9SxHlPPqEFP4XhmpnLuOD70adBpCNuNbDqDdhnbbKOxy5VSXqmqD-eEKqOD6IK1c5pNUwRR6_qQrL29vuHSy3EhYoGcV6cohKchmYPoBZpFNs9iZMKPCFAL24mEtVzUvdYaWUcZT5OjX91AcA8DnH07nYsGhL62Kfv77uUpNkyvc7jBjW3---a8a6867mZPU9Wc0tMLDkCoga3jUSvyOSAkIeNNxn3SA&maxWidth=400\"}, {\"place_id\": \"ChIJKVDmPAkVrjsReCbEIhoCxKU\", \"name\": \"Garden Asia Restaurant\", \"formatted_address\": \"4th Floor, Tibet Mall, 47, 4th B Cross Rd, KHB Colony, Koramangala Industrial Layout, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"tibetan_restaurant\", \"bar_and_grill\", \"asian_restaurant\", \"hot_pot_restaurant\"], \"rating\": 4.6, \"user_rating_count\": 1675, \"price_display\": \"\\u20b9200\\u20131200 per person\", \"open_now\": true, \"phone\": \"078990 51989\", \"website\": \"https://gardenasia.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=11944674422969083512&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9342665, \"longitude\": 77.6160878, \"photo_url\": \"/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXRddcpkVMMYafAgxoJC3eNpwAMdgdx4wEuRIn4ybF_2B4S_ASRaDZ2S-OC2sHgnZlfZprUkwxxUq4wajthDOEZjlj-QfERmomuMoUBw8PgE_OLfETYWmDf8ooOtKPsK_IQRZD5ABCFEsyGA6pWhWF97l8hWUZv2IrFffbBNMDplr1N_39njGQnjm5Ktf-zAlXu0giHX4RsJGlJJO1q4qfGeB9lBrcp1JQKMEmxRSPjeqGUW8zLzw3hr5mg67hDYNUoRwzxeySol1IlCOK8Kl2oDG1N2g0NGCz0ZJUJKLnJhheoTqeYhOwyXpu3P9004JPxtbN0lOxa2txXS1BNwXjkw79pxKcHKme3Zzdq23FBID3uTNANm8h1bebI6yK67LLB7op28WI4YjvGFWbmgdxo89kkxDUDjAZeRFBXKyJ4aIArW&maxWidth=400\"}, {\"place_id\": \"ChIJgwUaGEUUrjsRRTdbOTMrzco\", \"name\": \"China Pearl\", \"formatted_address\": \"53/1, 5th Cross, 60 Feet Rd, KHB Colony, 6th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.3, \"user_rating_count\": 5418, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": false, \"phone\": \"080 4110 5060\", \"website\": \"http://www.chinapearlindia.com/\", \"google_maps_uri\": \"https://maps.google.com/?cid=14613383864892733253&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.936285199999999, \"longitude\": 77.6214407, \"photo_url\": \"/api/photo?name=places%2FChIJgwUaGEUUrjsRRTdbOTMrzco%2Fphotos%2FAVoNoXROxZ01k0mSsWs8hdfLqaJ9NAu_c-zwuVju5Qqso2VwVP_EH3So1r7C85DEe8V9R3ErchTmMARWRBIpV5HTfe6WNVjP4Inz0W0URB33zuLiizPq7BKpHyoaDXLXvaLdPcbYTBc9x_dNTO5EQWbE7f01n5ltjjcHNRrI-fl2yyXsIXrk329GJMpD-KB54HU_7EO0VgT78Zxv28cj1FsWO2C-YoUy0DPS4Pw-3g-fOyq299DE9qTc33YlT9eOjmKNTLVh_Ic8RSXZltNyhWNAx5p4jeXHy8NwTyF9pcI-Y8fFdxpSF8slagxZQKiGrp5IEEFzm9Nl_Dlj2u7vg9OemGSK9S3wyvZHhftYxnBrZ7uA1tLNJZQPkiTiS0r1vqEoVPhCDJvk1GzH5ELPaUUqFvtPTlVPwCjTur184lR2L8kEZVJp&maxWidth=400\"}, {\"place_id\": \"ChIJt_JztdUVrjsRYsG1FLEqBsQ\", \"name\": \"THE DRAGON Chinese Restaurant\", \"formatted_address\": \"No. 646, RAJAT TOWER 2 11th main, 47th Cross Rd, TMC Layout, 5th Block, Jayanagar, Bengaluru, Karnataka 560041, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 1104, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"open_now\": true, \"phone\": \"086183 23570\", \"website\": \"http://thedragonchineserestaurant.petpooja.com/menu\", \"google_maps_uri\": \"https://maps.google.com/?cid=14125024221339173218&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA\", \"latitude\": 12.9161735, \"longitude\": 77.5856357, \"photo_url\": \"/api/photo?name=places%2FChIJt_JztdUVrjsRYsG1FLEqBsQ%2Fphotos%2FAVoNoXT2zzo5cpOBQL41AxAGyl14A0JdHdsMtDwUFPBp8qC18dgZjdnP6rHWFSy5H3fxarh_h3V2C1K-m4D0UPkxtR9KQ90jR7OCez2dI6sCr5t1RBdJPlEe7FxvfQK7Bt-d-FM8nJqrtvIjo1HM2YM-UGIjQF6288I2QnhqgpJOEVWpwc5IeF5iBU6YzmXA_lTy46ttvjBagCV6jA3k61ixnGF7L9R4zmwDvVdzLZl3rlJhFr_zLQXUVs2mN2xmgNYm-5A7nJHdkjyuApj8Adgwz45aESu-Cj1V3_YbS3mdzZZAFL5U2x9nObcvj1pFAnDKVrUHzpoWmhp73ghGfHbpTHov0I3FspMweO-toRDVapZjPFvLu2fl9a4SzJ8EnszeMcJk50ztv1Jakg94Wpxo251-4KyhuK4O-8t6FOoBwQzYLkBfzBhqgINuIdIcJHD4&maxWidth=400\"}], \"source\": \"google_places_api_new.text_search\", \"bias_mode\": \"lat_lng\", \"routing_summaries_included\": false}",
+    "tool_use_id": "45c23b2b-f3c0-4366-b0ce-91c1e76dfeed",
+    "is_error": false,
+    "llm_text": "{\"query\": \"Chinese restaurants serving Mapo Paneer in Bengaluru\", \"total_results\": 10, \"places\": [{\"place_id\": \"ChIJn7sDhoQUrjsRqJ_IaUnSDJU\", \"name\": \"Fortune (formerly Luo Han ) Authentic Chinese vegetarian kitchen\", \"formatted_address\": \"403, 1st B Cross Rd, behind Chai Chowk, KHB Colony, 7th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 3.7, \"user_rating_count\": 1247, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"099861 92288\", \"latitude\": 12.936248, \"longitude\": 77.6144546}, {\"place_id\": \"ChIJya3qua0XrjsRlaPDV2L8b-k\", \"name\": \"Shang Palace\", \"formatted_address\": \"Level 3, Shangri-La, 56-6B, Palace Rd, Abshot Layout, Vasanth Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 280, \"price_display\": \"\\u20b92000+ per person\", \"open_now\": true, \"phone\": \"080 4512 6440\", \"latitude\": 12.9918905, \"longitude\": 77.5881298}, {\"place_id\": \"ChIJC2_iseoVrjsRLoS8232p9Y0\", \"name\": \"Ho Chia\", \"formatted_address\": \"Green Leaf Layout, 9/10, 4th Cross Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"meal_takeaway\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.7, \"user_rating_count\": 15, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"open_now\": true, \"phone\": \"\", \"latitude\": 12.9354284, \"longitude\": 77.62966759999999}, {\"place_id\": \"ChIJo9U2AIcUrjsRYQmWHyc9288\", \"name\": \"Sichuan Chinese RestoBar\", \"formatted_address\": \"WJCW+C3R Petrol Pump, 1552, 19th Main Rd, opposite Agara, Sector 2, Agara Village, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102, India\", \"types\": [\"chinese_restaurant\", \"bar\", \"restaurant\", \"food\"], \"rating\": 4.1, \"user_rating_count\": 2762, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"097403 23755\", \"latitude\": 12.921172499999999, \"longitude\": 77.6451773}, {\"place_id\": \"ChIJ11JdgKQWrjsRAzzO_nAbisY\", \"name\": \"Bangalore Mandarin\", \"formatted_address\": \"2nd floor, 196, Paramahansa Yogananda Rd, Stage 2, Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"chinese_restaurant\", \"noodle_shop\", \"restaurant\", \"food\"], \"rating\": 4.2, \"user_rating_count\": 2658, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": true, \"phone\": \"080 4116 1732\", \"latitude\": 12.977816599999999, \"longitude\": 77.6364452}, {\"place_id\": \"ChIJUeCMkXEVrjsRHPU2bkXYUvQ\", \"name\": \"Taichin\", \"formatted_address\": \"92/2, 13th C Main Rd, HAL 2nd Stage, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560008, India\", \"types\": [\"chinese_restaurant\", \"dumpling_restaurant\", \"restaurant\", \"food\"], \"rating\": 4.6, \"user_rating_count\": 127, \"price_display\": \"\\u20b91\\u2013200 per person\", \"open_now\": true, \"phone\": \"082176 77476\", \"latitude\": 12.965252999999999, \"longitude\": 77.64276509999999}, {\"place_id\": \"ChIJl7x7M2EUrjsRQY-kuhlj1CM\", \"name\": \"Golden China\", \"formatted_address\": \"970, Cauvery Colony, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.4, \"user_rating_count\": 654, \"price_display\": \"\\u20b9200\\u2013400 per person\", \"open_now\": true, \"phone\": \"098864 75660\", \"latitude\": 12.9290624, \"longitude\": 77.6347681}, {\"place_id\": \"ChIJKVDmPAkVrjsReCbEIhoCxKU\", \"name\": \"Garden Asia Restaurant\", \"formatted_address\": \"4th Floor, Tibet Mall, 47, 4th B Cross Rd, KHB Colony, Koramangala Industrial Layout, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"tibetan_restaurant\", \"bar_and_grill\", \"asian_restaurant\", \"hot_pot_restaurant\"], \"rating\": 4.6, \"user_rating_count\": 1675, \"price_display\": \"\\u20b9200\\u20131200 per person\", \"open_now\": true, \"phone\": \"078990 51989\", \"latitude\": 12.9342665, \"longitude\": 77.6160878}, {\"place_id\": \"ChIJgwUaGEUUrjsRRTdbOTMrzco\", \"name\": \"China Pearl\", \"formatted_address\": \"53/1, 5th Cross, 60 Feet Rd, KHB Colony, 6th Block, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.3, \"user_rating_count\": 5418, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"open_now\": false, \"phone\": \"080 4110 5060\", \"latitude\": 12.936285199999999, \"longitude\": 77.6214407}, {\"place_id\": \"ChIJt_JztdUVrjsRYsG1FLEqBsQ\", \"name\": \"THE DRAGON Chinese Restaurant\", \"formatted_address\": \"No. 646, RAJAT TOWER 2 11th main, 47th Cross Rd, TMC Layout, 5th Block, Jayanagar, Bengaluru, Karnataka 560041, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\"], \"rating\": 4.6, \"user_rating_count\": 1104, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"open_now\": true, \"phone\": \"086183 23570\", \"latitude\": 12.9161735, \"longitude\": 77.5856357}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 2",
+    "ts": 1787564990185,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "25,013 / 100,000 tokens (threshold)",
+    "token_count": 25013,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787564990188
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "text_interim",
+    "text": "Pulling full details on the top five rated spots to confirm hours and what they're known for.",
+    "step_id": 2,
+    "names": [
+      "PlaceDetails"
+    ],
+    "tools": [
+      {
+        "tool_name": "PlaceDetails",
+        "user_facing_tool_label": "Finding places",
+        "icon": "https://tv.glance-cdn.com/public/AI-team-assets/harness_assets/tool-icons/MapPin.png"
+      }
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565005002,
+    "detail": "ChIJC2_iseoVrjsRLoS8232p9Y0"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJC2_iseoVrjsRLoS8232p9Y0"
+    },
+    "tool_use_id": "48b46c2c-3e82-492f-abda-d0bffdf857b1"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565005005,
+    "detail": "ChIJya3qua0XrjsRlaPDV2L8b-k"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJya3qua0XrjsRlaPDV2L8b-k"
+    },
+    "tool_use_id": "dc0bd9c0-fbd3-4b90-bdbc-56aa4f00538c"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565005007,
+    "detail": "ChIJ11JdgKQWrjsRAzzO_nAbisY"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJ11JdgKQWrjsRAzzO_nAbisY"
+    },
+    "tool_use_id": "72737df8-5e77-40dc-8f54-aeed126ced3f"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565005008,
+    "detail": "ChIJKVDmPAkVrjsReCbEIhoCxKU"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJKVDmPAkVrjsReCbEIhoCxKU"
+    },
+    "tool_use_id": "8974b31a-60d2-451f-b7a9-601ba23c71e0"
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_selected",
+    "label": "Tool → PlaceDetails",
+    "ts": 1787565005016,
+    "detail": "ChIJt_JztdUVrjsRYsG1FLEqBsQ"
+  },
+  {
+    "type": "tool_use",
+    "name": "PlaceDetails",
+    "input": {
+      "place_id": "ChIJt_JztdUVrjsRYsG1FLEqBsQ"
+    },
+    "tool_use_id": "2af77e78-8605-4243-9b92-c8fa9b28ef47"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 27,259 · out: 813 · cached: 24,800 · reasoning: 414",
+    "ts": 1787565005027,
+    "detail": "step 2"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 27259,
+    "output_tokens": 813,
+    "reasoning_tokens": 414,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 24800,
+    "text": "Tokens — in: 27,259 (cache: 24,800) · out: 813 (reasoning: ~414)"
+  },
+  {
+    "type": "insight",
+    "subtype": "parallel_tools",
+    "label": "Running 5 tools in parallel",
+    "ts": 1787565005035,
+    "detail": "PlaceDetails, PlaceDetails, PlaceDetails, PlaceDetails, PlaceDetails"
+  },
+  {
+    "type": "parallel_batch",
+    "count": 5,
+    "names": [
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails",
+      "PlaceDetails"
+    ]
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565005744,
+    "detail": "5841 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJC2_iseoVrjsRLoS8232p9Y0\", \"name\": \"Ho Chia\", \"formatted_address\": \"Green Leaf Layout, 9/10, 4th Cross Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"meal_takeaway\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.7, \"user_rating_count\": 15, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"phone\": \"\", \"website\": \"http://www.instagram.com/hochia_foods\", \"google_maps_uri\": \"https://maps.google.com/?cid=10229268486664520750&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Tuesday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Wednesday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Thursday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Friday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Saturday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Sunday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Swagato Pradhan\", \"rating\": 5, \"text\": \"Been ordering from Hochia for months now and it is now mandatory to order at least once a week. The food is always freshly home cooked and always great in terms of flavour and quantity.\\n\\nThe Char Siu has got to be the best followed by the Hainanese Chicken Rice which is on par with the ones you get in Singapore.\", \"published\": \"3 months ago\"}, {\"author\": \"Harshvardhan Siddharthan\", \"rating\": 2, \"text\": \"I really wanted to enjoy this food. The conditions were perfect for enjoying this food - I hadn't eaten all day and I was stoned. But despite having everything in its favour, the meal was supremely disappointing. It wasn't terrible but it wasn't great either. It was unremarkable, very blah. There are much better options just on swiggy/ zomato etc. I also feel like the portions weren't generous - they weren't stingy per se but like everything else somewhat middling. The mediocre taste and the middling portions combined made for a very mediocre experience - again not terrible if I am just cooking this for myself at home but not something I would pay for.\", \"published\": \"2 months ago\"}, {\"author\": \"Pavan Kumar M. V\", \"rating\": 5, \"text\": \"I ordered food from this place and it reminded me of neon lights reminiscent of Anthony Bourdain's Thailand episode. The food is well served with all goodness one can add to their palate. The color of the food was eminent and a stark reminder of what can a person do if his creativity is tested under fire. Absolutely loved it and would recommend anyone with eyes closed. Looking forward to dining in someday! Thank you for existing! \\u2665\\ufe0f\", \"published\": \"3 months ago\"}, {\"author\": \"milad viva\", \"rating\": 5, \"text\": \"Tried 3 dishes from Ho Chia Foods and every bite felt comforting and flavour-packed.\\nThe Nasi Lemak Chicken stood out with its rich coconut rice, perfectly balanced sambal, and tender chicken.\\nThe Char Siu Wanton Noodles were silky, smoky, and loaded with authentic flavours that felt straight out of a street food spot in Asia.\\nFinished it off with the Mango Sticky Rice \\u2014 soft, creamy, and easily one of the best dessert combinations ever.\\nGreat portions, comforting flavours, and definitely a place worth ordering from again\", \"published\": \"3 months ago\"}, {\"author\": \"Hm Darshan\", \"rating\": 5, \"text\": \"Easily the best char siu pork i've ever had in Bangalore.\\n\\nMapo Tofu was also great, but I wish it was spicier, i'd requested it to be spicier but maybe they forgot.\\n\\nExcellent Thai milk tea too\\n\\neither way I am definitely ordering again.\", \"published\": \"a month ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXT-CkDHyMTj85V0GEOsmQeHk59VuVyDISj9WITBxY9zcqOoSsqPyjJT3BlENxLVtzhlLuDUnILfNeMpBB5NG9lVsVlrgD-mWUAMOb5FGSgG60OLhM8Pu6eJ8AN93808tVSv7EWMTlO3KqtTUFnH0zFVDqbM3RH-7ljtTkXgGn8F0RLGxSzJgjojHONB6ArUCWoykHCsksq_no-0b3Fm4Y8J9hgirjx-0KUVG9fxAZuGI419r8kPAbr73vM5ZAHeeKrnS2zKBL0SPTlYxjyglVOsFMDKWb-iUMtir6YV-riyWeinpRoYzN7B0268b9xq3_hnsBWBsspofAChN5ihbOYw23LUO29y0JGLyCbpT8azAgP9xaNbNJj3duOx2mwxziqFoxiyuRZY9CpBJjj-nVqvRwDIarJqs-lrwP3Uu-G1Enfw-YJr-f48rWK0UwV0&maxWidth=600\", \"/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXT3-TrWBqpgpUFDN-jM4n7FXK2OUgRrif7k9iz3-oDrgsxBNd7LAQ9ZXvB8CjLnjr0Xo-brcvt5WAJgK1Lf12gWHWeuW49JKm4_cjxFWbadbSACavOrcmgjVrHXlseezo2IkBapZugHIpzaHcLJgUO-6yS_5Wq7yAZUe47orIvdImsBXA7mby1o4C19ntUC2u_BTF_G2OAtfujnviYNu43rtxxht5PH4UaTm_Pz4ghq-hDqt55xZr_5iExjCA9M8UlJMlyR4YIS00n1zNcnPfGE9ET_iT4uqxB34cfXOUPToRdBxKGPlmjETgFzzEAkBT89vZRbec2U2hAXihXX2o__BhyhI1jeZNpClHic3qOBc60gFD0vFKXwfG-SkSdrG1Rv2wMB-_P4feCJRuvCaEcBU3K0hrRs4asM-DFZCBbo8Ou2cBpAl-vwB2NWxU1u&maxWidth=600\", \"/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXSEIZxE1TbJsgdd7R6WBuqVm2Mcq7_nxsPC8tnUUOWBn7VqyrMhOwcU3bi-0_ufDSJk2Bull33eZalaeH4dBdl9mUcNimsck0vWGrToPW1E4n2qZrmo3lfMlQVJD5lLt0hhAsXkWf866CsyKas5z-imEx79WSimh1AIn6t7lIH6GO4vXuvqm-VzQOhGoTIcPRSNsgWjR-yoNimX46f7G1FYpQ3CUWNvtauWWC3TaiA1CncICGbXO_j-pFEEmUUqnT9IiYo0_2Jn4tMCG4_c9ifZLC5kJKCPmW9q4pMXLGjg9_EupqY6VZXj3U7MqnkIFyKSDQU3Oszf07dzbao2mtUq8ot8ZkB7FW65gau91kQbRklywNpUkVd-liIjUNgdBaVQrYGl_Lc-jTe-VrVcMtvMQB03_s8q9NHUnjEMv4AeoOnRDbLCm-ps9RZxRiiQ&maxWidth=600\", \"/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXT5AU_59JJJ__JDxkDDI8cPc1qr1wSB6-sclp_w_9O5j1Z0JNMazlMl5FsBdiYgKe6fpDi-aL0LSO0gOA2PstERHgVtwsUbcG3h4WGx_UpJ_aoUIvbs5q-5uIshbGam4z-X7WgsH87EoQKC0rtlymUoL_I3saeBiI0D2jqoWAeGqbkB_cQglZKLbyJTzwABJEjlbKWMe4QUfbY-gwbPatJWIAIo-s0OQxBkLu1WoKArnIRUCzb8TtXdM_4Zl4zNI1KoKtTk_FKaJHDRJS2dKtwF-8G51DXsT6l-Jook6brBKydpSZlhr00eRTM1FFxg642qMFxxY4izo3VMaEnxpdRoMjvKPHe_8S9dckGfr8ndsujwDnEnNp5yZoWtvTH_yzksQrfCoGNxDupACsHJfKHg81ezSBicpzfYwgCbDhS9vPSWpn0tDYsF5xzZlf7S&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "b0913778-0379-4ef8-9f43-8bfa13c382df",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJC2_iseoVrjsRLoS8232p9Y0\", \"name\": \"Ho Chia\", \"formatted_address\": \"Green Leaf Layout, 9/10, 4th Cross Rd, 4th Block, Koramangala, Bengaluru, Karnataka 560034, India\", \"types\": [\"meal_takeaway\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.7, \"website\": \"http://www.instagram.com/hochia_foods\", \"open_now\": true, \"opening_hours\": [\"Monday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Tuesday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Wednesday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Thursday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Friday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Saturday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\", \"Sunday: 11:00\\u202fAM\\u2009\\u2013\\u20099:00\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"Been ordering from Hochia for months now and it is now mandatory to order at least once a week. The food is always freshly home cooked and always great in terms of flavour and quantity.\\n\\nThe Char Siu has got to be the best followed by the Hainanese Chicken Rice which is on par with the ones you get in Singapore.\", \"published\": \"3 months ago\"}, {\"rating\": 2, \"text\": \"I really wanted to enjoy this food. The conditions were perfect for enjoying this food - I hadn't eaten all day and I was stoned. But despite having everything in its favour, the meal was supremely disappointing. It wasn't terrible but it wasn't great either. It was unremarkable, very blah. There are much better options just on swiggy/ zomato etc. I also feel like the portions weren't generous - they weren't stingy per se but like everything else somewhat middling. The mediocre taste and the middling portions combined made for a very mediocre experience - again not terrible if I am just cooking this for myself at home but not something I would pay for.\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"I ordered food from this place and it reminded me of neon lights reminiscent of Anthony Bourdain's Thailand episode. The food is well served with all goodness one can add to their palate. The color of the food was eminent and a stark reminder of what can a person do if his creativity is tested under fire. Absolutely loved it and would recommend anyone with eyes closed. Looking forward to dining in someday! Thank you for existing! \\u2665\\ufe0f\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Tried 3 dishes from Ho Chia Foods and every bite felt comforting and flavour-packed.\\nThe Nasi Lemak Chicken stood out with its rich coconut rice, perfectly balanced sambal, and tender chicken.\\nThe Char Siu Wanton Noodles were silky, smoky, and loaded with authentic flavours that felt straight out of a street food spot in Asia.\\nFinished it off with the Mango Sticky Rice \\u2014 soft, creamy, and easily one of the best dessert combinations ever.\\nGreat portions, comforting flavours, and definitely a place worth ordering from again\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Easily the best char siu pork i've ever had in Bangalore.\\n\\nMapo Tofu was also great, but I wish it was spicier, i'd requested it to be spicier but maybe they forgot.\\n\\nExcellent Thai milk tea too\\n\\neither way I am definitely ordering again.\", \"published\": \"a month ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565005747,
+    "detail": "6392 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJya3qua0XrjsRlaPDV2L8b-k\", \"name\": \"Shang Palace\", \"formatted_address\": \"Level 3, Shangri-La, 56-6B, Palace Rd, Abshot Layout, Vasanth Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"user_rating_count\": 280, \"price_display\": \"\\u20b92000+ per person\", \"phone\": \"080 4512 6440\", \"website\": \"https://www.shangri-la.com/bengaluru/shangrila/dining/restaurants/shang-palace/\", \"google_maps_uri\": \"https://maps.google.com/?cid=16820940632561525653&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Tuesday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Wednesday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Thursday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Friday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Saturday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Sunday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"p. pat\", \"rating\": 4, \"text\": \"The Chinese restaurant is located on the 3rd floor of the Shangri-La Hotel. I went there mainly to try the Peking duck and the hotpot.\\nIf you order the hotpot, you\\u2019ll need to sit at the outdoor seating area. The food took quite a while to arrive around 30 minutes before the first dish came out.\\nThe Peking duck was tasty overall, though the skin wasn\\u2019t as crispy as I expected. The fried rice was surprisingly good and definitely one of the better dishes of the meal.\\nFor the hotpot, we ordered the Sichuan spicy broth, but the flavor was quite mild. It felt like the taste had been adjusted to suit Indian preferences, so it lacked the numbing, spicy kick you\\u2019d normally expect from authentic Sichuan broth. The dipping sauces were okay, but nothing particularly memorable.\\nService was generally good, although they made billing mistakes a few times\\n\\nI\\u2019d probably come back again.\", \"published\": \"3 months ago\"}, {\"author\": \"C W\", \"rating\": 5, \"text\": \"As a Taiwanese, I\\u2019m confident to say the food was authentic and incredibly delicious \\u2013 a solid 10/10.  Banitha\\u2019s service was top-notch and the Swiggy offer made the dinner even more value for money. We\\u2019ll definitely be back soon!\", \"published\": \"5 months ago\"}, {\"author\": \"Harsha\", \"rating\": 5, \"text\": \"Review police who say vegetarian and Chinese food don't go hand in hand avoid reading.\\n\\nThere are restaurants that serve vegetarian Chinese food, and then there is Shang Palace a place that actually understands it.\\n\\nTried the five-course vegetarian sampling menu, dim-sums and tofu dishes(Sichuan pepper tofu and Mapo Tofu) are brilliant, FYI nothing is altered for the sake of pandering to an Indian palette, it's authentic Guangdong and Sichuan cuisine and that's the brilliance of the place.\\n\\nThe homemade ice cream lineup is genuinely inventive; the black sesame and goji berry is not to be missed.The service is unhurried without being slow\\n\\nIdeally the serving size for this sampling menu is for 2 people but go in hungry on a weekend and make it your only meal for the day.\", \"published\": \"3 months ago\"}, {\"author\": \"Prashant Chhetri\", \"rating\": 5, \"text\": \"Visit sang palace for the first time and I was really happy with the ambience the staff was really good and friendly mostly Miss Shalma,Miss Neha , Miss Roshina and lastly Mr Adarsh they help me with everything from the time I enterd the premises keep it up guys.\\nThe food was really on a top notch really appreciate definitely comming back for the vibe and the friendly staff\", \"published\": \"2 months ago\"}, {\"author\": \"D\", \"rating\": 5, \"text\": \"This restaurant and the one at the Ritz are my go-to Chinese restaurants in Bangalore. I love the tofu chili starter. Mapo tofu is also quite good. Negative: Beer prices are absolutely overpriced. 7 dollars for a small bottle is ridiculously for Bangalore.\", \"published\": \"10 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXTGqdL_gTHmCRbcQtFn9Yol_0akR3Qpkiuq7FYSt4AL0t3d6G-iktSXqFkmWCPQe8iUNx_MqKmGW12lIr2u-ibel3SaFGd06WepTOGA9SrvlU6jNtIfzbGGp0qZigPULtHk9qAO6ZouIEXiBAC4D1EN310i5lGpEqvGOkosLJmgbgcl6ru1Tt4gSzSTcoYbmUGp6qrtVAOM6j_LK9g82gu7eZX5Lk28UPrRZnWOBzfoUoQ7t7AYylWK5HgjQ8T1gs6k3f2E0OM0gd3jAM6_OP4kQupss99w0CnDpfDYVtmgt2N3OKZY0Gd1sUMW-bOam0BjYabcjk27E1dV0I7Jpdgv5KJH5grPlZGFzyRcEEDxrff8B1Ji864BKAJVpI_7ECxSjEyP2xvknaDgiuQeJx-ByfwKaycCvWboGCmGm1SmjxLY&maxWidth=600\", \"/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXT2yM2RqQFx7YdrYWjNj0m6eQEkt91hgx_7X4a4SwE_SwoJjbU24HEPtt65iZXiZkt-sbY1Tpb8b-hMrcWkIdG8dz4X0u9NWROOAvxRqpVZ_L5X-R1ygQZHua1yCZwBFWSxZFDcJiWUnij7hmkQrOd0sdtgXODv9DaIMYuZJSUjmq0ndhUhIcgxwbH0TNhBuxHvhEZJ0E1KsYoONFDOmOqxg1IjRiT8kYERfUN3UbB4prUFXR8y1S3YBw-w72F71RevQqz9ifpoCZAmpGRJ50VrRA__Z1Hojub6bzWfsKwBXHFvrHsLTuGJOeH4q6UxJao352J3P9G_IxzDCVmz_vp--0HpONMVvEG8YETKzNxdHlpofUuHDAg-Hp57KUxq8qndawX5VetIZID2JuiySBUbRcr98eAskmKs0aZt48U6_uLu&maxWidth=600\", \"/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXT37d1PLAyIe6He4XNq6oX7aYd9x2tzbYmFm85bytTTmG0pfiOTB0wDRF7e8dHCEx0OGqaOc-DchhW1Jwg03kuSxFp4C1x0leDy3fd5IMQTECkzK0AF7ir4aJTHQXW1hxoAaLPsq8jr0vFYpp3LBdrgFwUkH4FBHMw0gHRg2hBFoIlAAjpME8JMZlCSlVn2s9_73o6hkjQnKxrZ7UrENtUY8Mgs5rJ_b4V_LhcjWPCr5dOvEJJdEbqQKBTjNiOd8RFN3UrfqN5ca0pswMReGZTP1G7ZWJfoUR51OBhJQ75DGEfHoK20jTwRZEGAwVIMVVFGDTbZxF77SkAd9IWzFrrmyoV1IGqamuhX4IEIAU_F3VfY9mL0DD0IlMydGX3dxCP81-R5AxMxV_8kNq5VP2gWpDPOhLnjXO98VRhTZKs&maxWidth=600\", \"/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXTzgDMgyYWfUUx76c9cTHxetkGkdiRSiivH1hAk7jlm5hFR1jGeGilVzpz6Aqdgd7BOMrGoBH_IKU4rDIQy0Fc0YPn96eq4oMZg1B9zV9eWzLDg_gWIoj1SoDnVoKGtkNCwT4kRGQZxiHp1OVMABGzg3Ky4d9rtQAtxKjsAcwBagMKHfd6aMnQiS7b3OpHNAQbIk4CjU3guv7aksy6ELOorfut9GRI7BuPBFjzdd-eLYKb3o50aEvNnm4igVB6n3GHQ7QN28wuCrer2FcCIchNFMF414B83rabPgbzkEh2VO6b2CrJxIekpB17cgz6wNFIcJrtTDY55P58wGkZ3UL6A3TRPVMdAIN6EWRM4xfoc_QZHtgWaCxUrnfi3vsgoURvG4LOS3u7iQJ9vEnANNueqSlf66wzzA-Dz12klYHrMbvJocbxUjKKzNnEvK_dg&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "bda572a6-af9b-43eb-b13a-c5e6bd3a2360",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJya3qua0XrjsRlaPDV2L8b-k\", \"name\": \"Shang Palace\", \"formatted_address\": \"Level 3, Shangri-La, 56-6B, Palace Rd, Abshot Layout, Vasanth Nagar, Bengaluru, Karnataka 560001, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"website\": \"https://www.shangri-la.com/bengaluru/shangrila/dining/restaurants/shang-palace/\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Tuesday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Wednesday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Thursday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Friday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Saturday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\", \"Sunday: 12:30\\u2009\\u2013\\u20093:30\\u202fPM, 6:30\\u2009\\u2013\\u200911:30\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"The Chinese restaurant is located on the 3rd floor of the Shangri-La Hotel. I went there mainly to try the Peking duck and the hotpot.\\nIf you order the hotpot, you\\u2019ll need to sit at the outdoor seating area. The food took quite a while to arrive around 30 minutes before the first dish came out.\\nThe Peking duck was tasty overall, though the skin wasn\\u2019t as crispy as I expected. The fried rice was surprisingly good and definitely one of the better dishes of the meal.\\nFor the hotpot, we ordered the Sichuan spicy broth, but the flavor was quite mild. It felt like the taste had been adjusted to suit Indian preferences, so it lacked the numbing, spicy kick you\\u2019d normally expect from authentic Sichuan broth. The dipping sauces were okay, but nothing particularly memorable.\\nService was generally good, although they made billing mistakes a few times\\n\\nI\\u2019d probably come back again.\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"As a Taiwanese, I\\u2019m confident to say the food was authentic and incredibly delicious \\u2013 a solid 10/10.  Banitha\\u2019s service was top-notch and the Swiggy offer made the dinner even more value for money. We\\u2019ll definitely be back soon!\", \"published\": \"5 months ago\"}, {\"rating\": 5, \"text\": \"Review police who say vegetarian and Chinese food don't go hand in hand avoid reading.\\n\\nThere are restaurants that serve vegetarian Chinese food, and then there is Shang Palace a place that actually understands it.\\n\\nTried the five-course vegetarian sampling menu, dim-sums and tofu dishes(Sichuan pepper tofu and Mapo Tofu) are brilliant, FYI nothing is altered for the sake of pandering to an Indian palette, it's authentic Guangdong and Sichuan cuisine and that's the brilliance of the place.\\n\\nThe homemade ice cream lineup is genuinely inventive; the black sesame and goji berry is not to be missed.The service is unhurried without being slow\\n\\nIdeally the serving size for this sampling menu is for 2 people but go in hungry on a weekend and make it your only meal for the day.\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Visit sang palace for the first time and I was really happy with the ambience the staff was really good and friendly mostly Miss Shalma,Miss Neha , Miss Roshina and lastly Mr Adarsh they help me with everything from the time I enterd the premises keep it up guys.\\nThe food was really on a top notch really appreciate definitely comming back for the vibe and the friendly staff\", \"published\": \"2 months ago\"}, {\"rating\": 5, \"text\": \"This restaurant and the one at the Ritz are my go-to Chinese restaurants in Bangalore. I love the tofu chili starter. Mapo tofu is also quite good. Negative: Beer prices are absolutely overpriced. 7 dollars for a small bottle is ridiculously for Bangalore.\", \"published\": \"10 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565005749,
+    "detail": "5961 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJ11JdgKQWrjsRAzzO_nAbisY\", \"name\": \"Bangalore Mandarin\", \"formatted_address\": \"2nd floor, 196, Paramahansa Yogananda Rd, Stage 2, Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"chinese_restaurant\", \"noodle_shop\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.2, \"user_rating_count\": 2658, \"price_display\": \"\\u20b9400\\u20131200 per person\", \"phone\": \"080 4116 1732\", \"website\": \"\", \"google_maps_uri\": \"https://maps.google.com/?cid=14306277338421017603&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Amanpreet Singh\", \"rating\": 4, \"text\": \"Chinese restaurant had a decent taste and good seating ambience.\\nPrice per head will approximately come around 1000.  Service was decent enough.\\n\\nFew dishes were good including garlic prawns, fried prawn \\ud83c\\udf64 and fish. Chop suey also was good.\\n\\nGood one time visit.\", \"published\": \"4 weeks ago\"}, {\"author\": \"Sayan Layek\", \"rating\": 5, \"text\": \"First things first, this is one of the OG Chinese eateries in the city. The vibes are very authentic. The staff is polite and the service is quick. Now the food.\\nI've wanted to try the bacon wrapped prawn for some time and it didn't disappoint. A must try for any bacon lover. Make sure to have it with the sauce.\\nDrums of heaven: Too good! The meat melts in your mouth.\\nManchow Soup: I'd say a good 7.5/10. Most places seem to have forgotten a proper soup ritual before a meal, but they haven't.\\nMandarin Special Noodles: Not upto the mark. Hardly a 5.5/10. Vegetables seemed a bit stale, and pieces were largely cut. Very little use of shrimp or mushroom.\\n\\nOverall, this place would be worthy try.\", \"published\": \"3 months ago\"}, {\"author\": \"Wanming Li\", \"rating\": 5, \"text\": \"Old school Chinese restaurant. One of the best authentic Chinese cuisine in town. Service is fast and polite and the food is amazing. Consistently tastes great. Highly recommend.\", \"published\": \"3 months ago\"}, {\"author\": \"Blaine Rodrigues\", \"rating\": 5, \"text\": \"This is a genuinely good Indian-Chinese restaurant. We had the pork chilli, burnt garlic fried rice and chicken dimsums with burnt garlic as well as prawns and the mapo tofu. It was all really yum, reasonably priced for 2 people and, while this may not apply to you, we had leftovers for lunch the next day. If you want a good, reliable (stomach-wise) and yum place for regular Chinese food this is it. The service was good and they very attentive and the food came quite quickly. The ambience is nice too and is a restaurant where you can take the whole family. It does get crowded so either go a little early if you're walking in or call the restaurant up and make a reservation.\", \"published\": \"4 months ago\"}, {\"author\": \"Souvik Pal\", \"rating\": 5, \"text\": \"We came here for dinner. We ordered Crispy Pork Wontons, Drums of Heaven, Malaysian Pork Noodles, Burnt Garlic Chicken Noodles and Chilli Fish. The food was very good and the service was fast. No complaints on the food. The noodles were a lot so we even parceled it. 10/10 recommend.\", \"published\": \"6 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXSowY8up9VxXD2_v6tHuehpGxCSWNnQnN1iiz7j_p_PfYlXZqL_BeA5xtmjPYCklIxG17IPyiZDIfNKis2lb6XWPZjTdyRW_2Bk8rUJM-KYldFq2c6x_33Y89BkG8LmVMhjSD9ulIekWaSQ9ge1e5IgKolL_GpZzPumvK_v1Rrzg4I0qe9UgVYEZtmfeiM1IcZvHNAbluI1l4XTi4-D0DOAE8M0OxqiwgGzGKlpsEiqxT-8PsMl81-tOEajcL0XIEqZJWekQ4qkPav112Zq0hkvpYtpmWEN5q6JJvg-nkK-8pJsoI8REHMr0HBgBWJL9EdKW579QCpIceN2z_e8JBjsnf0sthNUxajaUIH6fbmeT6zb8fTJWyqGd-i-lVQN1adCYeqg9CaWlJXgD0w2WDrFU6pCcPFWdt2NPn0cfoUxCQ&maxWidth=600\", \"/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXTthch23baKt1YZkuHrU8S52rRBo5SDSqJsoFMi-LAoAX6fk-vfKo-r7thUJPys5v3wY2W3AXboDeiqnsN_a_AQ-AuHQtAUxk-0CtIZNZCZkavxcZxKTMJOObku3n-nBj3HkyB5iG92eejCOzfkqE42LeuY4CJR1hbeQynZIEpUBcq1UKik7NotrG131NfdeWsXj6onEFBPAv_-IO10NFOe7yLu23kE5WNKWvQ3qRtMRZgSt73vL_thGDBbsiO3i5TMKEekYWOAV71ZBibsNjLQjndCID9RwcNgJAaVnAKePiEktu8OWj9mJl4-2F9T35XRVUQrKdxqlsXmrJpGpdln_kL3b7kEftCxjc7ECCsgbXBwlKnOIpbl4km6OXGXOOn-OjiMUBkKuVhfHfPtLAJKEI3ZYcdqkmYy5026lPWtZipAsafKrEhhc7ZfvQ&maxWidth=600\", \"/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXTIQ8yh8BiQ8ZY_HGgJKTczAz499_-IA9KfGFpw8LVLqO21UmEUQypFqmEyTQQmFNjVdmBEPUfhw-o6pCB5MRtxOMMkGucHPHclMC_dClCXa8GhE8XlkcH2Gq2zfLcIJXjNa0CYsq5P_IoCAy8Q0MEf_cML-yVkBPvNRrhniF8fUIBslwn9-ml7trN-hEumU7ARsDUhgt4KQx9YElDDdUiO-Eb9EEG2E9HEYE1H6CXTkCEvjuWhfg_m4Jdd8Rust5XNCArOQwoEA-G55pd3r1F7tZoAykXVtbGMFXrKDjOfq93NjjLRSfLGoILvnfkSV04f44BRb2AH6jazOokqNfoYopoM1ADbviFXgz6aBlVx3P4sFdLLvm-4Ecl01f95eMOZI8sSWMdkN-2_uMk2REhKmeyruOyGPsFCx95LHh6cH0ftPECO05LOY7WEcxCB&maxWidth=600\", \"/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXSkYr1GnjkoKVJjSTX1ly6U_sjNZPqCZcPdYQOP1EMoNKFDkU2LDT9aZ2Oe4PvejZ0V-AjML5918bvaMh1b_ih1sdd7t9f1gitttkSWUz7aG9EENSCKoR6oBBoti6hiUjCq271vGNnrOiwt6_FRjIp3OgYmsyS12LlLIOce6h_O_6ADhqUV3AvJZ-Ad0Y_y3ed9e8F9V5BqhTy6zqK5LxsBCtiMRl_10m3F7KEWQtyBfztQttXx4nZz0LY2ueIYCglU71k71CKO7Kz2KGqVRrBzmGOq_VzHPlGLFPAXCm84-K2UInd7fL5s1H9jp8tC5dwqn7qpqbmkEt-QzqOGHnJ4wbtHtx8gHH6yJUc1wiCViyxb0y4m7fOueBja30XQyW6L5rWoopmMVeuUIp8GeWF3hpxYCPxqDo4D0xqgeCzLJbcILr1Cyj1XFKiYCh_3&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "7f55bb7e-60a7-44bb-8933-6125f387e0ea",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJ11JdgKQWrjsRAzzO_nAbisY\", \"name\": \"Bangalore Mandarin\", \"formatted_address\": \"2nd floor, 196, Paramahansa Yogananda Rd, Stage 2, Hoysala Nagar, Indiranagar, Bengaluru, Karnataka 560038, India\", \"types\": [\"chinese_restaurant\", \"noodle_shop\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.2, \"website\": \"\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u20093:30\\u202fPM, 7:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"Chinese restaurant had a decent taste and good seating ambience.\\nPrice per head will approximately come around 1000.  Service was decent enough.\\n\\nFew dishes were good including garlic prawns, fried prawn \\ud83c\\udf64 and fish. Chop suey also was good.\\n\\nGood one time visit.\", \"published\": \"4 weeks ago\"}, {\"rating\": 5, \"text\": \"First things first, this is one of the OG Chinese eateries in the city. The vibes are very authentic. The staff is polite and the service is quick. Now the food.\\nI've wanted to try the bacon wrapped prawn for some time and it didn't disappoint. A must try for any bacon lover. Make sure to have it with the sauce.\\nDrums of heaven: Too good! The meat melts in your mouth.\\nManchow Soup: I'd say a good 7.5/10. Most places seem to have forgotten a proper soup ritual before a meal, but they haven't.\\nMandarin Special Noodles: Not upto the mark. Hardly a 5.5/10. Vegetables seemed a bit stale, and pieces were largely cut. Very little use of shrimp or mushroom.\\n\\nOverall, this place would be worthy try.\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"Old school Chinese restaurant. One of the best authentic Chinese cuisine in town. Service is fast and polite and the food is amazing. Consistently tastes great. Highly recommend.\", \"published\": \"3 months ago\"}, {\"rating\": 5, \"text\": \"This is a genuinely good Indian-Chinese restaurant. We had the pork chilli, burnt garlic fried rice and chicken dimsums with burnt garlic as well as prawns and the mapo tofu. It was all really yum, reasonably priced for 2 people and, while this may not apply to you, we had leftovers for lunch the next day. If you want a good, reliable (stomach-wise) and yum place for regular Chinese food this is it. The service was good and they very attentive and the food came quite quickly. The ambience is nice too and is a restaurant where you can take the whole family. It does get crowded so either go a little early if you're walking in or call the restaurant up and make a reservation.\", \"published\": \"4 months ago\"}, {\"rating\": 5, \"text\": \"We came here for dinner. We ordered Crispy Pork Wontons, Drums of Heaven, Malaysian Pork Noodles, Burnt Garlic Chicken Noodles and Chilli Fish. The food was very good and the service was fast. No complaints on the food. The noodles were a lot so we even parceled it. 10/10 recommend.\", \"published\": \"6 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565005750,
+    "detail": "7055 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJKVDmPAkVrjsReCbEIhoCxKU\", \"name\": \"Garden Asia Restaurant\", \"formatted_address\": \"4th Floor, Tibet Mall, 47, 4th B Cross Rd, KHB Colony, Koramangala Industrial Layout, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"tibetan_restaurant\", \"bar_and_grill\", \"asian_restaurant\", \"chinese_noodle_restaurant\", \"hot_pot_restaurant\", \"chinese_restaurant\"], \"rating\": 4.6, \"user_rating_count\": 1675, \"price_display\": \"\\u20b9200\\u20131200 per person\", \"phone\": \"078990 51989\", \"website\": \"https://gardenasia.in/\", \"google_maps_uri\": \"https://maps.google.com/?cid=11944674422969083512&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Tuesday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Wednesday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Thursday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Friday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Saturday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Sunday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"The pradeep show\", \"rating\": 4, \"text\": \"Garden Asia Tibetan Restaurant offers delicious food, warm ambiance, and authentic flavors that create a pleasant dining experience. The overall quality is very good and enjoyable. However, service feels slow at times. Assigning servers section by section could improve speed,coordination, and customer satisfaction significantly for every guest visit consistently.\\n\\n#Important - Section-wise server assignment will improve speed and avoid confusion when multiple servers attend the same table.\", \"published\": \"6 months ago\"}, {\"author\": \"Khwahish Gupta\", \"rating\": 5, \"text\": \"I visited this place with my friend on a Thursday evening. Maybe because of a weekday, place was quite peaceful and we occupied the table of our choice. Staff has done interior beautifully and music adds to the vibe of the place.\\nWe ordered Onepot soup along with variety add on, and also the mocktails. Soup was so satisfying and filling, and we left happy belly. We spent around 2.5 hours peacefully and slowly gulping our order, took good photos and had nice conversation.\\nMaybe due to busy lane of Koramangala, you won't find parking space so this needs to be sorted self. We went via auto so didn't have this issue.\\nI have one more request to management. You can consider changing the cutlery as it is becoming quite dull and appeal dirty for even better experience.\", \"published\": \"2 months ago\"}, {\"author\": \"Varsha B\", \"rating\": 4, \"text\": \"We saw a reel and went to try the HotPot Soup. The place is fairly easy to find. The soup is 500 rupee. It comes in a huge part with two flavours. Spicy broth and vegetable broth. They place it over an induction cooker. We have to order our choice of sides example paneer, corn, noodles or meat of your choice. Each side dish is around 150 to 200 Rs. Staff is very friendly and accommodating. Food was good. Did not love the spicy broth. But authentic food is available here.\", \"published\": \"a month ago\"}, {\"author\": \"Khushi\", \"rating\": 5, \"text\": \"Visited Garden Asia Restaurant during my trip to Bangalore. It is located on the 4th floor of Tibet Mall in Koramangala, and the lift facility is available.\\n\\nThe restaurant has a pleasant ambience and comfortable seating. The pricing is quite affordable considering the portion sizes and quality of food.\\n\\nWe tried the Chicken Wonton Soup, which was very tasty and filling. The Chicken Sha Phaley was something I tried for the first time and it was a good experience. The Veg Kimbap had a generous quantity and was nice for sharing.\\n\\nOur total bill came to \\u20b9798, which felt reasonable for the overall experience. The restaurant also has a karaoke room, which is a fun addition for groups and gatherings.\\n\\nOverall, I had a good dining experience and would like to visit again to try more dishes.\", \"published\": \"6 months ago\"}, {\"author\": \"Rasika Radhakrishnan\", \"rating\": 1, \"text\": \"DO NOT VISIT THIS RESTAURANT!! Knowing that this place was in a lane where a parking spot was difficult to get, we had specifically asked the restaurant if there was Valet, and they confirmed they did have a valet. Upon reaching, we were told that there is no Valet, which was absolutely frustrating and a total waste of time!!\\nPost reaching the restaurant, we were made to wait for at least 10 mins despite having a reservation!\\nWe had ordered a lemon coriander soup, momos and a sushi type of thing. All the 3 food items were extremely bland, tasteless and had no flavour whatsoever!!\\nThough they had waived off the soup, we still were made to pay (giving usa mere 20% discount) for the remainder of the items which we barely ate! To add to it the staff was extremely rude\", \"published\": \"2 months ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXS53bPFQ0AQG8Gh1Bj8OgEG7rNTGZrR1K9n-ikmOaS6lUmmM7_lARBwqT_wm35-tUx42_eqB4FpZg3tk5JstY9vfg0C6VuMRw6_Wjjxq49tWok6pZUy16RwcHe0_JvwJtuyJnbtBeyhM5MO0bXhP3z2I86IgkC4Bp1OTcfXd5gsN1j8s7o5FlsbOkvuesnRrwZoBE_GPaG1RZjDWsEje-1jQ-0AoYffVu9lkRfdPfa045dNMVvPQpY9rg9GZEIYlDu3Bbq1FQGSxbf2yvO-J9b2RzWw8bLLAuD2gttc9iXix_5Y0EF5XBR1xAPAIcKLCGhGgzoS_31KtHf52T1OetJsKKMeioJ2Bqq5GptAOCaBamejLppicuzhHZhX7gFnx2m1N5ZxxKXn3E6fAmItMFDdC8Dmb7zGkdKl0ttrYcgrJ8fh&maxWidth=600\", \"/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXSEMjIIgig1H5BbltYren7y31GtoWrM2AE0f8MKKu7MrnT_tEG_kjn7VXQPhthOUhxdV67m15nsVA3WF2fW8qUNt01K6JsldHKrhjar3F1tj01mLOLUJK1XAXJQh02njOdmxwSUnjBeCzLAck7EJu4JRwPenmU-BPrKm_B0NhKPAWAU6FuTZsuJJ5sRfdoH6bnc2QpqQLz7yUAmxlGASfpRxKRPSujgl7C-E9ussbh2drZc71tUTJKB8oP60RfoXbXkChY4hnB4AmtRUanV71pZxl0tEfm1eM6nOeZexs_QBf8SFAtsNbgYsjIc2YbRyz4BHy8_6CVE8WA_XU_voryzaUkA_Lhjbzh43tmvnvO3ikOnhnR_MddBa1sv5ntx70gbeP9U_jmA1QAQcW_DMdYQ1U-ecWH5IHDvj7B4yvozbglRmF6QFfuvhTfxtLrh&maxWidth=600\", \"/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXRnJGXDY3iVbJBd3aYCEnf_EzrVsyfCL2kIBvTCoiD6nB4iIHLgJngIe4vsSL_uoccInjfI911rXkmu18uGIFGpaPdaPHLYu2SscD1Fa3M62eyo2ulB2JUs9-lSeLpLtADEcAvNAt__-u4bZAHppC6YhMVXzNCfix6LgmHIGrrVn10LuVxXXyoVk1Oj-1x-QlwP7jy_E0PoEA1j1uP_tCq5kxQrxt5l0nfktMT3pFHiZ7hI9NY2X1mphW97dzn6RGO0HD7J28isf6XFhLTE3ahepqJ34FVwM72PSepiQcnQqny3uA6cA0va3ug3rXRX8tpaEUDpX4iekKOvDti1wjQuHyUV1JR4rfx2sDfckJ1nV86beNlTmKbNVbbxkgkekndLGxM4njGrf61uiCY79nrxaZezAKQJlW04r_JCfRceACfS8klJVOsniC1wLrbl&maxWidth=600\", \"/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXRv9UBSdLpVI4e8g9W6LlZGLnXrCt_kbK0ftes6JpHCK4nNOd7zo46z2XcoLvAqsR7bCyRwQN8MEpLTyrdvr04iIEPIQYLe-vOCLWd25qQOT_XeZKHeYeMI7kZby_XMf3aCBqeK2pu0fMfxZmRyCEGHQUWZLHbYCnhtA6tfhbA0dInh1aAyhGmwwKNzG5kjv-U3RFQLCZfw6nfx1a7NTIH1TvFZ2ON5OoUWer5xOmBYDwwuU9rif7wj4dlWQ_YNfrr3XtgIahByqETRVIunnIxT_pEBIYoVlk7uZSsLK5g-J3IJS1j_afDhXUZkePJaxJg0cT1TNETIlg6Qo1NsG5sJTsXnLV_EKGYBKIDnQrq0InZf2w51eEQH8xBNrbNTGG-iEf0gGiBV77PnQYl4kyRs88h_eFH21D7P4ybuxU3fiHxo8AnbGJH_ILJ4nU4o&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "f856fe9c-49dd-4aad-8fbb-ac67101ed4b4",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJKVDmPAkVrjsReCbEIhoCxKU\", \"name\": \"Garden Asia Restaurant\", \"formatted_address\": \"4th Floor, Tibet Mall, 47, 4th B Cross Rd, KHB Colony, Koramangala Industrial Layout, Koramangala, Bengaluru, Karnataka 560095, India\", \"types\": [\"tibetan_restaurant\", \"bar_and_grill\", \"asian_restaurant\", \"chinese_noodle_restaurant\", \"hot_pot_restaurant\", \"chinese_restaurant\"], \"rating\": 4.6, \"website\": \"https://gardenasia.in/\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Tuesday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Wednesday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Thursday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Friday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Saturday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\", \"Sunday: 12:00\\u202fPM\\u2009\\u2013\\u200912:30\\u202fAM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 4, \"text\": \"Garden Asia Tibetan Restaurant offers delicious food, warm ambiance, and authentic flavors that create a pleasant dining experience. The overall quality is very good and enjoyable. However, service feels slow at times. Assigning servers section by section could improve speed,coordination, and customer satisfaction significantly for every guest visit consistently.\\n\\n#Important - Section-wise server assignment will improve speed and avoid confusion when multiple servers attend the same table.\", \"published\": \"6 months ago\"}, {\"rating\": 5, \"text\": \"I visited this place with my friend on a Thursday evening. Maybe because of a weekday, place was quite peaceful and we occupied the table of our choice. Staff has done interior beautifully and music adds to the vibe of the place.\\nWe ordered Onepot soup along with variety add on, and also the mocktails. Soup was so satisfying and filling, and we left happy belly. We spent around 2.5 hours peacefully and slowly gulping our order, took good photos and had nice conversation.\\nMaybe due to busy lane of Koramangala, you won't find parking space so this needs to be sorted self. We went via auto so didn't have this issue.\\nI have one more request to management. You can consider changing the cutlery as it is becoming quite dull and appeal dirty for even better experience.\", \"published\": \"2 months ago\"}, {\"rating\": 4, \"text\": \"We saw a reel and went to try the HotPot Soup. The place is fairly easy to find. The soup is 500 rupee. It comes in a huge part with two flavours. Spicy broth and vegetable broth. They place it over an induction cooker. We have to order our choice of sides example paneer, corn, noodles or meat of your choice. Each side dish is around 150 to 200 Rs. Staff is very friendly and accommodating. Food was good. Did not love the spicy broth. But authentic food is available here.\", \"published\": \"a month ago\"}, {\"rating\": 5, \"text\": \"Visited Garden Asia Restaurant during my trip to Bangalore. It is located on the 4th floor of Tibet Mall in Koramangala, and the lift facility is available.\\n\\nThe restaurant has a pleasant ambience and comfortable seating. The pricing is quite affordable considering the portion sizes and quality of food.\\n\\nWe tried the Chicken Wonton Soup, which was very tasty and filling. The Chicken Sha Phaley was something I tried for the first time and it was a good experience. The Veg Kimbap had a generous quantity and was nice for sharing.\\n\\nOur total bill came to \\u20b9798, which felt reasonable for the overall experience. The restaurant also has a karaoke room, which is a fun addition for groups and gatherings.\\n\\nOverall, I had a good dining experience and would like to visit again to try more dishes.\", \"published\": \"6 months ago\"}, {\"rating\": 1, \"text\": \"DO NOT VISIT THIS RESTAURANT!! Knowing that this place was in a lane where a parking spot was difficult to get, we had specifically asked the restaurant if there was Valet, and they confirmed they did have a valet. Upon reaching, we were told that there is no Valet, which was absolutely frustrating and a total waste of time!!\\nPost reaching the restaurant, we were made to wait for at least 10 mins despite having a reservation!\\nWe had ordered a lemon coriander soup, momos and a sushi type of thing. All the 3 food items were extremely bland, tasteless and had no flavour whatsoever!!\\nThough they had waived off the soup, we still were made to pay (giving usa mere 20% discount) for the remainder of the items which we barely ate! To add to it the staff was extremely rude\", \"published\": \"2 months ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "tool_done",
+    "label": "Tool done: PlaceDetails",
+    "ts": 1787565005752,
+    "detail": "6004 chars"
+  },
+  {
+    "type": "tool_result",
+    "name": "PlaceDetails",
+    "text": "{\"place_id\": \"ChIJt_JztdUVrjsRYsG1FLEqBsQ\", \"name\": \"THE DRAGON Chinese Restaurant\", \"formatted_address\": \"No. 646, RAJAT TOWER 2 11th main, 47th Cross Rd, TMC Layout, 5th Block, Jayanagar, Bengaluru, Karnataka 560041, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"user_rating_count\": 1104, \"price_display\": \"\\u20b9400\\u2013600 per person\", \"phone\": \"086183 23570\", \"website\": \"http://thedragonchineserestaurant.petpooja.com/menu\", \"google_maps_uri\": \"https://maps.google.com/?cid=14125024221339173218&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA\", \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"open_now\": true, \"editorial_summary\": \"\", \"reviews\": [{\"author\": \"Quinn\", \"rating\": 5, \"text\": \"The food here is excellent! Our favorites were the hot and sour soup\\u2014which was surprisingly tasty with the addition of chicken\\u2014and the Thai chili basil prawns, which were delicious. The owner is very friendly and speaks both fluent English and Mandarin, and they were even kind enough to customize our dish for us. We enjoyed the noodles, but found them a little too hot to handle.\\n\\n\\u200bA heads-up for international travelers: The restaurant does not accept international credit cards ( take India credit card only ) . We didn't have any cash on us and had to call a local friend for help, so make sure you bring cash or have a local contact handy!\", \"published\": \"4 months ago\"}, {\"author\": \"Rakshitha Jk\", \"rating\": 5, \"text\": \"I must tell this is the best place to have Chinese food. I mean their food was extraordinary, extremely tasty mouthwatering, especially honey chilli chicken. It was crisp and also sweet and spicy at the same time and noodles. I loved it. It did not feel heavy. I loved everything over here.\\nThe person who helped us order was also extremely kind, and helps us figure out what exactly we are craving.\\nOverall, the best place I\\u2019ve ever been too\", \"published\": \"4 months ago\"}, {\"author\": \"Nitin Jayant\", \"rating\": 4, \"text\": \"The food is actually average here. Not very good, not very bad.\\n\\nI had chicken momos and veg thupka. The momos were fine but the thupka was below average in taste. However, the quality of food is good.\", \"published\": \"2 months ago\"}, {\"author\": \"Dhruva Mahesh\", \"rating\": 4, \"text\": \"I visited this place with my family and had a wonderful experience. The hospitality was warm, the food was excellent, and the ambiance was very pleasant. As soon as you enter the restaurant, a large dragon hanging above immediately catches your attention and adds a unique touch to the d\\u00e9cor.\\n\\nComing to the food, I highly recommend the Chicken Dragon Roll and Dragon Prawn. The Dynamite Prawn is beautifully presented and served in a martini glass, making it both visually appealing and delicious. The menu pricing is quite reasonable, neither overpriced nor too cheap, making it a great value for the overall experience.\", \"published\": \"7 months ago\"}, {\"author\": \"sujan shetty\", \"rating\": 5, \"text\": \"Food 4/5\\nService 5/5\\nAmbiance 5/5\\n\\nWe had been here for dinner and started with the Chicken Wonton Soup, which was delicious. The Haochi Special Chicken starter was also a flavourful, with its perfect authentic flavours.The Butter Garlic Chicken Fried Rice was perfect for the main course. The service was quick, with friendly staff. The ambiance was warm and inviting with dragon themed , making it a great spot for a dinner night out.\", \"published\": \"a year ago\"}], \"photo_urls\": [\"/api/photo?name=places%2FChIJt_JztdUVrjsRYsG1FLEqBsQ%2Fphotos%2FAVoNoXRM5PMtYXX6kmjsBdCzKfAxDtnJGuLcuJ9atSW5UMTDxFfx4MgOYwLCzHacDbbOqerMIezLuFIXX6FOc98wE7fpPThHJJ14HCtUg5W64dJgxkOJ1wcBfTDqaQprssbBJ_PyEhunYPwLDkjQvTrqKRrTHpZyNOq8_Hudjpa9coJjLfAzlgkdm7Eac-lStzaewvReIov12kbJnztNaIUL_dm63--DhQOiMi3JMYPOhAsEVg2TwgVvi3WDNZ3w9OUxt_UL3cN1I0pHkeTd99gvqj59h75wVxydAUV4cY27NYDOQYbzbIPWoDdqkVvGQWc4CfAr34LjKA-54htF8goZKqAwH-N5PBcwum9tGLySwhy7YROLD-s7WzcNG7s-tsc4GlfDwr1z6ldjOvdoAje-hIhZkw4aGDsj_VYkFzINY35qOg_o_OeJ9nrvaGX6yN28&maxWidth=600\", \"/api/photo?name=places%2FChIJt_JztdUVrjsRYsG1FLEqBsQ%2Fphotos%2FAVoNoXQe9Nukp350oVPd-3PQAF0rrt1KN75eSn8xVydnGeMZsfwyRPWwQyTj3EEoParqWbyk9fmp12EgUkAWdfBp4qE1TA3DutDv3r0MAMYob2f0oASoXH0FWhDQBXzTv0n3CB5mbmqri3W0hElWO-H4KQ8IabmUkaB0H0gl1q68NDTVAXFc2S03QyrF4I7knFgiGTwgR9ABQfNXMjZUMjgI-aAgwAnzwg99PpbU0W-a8gDeTPoV5n7dchVzpUz4FgfhBA-O7vbPLcdof9_9s5qmfLQeMaKdq3qgVM-1J-VN6n7mxzvM5Dw7j9iN1D2AB2LZQSxjNrVvEA1i4WvomPZkY4CvnpTiG5j4IA1Ap7ZzubYnCIF4FNSp1iZRCmzdF1VyBmpgR-coLf1ebC_zSvW2gHSqmmegkOa9WDROTwzQVjE&maxWidth=600\", \"/api/photo?name=places%2FChIJt_JztdUVrjsRYsG1FLEqBsQ%2Fphotos%2FAVoNoXSMmL4DE7uXXcxgr2RWHq_YrZqkceL1CT5VmAGcX63MM4v6YTjAR8b82gA3iUQxvQZhO5Ksj-CNc4W9lMmArcBK8EvnrJIOyodQ0Ws_5WEec_0DGsmaif-gpFCjJfzxKuYT3K7C0W5fQedJ10nSXBDESCDdHftIS1BYlIwgL-FUnftBjUuuNL_KEDWkUyhVOqUdtUyTRStPPngKyqXiZ3XQHmDJtGwZROaUuzGy5R6_wE7GFPBaDbSRHvtpDj-K7Ol5V4m83cLs0taKxqwu6hYsy4-iq-CPD-6u5JWVJ8J04PcNg7KJF77nmU5oJRnPngtFX1_HxFAG_ZJG5U_cUokgw7TgkXZkRHqOaapG6LtV-HEnDFOzzXKaW15P3GeGSBi_9dTWisYfhVEvJ0LhqZABNf24LkYbMYMhXYKmSmqXshDRKL53vNoYdCGupw&maxWidth=600\", \"/api/photo?name=places%2FChIJt_JztdUVrjsRYsG1FLEqBsQ%2Fphotos%2FAVoNoXSXPI-aAI6J-ZfpeLgyyZVdk_S1-qkbTMo3NfBRmfbQg9kLyDK-eiDDwOlKQzipL8PfojuoXF0ISkrws51BPaJ4sCVyoaEUXtqJJSbtFIEWSNnAkkoKP6Sp-Ix2I-wll1K3IAxTTSvRzH8zO2QQl_Hcn3ykyRbnyf7jFq69IC6ZHFpSydmNdAIfyD9OPKdMXXjcZwgV9J0-oifI8_lIlJbrGAKjc9ZLCmkJCc8tSZI27w9XE6_Ne8-L-maOwA-mXDeJjA-KPyagKsKqW87y9Txanso5-mL3qv14SXhJLhJG_1QeOP2VUHGvFciUNEzwFLuHSKG9MznpLnQ9JlavsppsRBl1kdPpw8-YoylekO4DzF9php7APLT8yTwnqqFD_XRxbZxxIhUKGYMGIaIlByLeLXmvRuE3eti0Po6hv_zU_F5jehqo239wlsxwwYcH&maxWidth=600\"], \"source\": \"google_places_api_new\"}",
+    "tool_use_id": "215eced0-e269-41bb-8a1a-fb17caa3d002",
+    "is_error": false,
+    "llm_text": "{\"place_id\": \"ChIJt_JztdUVrjsRYsG1FLEqBsQ\", \"name\": \"THE DRAGON Chinese Restaurant\", \"formatted_address\": \"No. 646, RAJAT TOWER 2 11th main, 47th Cross Rd, TMC Layout, 5th Block, Jayanagar, Bengaluru, Karnataka 560041, India\", \"types\": [\"chinese_restaurant\", \"restaurant\", \"food\", \"point_of_interest\", \"establishment\"], \"rating\": 4.6, \"website\": \"http://thedragonchineserestaurant.petpooja.com/menu\", \"open_now\": true, \"opening_hours\": [\"Monday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Tuesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Wednesday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Thursday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Friday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Saturday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\", \"Sunday: 12:00\\u2009\\u2013\\u200911:00\\u202fPM\"], \"editorial_summary\": \"\", \"source\": \"google_places_api_new\", \"reviews\": [{\"rating\": 5, \"text\": \"The food here is excellent! Our favorites were the hot and sour soup\\u2014which was surprisingly tasty with the addition of chicken\\u2014and the Thai chili basil prawns, which were delicious. The owner is very friendly and speaks both fluent English and Mandarin, and they were even kind enough to customize our dish for us. We enjoyed the noodles, but found them a little too hot to handle.\\n\\n\\u200bA heads-up for international travelers: The restaurant does not accept international credit cards ( take India credit card only ) . We didn't have any cash on us and had to call a local friend for help, so make sure you bring cash or have a local contact handy!\", \"published\": \"4 months ago\"}, {\"rating\": 5, \"text\": \"I must tell this is the best place to have Chinese food. I mean their food was extraordinary, extremely tasty mouthwatering, especially honey chilli chicken. It was crisp and also sweet and spicy at the same time and noodles. I loved it. It did not feel heavy. I loved everything over here.\\nThe person who helped us order was also extremely kind, and helps us figure out what exactly we are craving.\\nOverall, the best place I\\u2019ve ever been too\", \"published\": \"4 months ago\"}, {\"rating\": 4, \"text\": \"The food is actually average here. Not very good, not very bad.\\n\\nI had chicken momos and veg thupka. The momos were fine but the thupka was below average in taste. However, the quality of food is good.\", \"published\": \"2 months ago\"}, {\"rating\": 4, \"text\": \"I visited this place with my family and had a wonderful experience. The hospitality was warm, the food was excellent, and the ambiance was very pleasant. As soon as you enter the restaurant, a large dragon hanging above immediately catches your attention and adds a unique touch to the d\\u00e9cor.\\n\\nComing to the food, I highly recommend the Chicken Dragon Roll and Dragon Prawn. The Dynamite Prawn is beautifully presented and served in a martini glass, making it both visually appealing and delicious. The menu pricing is quite reasonable, neither overpriced nor too cheap, making it a great value for the overall experience.\", \"published\": \"7 months ago\"}, {\"rating\": 5, \"text\": \"Food 4/5\\nService 5/5\\nAmbiance 5/5\\n\\nWe had been here for dinner and started with the Chicken Wonton Soup, which was delicious. The Haochi Special Chicken starter was also a flavourful, with its perfect authentic flavours.The Butter Garlic Chicken Fried Rice was perfect for the main course. The service was quick, with friendly staff. The ambiance was warm and inviting with dragon themed , making it a great spot for a dinner night out.\", \"published\": \"a year ago\"}]}",
+    "error_reason": null
+  },
+  {
+    "type": "insight",
+    "subtype": "agent_turn",
+    "label": "Agent turn 3",
+    "ts": 1787565005754,
+    "detail": "continuing after tool results"
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "tool_call_followup"
+  },
+  {
+    "type": "system",
+    "subtype": "token_count",
+    "text": "52,272 / 100,000 tokens (threshold)",
+    "token_count": 52272,
+    "threshold": 100000
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_thinking",
+    "label": "LLM thinking…",
+    "ts": 1787565005756
+  },
+  {
+    "type": "stream_request_start"
+  },
+  {
+    "type": "insight",
+    "subtype": "token_usage",
+    "label": "Tokens — in: 33,863 · out: 2,701 · cached: 26,400 · reasoning: 1,236",
+    "ts": 1787565040563,
+    "detail": "step 3"
+  },
+  {
+    "type": "system",
+    "subtype": "usage",
+    "input_tokens": 33863,
+    "output_tokens": 2701,
+    "reasoning_tokens": 1236,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 26400,
+    "text": "Tokens — in: 33,863 (cache: 26,400) · out: 2,701 (reasoning: ~1,236)"
+  },
+  {
+    "type": "text_final",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "For that warm, numbing Sichuan comfort hit late at night, these are Bengaluru's best-rated spots with confirmed Mapo Tofu/Paneer on the menu — ranked by how well they deliver the authentic ma-la kick and how late they stay open.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "Shang Palace, Vasanth Nagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Shang Palace",
+                  "query": "Shang Palace Sichuan Mapo Tofu",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXQRRssHBAu_3erH-XBwcqW4Sqa4oS0lqjWnZ-3hxYl_a-GbCWaB9LR4kdNG8RtYTH28Q-C5mxBdcYh2Ez5CihAaK8GRdhVCPjGNSovVMNZvx_QT8oNsh9QBe3u88jC0KCcD4NFbpZZ4klWQ_tBQImOxtjBaGXadn_6DEGrvcvXaI8k-UEeS5z3yQ__Hjsg06MME98hWkh-6bLNWw8_RJ7rXxFQSkAUaSO_VoOayS3ZELw5SpLyuC0Cp29RQzy4CEdvSm-rZbBoAdHGaB2YjcTR4J8B4DiFUNSL7sATG8Aefzj7T76Z6zq7pfQR4vMQFEancr5xQuS31pFqMAb8t3Gkpk2L56ialXUiUyzHFAaR8UnADqL_kiJxr2gvYfSh5P3-RxxU_2Fc8klxbzTCYxjnuK-Uto9imzmUX_IlDm1uojuce&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Shang Palace",
+                      "alt": "Shang Palace",
+                      "place_id": "ChIJya3qua0XrjsRlaPDV2L8b-k"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXTGqdL_gTHmCRbcQtFn9Yol_0akR3Qpkiuq7FYSt4AL0t3d6G-iktSXqFkmWCPQe8iUNx_MqKmGW12lIr2u-ibel3SaFGd06WepTOGA9SrvlU6jNtIfzbGGp0qZigPULtHk9qAO6ZouIEXiBAC4D1EN310i5lGpEqvGOkosLJmgbgcl6ru1Tt4gSzSTcoYbmUGp6qrtVAOM6j_LK9g82gu7eZX5Lk28UPrRZnWOBzfoUoQ7t7AYylWK5HgjQ8T1gs6k3f2E0OM0gd3jAM6_OP4kQupss99w0CnDpfDYVtmgt2N3OKZY0Gd1sUMW-bOam0BjYabcjk27E1dV0I7Jpdgv5KJH5grPlZGFzyRcEEDxrff8B1Ji864BKAJVpI_7ECxSjEyP2xvknaDgiuQeJx-ByfwKaycCvWboGCmGm1SmjxLY&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Shang Palace",
+                      "alt": "Shang Palace",
+                      "place_id": "ChIJya3qua0XrjsRlaPDV2L8b-k"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXT2yM2RqQFx7YdrYWjNj0m6eQEkt91hgx_7X4a4SwE_SwoJjbU24HEPtt65iZXiZkt-sbY1Tpb8b-hMrcWkIdG8dz4X0u9NWROOAvxRqpVZ_L5X-R1ygQZHua1yCZwBFWSxZFDcJiWUnij7hmkQrOd0sdtgXODv9DaIMYuZJSUjmq0ndhUhIcgxwbH0TNhBuxHvhEZJ0E1KsYoONFDOmOqxg1IjRiT8kYERfUN3UbB4prUFXR8y1S3YBw-w72F71RevQqz9ifpoCZAmpGRJ50VrRA__Z1Hojub6bzWfsKwBXHFvrHsLTuGJOeH4q6UxJao352J3P9G_IxzDCVmz_vp--0HpONMVvEG8YETKzNxdHlpofUuHDAg-Hp57KUxq8qndawX5VetIZID2JuiySBUbRcr98eAskmKs0aZt48U6_uLu&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Shang Palace",
+                      "alt": "Shang Palace",
+                      "place_id": "ChIJya3qua0XrjsRlaPDV2L8b-k"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.6★ · 280 reviews",
+                "price": "₹2000+ per person",
+                "why": "Authentic Sichuan & Guangdong kitchen inside Shangri-La. Mapo Tofu and Sichuan pepper tofu are the standouts — nothing watered down for Indian palates.",
+                "hours": "Open till 11:30 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=16820940632561525653&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "080 4512 6440",
+                  "tel": "tel:08045126440"
+                }
+              },
+              {
+                "title": "Bangalore Mandarin, Indiranagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Bangalore Mandarin",
+                  "query": "Bangalore Mandarin Chinese restaurant",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXQtxODzd72LwygnxnEhbIMcxrsdege1XUPp03RhuAVSDvZc8q-VVBHRGNPkIRzOQPUUpn8XfbZdCwApkhkQOBzmkr136eSTm9GiTbayhJCBc98VNTbtq7_Bwsl5D2E5RhbD3WsGpYzDg1Oz1crDzzXIypoXoj3D8eUMwWiETnAXgK91nWB_xjwJkCI8uh3zDtBm0DwSEmlSE1YkPRkvtIgHtCjYCMoJcSHmQGq1TYmEhPeiyGNFuuPjpxMi7RXePecDK89e_Im0JxL5ycvkOIKh2iHxB92YLZgeE-KJ2bfHnl81n8O_mAqtRO-sur8ZDOqjOYNaGaCUq35nU1vtjJT5b0CRuWbVd9EOBSD01fX_wZyFBBet5iYI7DK3UBs8ZZTjPTYfioRtZcnS1_OZZYqJn3XJiaSV-ixdFEwzO9jjpg&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Bangalore Mandarin",
+                      "alt": "Bangalore Mandarin",
+                      "place_id": "ChIJ11JdgKQWrjsRAzzO_nAbisY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXSowY8up9VxXD2_v6tHuehpGxCSWNnQnN1iiz7j_p_PfYlXZqL_BeA5xtmjPYCklIxG17IPyiZDIfNKis2lb6XWPZjTdyRW_2Bk8rUJM-KYldFq2c6x_33Y89BkG8LmVMhjSD9ulIekWaSQ9ge1e5IgKolL_GpZzPumvK_v1Rrzg4I0qe9UgVYEZtmfeiM1IcZvHNAbluI1l4XTi4-D0DOAE8M0OxqiwgGzGKlpsEiqxT-8PsMl81-tOEajcL0XIEqZJWekQ4qkPav112Zq0hkvpYtpmWEN5q6JJvg-nkK-8pJsoI8REHMr0HBgBWJL9EdKW579QCpIceN2z_e8JBjsnf0sthNUxajaUIH6fbmeT6zb8fTJWyqGd-i-lVQN1adCYeqg9CaWlJXgD0w2WDrFU6pCcPFWdt2NPn0cfoUxCQ&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Bangalore Mandarin",
+                      "alt": "Bangalore Mandarin",
+                      "place_id": "ChIJ11JdgKQWrjsRAzzO_nAbisY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXTthch23baKt1YZkuHrU8S52rRBo5SDSqJsoFMi-LAoAX6fk-vfKo-r7thUJPys5v3wY2W3AXboDeiqnsN_a_AQ-AuHQtAUxk-0CtIZNZCZkavxcZxKTMJOObku3n-nBj3HkyB5iG92eejCOzfkqE42LeuY4CJR1hbeQynZIEpUBcq1UKik7NotrG131NfdeWsXj6onEFBPAv_-IO10NFOe7yLu23kE5WNKWvQ3qRtMRZgSt73vL_thGDBbsiO3i5TMKEekYWOAV71ZBibsNjLQjndCID9RwcNgJAaVnAKePiEktu8OWj9mJl4-2F9T35XRVUQrKdxqlsXmrJpGpdln_kL3b7kEftCxjc7ECCsgbXBwlKnOIpbl4km6OXGXOOn-OjiMUBkKuVhfHfPtLAJKEI3ZYcdqkmYy5026lPWtZipAsafKrEhhc7ZfvQ&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Bangalore Mandarin",
+                      "alt": "Bangalore Mandarin",
+                      "place_id": "ChIJ11JdgKQWrjsRAzzO_nAbisY"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Best Value",
+                "rating": "4.2★ · 2,658 reviews",
+                "price": "₹400–1200 per person",
+                "why": "One of the city's OG authentic Chinese joints. Mapo Tofu, Drums of Heaven, and burnt garlic noodles are the go-to orders. Fast service, family-friendly.",
+                "hours": "Open till 11:00 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=14306277338421017603&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "080 4116 1732",
+                  "tel": "tel:08041161732"
+                }
+              },
+              {
+                "title": "Garden Asia, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Garden Asia",
+                  "query": "Garden Asia Tibetan hot pot Koramangala",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXRddcpkVMMYafAgxoJC3eNpwAMdgdx4wEuRIn4ybF_2B4S_ASRaDZ2S-OC2sHgnZlfZprUkwxxUq4wajthDOEZjlj-QfERmomuMoUBw8PgE_OLfETYWmDf8ooOtKPsK_IQRZD5ABCFEsyGA6pWhWF97l8hWUZv2IrFffbBNMDplr1N_39njGQnjm5Ktf-zAlXu0giHX4RsJGlJJO1q4qfGeB9lBrcp1JQKMEmxRSPjeqGUW8zLzw3hr5mg67hDYNUoRwzxeySol1IlCOK8Kl2oDG1N2g0NGCz0ZJUJKLnJhheoTqeYhOwyXpu3P9004JPxtbN0lOxa2txXS1BNwXjkw79pxKcHKme3Zzdq23FBID3uTNANm8h1bebI6yK67LLB7op28WI4YjvGFWbmgdxo89kkxDUDjAZeRFBXKyJ4aIArW&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Garden Asia Restaurant",
+                      "alt": "Garden Asia Restaurant",
+                      "place_id": "ChIJKVDmPAkVrjsReCbEIhoCxKU"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXS53bPFQ0AQG8Gh1Bj8OgEG7rNTGZrR1K9n-ikmOaS6lUmmM7_lARBwqT_wm35-tUx42_eqB4FpZg3tk5JstY9vfg0C6VuMRw6_Wjjxq49tWok6pZUy16RwcHe0_JvwJtuyJnbtBeyhM5MO0bXhP3z2I86IgkC4Bp1OTcfXd5gsN1j8s7o5FlsbOkvuesnRrwZoBE_GPaG1RZjDWsEje-1jQ-0AoYffVu9lkRfdPfa045dNMVvPQpY9rg9GZEIYlDu3Bbq1FQGSxbf2yvO-J9b2RzWw8bLLAuD2gttc9iXix_5Y0EF5XBR1xAPAIcKLCGhGgzoS_31KtHf52T1OetJsKKMeioJ2Bqq5GptAOCaBamejLppicuzhHZhX7gFnx2m1N5ZxxKXn3E6fAmItMFDdC8Dmb7zGkdKl0ttrYcgrJ8fh&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Garden Asia Restaurant",
+                      "alt": "Garden Asia Restaurant",
+                      "place_id": "ChIJKVDmPAkVrjsReCbEIhoCxKU"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXSEMjIIgig1H5BbltYren7y31GtoWrM2AE0f8MKKu7MrnT_tEG_kjn7VXQPhthOUhxdV67m15nsVA3WF2fW8qUNt01K6JsldHKrhjar3F1tj01mLOLUJK1XAXJQh02njOdmxwSUnjBeCzLAck7EJu4JRwPenmU-BPrKm_B0NhKPAWAU6FuTZsuJJ5sRfdoH6bnc2QpqQLz7yUAmxlGASfpRxKRPSujgl7C-E9ussbh2drZc71tUTJKB8oP60RfoXbXkChY4hnB4AmtRUanV71pZxl0tEfm1eM6nOeZexs_QBf8SFAtsNbgYsjIc2YbRyz4BHy8_6CVE8WA_XU_voryzaUkA_Lhjbzh43tmvnvO3ikOnhnR_MddBa1sv5ntx70gbeP9U_jmA1QAQcW_DMdYQ1U-ecWH5IHDvj7B4yvozbglRmF6QFfuvhTfxtLrh&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Garden Asia Restaurant",
+                      "alt": "Garden Asia Restaurant",
+                      "place_id": "ChIJKVDmPAkVrjsReCbEIhoCxKU"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Late Night",
+                "rating": "4.6★ · 1,675 reviews",
+                "price": "₹200–1200 per person",
+                "why": "Tibetan-Chinese hot pot spot in Tibet Mall. Open till 12:30 AM — the latest on this list. Paneer and veg sides for the hot pot, plus a full Chinese menu.",
+                "hours": "Open till 12:30 AM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=11944674422969083512&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "078990 51989",
+                  "tel": "tel:07899051989"
+                }
+              },
+              {
+                "title": "Ho Chia, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Ho Chia",
+                  "query": "Ho Chia Chinese food Koramangala",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXR2j4Jj63aEyfF6yUqQbw4Vvn1m02I1mIp8Ajw8l_F9utdcUT7Yk0I3Ud2OKNbxAy_npCO36tZl_SAXAahiMSrjVOUnasBFRf5IgHIhCP_gL5-hY99qGPEcZ7yp8kAAhJ6V9T5U7A6IlMaJLoGnFLfU-99MBgOWwO4pSkUQiQt7N7zdU-MgJIDqYN2Q_G_JVLTQzS9mMt-COsWdrqhgdGA_QMPZGIn-oBnkMiOkMlZjRj75d4ilqUVtwxNpRdvWQ9jh6VPQuZa_Lq6pX4dxKjwHQJVQPyKS2Q2H9_4luYZeMkQ_QaRJyDpmkGZQB5WAS9x_U1EUrwIlY2c6R_3BNudnZ5i12WHm0M_IveKLw5rLazLAmbBnzrSct3SjBQawwqnDO6tfGm5rIF7b6edW0FlWFEHRBEaenyUEun9nygjdY_LzcuXk6v03RLT2G-nz&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Ho Chia",
+                      "alt": "Ho Chia",
+                      "place_id": "ChIJC2_iseoVrjsRLoS8232p9Y0"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXT-CkDHyMTj85V0GEOsmQeHk59VuVyDISj9WITBxY9zcqOoSsqPyjJT3BlENxLVtzhlLuDUnILfNeMpBB5NG9lVsVlrgD-mWUAMOb5FGSgG60OLhM8Pu6eJ8AN93808tVSv7EWMTlO3KqtTUFnH0zFVDqbM3RH-7ljtTkXgGn8F0RLGxSzJgjojHONB6ArUCWoykHCsksq_no-0b3Fm4Y8J9hgirjx-0KUVG9fxAZuGI419r8kPAbr73vM5ZAHeeKrnS2zKBL0SPTlYxjyglVOsFMDKWb-iUMtir6YV-riyWeinpRoYzN7B0268b9xq3_hnsBWBsspofAChN5ihbOYw23LUO29y0JGLyCbpT8azAgP9xaNbNJj3duOx2mwxziqFoxiyuRZY9CpBJjj-nVqvRwDIarJqs-lrwP3Uu-G1Enfw-YJr-f48rWK0UwV0&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Ho Chia",
+                      "alt": "Ho Chia",
+                      "place_id": "ChIJC2_iseoVrjsRLoS8232p9Y0"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXT3-TrWBqpgpUFDN-jM4n7FXK2OUgRrif7k9iz3-oDrgsxBNd7LAQ9ZXvB8CjLnjr0Xo-brcvt5WAJgK1Lf12gWHWeuW49JKm4_cjxFWbadbSACavOrcmgjVrHXlseezo2IkBapZugHIpzaHcLJgUO-6yS_5Wq7yAZUe47orIvdImsBXA7mby1o4C19ntUC2u_BTF_G2OAtfujnviYNu43rtxxht5PH4UaTm_Pz4ghq-hDqt55xZr_5iExjCA9M8UlJMlyR4YIS00n1zNcnPfGE9ET_iT4uqxB34cfXOUPToRdBxKGPlmjETgFzzEAkBT89vZRbec2U2hAXihXX2o__BhyhI1jeZNpClHic3qOBc60gFD0vFKXwfG-SkSdrG1Rv2wMB-_P4feCJRuvCaEcBU3K0hrRs4asM-DFZCBbo8Ou2cBpAl-vwB2NWxU1u&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Ho Chia",
+                      "alt": "Ho Chia",
+                      "place_id": "ChIJC2_iseoVrjsRLoS8232p9Y0"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Hidden Gem",
+                "rating": "4.7★ · 15 reviews",
+                "price": "₹400–600 per person",
+                "why": "Small-batch home-style Asian kitchen. Mapo Tofu is a confirmed hit per reviews, alongside char siu and Hainanese chicken rice. Closes early though.",
+                "hours": "Open till 9:00 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=10229268486664520750&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": null
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Get directions to Shang Palace",
+          "Reviews for Bangalore Mandarin",
+          "More late-night Chinese spots in Koramangala",
+          "What else to order at Shang Palace?"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "text_replace",
+    "blocks": [
+      {
+        "type": "place_card",
+        "summary": "For that warm, numbing Sichuan comfort hit late at night, these are Bengaluru's best-rated spots with confirmed Mapo Tofu/Paneer on the menu — ranked by how well they deliver the authentic ma-la kick and how late they stay open.",
+        "sections": [
+          {
+            "title": "",
+            "cards": [
+              {
+                "title": "Shang Palace, Vasanth Nagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_1",
+                  "title": "Shang Palace",
+                  "query": "Shang Palace Sichuan Mapo Tofu",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXQRRssHBAu_3erH-XBwcqW4Sqa4oS0lqjWnZ-3hxYl_a-GbCWaB9LR4kdNG8RtYTH28Q-C5mxBdcYh2Ez5CihAaK8GRdhVCPjGNSovVMNZvx_QT8oNsh9QBe3u88jC0KCcD4NFbpZZ4klWQ_tBQImOxtjBaGXadn_6DEGrvcvXaI8k-UEeS5z3yQ__Hjsg06MME98hWkh-6bLNWw8_RJ7rXxFQSkAUaSO_VoOayS3ZELw5SpLyuC0Cp29RQzy4CEdvSm-rZbBoAdHGaB2YjcTR4J8B4DiFUNSL7sATG8Aefzj7T76Z6zq7pfQR4vMQFEancr5xQuS31pFqMAb8t3Gkpk2L56ialXUiUyzHFAaR8UnADqL_kiJxr2gvYfSh5P3-RxxU_2Fc8klxbzTCYxjnuK-Uto9imzmUX_IlDm1uojuce&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Shang Palace",
+                      "alt": "Shang Palace",
+                      "place_id": "ChIJya3qua0XrjsRlaPDV2L8b-k"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXTGqdL_gTHmCRbcQtFn9Yol_0akR3Qpkiuq7FYSt4AL0t3d6G-iktSXqFkmWCPQe8iUNx_MqKmGW12lIr2u-ibel3SaFGd06WepTOGA9SrvlU6jNtIfzbGGp0qZigPULtHk9qAO6ZouIEXiBAC4D1EN310i5lGpEqvGOkosLJmgbgcl6ru1Tt4gSzSTcoYbmUGp6qrtVAOM6j_LK9g82gu7eZX5Lk28UPrRZnWOBzfoUoQ7t7AYylWK5HgjQ8T1gs6k3f2E0OM0gd3jAM6_OP4kQupss99w0CnDpfDYVtmgt2N3OKZY0Gd1sUMW-bOam0BjYabcjk27E1dV0I7Jpdgv5KJH5grPlZGFzyRcEEDxrff8B1Ji864BKAJVpI_7ECxSjEyP2xvknaDgiuQeJx-ByfwKaycCvWboGCmGm1SmjxLY&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Shang Palace",
+                      "alt": "Shang Palace",
+                      "place_id": "ChIJya3qua0XrjsRlaPDV2L8b-k"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJya3qua0XrjsRlaPDV2L8b-k%2Fphotos%2FAVoNoXT2yM2RqQFx7YdrYWjNj0m6eQEkt91hgx_7X4a4SwE_SwoJjbU24HEPtt65iZXiZkt-sbY1Tpb8b-hMrcWkIdG8dz4X0u9NWROOAvxRqpVZ_L5X-R1ygQZHua1yCZwBFWSxZFDcJiWUnij7hmkQrOd0sdtgXODv9DaIMYuZJSUjmq0ndhUhIcgxwbH0TNhBuxHvhEZJ0E1KsYoONFDOmOqxg1IjRiT8kYERfUN3UbB4prUFXR8y1S3YBw-w72F71RevQqz9ifpoCZAmpGRJ50VrRA__Z1Hojub6bzWfsKwBXHFvrHsLTuGJOeH4q6UxJao352J3P9G_IxzDCVmz_vp--0HpONMVvEG8YETKzNxdHlpofUuHDAg-Hp57KUxq8qndawX5VetIZID2JuiySBUbRcr98eAskmKs0aZt48U6_uLu&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Shang Palace",
+                      "alt": "Shang Palace",
+                      "place_id": "ChIJya3qua0XrjsRlaPDV2L8b-k"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Top Pick",
+                "rating": "4.6★ · 280 reviews",
+                "price": "₹2000+ per person",
+                "why": "Authentic Sichuan & Guangdong kitchen inside Shangri-La. Mapo Tofu and Sichuan pepper tofu are the standouts — nothing watered down for Indian palates.",
+                "hours": "Open till 11:30 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=16820940632561525653&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "080 4512 6440",
+                  "tel": "tel:08045126440"
+                }
+              },
+              {
+                "title": "Bangalore Mandarin, Indiranagar",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_2",
+                  "title": "Bangalore Mandarin",
+                  "query": "Bangalore Mandarin Chinese restaurant",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXQtxODzd72LwygnxnEhbIMcxrsdege1XUPp03RhuAVSDvZc8q-VVBHRGNPkIRzOQPUUpn8XfbZdCwApkhkQOBzmkr136eSTm9GiTbayhJCBc98VNTbtq7_Bwsl5D2E5RhbD3WsGpYzDg1Oz1crDzzXIypoXoj3D8eUMwWiETnAXgK91nWB_xjwJkCI8uh3zDtBm0DwSEmlSE1YkPRkvtIgHtCjYCMoJcSHmQGq1TYmEhPeiyGNFuuPjpxMi7RXePecDK89e_Im0JxL5ycvkOIKh2iHxB92YLZgeE-KJ2bfHnl81n8O_mAqtRO-sur8ZDOqjOYNaGaCUq35nU1vtjJT5b0CRuWbVd9EOBSD01fX_wZyFBBet5iYI7DK3UBs8ZZTjPTYfioRtZcnS1_OZZYqJn3XJiaSV-ixdFEwzO9jjpg&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Bangalore Mandarin",
+                      "alt": "Bangalore Mandarin",
+                      "place_id": "ChIJ11JdgKQWrjsRAzzO_nAbisY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXSowY8up9VxXD2_v6tHuehpGxCSWNnQnN1iiz7j_p_PfYlXZqL_BeA5xtmjPYCklIxG17IPyiZDIfNKis2lb6XWPZjTdyRW_2Bk8rUJM-KYldFq2c6x_33Y89BkG8LmVMhjSD9ulIekWaSQ9ge1e5IgKolL_GpZzPumvK_v1Rrzg4I0qe9UgVYEZtmfeiM1IcZvHNAbluI1l4XTi4-D0DOAE8M0OxqiwgGzGKlpsEiqxT-8PsMl81-tOEajcL0XIEqZJWekQ4qkPav112Zq0hkvpYtpmWEN5q6JJvg-nkK-8pJsoI8REHMr0HBgBWJL9EdKW579QCpIceN2z_e8JBjsnf0sthNUxajaUIH6fbmeT6zb8fTJWyqGd-i-lVQN1adCYeqg9CaWlJXgD0w2WDrFU6pCcPFWdt2NPn0cfoUxCQ&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Bangalore Mandarin",
+                      "alt": "Bangalore Mandarin",
+                      "place_id": "ChIJ11JdgKQWrjsRAzzO_nAbisY"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJ11JdgKQWrjsRAzzO_nAbisY%2Fphotos%2FAVoNoXTthch23baKt1YZkuHrU8S52rRBo5SDSqJsoFMi-LAoAX6fk-vfKo-r7thUJPys5v3wY2W3AXboDeiqnsN_a_AQ-AuHQtAUxk-0CtIZNZCZkavxcZxKTMJOObku3n-nBj3HkyB5iG92eejCOzfkqE42LeuY4CJR1hbeQynZIEpUBcq1UKik7NotrG131NfdeWsXj6onEFBPAv_-IO10NFOe7yLu23kE5WNKWvQ3qRtMRZgSt73vL_thGDBbsiO3i5TMKEekYWOAV71ZBibsNjLQjndCID9RwcNgJAaVnAKePiEktu8OWj9mJl4-2F9T35XRVUQrKdxqlsXmrJpGpdln_kL3b7kEftCxjc7ECCsgbXBwlKnOIpbl4km6OXGXOOn-OjiMUBkKuVhfHfPtLAJKEI3ZYcdqkmYy5026lPWtZipAsafKrEhhc7ZfvQ&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Bangalore Mandarin",
+                      "alt": "Bangalore Mandarin",
+                      "place_id": "ChIJ11JdgKQWrjsRAzzO_nAbisY"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Best Value",
+                "rating": "4.2★ · 2,658 reviews",
+                "price": "₹400–1200 per person",
+                "why": "One of the city's OG authentic Chinese joints. Mapo Tofu, Drums of Heaven, and burnt garlic noodles are the go-to orders. Fast service, family-friendly.",
+                "hours": "Open till 11:00 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=14306277338421017603&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "080 4116 1732",
+                  "tel": "tel:08041161732"
+                }
+              },
+              {
+                "title": "Garden Asia, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_3",
+                  "title": "Garden Asia",
+                  "query": "Garden Asia Tibetan hot pot Koramangala",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXRddcpkVMMYafAgxoJC3eNpwAMdgdx4wEuRIn4ybF_2B4S_ASRaDZ2S-OC2sHgnZlfZprUkwxxUq4wajthDOEZjlj-QfERmomuMoUBw8PgE_OLfETYWmDf8ooOtKPsK_IQRZD5ABCFEsyGA6pWhWF97l8hWUZv2IrFffbBNMDplr1N_39njGQnjm5Ktf-zAlXu0giHX4RsJGlJJO1q4qfGeB9lBrcp1JQKMEmxRSPjeqGUW8zLzw3hr5mg67hDYNUoRwzxeySol1IlCOK8Kl2oDG1N2g0NGCz0ZJUJKLnJhheoTqeYhOwyXpu3P9004JPxtbN0lOxa2txXS1BNwXjkw79pxKcHKme3Zzdq23FBID3uTNANm8h1bebI6yK67LLB7op28WI4YjvGFWbmgdxo89kkxDUDjAZeRFBXKyJ4aIArW&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Garden Asia Restaurant",
+                      "alt": "Garden Asia Restaurant",
+                      "place_id": "ChIJKVDmPAkVrjsReCbEIhoCxKU"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXS53bPFQ0AQG8Gh1Bj8OgEG7rNTGZrR1K9n-ikmOaS6lUmmM7_lARBwqT_wm35-tUx42_eqB4FpZg3tk5JstY9vfg0C6VuMRw6_Wjjxq49tWok6pZUy16RwcHe0_JvwJtuyJnbtBeyhM5MO0bXhP3z2I86IgkC4Bp1OTcfXd5gsN1j8s7o5FlsbOkvuesnRrwZoBE_GPaG1RZjDWsEje-1jQ-0AoYffVu9lkRfdPfa045dNMVvPQpY9rg9GZEIYlDu3Bbq1FQGSxbf2yvO-J9b2RzWw8bLLAuD2gttc9iXix_5Y0EF5XBR1xAPAIcKLCGhGgzoS_31KtHf52T1OetJsKKMeioJ2Bqq5GptAOCaBamejLppicuzhHZhX7gFnx2m1N5ZxxKXn3E6fAmItMFDdC8Dmb7zGkdKl0ttrYcgrJ8fh&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Garden Asia Restaurant",
+                      "alt": "Garden Asia Restaurant",
+                      "place_id": "ChIJKVDmPAkVrjsReCbEIhoCxKU"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJKVDmPAkVrjsReCbEIhoCxKU%2Fphotos%2FAVoNoXSEMjIIgig1H5BbltYren7y31GtoWrM2AE0f8MKKu7MrnT_tEG_kjn7VXQPhthOUhxdV67m15nsVA3WF2fW8qUNt01K6JsldHKrhjar3F1tj01mLOLUJK1XAXJQh02njOdmxwSUnjBeCzLAck7EJu4JRwPenmU-BPrKm_B0NhKPAWAU6FuTZsuJJ5sRfdoH6bnc2QpqQLz7yUAmxlGASfpRxKRPSujgl7C-E9ussbh2drZc71tUTJKB8oP60RfoXbXkChY4hnB4AmtRUanV71pZxl0tEfm1eM6nOeZexs_QBf8SFAtsNbgYsjIc2YbRyz4BHy8_6CVE8WA_XU_voryzaUkA_Lhjbzh43tmvnvO3ikOnhnR_MddBa1sv5ntx70gbeP9U_jmA1QAQcW_DMdYQ1U-ecWH5IHDvj7B4yvozbglRmF6QFfuvhTfxtLrh&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Garden Asia Restaurant",
+                      "alt": "Garden Asia Restaurant",
+                      "place_id": "ChIJKVDmPAkVrjsReCbEIhoCxKU"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Late Night",
+                "rating": "4.6★ · 1,675 reviews",
+                "price": "₹200–1200 per person",
+                "why": "Tibetan-Chinese hot pot spot in Tibet Mall. Open till 12:30 AM — the latest on this list. Paneer and veg sides for the hot pot, plus a full Chinese menu.",
+                "hours": "Open till 12:30 AM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=11944674422969083512&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": {
+                  "num": "078990 51989",
+                  "tel": "tel:07899051989"
+                }
+              },
+              {
+                "title": "Ho Chia, Koramangala",
+                "visual": {
+                  "type": "visual",
+                  "slot": "visual_4",
+                  "title": "Ho Chia",
+                  "query": "Ho Chia Chinese food Koramangala",
+                  "source": "tool",
+                  "assets": [
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXR2j4Jj63aEyfF6yUqQbw4Vvn1m02I1mIp8Ajw8l_F9utdcUT7Yk0I3Ud2OKNbxAy_npCO36tZl_SAXAahiMSrjVOUnasBFRf5IgHIhCP_gL5-hY99qGPEcZ7yp8kAAhJ6V9T5U7A6IlMaJLoGnFLfU-99MBgOWwO4pSkUQiQt7N7zdU-MgJIDqYN2Q_G_JVLTQzS9mMt-COsWdrqhgdGA_QMPZGIn-oBnkMiOkMlZjRj75d4ilqUVtwxNpRdvWQ9jh6VPQuZa_Lq6pX4dxKjwHQJVQPyKS2Q2H9_4luYZeMkQ_QaRJyDpmkGZQB5WAS9x_U1EUrwIlY2c6R_3BNudnZ5i12WHm0M_IveKLw5rLazLAmbBnzrSct3SjBQawwqnDO6tfGm5rIF7b6edW0FlWFEHRBEaenyUEun9nygjdY_LzcuXk6v03RLT2G-nz&maxWidth=400",
+                      "source": "PlaceSearch",
+                      "caption": "Ho Chia",
+                      "alt": "Ho Chia",
+                      "place_id": "ChIJC2_iseoVrjsRLoS8232p9Y0"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXT-CkDHyMTj85V0GEOsmQeHk59VuVyDISj9WITBxY9zcqOoSsqPyjJT3BlENxLVtzhlLuDUnILfNeMpBB5NG9lVsVlrgD-mWUAMOb5FGSgG60OLhM8Pu6eJ8AN93808tVSv7EWMTlO3KqtTUFnH0zFVDqbM3RH-7ljtTkXgGn8F0RLGxSzJgjojHONB6ArUCWoykHCsksq_no-0b3Fm4Y8J9hgirjx-0KUVG9fxAZuGI419r8kPAbr73vM5ZAHeeKrnS2zKBL0SPTlYxjyglVOsFMDKWb-iUMtir6YV-riyWeinpRoYzN7B0268b9xq3_hnsBWBsspofAChN5ihbOYw23LUO29y0JGLyCbpT8azAgP9xaNbNJj3duOx2mwxziqFoxiyuRZY9CpBJjj-nVqvRwDIarJqs-lrwP3Uu-G1Enfw-YJr-f48rWK0UwV0&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Ho Chia",
+                      "alt": "Ho Chia",
+                      "place_id": "ChIJC2_iseoVrjsRLoS8232p9Y0"
+                    },
+                    {
+                      "kind": "image",
+                      "url": "/api/photo?name=places%2FChIJC2_iseoVrjsRLoS8232p9Y0%2Fphotos%2FAVoNoXT3-TrWBqpgpUFDN-jM4n7FXK2OUgRrif7k9iz3-oDrgsxBNd7LAQ9ZXvB8CjLnjr0Xo-brcvt5WAJgK1Lf12gWHWeuW49JKm4_cjxFWbadbSACavOrcmgjVrHXlseezo2IkBapZugHIpzaHcLJgUO-6yS_5Wq7yAZUe47orIvdImsBXA7mby1o4C19ntUC2u_BTF_G2OAtfujnviYNu43rtxxht5PH4UaTm_Pz4ghq-hDqt55xZr_5iExjCA9M8UlJMlyR4YIS00n1zNcnPfGE9ET_iT4uqxB34cfXOUPToRdBxKGPlmjETgFzzEAkBT89vZRbec2U2hAXihXX2o__BhyhI1jeZNpClHic3qOBc60gFD0vFKXwfG-SkSdrG1Rv2wMB-_P4feCJRuvCaEcBU3K0hrRs4asM-DFZCBbo8Ou2cBpAl-vwB2NWxU1u&maxWidth=600",
+                      "source": "PlaceDetails",
+                      "caption": "Ho Chia",
+                      "alt": "Ho Chia",
+                      "place_id": "ChIJC2_iseoVrjsRLoS8232p9Y0"
+                    }
+                  ]
+                },
+                "points": [],
+                "badge": "Hidden Gem",
+                "rating": "4.7★ · 15 reviews",
+                "price": "₹400–600 per person",
+                "why": "Small-batch home-style Asian kitchen. Mapo Tofu is a confirmed hit per reviews, alongside char siu and Hainanese chicken rice. Closes early though.",
+                "hours": "Open till 9:00 PM",
+                "note": null,
+                "cta": {
+                  "label": "Open on Maps",
+                  "url": "https://maps.google.com/?cid=10229268486664520750&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+                },
+                "phone": null
+              }
+            ]
+          }
+        ],
+        "conclusion": null
+      },
+      {
+        "type": "suggestions",
+        "chips": [
+          "Get directions to Shang Palace",
+          "Reviews for Bangalore Mandarin",
+          "More late-night Chinese spots in Koramangala",
+          "What else to order at Shang Palace?"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "system",
+    "subtype": "transition",
+    "text": "completion"
+  },
+  {
+    "type": "insight",
+    "subtype": "llm_skills_used",
+    "label": "LLM used skills (1)",
+    "ts": 1787565040822,
+    "detail": "food"
+  },
+  {
+    "type": "turn_complete",
+    "turn_id": "4e05e82d-b707-408f-9bcf-f2d7c6ef5423",
+    "input_tokens": 86135,
+    "output_tokens": 3837,
+    "reasoning_tokens": 1650,
+    "reasoning_estimated": true,
+    "cache_read_tokens": 51200,
+    "latency_ms": 60818,
+    "agent_steps": 3,
+    "tool_call_count": 6,
+    "skills_loaded": [
+      "default",
+      "food"
+    ]
+  },
+  {
+    "type": "[DONE]"
+  }
+]
